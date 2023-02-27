@@ -1,4 +1,4 @@
 {
-    "editor.formatOnSave": true
-    //"default.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.formatOnSave": true
+  //"default.defaultFormatter": "esbenp.prettier-vscode"
 }
