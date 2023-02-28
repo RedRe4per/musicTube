@@ -1,3 +1,3 @@
 ### .env：
 
-`SERVER_ADDRESS=music-server-sand.vercel.app`
+`NEXT_PUBLIC_SERVER_ADDRESS=https://music-server-sand.vercel.app`
