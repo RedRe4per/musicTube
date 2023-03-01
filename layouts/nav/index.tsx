@@ -1,5 +1,3 @@
 export const Nav = () => {
-    return (
-        <div></div>
-    )
-}
+  return <div></div>;
+};
