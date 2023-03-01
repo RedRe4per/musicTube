@@ -19,6 +19,7 @@
     "yarn": "please-use-npm"
   },
   "dependencies": {
+    "@next/font": "^13.2.3",
     "@reduxjs/toolkit": "^1.9.3",
     "@types/node": "18.14.2",
     "@types/react": "18.0.28",

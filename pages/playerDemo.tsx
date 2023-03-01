@@ -13,7 +13,7 @@ export default function AudioPlayerDemo(props: Props) {
   const [currentMusic, setCurrentMusic] = useState<MusicDetail>(musicArray[0]);
   const [isMusicPlay, setIsMusicPlay] = useState<boolean>(true);
   const [isMusicLoop, setIsMusicLoop] = useState<boolean>(false);
-  const [isRandomPlay, setIsRandomPlay] = useState<boolean>(false);
+  const [isRandomPlay, setIsRandomPlay] = useState<boolean>(true);
   const musicPlayers = useRef<HTMLAudioElement | null>(null);
 
   console.log(musicPlayers.current?.volume);
@@ -93,7 +93,7 @@ export default function AudioPlayerDemo(props: Props) {
 
   return (
     <main>
-      <p>I am music player</p>
+      <p className="font-bold">I am music player</p>
       <audio
         ref={musicPlayers}
         src={currentMusic.url}
@@ -108,13 +108,13 @@ export default function AudioPlayerDemo(props: Props) {
         <button onClick={handleNextMusic}>Next</button>
         <button
           onClick={handleLoop}
-          className={isMusicLoop ? "bg-green-500" : "bg-slate-500"}
+          className={isMusicLoop ? "bg-green" : "bg-gray-400"}
         >
           Loop
         </button>
         <button
           onClick={handleRandomPlay}
-          className={isRandomPlay ? "bg-green-500" : "bg-slate-500"}
+          className={isRandomPlay ? "bg-green" : "bg-gray-400"}
         >
           Random
         </button>
