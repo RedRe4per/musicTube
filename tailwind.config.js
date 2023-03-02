@@ -25,6 +25,78 @@ module.exports = {
           800: "#121212",
         },
       },
+      fontSize: {
+        h2: [
+          "36px",
+          {
+            lineHeight: "43px",
+            fontWeight: "400",
+          },
+        ],
+        "h3-light": [
+          "24px",
+          {
+            lineHeight: "28px",
+            fontWeight: "300",
+          },
+        ],
+        "h3-normal": [
+          "24px",
+          {
+            lineHeight: "28px",
+            fontWeight: "400",
+          },
+        ],
+        "h3-bold": [
+          "24px",
+          {
+            lineHeight: "28px",
+            fontWeight: "500",
+          },
+        ],
+        "h4-light": [
+          "22px",
+          {
+            lineHeight: "26px",
+            fontWeight: "300",
+          },
+        ],
+        "h4-normal": [
+          "22px",
+          {
+            lineHeight: "26px",
+            fontWeight: "400",
+          },
+        ],
+        "button-light": [
+          "20px",
+          {
+            lineHeight: "24px",
+            fontWeight: "300",
+          },
+        ],
+        "button-normal": [
+          "20px",
+          {
+            lineHeight: "24px",
+            fontWeight: "400",
+          },
+        ],
+        "tag-light": [
+          "18px",
+          {
+            lineHeight: "21px",
+            fontWeight: "400",
+          },
+        ],
+        "tag-normal": [
+          "18px",
+          {
+            lineHeight: "21px",
+            fontWeight: "300",
+          },
+        ],
+      },
     },
   },
   plugins: [require("daisyui")],
