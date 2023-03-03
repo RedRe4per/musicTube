@@ -41,11 +41,7 @@ export const Nav = () => {
           onClick={() => handlePage(3)}
         >
           <div className="ml-[23px] w-[40px]">
-            <img
-              src="/icons/heart.svg"
-              alt="heart"
-              className="m-auto scale-90"
-            />
+            <img src="/icons/heart.svg" alt="heart" className="m-auto scale-90" />
           </div>
           <h3 className="ml-[20px]">Liked songs</h3>
         </div>
