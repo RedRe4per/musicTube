@@ -12,7 +12,7 @@ const rubik = Rubik({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${rubik.variable} font-sans`}>
+    <main className={`${rubik.variable} font-sans text-white-100`}>
       <Provider store={store}>
         <Component {...pageProps} />
       </Provider>

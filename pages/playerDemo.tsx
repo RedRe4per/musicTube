@@ -93,7 +93,7 @@ export default function AudioPlayerDemo(props: Props) {
 
   return (
     <main>
-      <p className="text-blue-400 text-h3-bold">I am music player</p>
+      <p className="text-yellow-400 text-h3-light">I am music player</p>
       <audio
         ref={musicPlayers}
         src={currentMusic.url}

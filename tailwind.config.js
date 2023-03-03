@@ -6,6 +6,7 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./layouts/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -16,14 +17,18 @@ module.exports = {
         green: "#1DB954",
         white: {
           50: "#ffffff",
-          100: "#F1F1F1",
+          200: "#F1F1F1",
         },
         gray: {
+          200: "#C4C4C4",
           400: "#646464",
           600: "#333333",
           700: "#191414",
           800: "#121212",
         },
+      },
+      opacity: {
+        15: ".15",
       },
       fontSize: {
         h2: [
@@ -96,6 +101,9 @@ module.exports = {
             fontWeight: "300",
           },
         ],
+      },
+      backgroundImage: {
+        purple: "linear-gradient(135deg, #A56FFF 0%, #8A96FF 100%)",
       },
     },
   },
