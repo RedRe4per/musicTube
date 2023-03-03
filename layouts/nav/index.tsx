@@ -10,10 +10,11 @@ export const Nav = () => {
     <main className="w-[330px] bg-gray-800">
       <section className="text-h3-light mt-[50px] flex flex-col gap-[7px]">
         <div
-          className={`nav-title ${activePageIndex === 1
+          className={`nav-title ${
+            activePageIndex === 1
               ? "bg-green bg-opacity-15"
               : "hover:bg-gray-600"
-            }`}
+          }`}
           onClick={() => handlePage(1)}
         >
           <div className="ml-[23px] w-[40px]">
@@ -22,10 +23,11 @@ export const Nav = () => {
           <h3 className="ml-[20px]">Home</h3>
         </div>
         <div
-          className={`nav-title ${activePageIndex === 2
+          className={`nav-title ${
+            activePageIndex === 2
               ? "bg-green bg-opacity-15"
               : "hover:bg-gray-600"
-            }`}
+          }`}
           onClick={() => handlePage(2)}
         >
           <div className="ml-[23px] w-[40px]">
@@ -34,14 +36,19 @@ export const Nav = () => {
           <h3 className="ml-[20px]">Browse</h3>
         </div>
         <div
-          className={`nav-title ${activePageIndex === 3
+          className={`nav-title ${
+            activePageIndex === 3
               ? "bg-green bg-opacity-15"
               : "hover:bg-gray-600"
-            }`}
+          }`}
           onClick={() => handlePage(3)}
         >
           <div className="ml-[23px] w-[40px]">
-            <img src="/icons/heart.svg" alt="heart" className="m-auto scale-90" />
+            <img
+              src="/icons/heart.svg"
+              alt="heart"
+              className="m-auto scale-90"
+            />
           </div>
           <h3 className="ml-[20px]">Liked songs</h3>
         </div>
