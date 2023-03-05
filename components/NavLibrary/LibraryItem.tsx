@@ -1,8 +1,7 @@
 interface Props {
-    text: string;
+  text: string;
 }
 
 export const LibraryItem = ({ text }: Props) => {
-
-    return <li>{text}</li>;
+  return <li>{text}</li>;
 };
