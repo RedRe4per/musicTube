@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 
 interface Props {
@@ -21,7 +22,7 @@ export const NavPagesItem = (props: Props) => {
         }`}
       >
         <div className="ml-[23px] w-[40px]">
-          <img src={`/icons/${icon}.svg`} alt={icon} className="m-auto" />
+          <Image src={`/icons/${icon}.svg`} alt={icon} className="m-auto" width={30} height={30}/>
         </div>
         <h3 className="ml-[20px]">{text}</h3>
       </div>
