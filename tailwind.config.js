@@ -26,6 +26,9 @@ module.exports = {
           700: "#191414",
           800: "#121212",
         },
+        background: {
+          500: "#1B1B1B"
+        },
       },
       textColor: {
         // default: 'mix-blend-screen text-gray-700 text-white-200',
@@ -107,7 +110,19 @@ module.exports = {
         ],
       },
       backgroundImage: {
-        purple: "linear-gradient(135deg, #A56FFF 0%, #8A96FF 100%)",
+        'header': "url('/full-heart.svg'), linear-gradient(135deg, #A56FFF 0%, #8A96FF 100%)",
+      },
+      backgroundBlendMode: {
+        'header': 'multiply, overlay',
+      },
+      backgroundSize: {
+        'header': 'fill',
+      },
+      backgroundPosition: {
+        'header': 'center',
+      },
+      width: {
+        'screen-70': 'calc(100vw - 330px)',
       },
     },
   },
