@@ -17,10 +17,7 @@ export const Header = () => {
         <PageSwitch page={page} />
         <SearchBar page={page} />
       </div>
-      <div
-        className={`${page === "/likedSongs" ? "" : "hidden"
-          } h-[130px]`}
-      >
+      <div className={`${page === "/likedSongs" ? "" : "hidden"} h-[130px]`}>
         song numbers
       </div>
     </main>
