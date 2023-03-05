@@ -27,7 +27,7 @@ module.exports = {
           800: "#121212",
         },
         background: {
-          500: "#1B1B1B"
+          500: "#1B1B1B",
         },
       },
       textColor: {
@@ -110,19 +110,20 @@ module.exports = {
         ],
       },
       backgroundImage: {
-        'header': "url('/full-heart.svg'), linear-gradient(135deg, #A56FFF 0%, #8A96FF 100%)",
+        header:
+          "url('/full-heart.svg'), linear-gradient(135deg, #A56FFF 0%, #8A96FF 100%)",
       },
       backgroundBlendMode: {
-        'header': 'multiply, overlay',
+        header: "multiply, overlay",
       },
       backgroundSize: {
-        'header': 'fill',
+        header: "fill",
       },
       backgroundPosition: {
-        'header': 'center',
+        header: "center",
       },
       width: {
-        'screen-70': 'calc(100vw - 330px)',
+        "screen-70": "calc(100vw - 330px)",
       },
     },
   },
