@@ -112,6 +112,7 @@ module.exports = {
       backgroundImage: {
         header:
           "url('/full-heart.svg'), linear-gradient(135deg, #A56FFF 0%, #8A96FF 100%)",
+        secondary: "linear-gradient(0deg, #121212, #121212)"
       },
       backgroundBlendMode: {
         header: "multiply, overlay",

@@ -1,15 +1,25 @@
+import { PageSwitch } from "@/components/PageSwitch";
+import { SearchBar } from "@/components/SearchBar";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export const Header = () => {
   const router = useRouter();
+  const [page, setPage] = useState("/");
+
+  useEffect(() => {
+    setPage(router.pathname);
+  }, [router.pathname]);
 
   return (
-    <main className={`${router.pathname === "/likedSongs" ? "bg-header" : ""}`}>
-      <div className="h-[90px]">search bar</div>
+    <main className={`${page === "/likedSongs" ? "bg-header" : ""}`}>
+      <div className="h-[90px] flex items-center justify-around">
+        <PageSwitch page={page} />
+        <SearchBar page={page} />
+      </div>
       <div
-        className={`${
-          router.pathname === "/likedSongs" ? "" : "hidden"
-        } h-[130px]`}
+        className={`${page === "/likedSongs" ? "" : "hidden"
+          } h-[130px]`}
       >
         song numbers
       </div>
