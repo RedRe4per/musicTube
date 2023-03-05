@@ -22,7 +22,13 @@ export const NavPagesItem = (props: Props) => {
         }`}
       >
         <div className="ml-[23px] w-[40px]">
-          <Image src={`/icons/${icon}.svg`} alt={icon} className="m-auto" width={30} height={30}/>
+          <Image
+            src={`/icons/${icon}.svg`}
+            alt={icon}
+            className="m-auto"
+            width={30}
+            height={30}
+          />
         </div>
         <h3 className="ml-[20px]">{text}</h3>
       </div>
