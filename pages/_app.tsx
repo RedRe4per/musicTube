@@ -21,6 +21,6 @@ export default function App({ Component, pageProps }: AppProps) {
           {/* nav看一下next文档里的https://nextjs.org/docs/basic-features/layouts */}
         </Layout>
       </Provider>
-    </main >
+    </main>
   );
 }

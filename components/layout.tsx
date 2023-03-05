@@ -1,15 +1,15 @@
-import { Nav } from '@/layouts/nav'
-import { ReactElement } from 'react'
+import { Nav } from "@/layouts/nav";
+import { ReactElement } from "react";
 
 interface Props {
-    children: ReactElement;
-};
+  children: ReactElement;
+}
 
 export default function Layout({ children }: Props) {
-    return (
-        <>
-            <Nav />
-            <main>{children}</main>
-        </>
-    )
+  return (
+    <>
+      <Nav />
+      <main>{children}</main>
+    </>
+  );
 }
