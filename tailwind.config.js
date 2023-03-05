@@ -27,75 +27,79 @@ module.exports = {
           800: "#121212",
         },
       },
+      textColor: {
+        // default: 'mix-blend-screen text-gray-700 text-white-200',
+        default: "#1DB954",
+      },
       opacity: {
         15: ".15",
       },
       fontSize: {
         h2: [
-          "36px",
+          "2.25rem",
           {
             lineHeight: "43px",
             fontWeight: "400",
           },
         ],
         "h3-light": [
-          "24px",
+          "1.5rem",
           {
             lineHeight: "28px",
             fontWeight: "300",
           },
         ],
         "h3-normal": [
-          "24px",
+          "1.5rem",
           {
             lineHeight: "28px",
             fontWeight: "400",
           },
         ],
         "h3-bold": [
-          "24px",
+          "1.5rem",
           {
             lineHeight: "28px",
             fontWeight: "500",
           },
         ],
         "h4-light": [
-          "22px",
+          "1.375rem",
           {
             lineHeight: "26px",
             fontWeight: "300",
           },
         ],
         "h4-normal": [
-          "22px",
+          "1.375rem",
           {
             lineHeight: "26px",
             fontWeight: "400",
           },
         ],
         "button-light": [
-          "20px",
+          "1.25rem",
           {
             lineHeight: "24px",
             fontWeight: "300",
           },
         ],
         "button-normal": [
-          "20px",
+          "1.25rem",
           {
             lineHeight: "24px",
             fontWeight: "400",
           },
         ],
         "tag-light": [
-          "18px",
+          "1.125rem",
           {
             lineHeight: "21px",
             fontWeight: "400",
           },
         ],
         "tag-normal": [
-          "18px",
+          "1.125rem",
           {
             lineHeight: "21px",
             fontWeight: "300",
