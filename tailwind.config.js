@@ -38,11 +38,18 @@ module.exports = {
         15: ".15",
       },
       fontSize: {
-        h2: [
+        "h2-normal": [
           "2.25rem",
           {
             lineHeight: "43px",
             fontWeight: "400",
+          },
+        ],
+        "h2-light": [
+          "2.25rem",
+          {
+            lineHeight: "43px",
+            fontWeight: "300",
           },
         ],
         "h3-light": [
