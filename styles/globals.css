@@ -6,4 +6,8 @@
   .nav-title {
     @apply w-[250px] h-[55px] ml-[25px] rounded-[10px] flex items-center;
   }
+
+  .play-bar-btn {
+    @apply w-[30px] h-[30px] hover:w-[35px] hover:h-[35px] m-auto hover:filter hover:brightness-150;
+  }
 }
