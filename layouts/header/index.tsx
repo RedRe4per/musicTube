@@ -20,8 +20,9 @@ export const Header = () => {
         <UserInfo />
       </div>
       <div
-        className={`${page === "/likedSongs" ? "" : "hidden"
-          } h-[130px] pt-5 text-white-200 flex items-center justify-around`}
+        className={`${
+          page === "/likedSongs" ? "" : "hidden"
+        } h-[130px] pt-5 text-white-200 flex items-center justify-around`}
       >
         <div className="flex gap-6 text-h2-normal items-center justify-center w-[30%]">
           <img src="/icons/liked.svg" alt="liked" />
