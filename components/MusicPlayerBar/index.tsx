@@ -31,7 +31,14 @@ export const MusicPlayerBar = () => {
     const currentMusicIndex = playerList.findIndex(
       (element) => element.url === currentMusic?.url
     );
-    const playMusicIndex = forward === "last" ? (currentMusicIndex > 0 ? currentMusicIndex - 1 : playerList.length - 1) : (currentMusicIndex < playerList.length - 1 ? currentMusicIndex + 1 : 0);
+    const playMusicIndex =
+      forward === "last"
+        ? currentMusicIndex > 0
+          ? currentMusicIndex - 1
+          : playerList.length - 1
+        : currentMusicIndex < playerList.length - 1
+        ? currentMusicIndex + 1
+        : 0;
     setCurrentMusic(playerList[playMusicIndex]);
 
     setTimeout(() => {
@@ -47,7 +54,7 @@ export const MusicPlayerBar = () => {
       Math.round(
         musicPlayers.current?.currentTime && musicPlayers.current?.duration
           ? (100 * musicPlayers.current?.currentTime) /
-          musicPlayers.current?.duration
+              musicPlayers.current?.duration
           : 0
       )
     );
@@ -61,7 +68,7 @@ export const MusicPlayerBar = () => {
       Math.round(
         musicPlayers.current?.currentTime && musicPlayers.current?.duration
           ? (100 * musicPlayers.current?.currentTime) /
-          musicPlayers.current?.duration
+              musicPlayers.current?.duration
           : 0
       )
     );
@@ -85,12 +92,18 @@ export const MusicPlayerBar = () => {
             active={isRandomPlay}
             sequence="random"
           />
-          <SkipButton handleSkip={() => handleSkipMusic("last")} forward="last" />
+          <SkipButton
+            handleSkip={() => handleSkipMusic("last")}
+            forward="last"
+          />
           <PlayerSwitchButton
             handlePlayAndPause={handlePlayAndPause}
             isMusicPlay={isMusicPlay}
           />
-          <SkipButton handleSkip={() => handleSkipMusic("next")} forward="next" />
+          <SkipButton
+            handleSkip={() => handleSkipMusic("next")}
+            forward="next"
+          />
           <SequenceButton
             handleSequence={() => setIsMusicLoop(!isMusicLoop)}
             active={isMusicLoop}
