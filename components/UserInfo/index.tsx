@@ -11,8 +11,9 @@ export const UserInfo = () => {
   return (
     <div className="min-w-[322px] text-h3-light text-white-200">
       <section
-        className={`absolute top-0 min-w-[322px] ${isDropdown ? "bg-gray-800 shadow-lg bg-white" : ""
-          } rounded-[10px]`}
+        className={`absolute top-0 min-w-[322px] ${
+          isDropdown ? "bg-gray-800 shadow-lg bg-white" : ""
+        } rounded-[10px]`}
       >
         <div className="flex w-full h-[80px] justify-around items-center gap-2">
           <Image
