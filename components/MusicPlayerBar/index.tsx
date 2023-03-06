@@ -1,6 +1,5 @@
 import { MusicDetail } from "@/interfaces/music";
-import { useState, useRef } from "react";
-import { useContext } from "react";
+import { useState, useRef, useContext } from "react";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { formatTime } from "@/utils/formatTime";
 import { SkipButton } from "./SkipButton";
@@ -10,78 +9,34 @@ import { PlayerSwitchButton } from "./PlayerSwitchButton";
 export const MusicPlayerBar = () => {
   const { playerList } = useContext(PlayerContext);
   const musicPlayers = useRef<HTMLAudioElement | null>(null);
-  console.log(playerList, "MusicPlayerBar");
-  const [currentMusic, setCurrentMusic] = useState<MusicDetail | null>(
-    playerList[0]
-  );
   const [isMusicPlay, setIsMusicPlay] = useState<boolean>(true);
   const [isMusicLoop, setIsMusicLoop] = useState<boolean>(false);
   const [isRandomPlay, setIsRandomPlay] = useState<boolean>(true);
   const [currentPlayRadio, setCurrentPlayRadio] = useState(0);
   const [currentMusicTime, setCurrentMusicTime] = useState<any>(0);
   const [currentDurationTime, setCurrentDurationTime] = useState<any>(0);
+  const [currentMusic, setCurrentMusic] = useState<MusicDetail | null>(
+    playerList[0]
+  );
 
+  console.log(playerList, "MusicPlayerBar");
   console.log(musicPlayers.current?.volume);
 
   const handlePlayAndPause = () => {
     setIsMusicPlay(!isMusicPlay);
-    if (isMusicPlay) {
-      musicPlayers.current?.play();
-    } else {
-      musicPlayers.current?.pause();
-    }
+    isMusicPlay ? musicPlayers.current?.play() : musicPlayers.current?.pause();
   };
 
-  const handleLastMusic = () => {
+  const handleSkipMusic = (forward: "last" | "next") => {
     const currentMusicIndex = playerList.findIndex(
       (element) => element.url === currentMusic?.url
     );
-    const lastMusicIndex =
-      currentMusicIndex > 0 ? currentMusicIndex - 1 : playerList.length - 1;
-    setCurrentMusic(playerList[lastMusicIndex]);
+    const playMusicIndex = forward === "last" ? (currentMusicIndex > 0 ? currentMusicIndex - 1 : playerList.length - 1) : (currentMusicIndex < playerList.length - 1 ? currentMusicIndex + 1 : 0);
+    setCurrentMusic(playerList[playMusicIndex]);
 
     setTimeout(() => {
       musicPlayers.current?.play();
-    }, 1000);
-  };
-
-  const handleNextMusic = () => {
-    const currentMusicIndex = playerList.findIndex(
-      (element) => element.url === currentMusic?.url
-    );
-    const nextMusicIndex =
-      currentMusicIndex < playerList.length - 1 ? currentMusicIndex + 1 : 0;
-    setCurrentMusic(playerList[nextMusicIndex]);
-
-    setTimeout(() => {
-      musicPlayers.current?.play();
-    }, 1000);
-  };
-
-  const handleRandomMusic = () => {
-    const currentMusicIndex = playerList.findIndex(
-      (element) => element.url === currentMusic?.url
-    );
-    if (playerList.length > 1) {
-      let randomMusicIndex = -1;
-      while (
-        randomMusicIndex === currentMusicIndex ||
-        randomMusicIndex === -1
-      ) {
-        randomMusicIndex = Math.floor(Math.random() * playerList.length);
-      }
-      setCurrentMusic(playerList[randomMusicIndex]);
-    } else {
-      setCurrentMusic(playerList[0]);
-    }
-
-    setTimeout(() => {
-      musicPlayers.current?.play();
-    }, 1000);
-  };
-
-  const handleLoop = () => {
-    setIsMusicLoop(!isMusicLoop);
+    }, 500);
   };
 
   const handleRandomPlay = () => {
@@ -92,19 +47,11 @@ export const MusicPlayerBar = () => {
       Math.round(
         musicPlayers.current?.currentTime && musicPlayers.current?.duration
           ? (100 * musicPlayers.current?.currentTime) /
-              musicPlayers.current?.duration
+          musicPlayers.current?.duration
           : 0
       )
     );
     setIsRandomPlay(!isRandomPlay);
-  };
-
-  const handleMusicEnded = () => {
-    if (isRandomPlay) {
-      handleRandomMusic();
-    } else {
-      handleNextMusic();
-    }
   };
 
   const handleTime = () => {
@@ -114,7 +61,7 @@ export const MusicPlayerBar = () => {
       Math.round(
         musicPlayers.current?.currentTime && musicPlayers.current?.duration
           ? (100 * musicPlayers.current?.currentTime) /
-              musicPlayers.current?.duration
+          musicPlayers.current?.duration
           : 0
       )
     );
@@ -129,7 +76,7 @@ export const MusicPlayerBar = () => {
           ref={musicPlayers}
           src={currentMusic?.url}
           loop={isMusicLoop}
-          onEnded={handleMusicEnded}
+          onEnded={() => handleSkipMusic("next")}
           onTimeUpdate={handleTime}
         />
         <div className="flex gap-[40px] items-center fill-gray-200">
@@ -138,14 +85,14 @@ export const MusicPlayerBar = () => {
             active={isRandomPlay}
             sequence="random"
           />
-          <SkipButton handleSkip={handleLastMusic} forward="last" />
+          <SkipButton handleSkip={() => handleSkipMusic("last")} forward="last" />
           <PlayerSwitchButton
             handlePlayAndPause={handlePlayAndPause}
             isMusicPlay={isMusicPlay}
           />
-          <SkipButton handleSkip={handleNextMusic} forward="next" />
+          <SkipButton handleSkip={() => handleSkipMusic("next")} forward="next" />
           <SequenceButton
-            handleSequence={handleLoop}
+            handleSequence={() => setIsMusicLoop(!isMusicLoop)}
             active={isMusicLoop}
             sequence="loop"
           />
