@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 interface Props {
   page: string;
 }
@@ -12,12 +10,11 @@ export const SearchBar = ({ page }: Props) => {
           page === "/likedSongs" ? "invert" : ""
         }`}
         placeholder="Search"
+        autoFocus
       />
-      <Image
+      <img
         src="/icons/search.svg"
         alt="search"
-        width={19}
-        height={19}
         className={`absolute top-[34px] ml-5 ${
           page === "/likedSongs" ? "invert" : ""
         }`}

@@ -1,5 +1,6 @@
 import { Nav } from "@/layouts/nav";
 import { Header } from "@/layouts/header";
+import { MusicPlayerBar } from "./MusicPlayerBar";
 import { ReactElement } from "react";
 
 interface Props {
@@ -14,6 +15,7 @@ export default function Layout({ children }: Props) {
         <Header />
         <main>{children}</main>
       </section>
+      <MusicPlayerBar />
     </div>
   );
 }

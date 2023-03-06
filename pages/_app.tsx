@@ -1,9 +1,10 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { store } from "../store/store";
-import { Provider } from "react-redux";
 import { Rubik } from "next/font/google";
 import Layout from "@/components/layout";
+import { useState } from "react";
+import { MusicDetail } from "@/interfaces/music";
+import { PlayerContext } from "@/contexts/PlayerContext";
 
 const rubik = Rubik({
   subsets: ["latin"],
@@ -12,15 +13,15 @@ const rubik = Rubik({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [playerList, setPlayerList] = useState<MusicDetail[]>([]);
+
   return (
     <main className={`${rubik.variable} font-sans`}>
-      <Provider store={store}>
+      <PlayerContext.Provider value={{ playerList, setPlayerList }}>
         <Layout>
           <Component {...pageProps} />
-          {/* 可以尝试把player放在这里，不rerender */}
-          {/* nav看一下next文档里的https://nextjs.org/docs/basic-features/layouts */}
         </Layout>
-      </Provider>
+      </PlayerContext.Provider>
     </main>
   );
 }

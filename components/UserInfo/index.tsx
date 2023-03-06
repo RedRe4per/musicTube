@@ -23,14 +23,12 @@ export const UserInfo = () => {
             height={50}
           ></Image>
           <span>Matheus</span>
-          <Image
+          <img
             src={isDropdown ? "/icons/arrow-up.svg" : "/icons/arrow-down.svg"}
             alt="arrow"
-            width={28}
-            height={28}
             onClick={handleDropdown}
             className="cursor-pointer"
-          ></Image>
+          ></img>
         </div>
         <div className={`${isDropdown ? "" : "hidden"}`}>
           <ul className="flex flex-col gap-[15px] ml-[46px] mt-[14px] mb-[37px]">

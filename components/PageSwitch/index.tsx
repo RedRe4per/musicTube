@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 interface Props {
   page: string;
 }
@@ -12,22 +10,14 @@ export const PageSwitch = ({ page }: Props) => {
       }`}
     >
       <button className="w-[60px]">
-        <Image
-          src="/icons/arrow-left.svg"
-          alt="last-page"
-          className="m-auto"
-          width={16}
-          height={16}
-        />
+        <img src="/icons/arrow-left.svg" alt="last-page" className="m-auto" />
       </button>
       <button className="w-[60px]">
-        <Image
+        <img
           src="/icons/arrow-right.svg"
           alt="next-page"
           className="m-auto"
-          width={16}
-          height={16}
-        ></Image>
+        ></img>
       </button>
     </div>
   );
