@@ -34,8 +34,8 @@ export const MusicPlayerBar = () => {
           ? currentMusicIndex - 1
           : playerList.length - 1
         : currentMusicIndex < playerList.length - 1
-          ? currentMusicIndex + 1
-          : 0;
+        ? currentMusicIndex + 1
+        : 0;
     setCurrentMusic(playerList[playMusicIndex]);
     setTimeout(() => {
       musicPlayer.current?.play();
@@ -74,7 +74,12 @@ export const MusicPlayerBar = () => {
             sequence="loop"
           />
         </div>
-        <ProgressBar currentMusic={currentMusic} isMusicLoop={isMusicLoop} handleSkipMusic={handleSkipMusic} ref={musicPlayer} />
+        <ProgressBar
+          currentMusic={currentMusic}
+          isMusicLoop={isMusicLoop}
+          handleSkipMusic={handleSkipMusic}
+          ref={musicPlayer}
+        />
       </section>
       <aside>sound</aside>
       {/* https://music-server-6orvdb931-redre4per.vercel.app/song/detail?ids=347230获取歌曲详情。有名字，图，歌手名 */}
