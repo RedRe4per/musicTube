@@ -5,10 +5,11 @@ interface Props {
   forward: "last" | "next";
 }
 
-export const SkipButton = React.memo(function SkipButton({
+export const SkipButton = React.memo(({
   handleSkip,
   forward,
-}: Props) {
+}: Props) => {
+  console.log("77777777777777777777777")
   return (
     <button onClick={handleSkip} className="w-[40px] h-[40px]">
       {forward === "last" && (

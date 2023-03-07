@@ -5,10 +5,11 @@ interface Props {
   isMusicPlay: boolean;
 }
 
-export const PlayerSwitchButton = React.memo(function PlayerSwitchButton({
+export const PlayerSwitchButton = React.memo(({
   handlePlayAndPause,
   isMusicPlay,
-}: Props) {
+}: Props) => {
+  console.log("333333333333333333333333333")
   return (
     <button onClick={handlePlayAndPause} className="w-[58px] h-[58px]">
       <img
