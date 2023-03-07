@@ -1,10 +1,12 @@
+import React from "react";
+
 interface Props {
   handleSequence: () => void;
   active: boolean;
   sequence: "loop" | "random";
 }
 
-export const SequenceButton = ({ handleSequence, active, sequence }: Props) => {
+export const SequenceButton = React.memo(function SequenceButton({ handleSequence, active, sequence }: Props) {
   return (
     <button onClick={handleSequence} className="w-[40px] h-[40px]">
       {sequence === "random" && (
@@ -29,4 +31,4 @@ export const SequenceButton = ({ handleSequence, active, sequence }: Props) => {
       )}
     </button>
   );
-};
+});

@@ -1,5 +1,5 @@
 import { MusicDetail } from "@/interfaces/music";
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useCallback, useMemo } from "react";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { formatTime } from "@/utils/formatTime";
 import { SkipButton } from "./SkipButton";
@@ -8,7 +8,7 @@ import { PlayerSwitchButton } from "./PlayerSwitchButton";
 
 export const MusicPlayerBar = () => {
   const { playerList } = useContext(PlayerContext);
-  const musicPlayers = useRef<HTMLAudioElement | null>(null);
+  const musicPlayer = useRef<HTMLAudioElement | null>(null);
   const [isMusicPlay, setIsMusicPlay] = useState<boolean>(true);
   const [isMusicLoop, setIsMusicLoop] = useState<boolean>(false);
   const [isRandomPlay, setIsRandomPlay] = useState<boolean>(true);
@@ -20,14 +20,14 @@ export const MusicPlayerBar = () => {
   );
 
   console.log(playerList, "MusicPlayerBar");
-  console.log(musicPlayers.current?.volume);
+  console.log(musicPlayer.current?.volume);
 
-  const handlePlayAndPause = () => {
+  const handlePlayAndPause = useCallback(() => {
     setIsMusicPlay(!isMusicPlay);
-    isMusicPlay ? musicPlayers.current?.play() : musicPlayers.current?.pause();
-  };
+    isMusicPlay ? musicPlayer.current?.play() : musicPlayer.current?.pause();
+  }, [isMusicPlay]);
 
-  const handleSkipMusic = (forward: "last" | "next") => {
+  const handleSkipMusic = useCallback((forward: "last" | "next") => {
     const currentMusicIndex = playerList.findIndex(
       (element) => element.url === currentMusic?.url
     );
@@ -37,56 +37,58 @@ export const MusicPlayerBar = () => {
           ? currentMusicIndex - 1
           : playerList.length - 1
         : currentMusicIndex < playerList.length - 1
-        ? currentMusicIndex + 1
-        : 0;
+          ? currentMusicIndex + 1
+          : 0;
     setCurrentMusic(playerList[playMusicIndex]);
 
     setTimeout(() => {
-      musicPlayers.current?.play();
+      musicPlayer.current?.play();
     }, 500);
-  };
+  }, [playerList, currentMusic]);
 
-  const handleRandomPlay = () => {
-    console.log(musicPlayers.current?.currentTime, "current time");
-    console.log(musicPlayers.current?.duration, "duration");
+  const handleRandomPlay = useCallback(() => {
+    console.log(musicPlayer.current?.currentTime, "current time");
+    console.log(musicPlayer.current?.duration, "duration");
 
     console.log(
       Math.round(
-        musicPlayers.current?.currentTime && musicPlayers.current?.duration
-          ? (100 * musicPlayers.current?.currentTime) /
-              musicPlayers.current?.duration
+        musicPlayer.current?.currentTime && musicPlayer.current?.duration
+          ? (100 * musicPlayer.current?.currentTime) /
+          musicPlayer.current?.duration
           : 0
       )
     );
     setIsRandomPlay(!isRandomPlay);
-  };
+  }, [isRandomPlay]);
 
-  const handleTime = () => {
-    setCurrentMusicTime(musicPlayers.current?.currentTime);
-    setCurrentDurationTime(musicPlayers.current?.duration);
-    setCurrentPlayRadio(
-      Math.round(
-        musicPlayers.current?.currentTime && musicPlayers.current?.duration
-          ? (100 * musicPlayers.current?.currentTime) /
-              musicPlayers.current?.duration
-          : 0
-      )
-    );
-    console.log(currentPlayRadio, "radio");
-  };
+  const handleTime = useCallback(() => {
+    const intervalId = setInterval(() => {
+      setCurrentMusicTime(musicPlayer.current?.currentTime);
+      setCurrentDurationTime(musicPlayer.current?.duration);
+      setCurrentPlayRadio(
+        Math.round(
+          musicPlayer.current?.currentTime && musicPlayer.current?.duration
+            ? (100 * musicPlayer.current?.currentTime) /
+            musicPlayer.current?.duration
+            : 0
+        )
+      );
+    }, 1000);
+    return () => { clearInterval(intervalId); };
+  }, [musicPlayer]);
 
-  const handleProgress = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleProgress = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentPlayRadio(+e.target.value);
-    musicPlayers.current!.currentTime =
-      musicPlayers.current!.duration * (+e.target.value / 100);
-  };
+    musicPlayer.current!.currentTime =
+      musicPlayer.current!.duration * (+e.target.value / 100);
+  }, []);
 
   return (
     <main className="absolute bottom-0 w-full h-[100px] bg-gray-800 flex items-center justify-between">
       <aside>music info</aside>
       <section className="w-[850px] flex flex-col items-center">
         <audio
-          ref={musicPlayers}
+          ref={musicPlayer}
           src={currentMusic?.url}
           loop={isMusicLoop}
           onEnded={() => handleSkipMusic("next")}
