@@ -38,10 +38,9 @@ export const MusicPlayerBar = () => {
             ? currentMusicIndex - 1
             : playerList.length - 1
           : currentMusicIndex < playerList.length - 1
-          ? currentMusicIndex + 1
-          : 0;
+            ? currentMusicIndex + 1
+            : 0;
       setCurrentMusic(playerList[playMusicIndex]);
-
       setTimeout(() => {
         musicPlayer.current?.play();
       }, 500);
@@ -57,7 +56,7 @@ export const MusicPlayerBar = () => {
       Math.round(
         musicPlayer.current?.currentTime && musicPlayer.current?.duration
           ? (100 * musicPlayer.current?.currentTime) /
-              musicPlayer.current?.duration
+          musicPlayer.current?.duration
           : 0
       )
     );
@@ -72,7 +71,7 @@ export const MusicPlayerBar = () => {
         Math.round(
           musicPlayer.current?.currentTime && musicPlayer.current?.duration
             ? (100 * musicPlayer.current?.currentTime) /
-                musicPlayer.current?.duration
+            musicPlayer.current?.duration
             : 0
         )
       );
@@ -109,7 +108,7 @@ export const MusicPlayerBar = () => {
             sequence="random"
           />
           <SkipButton
-            handleSkip={() => handleSkipMusic("last")}
+            handleSkip={useCallback(() => handleSkipMusic("last"), [handleSkipMusic])}
             forward="last"
           />
           <PlayerSwitchButton
@@ -117,11 +116,11 @@ export const MusicPlayerBar = () => {
             isMusicPlay={isMusicPlay}
           />
           <SkipButton
-            handleSkip={() => handleSkipMusic("next")}
+            handleSkip={useCallback(() => handleSkipMusic("next"), [handleSkipMusic])}
             forward="next"
           />
           <SequenceButton
-            handleSequence={() => setIsMusicLoop(!isMusicLoop)}
+            handleSequence={useCallback(() => setIsMusicLoop(!isMusicLoop), [isMusicLoop])}
             active={isMusicLoop}
             sequence="loop"
           />
