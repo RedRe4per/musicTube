@@ -37,8 +37,8 @@ export const MusicPlayerBar = () => {
           ? currentMusicIndex - 1
           : playerList.length - 1
         : currentMusicIndex < playerList.length - 1
-          ? currentMusicIndex + 1
-          : 0;
+        ? currentMusicIndex + 1
+        : 0;
     setCurrentMusic(playerList[playMusicIndex]);
 
     setTimeout(() => {
@@ -54,7 +54,7 @@ export const MusicPlayerBar = () => {
       Math.round(
         musicPlayers.current?.currentTime && musicPlayers.current?.duration
           ? (100 * musicPlayers.current?.currentTime) /
-          musicPlayers.current?.duration
+              musicPlayers.current?.duration
           : 0
       )
     );
@@ -68,7 +68,7 @@ export const MusicPlayerBar = () => {
       Math.round(
         musicPlayers.current?.currentTime && musicPlayers.current?.duration
           ? (100 * musicPlayers.current?.currentTime) /
-          musicPlayers.current?.duration
+              musicPlayers.current?.duration
           : 0
       )
     );
@@ -77,8 +77,9 @@ export const MusicPlayerBar = () => {
 
   const handleProgress = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentPlayRadio(+e.target.value);
-    musicPlayers.current!.currentTime = musicPlayers.current!.duration * (+e.target.value / 100);
-  }
+    musicPlayers.current!.currentTime =
+      musicPlayers.current!.duration * (+e.target.value / 100);
+  };
 
   return (
     <main className="absolute bottom-0 w-full h-[100px] bg-gray-800 flex items-center justify-between">
@@ -125,7 +126,8 @@ export const MusicPlayerBar = () => {
             max={100}
             value={currentPlayRadio}
             onChange={handleProgress}
-            className="appearance-none cursor-pointer rounded-lg accent-gray-200 w-[70%] h-[5px]" />
+            className="appearance-none cursor-pointer rounded-lg accent-gray-200 w-[70%] h-[5px]"
+          />
           <div className="w-[20px]">
             <span>{formatTime(currentDurationTime)}</span>
           </div>
