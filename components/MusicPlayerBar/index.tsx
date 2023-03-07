@@ -27,24 +27,27 @@ export const MusicPlayerBar = () => {
     isMusicPlay ? musicPlayer.current?.play() : musicPlayer.current?.pause();
   }, [isMusicPlay]);
 
-  const handleSkipMusic = useCallback((forward: "last" | "next") => {
-    const currentMusicIndex = playerList.findIndex(
-      (element) => element.url === currentMusic?.url
-    );
-    const playMusicIndex =
-      forward === "last"
-        ? currentMusicIndex > 0
-          ? currentMusicIndex - 1
-          : playerList.length - 1
-        : currentMusicIndex < playerList.length - 1
+  const handleSkipMusic = useCallback(
+    (forward: "last" | "next") => {
+      const currentMusicIndex = playerList.findIndex(
+        (element) => element.url === currentMusic?.url
+      );
+      const playMusicIndex =
+        forward === "last"
+          ? currentMusicIndex > 0
+            ? currentMusicIndex - 1
+            : playerList.length - 1
+          : currentMusicIndex < playerList.length - 1
           ? currentMusicIndex + 1
           : 0;
-    setCurrentMusic(playerList[playMusicIndex]);
+      setCurrentMusic(playerList[playMusicIndex]);
 
-    setTimeout(() => {
-      musicPlayer.current?.play();
-    }, 500);
-  }, [playerList, currentMusic]);
+      setTimeout(() => {
+        musicPlayer.current?.play();
+      }, 500);
+    },
+    [playerList, currentMusic]
+  );
 
   const handleRandomPlay = useCallback(() => {
     console.log(musicPlayer.current?.currentTime, "current time");
@@ -54,7 +57,7 @@ export const MusicPlayerBar = () => {
       Math.round(
         musicPlayer.current?.currentTime && musicPlayer.current?.duration
           ? (100 * musicPlayer.current?.currentTime) /
-          musicPlayer.current?.duration
+              musicPlayer.current?.duration
           : 0
       )
     );
@@ -69,19 +72,24 @@ export const MusicPlayerBar = () => {
         Math.round(
           musicPlayer.current?.currentTime && musicPlayer.current?.duration
             ? (100 * musicPlayer.current?.currentTime) /
-            musicPlayer.current?.duration
+                musicPlayer.current?.duration
             : 0
         )
       );
     }, 1000);
-    return () => { clearInterval(intervalId); };
+    return () => {
+      clearInterval(intervalId);
+    };
   }, [musicPlayer]);
 
-  const handleProgress = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrentPlayRadio(+e.target.value);
-    musicPlayer.current!.currentTime =
-      musicPlayer.current!.duration * (+e.target.value / 100);
-  }, []);
+  const handleProgress = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setCurrentPlayRadio(+e.target.value);
+      musicPlayer.current!.currentTime =
+        musicPlayer.current!.duration * (+e.target.value / 100);
+    },
+    []
+  );
 
   return (
     <main className="absolute bottom-0 w-full h-[100px] bg-gray-800 flex items-center justify-between">

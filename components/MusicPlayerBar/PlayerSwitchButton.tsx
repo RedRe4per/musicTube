@@ -9,7 +9,7 @@ export const PlayerSwitchButton = React.memo(function PlayerSwitchButton({
   handlePlayAndPause,
   isMusicPlay,
 }: Props) {
-  console.log("11111111111111")
+  console.log("11111111111111");
   return (
     <button onClick={handlePlayAndPause} className="w-[58px] h-[58px]">
       <img
@@ -24,5 +24,3 @@ export const PlayerSwitchButton = React.memo(function PlayerSwitchButton({
     </button>
   );
 });
-
-
