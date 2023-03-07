@@ -37,8 +37,8 @@ export const MusicPlayerBar = () => {
           ? currentMusicIndex - 1
           : playerList.length - 1
         : currentMusicIndex < playerList.length - 1
-        ? currentMusicIndex + 1
-        : 0;
+          ? currentMusicIndex + 1
+          : 0;
     setCurrentMusic(playerList[playMusicIndex]);
 
     setTimeout(() => {
@@ -54,7 +54,7 @@ export const MusicPlayerBar = () => {
       Math.round(
         musicPlayers.current?.currentTime && musicPlayers.current?.duration
           ? (100 * musicPlayers.current?.currentTime) /
-              musicPlayers.current?.duration
+          musicPlayers.current?.duration
           : 0
       )
     );
@@ -68,12 +68,17 @@ export const MusicPlayerBar = () => {
       Math.round(
         musicPlayers.current?.currentTime && musicPlayers.current?.duration
           ? (100 * musicPlayers.current?.currentTime) /
-              musicPlayers.current?.duration
+          musicPlayers.current?.duration
           : 0
       )
     );
     console.log(currentPlayRadio, "radio");
   };
+
+  const handleProgress = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrentPlayRadio(+e.target.value);
+    musicPlayers.current!.currentTime = musicPlayers.current!.duration * (+e.target.value / 100);
+  }
 
   return (
     <main className="absolute bottom-0 w-full h-[100px] bg-gray-800 flex items-center justify-between">
@@ -114,11 +119,13 @@ export const MusicPlayerBar = () => {
           <div className="w-[20px]">
             <span>{formatTime(currentMusicTime)}</span>
           </div>
-          <div className="relative w-[70%] h-[5px] bg-gray-600 rounded-full overflow-hidden">
-            <div
-              className={`absolute top-0 bottom-0 left-0 right-0 bg-gray-200 rounded-full w-[${currentPlayRadio.toString()}%]`}
-            ></div>
-          </div>
+          <input
+            type="range"
+            min={0}
+            max={100}
+            value={currentPlayRadio}
+            onChange={handleProgress}
+            className="appearance-none cursor-pointer rounded-lg accent-gray-200 w-[70%] h-[5px]" />
           <div className="w-[20px]">
             <span>{formatTime(currentDurationTime)}</span>
           </div>
