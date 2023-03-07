@@ -38,8 +38,8 @@ export const MusicPlayerBar = () => {
             ? currentMusicIndex - 1
             : playerList.length - 1
           : currentMusicIndex < playerList.length - 1
-            ? currentMusicIndex + 1
-            : 0;
+          ? currentMusicIndex + 1
+          : 0;
       setCurrentMusic(playerList[playMusicIndex]);
       setTimeout(() => {
         musicPlayer.current?.play();
@@ -56,7 +56,7 @@ export const MusicPlayerBar = () => {
       Math.round(
         musicPlayer.current?.currentTime && musicPlayer.current?.duration
           ? (100 * musicPlayer.current?.currentTime) /
-          musicPlayer.current?.duration
+              musicPlayer.current?.duration
           : 0
       )
     );
@@ -71,7 +71,7 @@ export const MusicPlayerBar = () => {
         Math.round(
           musicPlayer.current?.currentTime && musicPlayer.current?.duration
             ? (100 * musicPlayer.current?.currentTime) /
-            musicPlayer.current?.duration
+                musicPlayer.current?.duration
             : 0
         )
       );
@@ -108,7 +108,10 @@ export const MusicPlayerBar = () => {
             sequence="random"
           />
           <SkipButton
-            handleSkip={useCallback(() => handleSkipMusic("last"), [handleSkipMusic])}
+            handleSkip={useCallback(
+              () => handleSkipMusic("last"),
+              [handleSkipMusic]
+            )}
             forward="last"
           />
           <PlayerSwitchButton
@@ -116,11 +119,17 @@ export const MusicPlayerBar = () => {
             isMusicPlay={isMusicPlay}
           />
           <SkipButton
-            handleSkip={useCallback(() => handleSkipMusic("next"), [handleSkipMusic])}
+            handleSkip={useCallback(
+              () => handleSkipMusic("next"),
+              [handleSkipMusic]
+            )}
             forward="next"
           />
           <SequenceButton
-            handleSequence={useCallback(() => setIsMusicLoop(!isMusicLoop), [isMusicLoop])}
+            handleSequence={useCallback(
+              () => setIsMusicLoop(!isMusicLoop),
+              [isMusicLoop]
+            )}
             active={isMusicLoop}
             sequence="loop"
           />
