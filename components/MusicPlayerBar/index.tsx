@@ -49,7 +49,7 @@ export const MusicPlayerBar = () => {
   return (
     <main className="absolute bottom-0 w-full h-[100px] bg-gray-800 flex items-center justify-between">
       <aside>music info</aside>
-      <section className="w-[850px] flex flex-col items-center">
+      <section className="w-[800px] flex flex-col items-center">
         <div className="flex gap-[40px] items-center fill-gray-200">
           <SequenceButton
             handleSequence={handleRandomPlay}
