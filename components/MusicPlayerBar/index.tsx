@@ -9,9 +9,9 @@ import { ProgressBar } from "./ProgressBar";
 export const MusicPlayerBar = () => {
   const { playerList } = useContext(PlayerContext);
   const musicPlayer = useRef<HTMLAudioElement>(null);
-  const [isMusicPlay, setIsMusicPlay] = useState<boolean>(true);
-  const [isMusicLoop, setIsMusicLoop] = useState<boolean>(false);
-  const [isRandomPlay, setIsRandomPlay] = useState<boolean>(true);
+  const [isMusicPlay, setIsMusicPlay] = useState(true);
+  const [isMusicLoop, setIsMusicLoop] = useState(false);
+  const [isRandomPlay, setIsRandomPlay] = useState(false);
   const [currentMusic, setCurrentMusic] = useState<MusicDetail | null>(
     playerList[0]
   );
