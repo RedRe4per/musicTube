@@ -18,7 +18,7 @@ export const ProgressBar = React.forwardRef(
     const [isDragging, setIsDragging] = useState(false);
     const [showThumb, setShowThumb] = useState(false);
 
-    console.log("ProgressBar component rerender")
+    console.log("ProgressBar component rerender");
 
     const handlePlay = () => {
       clearInterval(intervalId);
@@ -30,7 +30,7 @@ export const ProgressBar = React.forwardRef(
             Math.round(
               musicPlayer.current?.currentTime && musicPlayer.current?.duration
                 ? (100 * musicPlayer.current?.currentTime) /
-                musicPlayer.current?.duration
+                    musicPlayer.current?.duration
                 : 0
             )
           );
@@ -95,13 +95,15 @@ export const ProgressBar = React.forwardRef(
               ref={progressRef}
             >
               <div
-                className={`bg-gray-200 ${showThumb ? "bg-green" : ""
-                  } rounded-full h-[5px]`}
+                className={`bg-gray-200 ${
+                  showThumb ? "bg-green" : ""
+                } rounded-full h-[5px]`}
                 style={{ width: `${currentPlayRadio}%` }}
               ></div>
               <div
-                className={`absolute top-[1px] ${showThumb ? "" : "hidden"
-                  } transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer`}
+                className={`absolute top-[1px] ${
+                  showThumb ? "" : "hidden"
+                } transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer`}
                 style={{ left: `${currentPlayRadio + 0.5}%` }}
               ></div>
             </div>
