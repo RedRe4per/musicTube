@@ -9,7 +9,7 @@ import { ProgressBar } from "./ProgressBar";
 export const MusicPlayerBar = () => {
   const { playerList } = useContext(PlayerContext);
   const musicPlayer = useRef<HTMLAudioElement>(null);
-  const [isMusicPlay, setIsMusicPlay] = useState(true);
+  const [isMusicPlay, setIsMusicPlay] = useState(false);
   const [isMusicLoop, setIsMusicLoop] = useState(false);
   const [isRandomPlay, setIsRandomPlay] = useState(false);
   const [currentMusic, setCurrentMusic] = useState<MusicDetail | null>(
@@ -76,6 +76,7 @@ export const MusicPlayerBar = () => {
         </div>
         <ProgressBar
           currentMusic={currentMusic}
+          isMusicPlay={isMusicPlay}
           isMusicLoop={isMusicLoop}
           handleSkipMusic={handleSkipMusic}
           ref={musicPlayer}
