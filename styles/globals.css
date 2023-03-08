@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+
 @layer components {
   .nav-title {
     @apply w-[250px] h-[55px] ml-[25px] rounded-[10px] flex items-center;

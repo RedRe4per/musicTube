@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { formatTime } from "@/utils/formatTime";
 import { MusicDetail } from "@/interfaces/music";
 
@@ -10,7 +10,7 @@ interface Props {
 
 export const ProgressBar = React.forwardRef(
   ({ currentMusic, isMusicLoop, handleSkipMusic }: Props, musicPlayer: any) => {
-    //React.ForwardedRef<HTMLAudioElement>
+    const progressRef = useRef<HTMLDivElement>(null);
     const [currentPlayRadio, setCurrentPlayRadio] = useState(0);
     const [currentMusicTime, setCurrentMusicTime] = useState<number>(0);
     const [currentDurationTime, setCurrentDurationTime] = useState<number>(0);
@@ -25,7 +25,7 @@ export const ProgressBar = React.forwardRef(
             Math.round(
               musicPlayer.current?.currentTime && musicPlayer.current?.duration
                 ? (100 * musicPlayer.current?.currentTime) /
-                    musicPlayer.current?.duration
+                musicPlayer.current?.duration
                 : 0
             )
           );
@@ -38,11 +38,15 @@ export const ProgressBar = React.forwardRef(
       clearInterval(intervalId);
     };
 
-    const handleProgress = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setCurrentPlayRadio(+e.target.value);
-      setCurrentMusicTime(musicPlayer.current?.currentTime);
-      musicPlayer.current!.currentTime =
-        musicPlayer.current!.duration * (+e.target.value / 100);
+    const handleProgress = (e: React.MouseEvent<HTMLDivElement>) => {
+      const progressBarRect = progressRef.current?.getBoundingClientRect();
+      if (!progressBarRect) return;
+      const mouseX = e.clientX - progressBarRect.left;
+      const progressWidth = progressBarRect.width;
+      const newRatio = (mouseX / progressWidth) * 100;
+      setCurrentPlayRadio(newRatio);
+      musicPlayer.current!.currentTime = musicPlayer.current!.duration * (newRatio / 100);
+      setCurrentMusicTime(musicPlayer.current!.duration * (newRatio / 100));
     };
 
     return (
@@ -61,14 +65,10 @@ export const ProgressBar = React.forwardRef(
           <div className="w-[10%] text-center">
             <span>{formatTime(currentMusicTime)}</span>
           </div>
-          <input
-            type="range"
-            min={0}
-            max={100}
-            value={currentPlayRadio}
-            onChange={handleProgress}
-            className="appearance-none cursor-pointer rounded-lg accent-gray-200 w-[80%] h-[5px]"
-          />
+          <div className="relative w-full bg-gray-600 rounded-full h-[5px]" onMouseDown={handleProgress} ref={progressRef}>
+            <div className={`bg-gray-200 hover:bg-green rounded-full h-[5px]`} style={{ width: `${currentPlayRadio}%` }}></div>
+            <div className="absolute top-[1px] transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer" style={{ left: `${currentPlayRadio + 0.5}%` }}></div>
+          </div>
           <div className="w-[10%] text-center">
             <span>{formatTime(currentDurationTime)}</span>
           </div>
