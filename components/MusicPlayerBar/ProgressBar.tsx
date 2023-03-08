@@ -15,6 +15,8 @@ export const ProgressBar = React.forwardRef(
     const [currentMusicTime, setCurrentMusicTime] = useState<number>(0);
     const [currentDurationTime, setCurrentDurationTime] = useState<number>(0);
     const [intervalId, setIntervalId] = useState<number | NodeJS.Timeout>(0);
+    const [isDragging, setIsDragging] = useState(false);
+    const [showThumb, setShowThumb] = useState(false);
 
     const handlePlay = () => {
       setIntervalId(
@@ -25,7 +27,7 @@ export const ProgressBar = React.forwardRef(
             Math.round(
               musicPlayer.current?.currentTime && musicPlayer.current?.duration
                 ? (100 * musicPlayer.current?.currentTime) /
-                    musicPlayer.current?.duration
+                musicPlayer.current?.duration
                 : 0
             )
           );
@@ -40,7 +42,7 @@ export const ProgressBar = React.forwardRef(
 
     const handleProgress = (e: React.MouseEvent<HTMLDivElement>) => {
       const progressBarRect = progressRef.current?.getBoundingClientRect();
-      if (!progressBarRect) return;
+      if (!progressBarRect || !musicPlayer.current!.duration || !musicPlayer.current!.currentTime) return;
       const mouseX = e.clientX - progressBarRect.left;
       const progressWidth = progressBarRect.width;
       const newRatio = (mouseX / progressWidth) * 100;
@@ -49,6 +51,11 @@ export const ProgressBar = React.forwardRef(
         musicPlayer.current!.duration * (newRatio / 100);
       setCurrentMusicTime(musicPlayer.current!.duration * (newRatio / 100));
     };
+
+    const handleDrag = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!isDragging) return;
+      handleProgress(e);
+    }
 
     return (
       <section>
@@ -67,18 +74,27 @@ export const ProgressBar = React.forwardRef(
             <span>{formatTime(currentMusicTime)}</span>
           </div>
           <div
-            className="relative w-full bg-gray-600 rounded-full h-[5px]"
-            onMouseDown={handleProgress}
-            ref={progressRef}
+            className="w-full h-[21px] flex items-center"
+            onMouseDown={() => setIsDragging(true)}
+            onMouseUp={() => setIsDragging(false)}
+            onMouseMove={handleDrag}
+            onClick={handleProgress}
+            onMouseOver={() => setShowThumb(true)}
+            onMouseOut={() => setShowThumb(false)}
           >
             <div
-              className={`bg-gray-200 hover:bg-green rounded-full h-[5px]`}
-              style={{ width: `${currentPlayRadio}%` }}
-            ></div>
-            <div
-              className="absolute top-[1px] transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer"
-              style={{ left: `${currentPlayRadio + 0.5}%` }}
-            ></div>
+              className="relative w-full bg-gray-600 rounded-full h-[5px]"
+              ref={progressRef}
+            >
+              <div
+                className={`bg-gray-200 ${showThumb ? "bg-green" : ""} rounded-full h-[5px]`}
+                style={{ width: `${currentPlayRadio}%` }}
+              ></div>
+              <div
+                className={`absolute top-[1px] ${showThumb ? "" : "hidden"} transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer`}
+                style={{ left: `${currentPlayRadio + 0.5}%` }}
+              ></div>
+            </div>
           </div>
           <div className="w-[10%] text-center">
             <span>{formatTime(currentDurationTime)}</span>
