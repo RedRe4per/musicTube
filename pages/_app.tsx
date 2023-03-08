@@ -17,11 +17,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <main className={`${rubik.variable} font-sans`}>
-        <PlayerContext.Provider value={{ playerList, setPlayerList }}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </PlayerContext.Provider>
+      <PlayerContext.Provider value={{ playerList, setPlayerList }}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </PlayerContext.Provider>
     </main>
   );
 }

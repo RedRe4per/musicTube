@@ -15,10 +15,9 @@ export const ProgressBar = React.forwardRef(
     const [currentPlayRadio, setCurrentPlayRadio] = useState(0);
     const [currentMusicTime, setCurrentMusicTime] = useState<number>(0);
     const [currentDurationTime, setCurrentDurationTime] = useState<number>(0);
-    const [intervalId, setIntervalId] = useState<number | NodeJS.Timeout>(0)
+    const [intervalId, setIntervalId] = useState<number | NodeJS.Timeout>(0);
     const [showThumb, setShowThumb] = useState(false);
-    const [isDragging, setIsDragging] = useState(false)
-
+    const [isDragging, setIsDragging] = useState(false);
 
     const handlePlay = () => {
       clearInterval(intervalId);
@@ -37,10 +36,10 @@ export const ProgressBar = React.forwardRef(
       const duration = musicPlayer.current!.duration;
       if (!progressBarRect || !currentTime || !duration) return;
 
-      const newRatio = getDraggingRatio(e, progressBarRect)
+      const newRatio = getDraggingRatio(e, progressBarRect);
       setCurrentPlayRadio(newRatio);
-      setCurrentMusicTime(duration * newRatio / 100);
-      musicPlayer.current!.currentTime = duration * newRatio / 100;
+      setCurrentMusicTime((duration * newRatio) / 100);
+      musicPlayer.current!.currentTime = (duration * newRatio) / 100;
     };
 
     const handleEnd = () => {
@@ -54,13 +53,13 @@ export const ProgressBar = React.forwardRef(
     };
 
     const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-      e.preventDefault()
-      setIsDragging(true)
-    }
+      e.preventDefault();
+      setIsDragging(true);
+    };
 
     const handleDragOver = () => {
-      setIsDragging(false)
-    }
+      setIsDragging(false);
+    };
 
     return (
       <section>
@@ -93,13 +92,15 @@ export const ProgressBar = React.forwardRef(
               ref={progressRef}
             >
               <div
-                className={`bg-gray-200 ${showThumb ? "bg-green" : ""
-                  } rounded-full h-[5px]`}
+                className={`bg-gray-200 ${
+                  showThumb ? "bg-green" : ""
+                } rounded-full h-[5px]`}
                 style={{ width: `${currentPlayRadio}%` }}
               ></div>
               <div
-                className={`absolute top-[1px] ${showThumb ? "" : "hidden"
-                  } transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer`}
+                className={`absolute top-[1px] ${
+                  showThumb ? "" : "hidden"
+                } transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer`}
                 style={{ left: `${currentPlayRadio + 0.5}%` }}
               ></div>
             </div>
