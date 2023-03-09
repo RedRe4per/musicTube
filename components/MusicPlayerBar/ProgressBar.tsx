@@ -40,7 +40,6 @@ export const ProgressBar = React.forwardRef(
     };
 
     useEffect(() => {
-      console.log("useEffect")
       if (isDragging) {
         document.addEventListener("mousemove", handleMouseMove);
         document.addEventListener("mouseup", handleMouseUp);
