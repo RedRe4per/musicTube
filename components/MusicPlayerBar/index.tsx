@@ -76,7 +76,6 @@ export const MusicPlayerBar = () => {
         </div>
         <ProgressBar
           currentMusic={currentMusic}
-          isMusicPlay={isMusicPlay}
           isMusicLoop={isMusicLoop}
           handleSkipMusic={handleSkipMusic}
           ref={musicPlayer}
