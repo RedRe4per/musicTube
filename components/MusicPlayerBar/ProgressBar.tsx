@@ -10,10 +10,7 @@ interface Props {
 }
 
 export const ProgressBar = React.forwardRef(
-  (
-    { currentMusic, isMusicLoop, handleSkipMusic }: Props,
-    musicPlayer: any
-  ) => {
+  ({ currentMusic, isMusicLoop, handleSkipMusic }: Props, musicPlayer: any) => {
     const progressRef = useRef<HTMLDivElement>(null);
     const [currentPlayRadio, setCurrentPlayRadio] = useState(0);
     const [currentMusicTime, setCurrentMusicTime] = useState(0);
@@ -79,12 +76,10 @@ export const ProgressBar = React.forwardRef(
       const newRatio = getDraggingRatio(e, progressBarRect);
       setCurrentPlayRadio(newRatio);
       setCurrentMusicTime((duration * newRatio) / 100);
-      setCachedRatio(
-        () => {
-          CachedRatioRef.current = (duration * newRatio) / 100;
-          return (duration * newRatio) / 100;
-        }
-      )
+      setCachedRatio(() => {
+        CachedRatioRef.current = (duration * newRatio) / 100;
+        return (duration * newRatio) / 100;
+      });
     };
 
     return (
@@ -115,13 +110,15 @@ export const ProgressBar = React.forwardRef(
               ref={progressRef}
             >
               <div
-                className={`bg-gray-200 ${showThumb ? "bg-green" : ""
-                  } rounded-full h-[5px]`}
+                className={`bg-gray-200 ${
+                  showThumb ? "bg-green" : ""
+                } rounded-full h-[5px]`}
                 style={{ width: `${currentPlayRadio}%` }}
               ></div>
               <div
-                className={`absolute top-[1px] ${showThumb ? "" : "hidden"
-                  } transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer`}
+                className={`absolute top-[1px] ${
+                  showThumb ? "" : "hidden"
+                } transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer`}
                 style={{ left: `${currentPlayRadio + 0.5}%` }}
               ></div>
             </div>
