@@ -101,8 +101,6 @@ export const ProgressBar = React.forwardRef(
             onMouseOver={() => setShowThumb(true)}
             onMouseOut={() => setShowThumb(false)}
             onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}
             onClick={handleProgress}
           >
             <div
