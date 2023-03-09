@@ -8,7 +8,6 @@ interface Props {
 
 export const SequenceButton = React.memo(
   ({ handleSequence, active, sequence }: Props) => {
-    console.log("666666666666666666666");
     return (
       <button onClick={handleSequence} className="w-[40px] h-[40px]">
         {sequence === "random" && (

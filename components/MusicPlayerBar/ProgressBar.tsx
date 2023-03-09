@@ -18,8 +18,12 @@ export const ProgressBar = React.forwardRef(
     const [intervalId, setIntervalId] = useState<number | NodeJS.Timeout>(0);
     const [showThumb, setShowThumb] = useState(false);
     const [isDragging, setIsDragging] = useState(false);
+    
     const [cachedRatio, setCachedRatio] = useState<number>(0);
     const CachedRatioRef = useRef<number>(cachedRatio);
+    const [draggingMode, setDraggingMode] = useState(false);
+    const [clickRatioCache, setClickRatioCache] = useState(0);
+    const draggingModeRef = useRef<boolean>(draggingMode);
 
     const handlePlay = () => {
       clearInterval(intervalId);
@@ -50,18 +54,38 @@ export const ProgressBar = React.forwardRef(
 
     const handleMouseMove = (e: any) => {
       if (!isDragging) return;
+      setDraggingMode(()=>{
+        draggingModeRef.current = true;
+        return true;
+      });
       handleProgress(e);
     };
 
     const handleMouseUp = () => {
       setIsDragging(false);
-      musicPlayer.current!.currentTime = CachedRatioRef.current;
+      if(draggingModeRef.current){
+        musicPlayer.current!.currentTime = CachedRatioRef.current;
+      }else{
+        musicPlayer.current!.currentTime = (musicPlayer.current!.duration * clickRatioCache) / 100;
+        setCurrentPlayRadio(clickRatioCache);
+        setCurrentMusicTime((musicPlayer.current!.duration * clickRatioCache) / 100);
+      }
+      setDraggingMode(()=>{
+        draggingModeRef.current = false;
+        return false;
+      });
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
       musicPlayer.current?.play();
+      handlePlay();
     };
 
     const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+      const progressBarRect = progressRef.current?.getBoundingClientRect();
+      if (!progressBarRect) return;
+      const clickRatio = getDraggingRatio(e, progressBarRect);
+      setClickRatioCache(clickRatio); 
+
       e.preventDefault();
       setIsDragging(true);
       clearInterval(intervalId);
@@ -103,7 +127,6 @@ export const ProgressBar = React.forwardRef(
             onMouseOver={() => setShowThumb(true)}
             onMouseOut={() => setShowThumb(false)}
             onMouseDown={handleMouseDown}
-            onClick={handleProgress}
           >
             <div
               className="relative w-full bg-gray-600 rounded-full h-[5px]"

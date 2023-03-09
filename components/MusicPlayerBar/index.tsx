@@ -16,9 +16,6 @@ export const MusicPlayerBar = () => {
     playerList[0]
   );
 
-  console.log(playerList, "MusicPlayerBar");
-  console.log(musicPlayer.current?.volume);
-
   const handlePlayAndPause = () => {
     setIsMusicPlay(!isMusicPlay);
     isMusicPlay ? musicPlayer.current?.play() : musicPlayer.current?.pause();
