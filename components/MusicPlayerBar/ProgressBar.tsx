@@ -18,7 +18,7 @@ export const ProgressBar = React.forwardRef(
     const [intervalId, setIntervalId] = useState<number | NodeJS.Timeout>(0);
     const [showThumb, setShowThumb] = useState(false);
     const [isDragging, setIsDragging] = useState(false);
-    
+
     const [cachedRatio, setCachedRatio] = useState<number>(0);
     const CachedRatioRef = useRef<number>(cachedRatio);
     const [draggingMode, setDraggingMode] = useState(false);
@@ -54,7 +54,7 @@ export const ProgressBar = React.forwardRef(
 
     const handleMouseMove = (e: any) => {
       if (!isDragging) return;
-      setDraggingMode(()=>{
+      setDraggingMode(() => {
         draggingModeRef.current = true;
         return true;
       });
@@ -63,14 +63,17 @@ export const ProgressBar = React.forwardRef(
 
     const handleMouseUp = () => {
       setIsDragging(false);
-      if(draggingModeRef.current){
+      if (draggingModeRef.current) {
         musicPlayer.current!.currentTime = CachedRatioRef.current;
-      }else{
-        musicPlayer.current!.currentTime = (musicPlayer.current!.duration * clickRatioCache) / 100;
+      } else {
+        musicPlayer.current!.currentTime =
+          (musicPlayer.current!.duration * clickRatioCache) / 100;
         setCurrentPlayRadio(clickRatioCache);
-        setCurrentMusicTime((musicPlayer.current!.duration * clickRatioCache) / 100);
+        setCurrentMusicTime(
+          (musicPlayer.current!.duration * clickRatioCache) / 100
+        );
       }
-      setDraggingMode(()=>{
+      setDraggingMode(() => {
         draggingModeRef.current = false;
         return false;
       });
@@ -84,7 +87,7 @@ export const ProgressBar = React.forwardRef(
       const progressBarRect = progressRef.current?.getBoundingClientRect();
       if (!progressBarRect) return;
       const clickRatio = getDraggingRatio(e, progressBarRect);
-      setClickRatioCache(clickRatio); 
+      setClickRatioCache(clickRatio);
 
       e.preventDefault();
       setIsDragging(true);
