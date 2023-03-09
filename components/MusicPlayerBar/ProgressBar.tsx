@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-import { formatTime } from "@/utils/formatTime";
 import { MusicDetail } from "@/interfaces/music";
+import { formatTime } from "@/utils/formatTime";
 import { getRatio, getDraggingRatio } from "@/utils/radioCalc";
 
 interface Props {
@@ -40,6 +40,7 @@ export const ProgressBar = React.forwardRef(
     };
 
     useEffect(() => {
+      console.log("useEffect")
       if (isDragging) {
         document.addEventListener("mousemove", handleMouseMove);
         document.addEventListener("mouseup", handleMouseUp);
@@ -48,7 +49,7 @@ export const ProgressBar = React.forwardRef(
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseup", handleMouseUp);
       };
-    }, [isDragging, isMusicPlay, musicPlayer]);
+    }, [isDragging]);
 
     const handleMouseMove = (e: any) => {
       if (!isDragging) return;
