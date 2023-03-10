@@ -5,7 +5,7 @@ import { SkipButton } from "./SkipButton";
 import { SequenceButton } from "./SequenceButton";
 import { PlayerSwitchButton } from "./PlayerSwitchButton";
 import { ProgressBar } from "./ProgressBar";
-import { MusicInfo } from "./MusicInfo";
+import { MusicInfo } from "./SusicInfo";
 import { VolumeBar } from "./VolumeBar";
 
 export const MusicPlayerBar = () => {
