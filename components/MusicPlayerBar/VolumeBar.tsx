@@ -18,9 +18,9 @@ export const VolumeBar = React.forwardRef(
     const [volumeBarRatio, setVolumeBarRatio] = useState(1);
     const [isMuted, setIsMuted] = useState(false);
 
-    useEffect(()=>{
-        musicPlayer.current.muted = isMuted;
-    }, [isMuted])
+    useEffect(() => {
+      musicPlayer.current.muted = isMuted;
+    }, [isMuted]);
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!isDragging) return;
@@ -89,7 +89,7 @@ export const VolumeBar = React.forwardRef(
               <div
                 className={`bg-gray-200 ${
                   showThumb ? "bg-green" : ""
-                } rounded-full h-[5px] ${isMuted ? "hidden": ""}`}
+                } rounded-full h-[5px] ${isMuted ? "hidden" : ""}`}
                 style={{
                   width: `${volumeBarRatio > 0.1 ? volumeBarRatio : 0}%`,
                 }}
@@ -97,7 +97,9 @@ export const VolumeBar = React.forwardRef(
               <div
                 className={`absolute top-[1px] ${
                   showThumb ? "" : "hidden"
-                } transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer ${isMuted ? "hidden": ""}`}
+                } transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer ${
+                  isMuted ? "hidden" : ""
+                }`}
                 style={{ left: `${volumeBarRatio}%` }}
               ></div>
             </div>
