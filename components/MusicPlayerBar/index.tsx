@@ -5,6 +5,7 @@ import { SkipButton } from "./SkipButton";
 import { SequenceButton } from "./SequenceButton";
 import { PlayerSwitchButton } from "./PlayerSwitchButton";
 import { ProgressBar } from "./ProgressBar";
+import { VolumeBar } from "./VolumeBar";
 
 export const MusicPlayerBar = () => {
   const { playerList } = useContext(PlayerContext);
@@ -78,7 +79,7 @@ export const MusicPlayerBar = () => {
           ref={musicPlayer}
         />
       </section>
-      <aside>sound</aside>
+      <VolumeBar playList={playerList} ref={musicPlayer}/>
       {/* https://music-server-6orvdb931-redre4per.vercel.app/song/detail?ids=347230获取歌曲详情。有名字，图，歌手名 */}
     </main>
   );
