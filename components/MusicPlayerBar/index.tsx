@@ -33,8 +33,8 @@ export const MusicPlayerBar = () => {
           ? currentMusicIndex - 1
           : playerList.length - 1
         : currentMusicIndex < playerList.length - 1
-          ? currentMusicIndex + 1
-          : 0;
+        ? currentMusicIndex + 1
+        : 0;
     setCurrentMusic(playerList[playMusicIndex]);
     setTimeout(() => {
       musicPlayer.current?.play();
