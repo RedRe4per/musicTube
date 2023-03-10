@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useContext, useEffect } from "react";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { MusicDetail } from "@/interfaces/music";
+import { AlbumList } from "@/components/AlbumList";
 
 interface Props {
   musicData: {
@@ -10,16 +11,11 @@ interface Props {
   };
 }
 
-export default function Home({ musicData }: Props) {
+export default function Home({ albumAreaEA, albumAreaJP, albumAreaKR, albumAreaZH }: any) {
   const { setPlayerList } = useContext(PlayerContext);
-  useEffect(() => {
-    setPlayerList(musicData.data);
-  }, [musicData.data, setPlayerList]);
-
-  const handleButton = () => {
-    setPlayerList(musicData.data.reverse());
-    console.log("setPlayerList complete from index component");
-  };
+  // useEffect(() => {
+  //   setPlayerList(musicData.data);
+  // }, [musicData.data, setPlayerList]);
 
   return (
     <div>
@@ -29,20 +25,29 @@ export default function Home({ musicData }: Props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <div className="">Home page</div>
-        <button onClick={handleButton}>setData</button>
+      <main className="overflow-auto">
+        <AlbumList title={"European & American Latest Album"} albumList={albumAreaEA}/>
+        <AlbumList title={"Japanese Latest Album"} albumList={albumAreaJP}/>
+        <AlbumList title={"Korean Latest Album"} albumList={albumAreaKR}/>
+        <AlbumList title={"Chinese Latest Album"} albumList={albumAreaZH}/>
       </main>
     </div>
   );
 }
 
-export async function getServerSideProps() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=405998841,33894312,298317,1888354230,210049&level=lossless`
-  );
-  const musicData = await res.json();
+export async function getStaticProps() {
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=405998841,33894312,298317,1888354230,210049&level=lossless`);
+  const EAResponse = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=E_A`);
+  const albumAreaEA = await EAResponse.json();
+  const JPResponse = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=JP`);
+  const albumAreaJP = await JPResponse.json();
+  const KRResponse = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=KR`);
+  const albumAreaKR = await KRResponse.json();
+  const ZHResponse = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=Z_H`);
+  const albumAreaZH = await ZHResponse.json();
+
   return {
-    props: { musicData },
+    props: { albumAreaEA, albumAreaJP, albumAreaKR, albumAreaZH },
+    revalidate: 86400,
   };
 }

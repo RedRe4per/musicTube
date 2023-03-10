@@ -13,7 +13,7 @@ export default function Layout({ children }: Props) {
       <Nav />
       <section className="w-screen-70 bg-background-500">
         <Header />
-        <main>{children}</main>
+        <main className="overflow-auto max-h-[82.8vh]">{children}</main>
       </section>
       <MusicPlayerBar />
     </div>
