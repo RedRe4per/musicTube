@@ -83,7 +83,9 @@ export const ProgressBar = React.forwardRef(
       handlePlay();
     };
 
-    const handleMouseDown = (e: React.MouseEvent<HTMLDivElement> | MouseEvent) => {
+    const handleMouseDown = (
+      e: React.MouseEvent<HTMLDivElement> | MouseEvent
+    ) => {
       const progressBarRect = progressRef.current?.getBoundingClientRect();
       if (!progressBarRect) return;
       const clickRatio = getDraggingRatio(e, progressBarRect);
