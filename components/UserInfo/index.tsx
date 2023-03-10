@@ -16,6 +16,7 @@ export const UserInfo = () => {
         } rounded-[10px]`}
       >
         <div className="flex w-full h-[80px] justify-around items-center gap-2">
+          <div className="flex items-center gap-3">
           <Image
             src="/person-avator.png"
             alt="avatar"
@@ -23,6 +24,7 @@ export const UserInfo = () => {
             height={50}
           ></Image>
           <span>Matheus</span>
+          </div>
           <img
             src={isDropdown ? "/icons/arrow-up.svg" : "/icons/arrow-down.svg"}
             alt="arrow"

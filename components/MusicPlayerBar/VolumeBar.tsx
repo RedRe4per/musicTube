@@ -50,7 +50,8 @@ export const VolumeBar = React.forwardRef(
     useGlobalListener(isDragging, handleMouseMove, handleMouseUp);
 
     return (
-      <aside className="flex items-center justify-around w-[250px]">
+      <aside className="w-[27%] flex justify-end">
+        <div className="flex items-center justify-around md:w-[180px] xl:w-[250px]">
         <div className="w-[20%]">
           <svg
             className={`play-bar-btn fill-green`}
@@ -105,6 +106,7 @@ export const VolumeBar = React.forwardRef(
             </div>
           </div>
         </section>
+        </div>
       </aside>
     );
   }
