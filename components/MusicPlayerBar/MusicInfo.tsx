@@ -41,7 +41,9 @@ export const MusicInfo = ({ music }: Props) => {
         />
       </div>
       <div className="flex flex-col justify-around">
-        <h5 className="text-button-normal lg:text-h3-normal text-white-200">{musicName}</h5>
+        <h5 className="text-button-normal lg:text-h3-normal text-white-200">
+          {musicName}
+        </h5>
         <div className="flex gap-3 text-tag-normal text-gray-400">
           {artists.map((artist) => {
             return <h5 key={artist.id}>{artist.name}</h5>;
