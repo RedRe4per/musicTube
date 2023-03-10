@@ -33,9 +33,12 @@ export const MusicInfo = ({ music }: Props) => {
   }, [music]);
 
   return (
-    <aside className={`w-[27%] flex gap-4 `}>
+    <aside className="w-[27%] flex gap-4">
       <div className="w-[100px] flex items-center justify-center">
-        <img src={musicImgUrl ? musicImgUrl : "/icons/disc-line.svg"} alt="music photo" />
+        <img
+          src={musicImgUrl ? musicImgUrl : "/icons/disc-line.svg"}
+          alt="music photo"
+        />
       </div>
       <div className="flex flex-col justify-around">
         <h5 className="text-h3-normal text-white-200">{musicName}</h5>
@@ -46,5 +49,5 @@ export const MusicInfo = ({ music }: Props) => {
         </div>
       </div>
     </aside>
-  );
+  );    
 };
