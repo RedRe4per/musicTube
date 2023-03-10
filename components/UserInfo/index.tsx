@@ -23,7 +23,7 @@ export const UserInfo = () => {
               width={50}
               height={50}
             ></Image>
-            <span>Matheus</span>
+            <span>Guest</span>
           </div>
           <img
             src={isDropdown ? "/icons/arrow-up.svg" : "/icons/arrow-down.svg"}
