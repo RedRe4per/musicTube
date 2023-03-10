@@ -6,7 +6,7 @@ export const SearchBar = ({ page }: Props) => {
   return (
     <div>
       <input
-        className={`flex bg-secondary w-[300px] xl:w-[450px] 2xl:w-[600px] h-[50px] pl-[54px] pt-1.5 rounded-[10px] placeholder:text-h3-light placeholder:text-white-200 ${
+        className={`flex bg-secondary w-[300px] xl:w-[450px] 2xl:w-[600px] h-[50px] pl-[54px] pt-1.5 rounded-[10px] placeholder:text-h4-light placeholder:text-gray-200 ${
           page === "/likedSongs" ? "invert" : ""
         }`}
         placeholder="Search"
