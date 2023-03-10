@@ -16,3 +16,11 @@ export const useGlobalListener = (
     };
   }, [isDragging]);
 };
+
+export const removeGlobalListener = (
+  handleMouseMove: (e: MouseEvent) => void,
+  handleMouseUp: () => void
+) => {
+  document.removeEventListener("mousemove", handleMouseMove);
+  document.removeEventListener("mouseup", handleMouseUp);
+}

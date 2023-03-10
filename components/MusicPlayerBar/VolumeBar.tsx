@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { MusicDetail } from "@/interfaces/music";
 import { getDraggingRatio } from "@/utils/radioCalc";
-import { useGlobalListener } from "@/hooks/useGlobalListener";
+import { useGlobalListener, removeGlobalListener } from "@/hooks/useGlobalListener";
 
 interface Props {
   playList: MusicDetail[];
@@ -24,8 +24,7 @@ export const VolumeBar = React.forwardRef(
 
     const handleMouseUp = () => {
       setIsDragging(false);
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
+      removeGlobalListener(handleMouseMove, handleMouseUp);
     };
 
     const handleMouseDown = (

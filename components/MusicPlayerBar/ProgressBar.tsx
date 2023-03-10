@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { MusicDetail } from "@/interfaces/music";
 import { formatTime } from "@/utils/formatTime";
 import { getRatio, getDraggingRatio } from "@/utils/radioCalc";
-import { useGlobalListener } from "@/hooks/useGlobalListener";
+import { useGlobalListener, removeGlobalListener } from "@/hooks/useGlobalListener";
 
 interface Props {
   currentMusic: MusicDetail | null;
@@ -67,8 +67,7 @@ export const ProgressBar = React.forwardRef(
         draggingModeRef.current = false;
         return false;
       });
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
+      removeGlobalListener(handleMouseMove, handleMouseUp);
       musicPlayer.current?.play();
       handlePlay();
     };
