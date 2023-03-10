@@ -17,13 +17,13 @@ export const UserInfo = () => {
       >
         <div className="flex w-full h-[80px] justify-around items-center gap-2">
           <div className="flex items-center gap-3">
-          <Image
-            src="/person-avator.png"
-            alt="avatar"
-            width={50}
-            height={50}
-          ></Image>
-          <span>Matheus</span>
+            <Image
+              src="/person-avator.png"
+              alt="avatar"
+              width={50}
+              height={50}
+            ></Image>
+            <span>Matheus</span>
           </div>
           <img
             src={isDropdown ? "/icons/arrow-up.svg" : "/icons/arrow-down.svg"}

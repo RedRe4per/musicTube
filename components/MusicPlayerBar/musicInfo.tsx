@@ -33,7 +33,7 @@ export const MusicInfo = ({ music }: Props) => {
   }, [music]);
 
   return (
-    <aside className={`w-[27%] flex gap-4 `}> 
+    <aside className={`w-[27%] flex gap-4 `}>
       <div className="w-[100px] flex items-center">
         <img src={musicImgUrl ? musicImgUrl : ""} alt="music photo" />
       </div>

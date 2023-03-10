@@ -52,60 +52,60 @@ export const VolumeBar = React.forwardRef(
     return (
       <aside className="w-[27%] flex justify-end">
         <div className="flex items-center justify-around md:w-[180px] xl:w-[250px]">
-        <div className="w-[20%]">
-          <svg
-            className={`play-bar-btn fill-green`}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            width="36"
-            height="36"
-          >
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M2 18h10v2H2v-2zm0-7h14v2H2v-2zm0-7h20v2H2V4zm17 11.17V9h5v2h-3v7a3 3 0 1 1-2-2.83zM18 19a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-          </svg>
-        </div>
-        <section className="flex items-center gap-2 w-[60%]">
-          <div onClick={() => setIsMuted(!isMuted)}>
-            <img
-              src={
-                volumeBarRatio <= 0.1 || isMuted
-                  ? "/icons/volume-mute-fill.svg"
-                  : volumeBarRatio < 50
-                  ? "/icons/volume-down-fill.svg"
-                  : "/icons/volume-up-fill.svg"
-              }
-              alt="volume-down"
-            />
+          <div className="w-[20%]">
+            <svg
+              className={`play-bar-btn fill-green`}
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="36"
+              height="36"
+            >
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path d="M2 18h10v2H2v-2zm0-7h14v2H2v-2zm0-7h20v2H2V4zm17 11.17V9h5v2h-3v7a3 3 0 1 1-2-2.83zM18 19a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+            </svg>
           </div>
-          <div
-            className="w-[70%] h-[21px] flex items-center"
-            onMouseOver={() => setShowThumb(true)}
-            onMouseOut={() => setShowThumb(false)}
-            onMouseDown={handleMouseDown}
-          >
+          <section className="flex items-center gap-2 w-[60%]">
+            <div onClick={() => setIsMuted(!isMuted)}>
+              <img
+                src={
+                  volumeBarRatio <= 0.1 || isMuted
+                    ? "/icons/volume-mute-fill.svg"
+                    : volumeBarRatio < 50
+                    ? "/icons/volume-down-fill.svg"
+                    : "/icons/volume-up-fill.svg"
+                }
+                alt="volume-down"
+              />
+            </div>
             <div
-              className="relative w-full bg-gray-600 rounded-full h-[5px]"
-              ref={volumeRef}
+              className="w-[70%] h-[21px] flex items-center"
+              onMouseOver={() => setShowThumb(true)}
+              onMouseOut={() => setShowThumb(false)}
+              onMouseDown={handleMouseDown}
             >
               <div
-                className={`bg-gray-200 ${
-                  showThumb ? "bg-green" : ""
-                } rounded-full h-[5px] ${isMuted ? "hidden" : ""}`}
-                style={{
-                  width: `${volumeBarRatio > 0.1 ? volumeBarRatio : 0}%`,
-                }}
-              ></div>
-              <div
-                className={`absolute top-[1px] ${
-                  showThumb ? "" : "hidden"
-                } transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer ${
-                  isMuted ? "hidden" : ""
-                }`}
-                style={{ left: `${volumeBarRatio}%` }}
-              ></div>
+                className="relative w-full bg-gray-600 rounded-full h-[5px]"
+                ref={volumeRef}
+              >
+                <div
+                  className={`bg-gray-200 ${
+                    showThumb ? "bg-green" : ""
+                  } rounded-full h-[5px] ${isMuted ? "hidden" : ""}`}
+                  style={{
+                    width: `${volumeBarRatio > 0.1 ? volumeBarRatio : 0}%`,
+                  }}
+                ></div>
+                <div
+                  className={`absolute top-[1px] ${
+                    showThumb ? "" : "hidden"
+                  } transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer ${
+                    isMuted ? "hidden" : ""
+                  }`}
+                  style={{ left: `${volumeBarRatio}%` }}
+                ></div>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
         </div>
       </aside>
     );
