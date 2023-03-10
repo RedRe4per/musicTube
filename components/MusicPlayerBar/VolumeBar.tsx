@@ -59,7 +59,7 @@ export const VolumeBar = React.forwardRef(
         </div>
         <section className="flex items-center gap-2 w-[60%]">
           <div>
-            <img src="/icons/volume-down-fill.svg" alt="volume-down" />
+            <img src={volumeBarRatio <= 0.1 ? "/icons/volume-mute-fill.svg" : volumeBarRatio < 50  ? "/icons/volume-down-fill.svg" : "/icons/volume-up-fill.svg"} alt="volume-down" />
           </div>
           <div
             className="w-[70%] h-[21px] flex items-center"
@@ -75,7 +75,7 @@ export const VolumeBar = React.forwardRef(
                 className={`bg-gray-200 ${
                   showThumb ? "bg-green" : ""
                 } rounded-full h-[5px]`}
-                style={{ width: `${volumeBarRatio}%` }}
+                style={{ width: `${volumeBarRatio > 0.1 ? volumeBarRatio : 0 }%` }}
               ></div>
               <div
                 className={`absolute top-[1px] ${
