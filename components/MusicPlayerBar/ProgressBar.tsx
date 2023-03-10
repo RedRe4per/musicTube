@@ -2,7 +2,10 @@ import React, { useRef, useState } from "react";
 import { MusicDetail } from "@/interfaces/music";
 import { formatTime } from "@/utils/formatTime";
 import { getRatio, getDraggingRatio } from "@/utils/radioCalc";
-import { useGlobalListener, removeGlobalListener } from "@/hooks/useGlobalListener";
+import {
+  useGlobalListener,
+  removeGlobalListener,
+} from "@/hooks/useGlobalListener";
 
 interface Props {
   currentMusic: MusicDetail | null;

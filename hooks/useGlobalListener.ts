@@ -23,4 +23,4 @@ export const removeGlobalListener = (
 ) => {
   document.removeEventListener("mousemove", handleMouseMove);
   document.removeEventListener("mouseup", handleMouseUp);
-}
+};
