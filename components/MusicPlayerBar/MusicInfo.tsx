@@ -49,5 +49,5 @@ export const MusicInfo = ({ music }: Props) => {
         </div>
       </div>
     </aside>
-  );    
+  );
 };
