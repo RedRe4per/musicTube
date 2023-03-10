@@ -5,6 +5,7 @@ import { SkipButton } from "./SkipButton";
 import { SequenceButton } from "./SequenceButton";
 import { PlayerSwitchButton } from "./PlayerSwitchButton";
 import { ProgressBar } from "./ProgressBar";
+import { MusicInfo } from "./musicInfo";
 import { VolumeBar } from "./VolumeBar";
 
 export const MusicPlayerBar = () => {
@@ -32,8 +33,8 @@ export const MusicPlayerBar = () => {
           ? currentMusicIndex - 1
           : playerList.length - 1
         : currentMusicIndex < playerList.length - 1
-        ? currentMusicIndex + 1
-        : 0;
+          ? currentMusicIndex + 1
+          : 0;
     setCurrentMusic(playerList[playMusicIndex]);
     setTimeout(() => {
       musicPlayer.current?.play();
@@ -46,7 +47,7 @@ export const MusicPlayerBar = () => {
 
   return (
     <main className="absolute bottom-0 w-full h-[100px] bg-gray-800 flex items-center justify-between">
-      <aside>music info</aside>
+      <MusicInfo music={currentMusic} />
       <section className="w-[800px] flex flex-col items-center">
         <div className="flex gap-[40px] items-center fill-gray-200">
           <SequenceButton
@@ -80,7 +81,6 @@ export const MusicPlayerBar = () => {
         />
       </section>
       <VolumeBar playList={playerList} ref={musicPlayer} />
-      {/* https://music-server-6orvdb931-redre4per.vercel.app/song/detail?ids=347230获取歌曲详情。有名字，图，歌手名 */}
     </main>
   );
 };

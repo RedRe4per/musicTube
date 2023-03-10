@@ -105,14 +105,14 @@ module.exports = {
           "1.125rem",
           {
             lineHeight: "21px",
-            fontWeight: "400",
+            fontWeight: "300",
           },
         ],
         "tag-normal": [
           "1.125rem",
           {
             lineHeight: "21px",
-            fontWeight: "300",
+            fontWeight: "400",
           },
         ],
       },
