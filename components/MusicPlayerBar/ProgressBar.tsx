@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { MusicDetail } from "@/interfaces/music";
 import { formatTime } from "@/utils/formatTime";
 import { getRatio, getDraggingRatio } from "@/utils/radioCalc";
