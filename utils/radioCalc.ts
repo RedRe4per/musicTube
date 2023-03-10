@@ -8,7 +8,7 @@ export const getRatio = (musicPlayer: React.RefObject<HTMLAudioElement>) => {
 };
 
 export const getDraggingRatio = (
-  e: React.MouseEvent<HTMLDivElement>,
+  e: React.MouseEvent<HTMLDivElement> | MouseEvent,
   progressBarRect: DOMRect
 ) => {
   const mouseX = e.clientX - progressBarRect.left;

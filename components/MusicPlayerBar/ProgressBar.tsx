@@ -52,7 +52,7 @@ export const ProgressBar = React.forwardRef(
       };
     }, [isDragging]);
 
-    const handleMouseMove = (e: any) => {
+    const handleMouseMove = (e: MouseEvent) => {
       if (!isDragging) return;
       setDraggingMode(() => {
         draggingModeRef.current = true;
@@ -83,7 +83,7 @@ export const ProgressBar = React.forwardRef(
       handlePlay();
     };
 
-    const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    const handleMouseDown = (e: React.MouseEvent<HTMLDivElement> | MouseEvent) => {
       const progressBarRect = progressRef.current?.getBoundingClientRect();
       if (!progressBarRect) return;
       const clickRatio = getDraggingRatio(e, progressBarRect);
@@ -94,7 +94,7 @@ export const ProgressBar = React.forwardRef(
       clearInterval(intervalId);
     };
 
-    const handleProgress = (e: React.MouseEvent<HTMLDivElement>) => {
+    const handleProgress = (e: MouseEvent) => {
       const progressBarRect = progressRef.current?.getBoundingClientRect();
       const currentTime = musicPlayer.current!.currentTime;
       const duration = musicPlayer.current!.duration;
