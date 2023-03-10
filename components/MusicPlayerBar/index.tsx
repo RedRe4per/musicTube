@@ -79,7 +79,7 @@ export const MusicPlayerBar = () => {
           ref={musicPlayer}
         />
       </section>
-      <VolumeBar playList={playerList} ref={musicPlayer}/>
+      <VolumeBar playList={playerList} ref={musicPlayer} />
       {/* https://music-server-6orvdb931-redre4per.vercel.app/song/detail?ids=347230获取歌曲详情。有名字，图，歌手名 */}
     </main>
   );
