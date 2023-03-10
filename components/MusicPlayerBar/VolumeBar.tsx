@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { MusicDetail } from "@/interfaces/music";
-import { getRatio, getDraggingRatio } from "@/utils/radioCalc";
+import { getDraggingRatio } from "@/utils/radioCalc";
+import { useGlobalListener } from "@/hooks/useGlobalListener";
 
 interface Props {
   playList: MusicDetail[];
@@ -13,22 +14,10 @@ export const VolumeBar = React.forwardRef(
     const [isDragging, setIsDragging] = useState(false);
     const [volumeBarRatio, setVolumeBarRatio] = useState(1);
 
-    useEffect(() => {
-      if (isDragging) {
-        document.addEventListener("mousemove", handleMouseMove);
-        document.addEventListener("mouseup", handleMouseUp);
-      }
-      return () => {
-        document.removeEventListener("mousemove", handleMouseMove);
-        document.removeEventListener("mouseup", handleMouseUp);
-      };
-    }, [isDragging]);
-
     const handleMouseMove = (e: MouseEvent) => {
       if (!isDragging) return;
       const volumeBarRect = volumeRef.current?.getBoundingClientRect();
       if (!volumeBarRect) return;
-      console.log("mouse move test", musicPlayer.current.volume);
       musicPlayer.current.volume = getDraggingRatio(e, volumeBarRect) / 100;
       setVolumeBarRatio(musicPlayer.current.volume * 100);
     };
@@ -42,13 +31,15 @@ export const VolumeBar = React.forwardRef(
     const handleMouseDown = (
       e: React.MouseEvent<HTMLDivElement> | MouseEvent
     ) => {
+      e.preventDefault();
       const volumeBarRect = volumeRef.current?.getBoundingClientRect();
       if (!volumeBarRect) return;
       musicPlayer.current.volume = getDraggingRatio(e, volumeBarRect) / 100;
-      e.preventDefault();
-      setIsDragging(true);
       setVolumeBarRatio(musicPlayer.current.volume * 100);
+      setIsDragging(true);
     };
+
+    useGlobalListener(isDragging, handleMouseMove, handleMouseUp);
 
     return (
       <aside className="flex items-center justify-around w-[250px]">

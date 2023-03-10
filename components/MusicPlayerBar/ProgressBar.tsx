@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { MusicDetail } from "@/interfaces/music";
 import { formatTime } from "@/utils/formatTime";
 import { getRatio, getDraggingRatio } from "@/utils/radioCalc";
+import { useGlobalListener } from "@/hooks/useGlobalListener";
 
 interface Props {
   currentMusic: MusicDetail | null;
@@ -40,17 +41,6 @@ export const ProgressBar = React.forwardRef(
       handleSkipMusic("next");
       clearInterval(intervalId);
     };
-
-    useEffect(() => {
-      if (isDragging) {
-        document.addEventListener("mousemove", handleMouseMove);
-        document.addEventListener("mouseup", handleMouseUp);
-      }
-      return () => {
-        document.removeEventListener("mousemove", handleMouseMove);
-        document.removeEventListener("mouseup", handleMouseUp);
-      };
-    }, [isDragging]);
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!isDragging) return;
@@ -110,6 +100,8 @@ export const ProgressBar = React.forwardRef(
         return (duration * newRatio) / 100;
       });
     };
+
+    useGlobalListener(isDragging, handleMouseMove, handleMouseUp);
 
     return (
       <section>
