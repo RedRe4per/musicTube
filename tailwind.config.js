@@ -134,8 +134,8 @@ module.exports = {
         "screen-70": "calc(100vw - 303px)",
       },
       screens: {
-        "custom": "1950px",
-      }
+        custom: "1950px",
+      },
     },
   },
   plugins: [require("daisyui")],
