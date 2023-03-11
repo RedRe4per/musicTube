@@ -39,7 +39,7 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="overflow-auto">
+      <main className="overflow-auto scrollbar">
         <AlbumList
           title={"European & American Latest Album"}
           albumList={albumAreaEA}
