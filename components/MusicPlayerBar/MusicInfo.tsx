@@ -1,5 +1,6 @@
 import { MusicDetail } from "@/interfaces/music";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface Props {
   music: MusicDetail | null;
@@ -35,9 +36,11 @@ export const MusicInfo = ({ music }: Props) => {
   return (
     <aside className="w-[27%] flex gap-4">
       <div className="w-[100px] flex items-center justify-center">
-        <img
+        <Image
           src={musicImgUrl ? musicImgUrl : "/icons/disc-line.svg"}
           alt="music photo"
+          width={musicImgUrl ? 100: 50}
+          height={musicImgUrl ? 100: 50}
         />
       </div>
       <div className="flex flex-col justify-around">
