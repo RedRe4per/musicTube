@@ -64,7 +64,7 @@ export const VolumeBar = React.forwardRef(
               <path d="M2 18h10v2H2v-2zm0-7h14v2H2v-2zm0-7h20v2H2V4zm17 11.17V9h5v2h-3v7a3 3 0 1 1-2-2.83zM18 19a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
             </svg>
           </div>
-          <section className="flex items-center gap-2 w-[60%]">
+          <section className="flex items-center justify-between gap-2 w-[60%]">
             <div onClick={() => setIsMuted(!isMuted)}>
               <img
                 src={
@@ -74,7 +74,7 @@ export const VolumeBar = React.forwardRef(
                     ? "/icons/volume-down-fill.svg"
                     : "/icons/volume-up-fill.svg"
                 }
-                alt="volume-down"
+                alt="volume"
               />
             </div>
             <div
