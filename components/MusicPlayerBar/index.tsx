@@ -1,5 +1,5 @@
 import { MusicDetail } from "@/interfaces/music";
-import { useState, useRef, useContext, useEffect } from "react";
+import { useState, useRef, useContext } from "react";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { SkipButton } from "./SkipButton";
 import { SequenceButton } from "./SequenceButton";

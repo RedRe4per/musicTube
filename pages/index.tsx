@@ -53,7 +53,6 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-  // const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=405998841,33894312,298317,1888354230,210049&level=lossless`);
   const EAResponse = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=E_A`
   );
