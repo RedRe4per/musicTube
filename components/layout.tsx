@@ -13,7 +13,9 @@ export default function Layout({ children }: Props) {
       <Nav />
       <section className="w-full lg:w-screen-70 bg-background-500">
         <Header />
-        <main className="overflow-auto max-h-[82.8vh] scrollbar">{children}</main>
+        <main className="overflow-auto max-h-[82.8vh] scrollbar">
+          {children}
+        </main>
       </section>
       <MusicPlayerBar />
     </div>
