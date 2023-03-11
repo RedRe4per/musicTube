@@ -9,15 +9,15 @@ interface Props {
 export const AlbumCard = ({ albumUrl, albumName, artists }: Props) => {
   return (
     <section className="max-w-[1/8] h-[250px] lg:h-[330px] relative overflow-hidden">
-      <div>
+      <div className="relative">
         <Image
           src={albumUrl}
           alt={albumName}
           className="object-contain rounded-xl"
           width={200}
           height={200}
-          sizes="(min-width: 150px) 50vw"
         />
+        <div className="absolute top-0 left-0 w-full h-full hover:bg-gray-300 opacity-50 rounded-xl"></div>
       </div>
       <section className="absolute max-w-[100%] overflow-hidden">
         <h5 className="text-button-normal text-white-200 mt-[15px] ">
