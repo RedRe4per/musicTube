@@ -10,14 +10,14 @@ export const AlbumCard = ({ albumUrl, albumName, artists }: Props) => {
   return (
     <div className="w-[200px] h-[330px]">
       <div>
-      <Image
-        src={albumUrl}
-        alt={albumName}
-        className="object-contain rounded-xl"
-        width={200}
-        height={200}
-        sizes="(min-width: 150px) 50vw"
-      />
+        <Image
+          src={albumUrl}
+          alt={albumName}
+          className="object-contain rounded-xl"
+          width={200}
+          height={200}
+          sizes="(min-width: 150px) 50vw"
+        />
       </div>
       <h5 className="text-button-normal text-white-200 mt-[15px]">
         {albumName}

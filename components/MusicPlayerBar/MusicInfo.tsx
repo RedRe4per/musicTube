@@ -39,8 +39,8 @@ export const MusicInfo = ({ music }: Props) => {
         <Image
           src={musicImgUrl ? musicImgUrl : "/icons/disc-line.svg"}
           alt="music photo"
-          width={musicImgUrl ? 100: 50}
-          height={musicImgUrl ? 100: 50}
+          width={musicImgUrl ? 100 : 50}
+          height={musicImgUrl ? 100 : 50}
         />
       </div>
       <div className="flex flex-col justify-around">
