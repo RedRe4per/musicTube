@@ -78,7 +78,7 @@ export const VolumeBar = React.forwardRef(
               />
             </div>
             <div
-              className="w-[70%] h-[21px] flex items-center"
+              className="w-[70%] h-[21px] mr-5 flex items-center"
               onMouseOver={() => setShowThumb(true)}
               onMouseOut={() => setShowThumb(false)}
               onMouseDown={handleMouseDown}
