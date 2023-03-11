@@ -49,7 +49,7 @@ export const MusicPlayerBar = () => {
     <main className="absolute bottom-0 w-full h-[100px] bg-gray-800 flex items-center justify-between">
       <MusicInfo music={currentMusic} />
       <section className="w-[46%] flex flex-col items-center">
-        <div className="flex gap-[40px] items-center fill-gray-200">
+        <section className="flex gap-[40px] items-center fill-gray-200">
           <SequenceButton
             handleSequence={handleRandomPlay}
             active={isRandomPlay}
@@ -72,7 +72,7 @@ export const MusicPlayerBar = () => {
             active={isMusicLoop}
             sequence="loop"
           />
-        </div>
+        </section>
         <ProgressBar
           currentMusic={currentMusic}
           isMusicLoop={isMusicLoop}

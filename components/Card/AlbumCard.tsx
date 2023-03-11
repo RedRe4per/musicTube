@@ -8,7 +8,7 @@ interface Props {
 
 export const AlbumCard = ({ albumUrl, albumName, artists }: Props) => {
   return (
-    <div className="w-[200px] h-[330px]">
+    <section className="max-w-[1/8] h-[330px]">
       <div>
         <Image
           src={albumUrl}
@@ -19,14 +19,16 @@ export const AlbumCard = ({ albumUrl, albumName, artists }: Props) => {
           sizes="(min-width: 150px) 50vw"
         />
       </div>
-      <h5 className="text-button-normal text-white-200 mt-[15px]">
+      {/* <section className="max-w-[100%] overflow-hidden">
+      <h5 className="text-button-normal text-white-200 mt-[15px] ">
         {albumName}
       </h5>
-      <h6 className="text-tag-normal text-gray-400 mt-[7px]">
+      <h6 className="text-tag-normal text-gray-400 mt-[7px] ">
         {artists.map((artist) => {
           return <span key={artist}>{artist}&nbsp;&nbsp;</span>;
         })}
       </h6>
-    </div>
+      </section> */}
+    </section>
   );
 };

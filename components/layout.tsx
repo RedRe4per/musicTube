@@ -11,7 +11,7 @@ export default function Layout({ children }: Props) {
   return (
     <div className="flex">
       <Nav />
-      <section className="w-screen-70 bg-background-500">
+      <section className="w-full lg:w-screen-70 bg-background-500">
         <Header />
         <main className="overflow-auto max-h-[82.8vh]">{children}</main>
       </section>

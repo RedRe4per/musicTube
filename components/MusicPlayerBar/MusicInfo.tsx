@@ -43,7 +43,7 @@ export const MusicInfo = ({ music }: Props) => {
           height={musicImgUrl ? 100 : 50}
         />
       </div>
-      <div className="flex flex-col justify-around">
+      <section className="flex flex-col justify-around">
         <h5 className="text-button-normal lg:text-h3-normal text-white-200">
           {musicName}
         </h5>
@@ -52,7 +52,7 @@ export const MusicInfo = ({ music }: Props) => {
             return <h5 key={artist.id}>{artist.name}</h5>;
           })}
         </div>
-      </div>
+      </section>
     </aside>
   );
 };

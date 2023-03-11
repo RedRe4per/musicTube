@@ -14,12 +14,14 @@ export const Header = () => {
 
   return (
     <main className={`${page === "/likedSongs" ? "bg-header" : ""}`}>
-      <div className="h-[90px] flex items-center justify-around">
+      <section className="h-[90px] flex items-center justify-around">
         <PageSwitch page={page} />
-        <SearchBar page={page} />
+        <section className="hidden lg:block">
+          <SearchBar page={page} />
+        </section>
         <UserInfo />
-      </div>
-      <div
+      </section>
+      <section
         className={`${
           page === "/likedSongs" ? "" : "hidden"
         } h-[130px] pt-5 text-white-200 flex items-center justify-around`}
@@ -32,7 +34,7 @@ export const Header = () => {
         <div className="text-h2-light w-[40%] m-auto flex justify-center">
           <h5>1158 songs</h5>
         </div>
-      </div>
+      </section>
     </main>
   );
 };

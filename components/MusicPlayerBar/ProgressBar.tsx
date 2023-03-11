@@ -117,7 +117,7 @@ export const ProgressBar = React.forwardRef(
           }}
           onEnded={handleEnd}
         />
-        <div className="lg:w-[400px] xl:w-[600px] 2xl:w-[800px] h-[10px] flex justify-around items-center my-2 gap-1">
+        <section className="lg:w-[400px] xl:w-[600px] 2xl:w-[800px] h-[10px] flex justify-around items-center my-2 gap-1">
           <div className="w-[10%] text-center">
             <span>{formatTime(currentMusicTime)}</span>
           </div>
@@ -148,7 +148,7 @@ export const ProgressBar = React.forwardRef(
           <div className="w-[10%] text-center">
             <span>{formatTime(currentDurationTime)}</span>
           </div>
-        </div>
+        </section>
       </section>
     );
   }

@@ -9,13 +9,13 @@ export const UserInfo = () => {
   };
 
   return (
-    <div className="min-w-[322px] text-h3-light text-white-200">
+    <section className="min-w-[322px] text-h3-light text-white-200">
       <section
         className={`absolute top-0 min-w-[322px] ${
           isDropdown ? "bg-gray-800 shadow-lg bg-white" : ""
         } rounded-[10px]`}
       >
-        <div className="flex w-full h-[80px] justify-around items-center gap-2">
+        <section className="flex w-full h-[80px] justify-around items-center gap-2">
           <div className="flex items-center gap-3">
             <Image
               src="/person-avator.png"
@@ -31,16 +31,16 @@ export const UserInfo = () => {
             onClick={handleDropdown}
             className="cursor-pointer"
           ></img>
-        </div>
-        <div className={`${isDropdown ? "" : "hidden"}`}>
+        </section>
+        <section className={`${isDropdown ? "" : "hidden"}`}>
           <ul className="flex flex-col gap-[15px] ml-[46px] mt-[14px] mb-[37px]">
             <li>Private session</li>
             <li>Account</li>
             <li>Settings</li>
             <li>Log out</li>
           </ul>
-        </div>
+        </section>
       </section>
-    </div>
+    </section>
   );
 };

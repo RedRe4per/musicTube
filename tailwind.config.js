@@ -131,8 +131,11 @@ module.exports = {
         header: "center",
       },
       width: {
-        "screen-70": "calc(100vw - 330px)",
+        "screen-70": "calc(100vw - 303px)",
       },
+      screens: {
+        "custom": "1950px",
+      }
     },
   },
   plugins: [require("daisyui")],

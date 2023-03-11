@@ -4,7 +4,7 @@ interface Props {
 
 export const PageSwitch = ({ page }: Props) => {
   return (
-    <div
+    <section
       className={`flex bg-secondary h-[50px] rounded-[10px] ${
         page === "/likedSongs" ? "invert" : ""
       }`}
@@ -19,6 +19,6 @@ export const PageSwitch = ({ page }: Props) => {
           className="m-auto"
         ></img>
       </button>
-    </div>
+    </section>
   );
 };
