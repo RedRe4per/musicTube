@@ -14,7 +14,8 @@ export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
   const { setPlayerList, setAlbum } = useContext(PlayerContext);
   const [showPlay, setShowPlay] = useState(false);
 
-  const handlePlay = async () => {
+  const handlePlay = async (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${albumId}`
     );

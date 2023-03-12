@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface SSRProps {
   albumId: number;
 }
@@ -8,10 +10,43 @@ interface Pros {
 
 export default function Album({ album }: any) {
   console.log(album, "album page");
+  const { blurPicUrl, type, name, picUrl, description, subType, artists } =
+    album;
 
   return (
     <main>
-      <div>123123123</div>
+      <section className="mt-6 ml-10 flex">
+        <div>
+          <Image
+            src={picUrl}
+            alt="bluePicUrl"
+            className="rounded-2xl"
+            width={280}
+            height={280}
+          />
+        </div>
+        <section className="ml-10 mt-10 flex flex-col justify-around">
+          <section className="flex gap-4 text-tag-light text-green">
+            <span>{type}</span>
+            <span>{subType}</span>
+          </section>
+          <h3 className="text-h2-normal text-white-200">{name}</h3>
+          <section>
+            <h5 className="text-tag-normal text-gray-200">
+              Artists:{" "}
+              {artists.map((artist: any) => {
+                return <span key={artist.id}>{artist.name}&nbsp;&nbsp;</span>;
+              })}
+            </h5>
+          </section>
+        </section>
+      </section>
+      {/* <section>
+        <p>{description}</p>
+        
+        </section> */}
+      <section className="mt-10">play and like</section>
+      <section>music list</section>
     </main>
   );
 }
