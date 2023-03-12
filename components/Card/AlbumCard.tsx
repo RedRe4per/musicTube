@@ -1,14 +1,33 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { PlayerContext } from "@/contexts/PlayerContext";
 
 interface Props {
   albumUrl: string;
   albumName: string;
   artists: string[];
+  albumId: number;
 }
 
-export const AlbumCard = ({ albumUrl, albumName, artists }: Props) => {
+export const AlbumCard = ({ albumUrl, albumName, artists, albumId}: Props) => {
+  const { setPlayerList, setAlbum } = useContext(PlayerContext);
   const [showPlay, setShowPlay] = useState(false);
+
+  const handlePlay = async () => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${albumId}`);
+    const albumData = await response.json();
+    setAlbum(albumData.album);
+    
+    const songs: any[] = [];
+    albumData.songs.forEach((song: any) => {
+      songs.push(song.id)
+    })
+    const songsResponse = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${songs.join(",")}&level=lossless`
+    );
+    const songsData = await songsResponse.json();
+    setPlayerList(songsData.data);
+  }
 
   return (
     <section className="max-w-[1/8] h-[250px] lg:h-[330px] relative overflow-hidden">
@@ -30,9 +49,10 @@ export const AlbumCard = ({ albumUrl, albumName, artists }: Props) => {
             alt="play"
             className={`${
               showPlay ? "" : "hidden"
-            } hover:w-[80px] animate-bounce`}
+            } hover:w-[75px] animate-bounce cursor-pointer`}
             width={70}
             height={70}
+            onClick={handlePlay}
           />
         </div>
       </div>

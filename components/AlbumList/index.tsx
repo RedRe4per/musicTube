@@ -18,6 +18,7 @@ export const AlbumList = ({ title, albumList }: Props) => {
               albumUrl={album.coverUrl}
               albumName={album.albumName}
               artists={album.artistNames}
+              albumId={album.albumId}
             />
           );
         })}

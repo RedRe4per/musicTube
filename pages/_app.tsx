@@ -14,10 +14,11 @@ const rubik = Rubik({
 
 export default function App({ Component, pageProps }: AppProps) {
   const [playerList, setPlayerList] = useState<MusicDetail[]>([]);
+  const [album, setAlbum] = useState<any>(null);
 
   return (
     <main className={`${rubik.variable} font-sans`}>
-      <PlayerContext.Provider value={{ playerList, setPlayerList }}>
+      <PlayerContext.Provider value={{ playerList, setPlayerList, album, setAlbum }}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
