@@ -1,14 +1,7 @@
 import Head from "next/head";
-import { useContext, useEffect } from "react";
-import { PlayerContext } from "@/contexts/PlayerContext";
-import { MusicDetail } from "@/interfaces/music";
 import { AlbumList } from "@/components/AlbumList";
 
 interface Props {
-  musicData: {
-    code: number;
-    data: MusicDetail[];
-  };
 }
 
 export default function Home({
@@ -17,19 +10,6 @@ export default function Home({
   albumAreaKR,
   albumAreaZH,
 }: any) {
-  const { setPlayerList } = useContext(PlayerContext);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await fetch(
-  //       `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=405998841,33894312,298317,1888354230,210049&level=lossless`
-  //     );
-  //     const responseData = await response.json();
-  //     setPlayerList(responseData.data);
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   return (
     <section>
