@@ -46,6 +46,7 @@ export const MusicPlayerBar = () => {
         ? currentMusicIndex + 1
         : 0;
     setCurrentMusic(playerList[playMusicIndex]);
+    setIsMusicPlay(false);
     setTimeout(() => {
       musicPlayer.current?.play();
     }, 500);
