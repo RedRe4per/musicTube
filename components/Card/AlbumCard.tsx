@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useContext } from "react";
 import { PlayerContext } from "@/contexts/PlayerContext";
 
@@ -35,6 +36,7 @@ export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
 
   return (
     <section className="max-w-[1/8] h-[250px] lg:h-[330px] relative overflow-hidden">
+      <Link href={`/album/${albumId}`}>
       <div className="relative">
         <Image
           src={albumUrl}
@@ -70,6 +72,7 @@ export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
           })}
         </h6>
       </section>
+      </Link>
     </section>
   );
 };
