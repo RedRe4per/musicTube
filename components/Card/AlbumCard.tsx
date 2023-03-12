@@ -27,7 +27,7 @@ export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
     const songsResponse = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${songs.join(
         ","
-      )}&level=lossless`
+      )}&level=higher`
     );
     const songsData = await songsResponse.json();
     setPlayerList(songsData.data);

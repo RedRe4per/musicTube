@@ -36,7 +36,7 @@ export const ProgressBar = React.forwardRef(
           setCurrentMusicTime(musicPlayer.current?.currentTime);
           setCurrentDurationTime(musicPlayer.current?.duration);
           setCurrentPlayRadio(getRatio(musicPlayer));
-        }, 1000)
+        }, 200)
       );
     };
 

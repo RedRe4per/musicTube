@@ -23,7 +23,7 @@ export const MusicPlayerBar = () => {
 
       setTimeout(() => {
         musicPlayer.current?.play();
-      }, 500);
+      }, 200);
     }
   }, [playerList]);
 
