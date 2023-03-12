@@ -16,16 +16,16 @@ export const MusicPlayerBar = () => {
   const [isRandomPlay, setIsRandomPlay] = useState(false);
   const [currentMusic, setCurrentMusic] = useState<MusicDetail | null>(null);
 
-  useEffect(()=>{
-    if(playerList.length > 0 && musicPlayer){
+  useEffect(() => {
+    if (playerList.length > 0 && musicPlayer) {
       musicPlayer.current?.pause();
-      setCurrentMusic(playerList[0]); 
+      setCurrentMusic(playerList[0]);
 
       setTimeout(() => {
         musicPlayer.current?.play();
       }, 500);
     }
-  }, [playerList])
+  }, [playerList]);
 
   const handlePlayAndPause = () => {
     setIsMusicPlay(!isMusicPlay);

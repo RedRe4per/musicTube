@@ -1,8 +1,7 @@
 import Head from "next/head";
 import { AlbumList } from "@/components/AlbumList";
 
-interface Props {
-}
+interface Props {}
 
 export default function Home({
   albumAreaEA,
@@ -10,7 +9,6 @@ export default function Home({
   albumAreaKR,
   albumAreaZH,
 }: any) {
-
   return (
     <section>
       <Head>
