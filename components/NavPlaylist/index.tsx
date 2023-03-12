@@ -15,8 +15,8 @@ export const NavPlaylist = () => {
             new playlist
           </span>
         </li>
-        {listItemArray.map((listItem) => {
-          return <PlaylistItem key={listItem} text={listItem} />;
+        {listItemArray.map((listItem, index) => {
+          return <PlaylistItem key={index} text={listItem} />;
         })}
       </ul>
     </section>

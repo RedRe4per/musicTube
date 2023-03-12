@@ -65,8 +65,8 @@ export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
           {albumName}
         </h5>
         <h6 className="text-tag-normal text-gray-400 mt-[7px] ">
-          {artists.map((artist) => {
-            return <span key={artist}>{artist}&nbsp;&nbsp;</span>;
+          {artists.map((artist, index) => {
+            return <span key={index}>{artist}&nbsp;&nbsp;</span>;
           })}
         </h6>
       </section>
