@@ -9,25 +9,29 @@ interface Props {
   albumId: number;
 }
 
-export const AlbumCard = ({ albumUrl, albumName, artists, albumId}: Props) => {
+export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
   const { setPlayerList, setAlbum } = useContext(PlayerContext);
   const [showPlay, setShowPlay] = useState(false);
 
   const handlePlay = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${albumId}`);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${albumId}`
+    );
     const albumData = await response.json();
     setAlbum(albumData.album);
-    
+
     const songs: any[] = [];
     albumData.songs.forEach((song: any) => {
-      songs.push(song.id)
-    })
+      songs.push(song.id);
+    });
     const songsResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${songs.join(",")}&level=lossless`
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${songs.join(
+        ","
+      )}&level=lossless`
     );
     const songsData = await songsResponse.json();
     setPlayerList(songsData.data);
-  }
+  };
 
   return (
     <section className="max-w-[1/8] h-[250px] lg:h-[330px] relative overflow-hidden">

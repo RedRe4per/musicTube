@@ -18,7 +18,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <main className={`${rubik.variable} font-sans`}>
-      <PlayerContext.Provider value={{ playerList, setPlayerList, album, setAlbum }}>
+      <PlayerContext.Provider
+        value={{ playerList, setPlayerList, album, setAlbum }}
+      >
         <Layout>
           <Component {...pageProps} />
         </Layout>
