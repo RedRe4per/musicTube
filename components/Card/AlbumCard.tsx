@@ -20,15 +20,20 @@ export const AlbumCard = ({ albumUrl, albumName, artists }: Props) => {
           width={200}
           height={200}
         />
-        <div onMouseEnter={() => setShowPlay(true)} onMouseLeave={() => setShowPlay(false)} className="absolute top-0 left-0 w-full h-full hover:bg-gray-300 opacity-50 rounded-xl flex items-center justify-center">
-        <Image
-        src="/icons/play-in-image.svg"
-        alt="play"
-        className={`${showPlay? "":"hidden"} hover:w-[80px] animate-bounce`}
-        width={70}
-        height={70}
-        />
-
+        <div
+          onMouseEnter={() => setShowPlay(true)}
+          onMouseLeave={() => setShowPlay(false)}
+          className="absolute top-0 left-0 w-full h-full hover:bg-gray-300 opacity-50 rounded-xl flex items-center justify-center"
+        >
+          <Image
+            src="/icons/play-in-image.svg"
+            alt="play"
+            className={`${
+              showPlay ? "" : "hidden"
+            } hover:w-[80px] animate-bounce`}
+            width={70}
+            height={70}
+          />
         </div>
       </div>
       <section className="absolute max-w-[100%] overflow-hidden">
