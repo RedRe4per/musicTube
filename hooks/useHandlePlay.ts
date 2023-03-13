@@ -1,5 +1,7 @@
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { PlayerContext } from "@/contexts/PlayerContext";
+import { AlbumSong } from "@/interfaces/albumSong";
+import { MusicDetail } from "@/interfaces/music";
 
 export const useHandlePlay = (albumId: number) => {
   const { setPlayerList, setAlbum } = useContext(PlayerContext);
@@ -25,8 +27,8 @@ export const useHandlePlay = (albumId: number) => {
     if (!firstSongData.data[0].url) console.log("no url here!"); //process later
     setPlayerList(firstSongData.data);
 
-    const songList: any[] = [];
-    albumData.songs.forEach((song: any) => {
+    const songList: number[] = [];
+    albumData.songs.forEach((song: AlbumSong) => {
       songList.push(song.id);
     });
     const songsResponse = await fetch(
@@ -35,8 +37,9 @@ export const useHandlePlay = (albumId: number) => {
       )}&level=higher`,
       { signal: signal }
     );
+    
     const songsData = await songsResponse.json();
-    const sortedList = songsData.data.sort((a: any, b: any) => {
+    const sortedList = songsData.data.sort((a: MusicDetail, b: MusicDetail) => {
       const aIndex = songList.findIndex((id) => id === a.id);
       const bIndex = songList.findIndex((id) => id === b.id);
       if (aIndex === -1 || bIndex === -1) {
