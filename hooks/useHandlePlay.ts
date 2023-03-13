@@ -7,7 +7,8 @@ export const useHandlePlay = (albumId: number) => {
   const handlePlay = async (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${albumId}`, { credentials: 'include' }
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${albumId}`,
+      { credentials: "include" }
     );
     const albumData = await response.json();
     setAlbum(albumData.album);
@@ -24,12 +25,13 @@ export const useHandlePlay = (albumId: number) => {
 
     const songList: any[] = [];
     albumData.songs.forEach((song: any) => {
-        songList.push(song.id);
+      songList.push(song.id);
     });
     const songsResponse = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${songList.join(
         ","
-      )}&level=higher`, { credentials: 'include' }
+      )}&level=higher`,
+      { credentials: "include" }
     );
     const songsData = await songsResponse.json();
     setPlayerList(songsData.data);
