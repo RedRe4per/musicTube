@@ -15,7 +15,7 @@ export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
   const { handlePlay } = useHandlePlay(albumId);
 
   return (
-    <section className="max-w-[1/8] h-[250px] lg:h-[330px] relative overflow-hidden">
+    <section className="max-w-[1/8] h-[250px] lg:h-[335px] relative overflow-hidden rounded-xl p-1 hover:bg-gray-600 hover:shadow-md hover:shadow-white-50 hover:-translate-y-2">
       <Link href={`/album/${albumId}`}>
         <div className="relative">
           <Image
