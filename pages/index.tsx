@@ -12,7 +12,6 @@ export default function Home({
   albumAreaKR,
   albumAreaZH,
 }: Props) {
-  console.log( albumAreaEA)
   return (
     <section>
       <Head>
