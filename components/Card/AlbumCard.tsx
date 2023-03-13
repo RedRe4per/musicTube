@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useContext } from "react";
-import { PlayerContext } from "@/contexts/PlayerContext";
+import { useState } from "react";
+import useHandlePlay from "@/hooks/useHandlePlay";
 
 interface Props {
   albumUrl: string;
@@ -11,29 +11,8 @@ interface Props {
 }
 
 export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
-  const { setPlayerList, setAlbum } = useContext(PlayerContext);
   const [showPlay, setShowPlay] = useState(false);
-
-  const handlePlay = async (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${albumId}`
-    );
-    const albumData = await response.json();
-    setAlbum(albumData.album);
-
-    const songs: any[] = [];
-    albumData.songs.forEach((song: any) => {
-      songs.push(song.id);
-    });
-    const songsResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${songs.join(
-        ","
-      )}&level=higher`
-    );
-    const songsData = await songsResponse.json();
-    setPlayerList(songsData.data);
-  };
+  const { handlePlay } = useHandlePlay(albumId);
 
   return (
     <section className="max-w-[1/8] h-[250px] lg:h-[330px] relative overflow-hidden">
@@ -54,9 +33,8 @@ export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
             <Image
               src="/icons/play-in-image.svg"
               alt="play"
-              className={`${
-                showPlay ? "" : "hidden"
-              } hover:w-[75px] animate-bounce cursor-pointer`}
+              className={`${showPlay ? "" : "hidden"
+                } hover:w-[75px] animate-bounce cursor-pointer`}
               width={70}
               height={70}
               onClick={handlePlay}
