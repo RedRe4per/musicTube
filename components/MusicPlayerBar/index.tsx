@@ -16,15 +16,16 @@ export const MusicPlayerBar = () => {
   const [isRandomPlay, setIsRandomPlay] = useState(false);
   const [currentMusic, setCurrentMusic] = useState<MusicDetail | null>(null);
 
+  const handleCanPlayThrough = () => {
+    musicPlayer.current?.play();
+  };
+
   useEffect(() => {
-    if (playerList.length > 0 && musicPlayer) {
+    if (playerList.length > 0 && musicPlayer && playerList[0].id !== currentMusic?.id) {
       musicPlayer.current?.pause();
       setCurrentMusic(playerList[0]);
-
-      setTimeout(() => {
-        musicPlayer.current?.play();
-        setIsMusicPlay(false);
-      }, 200);
+      setIsMusicPlay(false);
+      musicPlayer.current?.addEventListener('canplaythrough', handleCanPlayThrough);
     }
   }, [playerList]);
 
@@ -35,7 +36,7 @@ export const MusicPlayerBar = () => {
 
   const handleSkipMusic = (forward: "last" | "next") => {
     const currentMusicIndex = playerList.findIndex(
-      (element) => element.url === currentMusic?.url
+      (element) => element.id === currentMusic?.id
     );
     const playMusicIndex =
       forward === "last"
