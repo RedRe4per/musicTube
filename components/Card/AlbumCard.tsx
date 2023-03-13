@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import useHandlePlay from "@/hooks/useHandlePlay";
+import { useHandlePlay } from "@/hooks/useHandlePlay";
 
 interface Props {
   albumUrl: string;

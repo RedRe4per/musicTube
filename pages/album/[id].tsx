@@ -9,7 +9,7 @@ interface Pros {
 }
 
 export default function Album({ album }: any) {
-  console.log(album, "album page");
+  //console.log(album, "album page");
   const { blurPicUrl, type, name, picUrl, description, subType, artists } =
     album;
 
