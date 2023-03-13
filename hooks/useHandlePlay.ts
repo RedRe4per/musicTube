@@ -37,7 +37,7 @@ export const useHandlePlay = (albumId: number) => {
       )}&level=higher`,
       { signal: signal }
     );
-    
+
     const songsData = await songsResponse.json();
     const sortedList = songsData.data.sort((a: MusicDetail, b: MusicDetail) => {
       const aIndex = songList.findIndex((id) => id === a.id);
