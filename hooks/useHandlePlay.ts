@@ -39,14 +39,16 @@ export const useHandlePlay = (albumId: number) => {
     );
 
     const songsData = await songsResponse.json();
-    const sortedList = songsData.data.sort((a: IMusicDetail, b: IMusicDetail) => {
-      const aIndex = songList.findIndex((id) => id === a.id);
-      const bIndex = songList.findIndex((id) => id === b.id);
-      if (aIndex === -1 || bIndex === -1) {
+    const sortedList = songsData.data.sort(
+      (a: IMusicDetail, b: IMusicDetail) => {
+        const aIndex = songList.findIndex((id) => id === a.id);
+        const bIndex = songList.findIndex((id) => id === b.id);
+        if (aIndex === -1 || bIndex === -1) {
+          return aIndex - bIndex;
+        }
         return aIndex - bIndex;
       }
-      return aIndex - bIndex;
-    });
+    );
 
     setPlayerList(sortedList);
   };

@@ -10,7 +10,7 @@ interface PlayerContextType {
 
 export const PlayerContext = createContext<PlayerContextType>({
   playerList: [],
-  setPlayerList: () => { },
+  setPlayerList: () => {},
   album: null,
-  setAlbum: () => { },
+  setAlbum: () => {},
 });
