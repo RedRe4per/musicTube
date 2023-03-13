@@ -1,4 +1,4 @@
-export interface AlbumSong {
+export interface IAlbumSong {
   id: number;
   name: string;
   mv: number;

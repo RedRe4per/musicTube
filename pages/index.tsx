@@ -1,14 +1,18 @@
 import Head from "next/head";
 import { AlbumList } from "@/components/AlbumList";
+import { IAlbumList } from "@/interfaces/album";
 
-interface Props {}
+interface Props {
+  [key: string]: IAlbumList;
+}
 
 export default function Home({
   albumAreaEA,
   albumAreaJP,
   albumAreaKR,
   albumAreaZH,
-}: any) {
+}: Props) {
+  console.log( albumAreaEA)
   return (
     <section>
       <Head>

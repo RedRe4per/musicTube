@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { PlayerContext } from "@/contexts/PlayerContext";
-import { AlbumSong } from "@/interfaces/albumSong";
+import { IAlbumSong } from "@/interfaces/albumSong";
 import { MusicDetail } from "@/interfaces/music";
 
 export const useHandlePlay = (albumId: number) => {
@@ -28,7 +28,7 @@ export const useHandlePlay = (albumId: number) => {
     setPlayerList(firstSongData.data);
 
     const songList: number[] = [];
-    albumData.songs.forEach((song: AlbumSong) => {
+    albumData.songs.forEach((song: IAlbumSong) => {
       songList.push(song.id);
     });
     const songsResponse = await fetch(
