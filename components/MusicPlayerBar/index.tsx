@@ -21,11 +21,18 @@ export const MusicPlayerBar = () => {
   };
 
   useEffect(() => {
-    if (playerList.length > 0 && musicPlayer && playerList[0].id !== currentMusic?.id) {
+    if (
+      playerList.length > 0 &&
+      musicPlayer &&
+      playerList[0].id !== currentMusic?.id
+    ) {
       musicPlayer.current?.pause();
       setCurrentMusic(playerList[0]);
       setIsMusicPlay(false);
-      musicPlayer.current?.addEventListener('canplaythrough', handleCanPlayThrough);
+      musicPlayer.current?.addEventListener(
+        "canplaythrough",
+        handleCanPlayThrough
+      );
     }
   }, [playerList]);
 
