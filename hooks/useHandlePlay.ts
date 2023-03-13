@@ -24,7 +24,7 @@ const useHandlePlay = (albumId: number) => {
     const songsData = await songsResponse.json();
     setPlayerList(songsData.data);
 
-    console.log("1111111111111111111111111111111111111")
+    console.log("1111111111111111111111111111111111111");
   };
 
   return { handlePlay };

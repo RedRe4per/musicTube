@@ -33,8 +33,9 @@ export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
             <Image
               src="/icons/play-in-image.svg"
               alt="play"
-              className={`${showPlay ? "" : "hidden"
-                } hover:w-[75px] animate-bounce cursor-pointer`}
+              className={`${
+                showPlay ? "" : "hidden"
+              } hover:w-[75px] animate-bounce cursor-pointer`}
               width={70}
               height={70}
               onClick={handlePlay}
