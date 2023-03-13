@@ -1,4 +1,4 @@
-import { MusicDetail } from "@/interfaces/music";
+import { IMusicDetail } from "@/interfaces/music";
 import { useState, useRef, useContext, useEffect } from "react";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { SkipButton } from "./SkipButton";
@@ -14,7 +14,7 @@ export const MusicPlayerBar = () => {
   const [isMusicPlay, setIsMusicPlay] = useState(true);
   const [isMusicLoop, setIsMusicLoop] = useState(false);
   const [isRandomPlay, setIsRandomPlay] = useState(false);
-  const [currentMusic, setCurrentMusic] = useState<MusicDetail | null>(null);
+  const [currentMusic, setCurrentMusic] = useState<IMusicDetail | null>(null);
 
   const handleCanPlayThrough = () => {
     musicPlayer.current?.play();
@@ -51,8 +51,8 @@ export const MusicPlayerBar = () => {
           ? currentMusicIndex - 1
           : playerList.length - 1
         : currentMusicIndex < playerList.length - 1
-        ? currentMusicIndex + 1
-        : 0;
+          ? currentMusicIndex + 1
+          : 0;
     setCurrentMusic(playerList[playMusicIndex]);
     setIsMusicPlay(false);
     setTimeout(() => {

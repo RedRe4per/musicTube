@@ -1,8 +1,8 @@
-import { MusicDetail } from "@/interfaces/music";
+import { IMusicDetail } from "@/interfaces/music";
 
 export const sortPlayList = (
-  playList: MusicDetail[],
-  currentMusic: MusicDetail | null
+  playList: IMusicDetail[],
+  currentMusic: IMusicDetail | null
 ) => {
   const index = playList.findIndex((music) => {
     return music.id === currentMusic?.id;
@@ -11,7 +11,7 @@ export const sortPlayList = (
   if (index < 0 || !currentMusic) {
     return { playList: playList, inclusion: false };
   } else {
-    const newPlayList: MusicDetail[] = [];
+    const newPlayList: IMusicDetail[] = [];
     playList.forEach((music) => {
       if (music.id !== currentMusic?.id) newPlayList.push(music);
     });

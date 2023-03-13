@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import { Rubik } from "next/font/google";
 import Layout from "@/components/layout";
 import { useState } from "react";
-import { MusicDetail } from "@/interfaces/music";
+import { IMusicDetail } from "@/interfaces/music";
 import { PlayerContext } from "@/contexts/PlayerContext";
 
 const rubik = Rubik({
@@ -13,7 +13,7 @@ const rubik = Rubik({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [playerList, setPlayerList] = useState<MusicDetail[]>([]);
+  const [playerList, setPlayerList] = useState<IMusicDetail[]>([]);
   const [album, setAlbum] = useState<any>(null);
 
   return (

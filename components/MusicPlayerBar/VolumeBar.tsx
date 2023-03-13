@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { MusicDetail } from "@/interfaces/music";
+import { IMusicDetail } from "@/interfaces/music";
 import { getDraggingRatio } from "@/utils/radioCalc";
 import {
   useGlobalListener,
@@ -7,7 +7,7 @@ import {
 } from "@/hooks/useGlobalListener";
 
 interface Props {
-  playList: MusicDetail[];
+  playList: IMusicDetail[];
 }
 
 export const VolumeBar = React.forwardRef(
@@ -71,8 +71,8 @@ export const VolumeBar = React.forwardRef(
                   volumeBarRatio <= 0.1 || isMuted
                     ? "/icons/volume-mute-fill.svg"
                     : volumeBarRatio < 50
-                    ? "/icons/volume-down-fill.svg"
-                    : "/icons/volume-up-fill.svg"
+                      ? "/icons/volume-down-fill.svg"
+                      : "/icons/volume-up-fill.svg"
                 }
                 alt="volume"
               />
@@ -88,19 +88,16 @@ export const VolumeBar = React.forwardRef(
                 ref={volumeRef}
               >
                 <div
-                  className={`bg-gray-200 ${
-                    showThumb ? "bg-green" : ""
-                  } rounded-full h-[5px] ${isMuted ? "hidden" : ""}`}
+                  className={`bg-gray-200 ${showThumb ? "bg-green" : ""
+                    } rounded-full h-[5px] ${isMuted ? "hidden" : ""}`}
                   style={{
                     width: `${volumeBarRatio > 0.1 ? volumeBarRatio : 0}%`,
                   }}
                 ></div>
                 <div
-                  className={`absolute top-[1px] ${
-                    showThumb ? "" : "hidden"
-                  } transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer ${
-                    isMuted ? "hidden" : ""
-                  }`}
+                  className={`absolute top-[1px] ${showThumb ? "" : "hidden"
+                    } transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-200 rounded-full cursor-pointer ${isMuted ? "hidden" : ""
+                    }`}
                   style={{ left: `${volumeBarRatio}%` }}
                 ></div>
               </div>

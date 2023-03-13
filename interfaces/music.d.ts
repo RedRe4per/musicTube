@@ -1,4 +1,4 @@
-export interface MusicDetail {
+export interface IMusicDetail {
   id: number;
   url: string;
   br: number;

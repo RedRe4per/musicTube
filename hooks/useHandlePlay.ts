@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { IAlbumSong } from "@/interfaces/albumSong";
-import { MusicDetail } from "@/interfaces/music";
+import { IMusicDetail } from "@/interfaces/music";
 
 export const useHandlePlay = (albumId: number) => {
   const { setPlayerList, setAlbum } = useContext(PlayerContext);
@@ -39,7 +39,7 @@ export const useHandlePlay = (albumId: number) => {
     );
 
     const songsData = await songsResponse.json();
-    const sortedList = songsData.data.sort((a: MusicDetail, b: MusicDetail) => {
+    const sortedList = songsData.data.sort((a: IMusicDetail, b: IMusicDetail) => {
       const aIndex = songList.findIndex((id) => id === a.id);
       const bIndex = songList.findIndex((id) => id === b.id);
       if (aIndex === -1 || bIndex === -1) {

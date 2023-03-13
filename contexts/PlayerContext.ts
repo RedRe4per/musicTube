@@ -1,16 +1,16 @@
-import { MusicDetail } from "@/interfaces/music";
+import { IMusicDetail } from "@/interfaces/music";
 import { createContext } from "react";
 
 interface PlayerContextType {
-  playerList: MusicDetail[];
-  setPlayerList: (playerList: MusicDetail[]) => void;
+  playerList: IMusicDetail[];
+  setPlayerList: (playerList: IMusicDetail[]) => void;
   album: any;
   setAlbum: (album: any) => void;
 }
 
 export const PlayerContext = createContext<PlayerContextType>({
   playerList: [],
-  setPlayerList: () => {},
+  setPlayerList: () => { },
   album: null,
-  setAlbum: () => {},
+  setAlbum: () => { },
 });

@@ -1,9 +1,9 @@
-import { MusicDetail } from "@/interfaces/music";
+import { IMusicDetail } from "@/interfaces/music";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
 interface Props {
-  music: MusicDetail | null;
+  music: IMusicDetail | null;
 }
 
 interface Artist {
