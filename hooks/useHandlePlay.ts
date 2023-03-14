@@ -6,7 +6,7 @@ import { IMusicDetail } from "@/interfaces/music";
 
 export const useHandlePlay = (albumId: number) => {
   const { setPlayerList, setAlbum } = useContext(PlayerContext);
-  const { setMessage, setVisible} = useContext(AlertContext);
+  const { setMessage, setVisible } = useContext(AlertContext);
   const controller = new AbortController();
   const signal = controller.signal;
 
@@ -33,7 +33,7 @@ export const useHandlePlay = (albumId: number) => {
       setMessage("No song resource found in this Album!");
       setVisible(true);
       return;
-    };
+    }
     setPlayerList(firstSongData.data);
 
     const songList: number[] = [];

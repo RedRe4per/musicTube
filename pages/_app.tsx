@@ -19,18 +19,29 @@ export default function App({ Component, pageProps }: AppProps) {
   const [album, setAlbum] = useState<IAlbum | null>(null);
   const [message, setMessage] = useState("");
   const [visible, setVisible] = useState(false);
-  const [messageType, setMessageType] = useState<"alert-error" | "alert-info" | "alert-success" | "alert-warning">("alert-info");
+  const [messageType, setMessageType] = useState<
+    "alert-error" | "alert-info" | "alert-success" | "alert-warning"
+  >("alert-info");
 
   return (
     <main className={`${rubik.variable} font-sans`}>
-      <AlertContext.Provider value={{message, setMessage,visible, setVisible, messageType, setMessageType}}>
-      <PlayerContext.Provider
-        value={{ playerList, setPlayerList, album, setAlbum }}
+      <AlertContext.Provider
+        value={{
+          message,
+          setMessage,
+          visible,
+          setVisible,
+          messageType,
+          setMessageType,
+        }}
       >
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </PlayerContext.Provider>
+        <PlayerContext.Provider
+          value={{ playerList, setPlayerList, album, setAlbum }}
+        >
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </PlayerContext.Provider>
       </AlertContext.Provider>
     </main>
   );

@@ -6,7 +6,13 @@ interface AlertContextType {
   visible: boolean;
   setVisible: (visible: boolean) => void;
   messageType: "alert-error" | "alert-info" | "alert-success" | "alert-warning";
-  setMessageType: (messageType: "alert-error" | "alert-info" | "alert-success" | "alert-warning")=>void;
+  setMessageType: (
+    messageType:
+      | "alert-error"
+      | "alert-info"
+      | "alert-success"
+      | "alert-warning"
+  ) => void;
 }
 
 export const AlertContext = createContext<AlertContextType>({
@@ -14,6 +20,6 @@ export const AlertContext = createContext<AlertContextType>({
   setMessage: () => {},
   visible: false,
   setVisible: () => {},
-  messageType:  "alert-info",
-  setMessageType: ()=> {},
+  messageType: "alert-info",
+  setMessageType: () => {},
 });
