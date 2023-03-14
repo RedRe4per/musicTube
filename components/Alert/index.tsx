@@ -11,7 +11,7 @@ export const AlertBox = () => {
       setVisible(true);
       setTimeout(() => {
         setVisible(false);
-        setAlertBox({message: ""})
+        setAlertBox({ message: "" });
       }, 5000);
     }
   }, [message]);
