@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { AlbumList } from "@/components/AlbumList";
 import { IAlbumList } from "@/interfaces/album";
-import { useBackgroundColor } from "@/hooks/useBackgroundColor";
 
 interface Props {
   [key: string]: IAlbumList;
@@ -13,8 +12,6 @@ export default function Home({
   albumAreaKR,
   albumAreaZH,
 }: Props) {
-  const { handleBackgroundColor } = useBackgroundColor();
-  handleBackgroundColor();
 
   return (
     <section>

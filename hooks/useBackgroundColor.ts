@@ -1,14 +1,17 @@
 import { BgColorContext } from "@/contexts/BgColorContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 export const useBackgroundColor = (imageUrl?: string) => {
   const { setBgColor } = useContext(BgColorContext);
+  const [prevUrl, setPrevUrl] = useState<string | null>(null);
 
   const handleBackgroundColor = async () => {
+    if (imageUrl === prevUrl) return;
     if (!imageUrl) {
       setBgColor("#1B1B1B");
       return;
     }
+    setPrevUrl(imageUrl);
     const img = new Image();
     img.crossOrigin = "Anonymous";
     img.src = imageUrl;
@@ -42,6 +45,7 @@ export const useBackgroundColor = (imageUrl?: string) => {
         dominantColor = rgba;
       }
     }
+    console.log("set bg color times")
     setBgColor(`rgba(${dominantColor})`);
   };
 

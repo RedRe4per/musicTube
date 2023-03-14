@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { useBackgroundColor } from "@/hooks/useBackgroundColor";
+import { BgColorContext } from "@/contexts/BgColorContext";
+import { useContext } from "react";
 
 interface SSRProps {
   albumId: number;
@@ -14,9 +16,11 @@ export default function Album({ album }: Props) {
   const { type, name, picUrl, description, subType, artists } = album;
   const { handleBackgroundColor } = useBackgroundColor(picUrl);
   handleBackgroundColor();
+  const { bgColor } = useContext(BgColorContext);
+
 
   return (
-    <main className="">
+    <main style={{background: `linear-gradient(to bottom, #1B1B1B, ${bgColor})`}}>
       <section className="mt-6 ml-10 flex">
         <div>
           <Image
