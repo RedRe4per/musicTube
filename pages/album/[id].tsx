@@ -15,7 +15,7 @@ export default function Album({ album }: Props) {
   //console.log(album, "album page");
   const { type, name, picUrl, description, subType, artists } = album;
   const { handleBackgroundColor } = useBackgroundColor(picUrl);
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     handleBackgroundColor();
   }
   const { bgColor } = useContext(BgColorContext);
