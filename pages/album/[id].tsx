@@ -18,9 +18,10 @@ export default function Album({ album }: Props) {
   handleBackgroundColor();
   const { bgColor } = useContext(BgColorContext);
 
-
   return (
-    <main style={{background: `linear-gradient(to bottom, #1B1B1B, ${bgColor})`}}>
+    <main
+      style={{ background: `linear-gradient(to bottom, #1B1B1B, ${bgColor})` }}
+    >
       <section className="mt-6 ml-10 flex">
         <div>
           <Image

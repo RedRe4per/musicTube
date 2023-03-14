@@ -45,7 +45,7 @@ export const useBackgroundColor = (imageUrl?: string) => {
         dominantColor = rgba;
       }
     }
-    console.log("set bg color times")
+    console.log("set bg color times");
     setBgColor(`rgba(${dominantColor})`);
   };
 
