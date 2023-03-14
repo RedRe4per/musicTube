@@ -4,11 +4,11 @@ interface SSRProps {
   albumId: number;
 }
 
-interface Pros {
+interface Props {
   album: any;
 }
 
-export default function Album({ album }: any) {
+export default function Album({ album }: Props) {
   //console.log(album, "album page");
   const { blurPicUrl, type, name, picUrl, description, subType, artists } =
     album;

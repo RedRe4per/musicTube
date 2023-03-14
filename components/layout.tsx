@@ -2,6 +2,7 @@ import { Nav } from "@/layouts/nav";
 import { Header } from "@/layouts/header";
 import { MusicPlayerBar } from "./MusicPlayerBar";
 import { ReactElement } from "react";
+import { AlertBox } from "./Alert";
 
 interface Props {
   children: ReactElement;
@@ -18,6 +19,7 @@ export default function Layout({ children }: Props) {
         </main>
       </section>
       <MusicPlayerBar />
+      <AlertBox />
     </div>
   );
 }

@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { PlayerContext } from "@/contexts/PlayerContext";
+import { AlertContext } from "@/contexts/AlertContext";
 import { IAlbumSong } from "@/interfaces/albumSong";
 import { IMusicDetail } from "@/interfaces/music";
 
 export const useHandlePlay = (albumId: number) => {
   const { setPlayerList, setAlbum } = useContext(PlayerContext);
+  const { setMessage, setVisible} = useContext(AlertContext);
   const controller = new AbortController();
   const signal = controller.signal;
 
@@ -17,14 +19,21 @@ export const useHandlePlay = (albumId: number) => {
     const albumData = await response.json();
     setAlbum(albumData.album);
 
-    if (!albumData.songs[0].id) console.log("no song here!"); //process later
-    if (!albumData.songs[0].id) return;
+    if (!albumData.songs[0].id) {
+      setMessage("No song in this Album!");
+      setVisible(true);
+      return;
+    }
     const firstSongResponse = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${albumData.songs[0].id}&level=higher`,
       { signal: signal }
     );
     const firstSongData = await firstSongResponse.json();
-    if (!firstSongData.data[0].url) console.log("no url here!"); //process later
+    if (!firstSongData.data[0].url) {
+      setMessage("No song resource found in this Album!");
+      setVisible(true);
+      return;
+    };
     setPlayerList(firstSongData.data);
 
     const songList: number[] = [];
