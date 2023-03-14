@@ -1,4 +1,14 @@
-export const getDominantColor = async (imageUrl: string): Promise<string> => {
+import { BgColorContext } from "@/contexts/BgColorContext";
+import { useContext } from "react";
+
+export const useBackgroundColor = (imageUrl?: string) => {
+  const { setBgColor } = useContext(BgColorContext);
+
+  const handleBackgroundColor = async () => {
+  if(!imageUrl) {
+    setBgColor("#1B1B1B");
+    return;
+  };
   const img = new Image();
   img.crossOrigin = "Anonymous";
   img.src = imageUrl;
@@ -32,5 +42,8 @@ export const getDominantColor = async (imageUrl: string): Promise<string> => {
       dominantColor = rgba;
     }
   }
-  return `rgba(${dominantColor})`;
+  setBgColor(`rgba(${dominantColor})`);
+  }
+
+  return { handleBackgroundColor };
 };

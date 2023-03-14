@@ -1,7 +1,7 @@
 import { Nav } from "@/layouts/nav";
 import { Header } from "@/layouts/header";
 import { MusicPlayerBar } from "./MusicPlayerBar";
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { AlertBox } from "./Alert";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { useContext } from "react";
@@ -17,7 +17,8 @@ export default function Layout({ children }: Props) {
     <div className="flex">
       <Nav />
       <section
-        className={`w-full lg:w-screen-70 bg-gradient-to-r from-gray-650 to-${bgColor}`}
+        className={`w-full lg:w-screen-70`}
+        style={{background: `linear-gradient(to bottom, #1B1B1B, ${bgColor})`}}
       >
         <Header />
         <main className="overflow-auto max-h-[82.8vh] scrollbar">

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getDominantColor } from "@/utils/getDominantColor";
+import { useBackgroundColor } from "@/hooks/useBackgroundColor";
 
 interface SSRProps {
   albumId: number;
@@ -11,10 +11,9 @@ interface Props {
 
 export default function Album({ album }: Props) {
   //console.log(album, "album page");
-  const { blurPicUrl, type, name, picUrl, description, subType, artists } =
-    album;
-
-  //const dominantColor = getDominantColor(picUrl);
+  const { type, name, picUrl, description, subType, artists } = album;
+  const { handleBackgroundColor } = useBackgroundColor(picUrl);
+  handleBackgroundColor();
 
   return (
     <main className="">
