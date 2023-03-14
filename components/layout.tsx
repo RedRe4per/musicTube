@@ -12,11 +12,13 @@ interface Props {
 
 export default function Layout({ children }: Props) {
   const { bgColor } = useContext(BgColorContext);
-  
+
   return (
     <div className="flex">
       <Nav />
-      <section className={`w-full lg:w-screen-70 bg-gradient-to-r from-gray-650 to-${bgColor}`}>
+      <section
+        className={`w-full lg:w-screen-70 bg-gradient-to-r from-gray-650 to-${bgColor}`}
+      >
         <Header />
         <main className="overflow-auto max-h-[82.8vh] scrollbar">
           {children}

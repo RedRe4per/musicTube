@@ -15,7 +15,7 @@ export default function Album({ album }: Props) {
     album;
 
   //const dominantColor = getDominantColor(picUrl);
-  
+
   return (
     <main className="">
       <section className="mt-6 ml-10 flex">

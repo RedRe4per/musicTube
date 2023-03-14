@@ -28,15 +28,15 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={`${rubik.variable} font-sans`}>
       <BgColorContext.Provider value={{ bgColor, setBgColor }}>
-      <AlertContext.Provider value={{ alertBox, setAlertBox }}>
-        <PlayerContext.Provider
-          value={{ playerList, setPlayerList, album, setAlbum }}
-        >
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </PlayerContext.Provider>
-      </AlertContext.Provider>
+        <AlertContext.Provider value={{ alertBox, setAlertBox }}>
+          <PlayerContext.Provider
+            value={{ playerList, setPlayerList, album, setAlbum }}
+          >
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </PlayerContext.Provider>
+        </AlertContext.Provider>
       </BgColorContext.Provider>
     </main>
   );
