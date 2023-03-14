@@ -2,13 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { AlertContext } from "@/contexts/AlertContext";
 
 export const AlertBox = () => {
-    const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
   const { alertBox } = useContext(AlertContext);
-  const {message="", messageType="alert-warning"} = alertBox;
+  const { message = "", messageType = "alert-warning" } = alertBox;
 
   useEffect(() => {
-    if(message !== ""){
-        setVisible(true)
+    if (message !== "") {
+      setVisible(true);
       setTimeout(() => {
         setVisible(false);
       }, 5000);

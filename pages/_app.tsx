@@ -18,7 +18,10 @@ const rubik = Rubik({
 export default function App({ Component, pageProps }: AppProps) {
   const [playerList, setPlayerList] = useState<IMusicDetail[]>([]);
   const [album, setAlbum] = useState<IAlbum | null>(null);
-  const [alertBox, setAlertBox] = useState<IAlertBox>({message:"", messageType: "alert-warning"})
+  const [alertBox, setAlertBox] = useState<IAlertBox>({
+    message: "",
+    messageType: "alert-warning",
+  });
 
   return (
     <main className={`${rubik.variable} font-sans`}>

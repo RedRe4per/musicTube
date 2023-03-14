@@ -20,7 +20,7 @@ export const useHandlePlay = (albumId: number) => {
     setAlbum(albumData.album);
 
     if (!albumData.songs[0].id) {
-      setAlertBox({message: "No song in this Album!"});
+      setAlertBox({ message: "No song in this Album!" });
       return;
     }
     const firstSongResponse = await fetch(
@@ -29,7 +29,7 @@ export const useHandlePlay = (albumId: number) => {
     );
     const firstSongData = await firstSongResponse.json();
     if (!firstSongData.data[0].url) {
-      setAlertBox({message: "No song resource found in this Album!"});
+      setAlertBox({ message: "No song resource found in this Album!" });
       return;
     }
     setPlayerList(firstSongData.data);
