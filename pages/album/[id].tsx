@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getDominantColor } from "@/utils/getDominantColor";
 
 interface SSRProps {
   albumId: number;
@@ -13,8 +14,10 @@ export default function Album({ album }: Props) {
   const { blurPicUrl, type, name, picUrl, description, subType, artists } =
     album;
 
+  //const dominantColor = getDominantColor(picUrl);
+  
   return (
-    <main>
+    <main className="">
       <section className="mt-6 ml-10 flex">
         <div>
           <Image

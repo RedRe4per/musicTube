@@ -8,6 +8,7 @@ import { IAlbum } from "@/interfaces/album";
 import { IAlertBox } from "@/interfaces/alertBox";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { AlertContext } from "@/contexts/AlertContext";
+import { BgColorContext } from "@/contexts/BgColorContext";
 
 const rubik = Rubik({
   subsets: ["latin"],
@@ -17,6 +18,7 @@ const rubik = Rubik({
 
 export default function App({ Component, pageProps }: AppProps) {
   const [playerList, setPlayerList] = useState<IMusicDetail[]>([]);
+  const [bgColor, setBgColor] = useState("gray-650");
   const [album, setAlbum] = useState<IAlbum | null>(null);
   const [alertBox, setAlertBox] = useState<IAlertBox>({
     message: "",
@@ -25,6 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <main className={`${rubik.variable} font-sans`}>
+      <BgColorContext.Provider value={{ bgColor, setBgColor }}>
       <AlertContext.Provider value={{ alertBox, setAlertBox }}>
         <PlayerContext.Provider
           value={{ playerList, setPlayerList, album, setAlbum }}
@@ -34,6 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
           </Layout>
         </PlayerContext.Provider>
       </AlertContext.Provider>
+      </BgColorContext.Provider>
     </main>
   );
 }
