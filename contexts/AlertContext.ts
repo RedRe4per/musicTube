@@ -1,25 +1,15 @@
 import { createContext } from "react";
+import { IAlertBox } from "@/interfaces/alertBox";
 
 interface AlertContextType {
-  message: string;
-  setMessage: (message: string) => void;
-  visible: boolean;
-  setVisible: (visible: boolean) => void;
-  messageType: "alert-error" | "alert-info" | "alert-success" | "alert-warning";
-  setMessageType: (
-    messageType:
-      | "alert-error"
-      | "alert-info"
-      | "alert-success"
-      | "alert-warning"
-  ) => void;
+    alertBox: IAlertBox;
+    setAlertBox: (albumBox: IAlertBox)=> void;
 }
 
 export const AlertContext = createContext<AlertContextType>({
-  message: "",
-  setMessage: () => {},
-  visible: false,
-  setVisible: () => {},
-  messageType: "alert-info",
-  setMessageType: () => {},
+    alertBox: {
+        message: "",
+        messageType: "alert-info",
+    },
+    setAlertBox: ()=>{}
 });

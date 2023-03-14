@@ -1,21 +1,19 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AlertContext } from "@/contexts/AlertContext";
 
 export const AlertBox = () => {
-  const {
-    message,
-    visible,
-    setVisible,
-    messageType = "alert-info",
-  } = useContext(AlertContext);
+    const [visible, setVisible] = useState(false);
+  const { alertBox } = useContext(AlertContext);
+  const {message="", messageType="alert-warning"} = alertBox;
 
   useEffect(() => {
-    if (visible) {
+    if(message !== ""){
+        setVisible(true)
       setTimeout(() => {
         setVisible(false);
       }, 5000);
     }
-  }, [visible]);
+  }, [message]);
 
   return (
     <section

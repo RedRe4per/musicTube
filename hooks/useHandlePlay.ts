@@ -6,7 +6,7 @@ import { IMusicDetail } from "@/interfaces/music";
 
 export const useHandlePlay = (albumId: number) => {
   const { setPlayerList, setAlbum } = useContext(PlayerContext);
-  const { setMessage, setVisible } = useContext(AlertContext);
+  const { setAlertBox } = useContext(AlertContext);
   const controller = new AbortController();
   const signal = controller.signal;
 
@@ -20,8 +20,7 @@ export const useHandlePlay = (albumId: number) => {
     setAlbum(albumData.album);
 
     if (!albumData.songs[0].id) {
-      setMessage("No song in this Album!");
-      setVisible(true);
+      setAlertBox({message: "No song in this Album!"});
       return;
     }
     const firstSongResponse = await fetch(
@@ -30,8 +29,7 @@ export const useHandlePlay = (albumId: number) => {
     );
     const firstSongData = await firstSongResponse.json();
     if (!firstSongData.data[0].url) {
-      setMessage("No song resource found in this Album!");
-      setVisible(true);
+      setAlertBox({message: "No song resource found in this Album!"});
       return;
     }
     setPlayerList(firstSongData.data);

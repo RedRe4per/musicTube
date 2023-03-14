@@ -5,6 +5,7 @@ import Layout from "@/components/layout";
 import { useState } from "react";
 import { IMusicDetail } from "@/interfaces/music";
 import { IAlbum } from "@/interfaces/album";
+import { IAlertBox } from "@/interfaces/alertBox";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { AlertContext } from "@/contexts/AlertContext";
 
@@ -17,24 +18,11 @@ const rubik = Rubik({
 export default function App({ Component, pageProps }: AppProps) {
   const [playerList, setPlayerList] = useState<IMusicDetail[]>([]);
   const [album, setAlbum] = useState<IAlbum | null>(null);
-  const [message, setMessage] = useState("");
-  const [visible, setVisible] = useState(false);
-  const [messageType, setMessageType] = useState<
-    "alert-error" | "alert-info" | "alert-success" | "alert-warning"
-  >("alert-info");
+  const [alertBox, setAlertBox] = useState<IAlertBox>({message:"", messageType: "alert-warning"})
 
   return (
     <main className={`${rubik.variable} font-sans`}>
-      <AlertContext.Provider
-        value={{
-          message,
-          setMessage,
-          visible,
-          setVisible,
-          messageType,
-          setMessageType,
-        }}
-      >
+      <AlertContext.Provider value={{ alertBox, setAlertBox }}>
         <PlayerContext.Provider
           value={{ playerList, setPlayerList, album, setAlbum }}
         >
