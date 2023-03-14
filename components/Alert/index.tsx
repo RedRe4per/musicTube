@@ -3,7 +3,7 @@ import { AlertContext } from "@/contexts/AlertContext";
 
 export const AlertBox = () => {
   const [visible, setVisible] = useState(false);
-  const { alertBox } = useContext(AlertContext);
+  const { alertBox, setAlertBox } = useContext(AlertContext);
   const { message = "", messageType = "alert-warning" } = alertBox;
 
   useEffect(() => {
@@ -11,6 +11,7 @@ export const AlertBox = () => {
       setVisible(true);
       setTimeout(() => {
         setVisible(false);
+        setAlertBox({message: ""})
       }, 5000);
     }
   }, [message]);
@@ -19,7 +20,7 @@ export const AlertBox = () => {
     <section
       className={`${
         visible ? "" : "hidden"
-      } absolute ml-[40vw] mt-10 w-[30%] alert ${messageType} shadow-lg`}
+      } absolute bottom-32 w-[30%] ml-10 animate-pulse alert ${messageType} shadow-lg`}
     >
       <div className="mx-auto">
         <svg
