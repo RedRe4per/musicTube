@@ -18,7 +18,9 @@ export default function Layout({ children }: Props) {
       <Nav />
       <section
         className={`w-full lg:w-screen-70`}
-        style={{background: `linear-gradient(to bottom, #1B1B1B, ${bgColor})`}}
+        style={{
+          background: `linear-gradient(to bottom, #1B1B1B, ${bgColor})`,
+        }}
       >
         <Header />
         <main className="overflow-auto max-h-[82.8vh] scrollbar">
