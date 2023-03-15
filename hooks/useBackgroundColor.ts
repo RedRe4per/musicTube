@@ -13,13 +13,8 @@ export const useBackgroundColor = (imageUrl?: string) => {
     }
     setPrevUrl(imageUrl);
 
-    console.log(imageUrl);
-    const baseUrl =
-      process.env.NODE_ENV === "production"
-        ? "https://music-app-tan-xi.vercel.app"
-        : "http://localhost:3000";
     const response = await fetch(
-      `${baseUrl}/api/colorExtract?imageUrl=${imageUrl}`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/colorExtract?imageUrl=${imageUrl}`
     );
     const data = await response.json();
     console.log(data, "set bg color times");
