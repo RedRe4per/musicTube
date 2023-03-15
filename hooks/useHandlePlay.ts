@@ -10,7 +10,7 @@ export const useHandlePlay = (albumId: number) => {
   const controller = new AbortController();
   const signal = controller.signal;
 
-  const handlePlay = async (e: React.MouseEvent<HTMLDivElement>) => {
+  const handlePlay = async (e: React.MouseEvent<HTMLDivElement> | React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${albumId}`,
