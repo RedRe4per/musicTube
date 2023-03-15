@@ -14,7 +14,7 @@ export const useBackgroundColor = (imageUrl?: string) => {
     setPrevUrl(imageUrl);
 
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=${imageUrl}`
+      `/api/colorExtract?imageUrl=${imageUrl}`
     );
     const data = await response.json();
     console.log(data.dominantColor, "set bg color times");
