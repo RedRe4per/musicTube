@@ -13,12 +13,12 @@ export const useBackgroundColor = (imageUrl?: string) => {
     }
     setPrevUrl(imageUrl);
 
-    const data1 = await fetch(
+    const response = await fetch(
       `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=${imageUrl}`
     );
-    const data2 = data1.json();
-    console.log(data2, "set bg color times");
-    //setBgColor(`rgba(${dominantColor})`);
+    const data = await response.json();
+    console.log(data.dominantColor, "set bg color times");
+    setBgColor(`rgba(${data.dominantColor})`);
   };
 
   return { handleBackgroundColor };

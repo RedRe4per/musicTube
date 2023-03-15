@@ -36,6 +36,5 @@ export default async function handler(
     }
   }
 
-  console.log(dominantColor, "backend");
   res.status(200).json({ dominantColor: dominantColor });
 }
