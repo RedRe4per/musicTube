@@ -2,8 +2,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { createCanvas, loadImage } from "canvas";
 
 export const config = {
-  runtime: 'nodejs',
-}
+  runtime: "nodejs",
+};
 
 type ResponseType = {
   dominantColor: string | null;
