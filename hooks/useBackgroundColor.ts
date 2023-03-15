@@ -17,7 +17,7 @@ export const useBackgroundColor = (imageUrl?: string) => {
       `${process.env.NEXT_PUBLIC_API_URL}/api/colorExtract?imageUrl=${imageUrl}`
     );
     const data = await response.json();
-    console.log(data, "set bg color times");
+    console.log(data, "I set bg color times");
     setBgColor(`rgba(${data.dominantColor})`);
   };
 
