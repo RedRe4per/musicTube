@@ -1,22 +1,21 @@
-import Image from "next/image";
 import { GetServerSidePropsContext } from "next";
 import { useBackgroundColor } from "@/hooks/useBackgroundColor";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { useContext } from "react";
 import { IAlbumDetails } from "@/interfaces/album";
-import { IMusicDetail } from "@/interfaces/music";
+import { IAlbumSong } from "@/interfaces/albumSong";
 import { AlbumInfo } from "@/components/AlbumInfo";
 import { AlbumPlay } from "@/components/AlbumPlay";
+import { AlbumPlayList } from "@/components/AlbumPlayList";
 
 interface Props {
   album: IAlbumDetails;
   code: number;
   resourceState: boolean;
-  songs: IMusicDetail;
+  songs: IAlbumSong[];
 }
 
 export default function Album(albumInfo: Props) {
-  console.log(albumInfo.songs);
   const { type, name, picUrl, description, subType, artists, id } =
     albumInfo.album;
   const { handleBackgroundColor } = useBackgroundColor(picUrl);
@@ -38,7 +37,7 @@ export default function Album(albumInfo: Props) {
         artists={artists}
       />
       <AlbumPlay albumId={id} />
-      <section>music list</section>
+      <AlbumPlayList albumSongs={albumInfo.songs} />
     </main>
   );
 }
