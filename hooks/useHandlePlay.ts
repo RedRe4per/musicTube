@@ -20,6 +20,7 @@ export const useHandlePlay = (albumId: number) => {
     );
     const albumData = await response.json();
     setAlbum(albumData.album);
+    console.log(albumData, "in hooks")
 
     if (!albumData.songs[0].id) {
       setAlertBox({ message: "No song in this Album!" });
