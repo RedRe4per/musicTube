@@ -18,7 +18,7 @@ export default async function handler(
   const { imageUrl } = req.query;
 
   const url = new URL(imageUrl as string);
-  const protocol =  https;
+  const protocol = https;
 
   const buffer = await new Promise<Buffer>((resolve, reject) => {
     protocol.get(imageUrl as string, (response) => {
@@ -38,13 +38,10 @@ export default async function handler(
     });
   });
 
-  const resizedBuffer = await sharp(buffer)
-    .resize({ width: 500 })
-    .toBuffer();
+  const resizedBuffer = await sharp(buffer).resize({ width: 500 }).toBuffer();
 
   const palette = await Vibrant.from(resizedBuffer).getPalette();
   const dominantColor = palette.Vibrant?.hex || null;
 
   res.status(200).json({ dominantColor });
 }
-
