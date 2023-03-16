@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
 import { IAlbumDetails } from "@/interfaces/album";
 import { IMusicDetail } from "@/interfaces/music";
+import { AlbumInfo } from "@/components/AlbumInfo";
 
 interface Props {
   album: IAlbumDetails;
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export default function Album(albumInfo: Props) {
+  console.log(albumInfo.songs)
   const { type, name, picUrl, description, subType, artists, id } =
     albumInfo.album;
   const { handleBackgroundColor } = useBackgroundColor(picUrl);
@@ -29,32 +31,7 @@ export default function Album(albumInfo: Props) {
       className="h-[200vh]"
       style={{ background: `linear-gradient(to bottom, #1B1B1B, ${bgColor})` }}
     >
-      <section className="mt-6 pl-10 pb-5 flex">
-        <div>
-          <Image
-            src={picUrl}
-            alt="bluePicUrl"
-            className="rounded-2xl shadow-2xl shadow-gray-650"
-            width={280}
-            height={280}
-          />
-        </div>
-        <section className="ml-10 mt-10 flex flex-col justify-around">
-          <section className="flex gap-4 text-tag-light text-green">
-            <span>{type}</span>
-            <span>{subType}</span>
-          </section>
-          <h3 className="text-h2-normal text-white-200">{name}</h3>
-          <section>
-            <h5 className="text-tag-normal text-gray-200">
-              Artists:{" "}
-              {artists.map((artist: any) => {
-                return <span key={artist.id}>{artist.name}&nbsp;&nbsp;</span>;
-              })}
-            </h5>
-          </section>
-        </section>
-      </section>
+      <AlbumInfo picUrl={picUrl} type={type} subType={subType} name={name} artists={artists} />
       <section className="mt-6 ml-10 flex gap-10">
         <button onClick={handlePlay} className="hover:animate-pulse">
           <Image
