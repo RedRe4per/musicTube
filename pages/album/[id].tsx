@@ -11,7 +11,7 @@ interface Props {
 
 export default function Album({ album }: Props) {
   const { type, name, picUrl, description, subType, artists, id } = album;
-  console.log(album)
+  console.log(album);
   const { handleBackgroundColor } = useBackgroundColor(picUrl);
   const { handlePlay } = useHandlePlay(id);
   const { bgColor } = useContext(BgColorContext);
