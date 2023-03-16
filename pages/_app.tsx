@@ -32,13 +32,13 @@ export default function App({ Component, pageProps }: AppProps) {
       <BgColorContext.Provider value={{ bgColor, setBgColor }}>
         <AlertContext.Provider value={{ alertBox, setAlertBox }}>
           <PlayAndPauseContext.Provider value={{ isMusicPlay, setIsMusicPlay }}>
-          <PlayerContext.Provider
-            value={{ playerList, setPlayerList, album, setAlbum }}
-          >
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </PlayerContext.Provider>
+            <PlayerContext.Provider
+              value={{ playerList, setPlayerList, album, setAlbum }}
+            >
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </PlayerContext.Provider>
           </PlayAndPauseContext.Provider>
         </AlertContext.Provider>
       </BgColorContext.Provider>

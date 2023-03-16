@@ -11,7 +11,7 @@ import { VolumeBar } from "./VolumeBar";
 
 export const MusicPlayerBar = () => {
   const { playerList } = useContext(PlayerContext);
-  const {isMusicPlay, setIsMusicPlay} = useContext(PlayAndPauseContext);
+  const { isMusicPlay, setIsMusicPlay } = useContext(PlayAndPauseContext);
   const musicPlayer = useRef<HTMLAudioElement>(null);
   const [isMusicLoop, setIsMusicLoop] = useState(false);
   const [isRandomPlay, setIsRandomPlay] = useState(false);
@@ -38,7 +38,7 @@ export const MusicPlayerBar = () => {
   }, [playerList]);
 
   const handlePlayAndPause = () => {
-    if(currentMusic) setIsMusicPlay(!isMusicPlay);
+    if (currentMusic) setIsMusicPlay(!isMusicPlay);
     isMusicPlay ? musicPlayer.current?.play() : musicPlayer.current?.pause();
   };
 
