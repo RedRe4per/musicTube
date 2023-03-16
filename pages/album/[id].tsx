@@ -11,11 +11,12 @@ interface Props {
   album: IAlbumDetails;
   code: number;
   resourceState: boolean;
-  songs: IMusicDetail
+  songs: IMusicDetail;
 }
 
 export default function Album(albumInfo: Props) {
-  const { type, name, picUrl, description, subType, artists, id } = albumInfo.album;
+  const { type, name, picUrl, description, subType, artists, id } =
+    albumInfo.album;
   const { handleBackgroundColor } = useBackgroundColor(picUrl);
   const { handlePlay } = useHandlePlay(id);
   const { bgColor } = useContext(BgColorContext);
