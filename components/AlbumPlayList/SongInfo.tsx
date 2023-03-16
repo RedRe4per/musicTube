@@ -54,7 +54,7 @@ export const SongInfo = React.memo(({ song, index }: Props) => {
       </div>
       <div className="flex-1 flex justify-between text-gray-200">
         <h6 className="text-h4-light">{al.name}</h6>
-        <h6>{formatTime(dt / 1000)}</h6>
+        <h6 className="w-20">{formatTime(dt / 1000)}</h6>
       </div>
     </section>
   );
