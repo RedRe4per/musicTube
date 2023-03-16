@@ -32,7 +32,14 @@ export default function App({ Component, pageProps }: AppProps) {
     <main className={`${rubik.variable} font-sans`}>
       <BgColorContext.Provider value={{ bgColor, setBgColor }}>
         <AlertContext.Provider value={{ alertBox, setAlertBox }}>
-          <PlayAndPauseContext.Provider value={{ isMusicPlay, setIsMusicPlay, currentMusic, setCurrentMusic }}>
+          <PlayAndPauseContext.Provider
+            value={{
+              isMusicPlay,
+              setIsMusicPlay,
+              currentMusic,
+              setCurrentMusic,
+            }}
+          >
             <PlayerContext.Provider
               value={{ playerList, setPlayerList, album, setAlbum }}
             >
