@@ -22,7 +22,7 @@ export const useHandlePlay = (albumId: number) => {
     setAlbum(albumData.album);
 
     if (!albumData.songs[0].id) {
-      setAlertBox({ message: "No song in this Album!" });
+      setAlertBox({ message: "No song in this Album!" }); 
       return;
     }
     const firstSongResponse = await fetch(

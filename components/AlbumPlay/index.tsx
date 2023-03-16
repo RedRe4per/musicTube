@@ -1,5 +1,8 @@
 import Image from "next/image";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
+import { useContext } from "react";
+import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
+import { PlayerContext } from "@/contexts/PlayerContext";
 
 interface Props {
   albumId: number;
@@ -7,12 +10,33 @@ interface Props {
 
 export const AlbumPlay = ({ albumId }: Props) => {
   const { handlePlay } = useHandlePlay(albumId);
+  const { isMusicPlay, setIsMusicPlay } = useContext(PlayAndPauseContext);
+  const { album } = useContext(PlayerContext);
+
+  const handlePlayClick = (e: React.MouseEvent<HTMLImageElement>) => {
+    if(album?.id !== albumId) handlePlay(e);
+    setIsMusicPlay(!isMusicPlay);
+  }
+
+  const handlePauseClick = () => {
+    setIsMusicPlay(!isMusicPlay);
+  }
 
   return (
     <section className="mt-6 ml-10 flex gap-10">
-      <button onClick={handlePlay} className="hover:animate-pulse">
+      <button className="hover:animate-pulse">
         <Image
+          onClick={(e) => handlePlayClick(e)}
+          className={ album?.id !== albumId || isMusicPlay? "": "hidden"}
           src="/icons/play-circle-fill.svg"
+          alt="play"
+          width={100}
+          height={100}
+        />
+        <Image
+          onClick={handlePauseClick}
+          className={ album?.id === albumId && !isMusicPlay? "": "hidden"}
+          src="/icons/pause-circle-fill.svg"
           alt="play"
           width={100}
           height={100}

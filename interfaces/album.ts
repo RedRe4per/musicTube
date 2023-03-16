@@ -8,6 +8,7 @@ export interface IAlbum {
   coverUrl: string;
   price: number;
   saleNum: number;
+  id?: number;
 }
 
 export interface IAlbumList {
