@@ -15,7 +15,9 @@ export const SongInfo = React.memo(({ song, index }: Props) => {
     setIndexDisplay(mode);
   };
 
-  const handlePlay = () => {};
+  const handlePlay = () => {
+    console.log(1)
+  };
 
   return (
     <section
@@ -30,13 +32,12 @@ export const SongInfo = React.memo(({ song, index }: Props) => {
           className="w-16 flex justify-center items-center"
         >
           <h6
-            className="text-gray-200"
-            style={{ display: indexDisplay === "play" ? "none" : "" }}
+            className={`text-gray-200 ${indexDisplay === "play" ? "hidden" : ""}`}
           >
             {index}
           </h6>
           <svg
-            style={{ display: indexDisplay === "index" ? "none" : "" }}
+            className={indexDisplay === "index" ? "hidden" : ""}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             width="32"
