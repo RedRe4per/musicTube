@@ -52,10 +52,6 @@ export default function Album({ album }: Props) {
           </section>
         </section>
       </section>
-      {/* <section>
-        <p>{description}</p>
-        
-        </section> */}
       <section className="mt-6 ml-10 flex gap-10">
         <button onClick={handlePlay} className="hover:animate-pulse">
           <Image
