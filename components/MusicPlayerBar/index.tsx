@@ -1,6 +1,7 @@
 import { IMusicDetail } from "@/interfaces/music";
 import { useState, useRef, useContext, useEffect } from "react";
 import { PlayerContext } from "@/contexts/PlayerContext";
+import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
 import { SkipButton } from "./SkipButton";
 import { SequenceButton } from "./SequenceButton";
 import { PlayerSwitchButton } from "./PlayerSwitchButton";
@@ -10,8 +11,8 @@ import { VolumeBar } from "./VolumeBar";
 
 export const MusicPlayerBar = () => {
   const { playerList } = useContext(PlayerContext);
+  const {isMusicPlay, setIsMusicPlay} = useContext(PlayAndPauseContext);
   const musicPlayer = useRef<HTMLAudioElement>(null);
-  const [isMusicPlay, setIsMusicPlay] = useState(true);
   const [isMusicLoop, setIsMusicLoop] = useState(false);
   const [isRandomPlay, setIsRandomPlay] = useState(false);
   const [currentMusic, setCurrentMusic] = useState<IMusicDetail | null>(null);
@@ -37,7 +38,7 @@ export const MusicPlayerBar = () => {
   }, [playerList]);
 
   const handlePlayAndPause = () => {
-    setIsMusicPlay(!isMusicPlay);
+    if(currentMusic) setIsMusicPlay(!isMusicPlay);
     isMusicPlay ? musicPlayer.current?.play() : musicPlayer.current?.pause();
   };
 
