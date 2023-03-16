@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function Album(albumInfo: Props) {
-  console.log(albumInfo.songs)
+  console.log(albumInfo.songs);
   const { type, name, picUrl, description, subType, artists, id } =
     albumInfo.album;
   const { handleBackgroundColor } = useBackgroundColor(picUrl);
@@ -31,7 +31,13 @@ export default function Album(albumInfo: Props) {
       className="h-[200vh]"
       style={{ background: `linear-gradient(to bottom, #1B1B1B, ${bgColor})` }}
     >
-      <AlbumInfo picUrl={picUrl} type={type} subType={subType} name={name} artists={artists} />
+      <AlbumInfo
+        picUrl={picUrl}
+        type={type}
+        subType={subType}
+        name={name}
+        artists={artists}
+      />
       <section className="mt-6 ml-10 flex gap-10">
         <button onClick={handlePlay} className="hover:animate-pulse">
           <Image
