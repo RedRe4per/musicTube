@@ -10,8 +10,7 @@
     "prettier": "prettier --write .",
     "test": "jest",
     "cypress": "cypress open",
-    "pre-commit": "npm run prettier && npm run lint && npm run test",
-    "vercel-build": "npm install libuuid-devel libmount-devel && cp /lib64/{libuuid,libmount,libblkid}.so.1 node_modules/canvas/build/Release/ && next build"
+    "pre-commit": "npm run prettier && npm run lint && npm run test"
   },
   "engineStrict": true,
   "engines": {
