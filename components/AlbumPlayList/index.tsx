@@ -7,7 +7,6 @@ interface Props {
 }
 
 export const AlbumPlayList = React.memo(({ albumSongs }: Props) => {
-  console.log(albumSongs, "album songs");
   return (
     <section className="mx-10 my-10 text-white-50 text-h4-normal ">
       <section className="border-gray-400 border-b">

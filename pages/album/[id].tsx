@@ -27,6 +27,7 @@ export default function Album(albumInfo: Props) {
 
   return (
     <main
+      className="shadow-inner shadow-gray-650"
       style={{
         background: `linear-gradient(to bottom, #1B1B1B, ${mixColor(
           "#1B1B1B",
