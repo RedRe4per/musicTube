@@ -37,8 +37,8 @@ export const MusicPlayerBar = () => {
   }, [playerList]);
 
   useEffect(() => {
-    isMusicPlay ?  musicPlayer.current?.pause() : musicPlayer.current?.play();
-  }, [isMusicPlay])
+    isMusicPlay ? musicPlayer.current?.pause() : musicPlayer.current?.play();
+  }, [isMusicPlay]);
 
   const handlePlayAndPause = () => {
     if (currentMusic) setIsMusicPlay(!isMusicPlay);
