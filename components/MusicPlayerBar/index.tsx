@@ -36,9 +36,12 @@ export const MusicPlayerBar = () => {
     }
   }, [playerList]);
 
+  useEffect(() => {
+    isMusicPlay ?  musicPlayer.current?.pause() : musicPlayer.current?.play();
+  }, [isMusicPlay])
+
   const handlePlayAndPause = () => {
     if (currentMusic) setIsMusicPlay(!isMusicPlay);
-    isMusicPlay ? musicPlayer.current?.play() : musicPlayer.current?.pause();
   };
 
   const handleSkipMusic = (forward: "last" | "next") => {
@@ -95,6 +98,7 @@ export const MusicPlayerBar = () => {
         <ProgressBar
           currentMusic={currentMusic}
           isMusicLoop={isMusicLoop}
+          setIsMusicPlay={setIsMusicPlay}
           handleSkipMusic={handleSkipMusic}
           ref={musicPlayer}
         />

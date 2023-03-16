@@ -10,11 +10,12 @@ import {
 interface Props {
   currentMusic: IMusicDetail | null;
   isMusicLoop: boolean;
+  setIsMusicPlay: (param: boolean)=>void;
   handleSkipMusic: (param: "next" | "last") => void;
 }
 
 export const ProgressBar = React.forwardRef(
-  ({ currentMusic, isMusicLoop, handleSkipMusic }: Props, musicPlayer: any) => {
+  ({ currentMusic, isMusicLoop, setIsMusicPlay, handleSkipMusic }: Props, musicPlayer: any) => {
     const progressRef = useRef<HTMLDivElement>(null);
     const [currentPlayRadio, setCurrentPlayRadio] = useState(0);
     const [currentMusicTime, setCurrentMusicTime] = useState(0);
@@ -71,7 +72,7 @@ export const ProgressBar = React.forwardRef(
         return false;
       });
       removeGlobalListener(handleMouseMove, handleMouseUp);
-      musicPlayer.current?.play();
+      setIsMusicPlay(false);
       handlePlay();
     };
 
