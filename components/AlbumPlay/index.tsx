@@ -14,8 +14,11 @@ export const AlbumPlay = ({ albumId }: Props) => {
   const { album } = useContext(PlayerContext);
 
   const handlePlayClick = (e: React.MouseEvent<HTMLImageElement>) => {
-    if (album?.id !== albumId) handlePlay(e);
-    setIsMusicPlay(!isMusicPlay);
+    if (album?.id !== albumId) {
+      handlePlay(e);
+    } else {
+      setIsMusicPlay(!isMusicPlay);
+    }
   };
 
   const handlePauseClick = () => {
