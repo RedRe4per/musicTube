@@ -11,7 +11,7 @@ export const AlbumPlayList = React.memo(({ albumSongs }: Props) => {
   return (
     <section className="mx-10 my-10 text-white-50 text-h4-normal ">
       <section className="border-gray-400 border-b">
-        <section className="flex mb-4 mx-10">
+        <section className="flex mb-4 ml-3 mr-10">
           <div className="flex-1 flex">
             <h6 className="w-16 flex justify-center items-center">
               <span>#</span>

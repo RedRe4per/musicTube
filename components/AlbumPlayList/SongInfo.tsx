@@ -19,7 +19,7 @@ export const SongInfo = React.memo(({ song, index }: Props) => {
     <section
       onMouseEnter={() => handleHover("play")}
       onMouseLeave={() => handleHover("index")}
-      className="flex py-3 px-10 items-center hover:bg-gray-400 rounded-lg"
+      className="flex py-3 pl-3 pr-10 items-center hover:bg-gray-400 rounded-lg"
     >
       <div className="flex-1 flex items-center">
         <section className="w-16 flex justify-center items-center">
