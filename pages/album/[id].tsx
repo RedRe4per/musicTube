@@ -24,10 +24,15 @@ export default function Album(albumInfo: Props) {
   if (typeof window !== "undefined") {
     handleBackgroundColor();
   }
-  
+
   return (
     <main
-      style={{ background: `linear-gradient(to bottom, #1B1B1B, ${mixColor("#1B1B1B", bgColor)})` }}
+      style={{
+        background: `linear-gradient(to bottom, #1B1B1B, ${mixColor(
+          "#1B1B1B",
+          bgColor
+        )})`,
+      }}
     >
       <AlbumInfo
         picUrl={picUrl}
