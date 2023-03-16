@@ -15,14 +15,19 @@ export const SongInfo = React.memo(({ song, index }: Props) => {
     setIndexDisplay(mode);
   };
 
+  const handlePlay = () => {
+
+  };
+
   return (
     <section
       onMouseEnter={() => handleHover("play")}
       onMouseLeave={() => handleHover("index")}
+      onDoubleClick={handlePlay}
       className="flex py-3 pl-3 pr-10 items-center hover:bg-gray-400 rounded-lg"
     >
       <div className="flex-1 flex items-center">
-        <section className="w-16 flex justify-center items-center">
+        <section onClick={handlePlay} className="w-16 flex justify-center items-center">
           <h6
             className="text-gray-200"
             style={{ display: indexDisplay === "play" ? "none" : "" }}
