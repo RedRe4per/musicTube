@@ -15,7 +15,6 @@ export const useBackgroundColor = (imageUrl?: string) => {
 
     const response = await fetch(`/api/colorExtract?imageUrl=${imageUrl}`);
     const data = await response.json();
-    console.log(data, "I set bg color times");
     setBgColor(data.dominantColor);
   };
 
