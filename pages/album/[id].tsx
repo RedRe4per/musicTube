@@ -1,12 +1,9 @@
 import Image from "next/image";
+import { GetServerSidePropsContext } from "next";
 import { useBackgroundColor } from "@/hooks/useBackgroundColor";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { useContext } from "react";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
-
-interface SSRProps {
-  albumId: number;
-}
 
 interface Props {
   album: any;
@@ -14,6 +11,7 @@ interface Props {
 
 export default function Album({ album }: Props) {
   const { type, name, picUrl, description, subType, artists, id } = album;
+  console.log(album)
   const { handleBackgroundColor } = useBackgroundColor(picUrl);
   const { handlePlay } = useHandlePlay(id);
   const { bgColor } = useContext(BgColorContext);
@@ -81,7 +79,7 @@ export default function Album({ album }: Props) {
   );
 }
 
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${id}`
