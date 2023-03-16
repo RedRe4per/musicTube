@@ -8,6 +8,7 @@ import { AlbumInfo } from "@/components/AlbumInfo";
 import { AlbumPlay } from "@/components/AlbumPlay";
 import { AlbumPlayList } from "@/components/AlbumPlayList";
 import { mixColor } from "@/utils/mixColor";
+import { Footer } from "@/layouts/footer";
 
 interface Props {
   album: IAlbumDetails;
@@ -27,7 +28,7 @@ export default function Album(albumInfo: Props) {
 
   return (
     <main
-      className="shadow-inner shadow-gray-650"
+      className="transition-transform duration-1000 shadow-inner shadow-gray-650"
       style={{
         background: `linear-gradient(to bottom, #1B1B1B, ${mixColor(
           "#1B1B1B",
@@ -44,6 +45,7 @@ export default function Album(albumInfo: Props) {
       />
       <AlbumPlay albumId={id} />
       <AlbumPlayList albumSongs={albumInfo.songs} />
+      <Footer />
     </main>
   );
 }
