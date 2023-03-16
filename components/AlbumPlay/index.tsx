@@ -14,20 +14,20 @@ export const AlbumPlay = ({ albumId }: Props) => {
   const { album } = useContext(PlayerContext);
 
   const handlePlayClick = (e: React.MouseEvent<HTMLImageElement>) => {
-    if(album?.id !== albumId) handlePlay(e);
+    if (album?.id !== albumId) handlePlay(e);
     setIsMusicPlay(!isMusicPlay);
-  }
+  };
 
   const handlePauseClick = () => {
     setIsMusicPlay(!isMusicPlay);
-  }
+  };
 
   return (
     <section className="mt-6 ml-10 flex gap-10">
       <button className="hover:animate-pulse">
         <Image
           onClick={(e) => handlePlayClick(e)}
-          className={ album?.id !== albumId || isMusicPlay? "": "hidden"}
+          className={album?.id !== albumId || isMusicPlay ? "" : "hidden"}
           src="/icons/play-circle-fill.svg"
           alt="play"
           width={100}
@@ -35,7 +35,7 @@ export const AlbumPlay = ({ albumId }: Props) => {
         />
         <Image
           onClick={handlePauseClick}
-          className={ album?.id === albumId && !isMusicPlay? "": "hidden"}
+          className={album?.id === albumId && !isMusicPlay ? "" : "hidden"}
           src="/icons/pause-circle-fill.svg"
           alt="play"
           width={100}
