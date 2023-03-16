@@ -1,4 +1,3 @@
-import { IMusicDetail } from "@/interfaces/music";
 import { useState, useRef, useContext, useEffect } from "react";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
@@ -11,11 +10,10 @@ import { VolumeBar } from "./VolumeBar";
 
 export const MusicPlayerBar = () => {
   const { playerList } = useContext(PlayerContext);
-  const { isMusicPlay, setIsMusicPlay } = useContext(PlayAndPauseContext);
+  const { isMusicPlay, setIsMusicPlay, currentMusic, setCurrentMusic } = useContext(PlayAndPauseContext);
   const musicPlayer = useRef<HTMLAudioElement>(null);
   const [isMusicLoop, setIsMusicLoop] = useState(false);
   const [isRandomPlay, setIsRandomPlay] = useState(false);
-  const [currentMusic, setCurrentMusic] = useState<IMusicDetail | null>(null);
 
   const handleCanPlayThrough = () => {
     musicPlayer.current?.play();

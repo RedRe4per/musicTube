@@ -22,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [bgColor, setBgColor] = useState("gray-650");
   const [album, setAlbum] = useState<IAlbum | null>(null);
   const [isMusicPlay, setIsMusicPlay] = useState(true);
+  const [currentMusic, setCurrentMusic] = useState<IMusicDetail | null>(null);
   const [alertBox, setAlertBox] = useState<IAlertBox>({
     message: "",
     messageType: "alert-warning",
@@ -31,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <main className={`${rubik.variable} font-sans`}>
       <BgColorContext.Provider value={{ bgColor, setBgColor }}>
         <AlertContext.Provider value={{ alertBox, setAlertBox }}>
-          <PlayAndPauseContext.Provider value={{ isMusicPlay, setIsMusicPlay }}>
+          <PlayAndPauseContext.Provider value={{ isMusicPlay, setIsMusicPlay, currentMusic, setCurrentMusic }}>
             <PlayerContext.Provider
               value={{ playerList, setPlayerList, album, setAlbum }}
             >
