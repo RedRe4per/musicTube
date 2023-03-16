@@ -18,7 +18,7 @@ export const useBackgroundColor = (imageUrl?: string) => {
     );
     const data = await response.json();
     console.log(data, "I set bg color times");
-    setBgColor(`rgba(${data.dominantColor})`);
+    setBgColor(data.dominantColor);
   };
 
   return { handleBackgroundColor };
