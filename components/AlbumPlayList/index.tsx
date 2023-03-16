@@ -13,7 +13,9 @@ export const AlbumPlayList = React.memo(({ albumSongs }: Props) => {
       <section className="border-gray-400 border-b">
         <section className="flex mb-4 mx-10">
           <div className="flex-1 flex">
-            <h6 className="w-10">#</h6>
+            <h6 className="w-16 flex justify-center items-center">
+                <span>#</span>
+            </h6>
             <h6>Title</h6>
           </div>
           <div className="flex-1 flex justify-between">
