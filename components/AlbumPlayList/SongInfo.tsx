@@ -16,7 +16,7 @@ export const SongInfo = React.memo(({ song, index }: Props) => {
   };
 
   const handlePlay = () => {
-    console.log(1)
+    console.log(1);
   };
 
   return (
@@ -32,7 +32,9 @@ export const SongInfo = React.memo(({ song, index }: Props) => {
           className="w-16 flex justify-center items-center"
         >
           <h6
-            className={`text-gray-200 ${indexDisplay === "play" ? "hidden" : ""}`}
+            className={`text-gray-200 ${
+              indexDisplay === "play" ? "hidden" : ""
+            }`}
           >
             {index}
           </h6>
