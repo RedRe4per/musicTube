@@ -18,14 +18,14 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
   const { handlePlay } = useHandlePlay(albumId, index);
   const { isMusicPlay, setIsMusicPlay, currentMusic } =
     useContext(PlayAndPauseContext);
-  const { musicList } = useContext(PlayerContext);
+  const { musicListId } = useContext(PlayerContext);
 
   const handleHover = (mode: "index" | "play") => {
     setIndexDisplay(mode);
   };
 
   const handlePlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (musicList?.id !== albumId || id !== currentMusic?.id) {
+    if (musicListId !== albumId || id !== currentMusic?.id) {
       handlePlay(e);
     } else {
       setIsMusicPlay(!isMusicPlay);

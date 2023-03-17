@@ -20,7 +20,7 @@ const rubik = Rubik({
 export default function App({ Component, pageProps }: AppProps) {
   const [playerList, setPlayerList] = useState<IMusicDetail[]>([]);
   const [bgColor, setBgColor] = useState("gray-650");
-  const [musicList, setMusicList] = useState<IAlbum | null>(null);
+  const [musicListId, setMusicListId] = useState<number | null>(null);
   const [isMusicPlay, setIsMusicPlay] = useState(true);
   const [currentMusic, setCurrentMusic] = useState<IMusicDetail | null>(null);
   const [alertBox, setAlertBox] = useState<IAlertBox>({
@@ -41,7 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
             }}
           >
             <PlayerContext.Provider
-              value={{ playerList, setPlayerList, musicList, setMusicList }}
+              value={{ playerList, setPlayerList, musicListId, setMusicListId }}
             >
               <Layout>
                 <Component {...pageProps} />

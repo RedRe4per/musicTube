@@ -5,13 +5,13 @@ import { createContext } from "react";
 interface PlayerContextType {
   playerList: IMusicDetail[];
   setPlayerList: (playerList: IMusicDetail[]) => void;
-  musicList: IAlbum | null;
-  setMusicList: (album: IAlbum | null) => void;
+  musicListId: number | null;
+  setMusicListId: (musicListId: number | null) => void;
 }
 
 export const PlayerContext = createContext<PlayerContextType>({
   playerList: [],
   setPlayerList: () => {},
-  musicList: null,
-  setMusicList: () => {},
+  musicListId: null,
+  setMusicListId: () => {},
 });

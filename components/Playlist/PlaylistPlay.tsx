@@ -12,10 +12,10 @@ interface Props {
 export const PlaylistPlay = ({ playlistId, trackCount }: Props) => {
   const { handlePlay } = useHandlePlay(playlistId, 0, "playlist");
   const { isMusicPlay, setIsMusicPlay } = useContext(PlayAndPauseContext);
-  const { musicList } = useContext(PlayerContext);
+  const { musicListId } = useContext(PlayerContext);
 
   const handlePlayClick = (e: React.MouseEvent<HTMLImageElement>) => {
-    if (musicList?.id !== playlistId) {
+    if (musicListId !== playlistId) {
       handlePlay(e);
     } else {
       setIsMusicPlay(!isMusicPlay);
@@ -32,7 +32,7 @@ export const PlaylistPlay = ({ playlistId, trackCount }: Props) => {
         <Image
           onClick={(e) => handlePlayClick(e)}
           className={
-            musicList?.id !== playlistId || isMusicPlay ? "" : "hidden"
+            musicListId !== playlistId || isMusicPlay ? "" : "hidden"
           }
           src="/icons/play-circle-fill.svg"
           alt="play"
@@ -42,7 +42,7 @@ export const PlaylistPlay = ({ playlistId, trackCount }: Props) => {
         <Image
           onClick={handlePauseClick}
           className={
-            musicList?.id === playlistId && !isMusicPlay ? "" : "hidden"
+            musicListId === playlistId && !isMusicPlay ? "" : "hidden"
           }
           src="/icons/pause-circle-fill.svg"
           alt="play"
