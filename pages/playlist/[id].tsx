@@ -12,51 +12,62 @@ import { mixColor } from "@/utils/mixColor";
 import { Footer } from "@/layouts/footer";
 
 interface Props {
-    code: number;
-    fromUserCount: number;
-    playlist: IPlaylist;
-    privileges: IPrivilege[];
+  code: number;
+  fromUserCount: number;
+  playlist: IPlaylist;
+  privileges: IPrivilege[];
 }
 
 export default function Album(playlistInfo: Props) {
-    console.log(playlistInfo, "info")
-    const { name, coverImgUrl, description, creator, id, tags, trackCount, playCount, shareCount, subscribedCount, trackIds } =
-        playlistInfo.playlist;
-    const { handleBackgroundColor } = useBackgroundColor(coverImgUrl);
-    const { bgColor } = useContext(BgColorContext);
-    if (typeof window !== "undefined") {
-        handleBackgroundColor();
-    }
+  console.log(playlistInfo, "info");
+  const {
+    name,
+    coverImgUrl,
+    description,
+    creator,
+    id,
+    tags,
+    trackCount,
+    playCount,
+    shareCount,
+    subscribedCount,
+    trackIds,
+  } = playlistInfo.playlist;
+  const { handleBackgroundColor } = useBackgroundColor(coverImgUrl);
+  const { bgColor } = useContext(BgColorContext);
+  if (typeof window !== "undefined") {
+    handleBackgroundColor();
+  }
 
-    //   return (
-    //     <main
-    //       className="transition-transform duration-1000 shadow-inner shadow-gray-650"
-    //       style={{
-    //         background: `linear-gradient(to bottom, #1B1B1B, ${mixColor(
-    //           "#1B1B1B",
-    //           bgColor
-    //         )})`,
-    //       }}
-    //     >
-    //       <AlbumInfo
-    //         picUrl={picUrl}
-    //         type={type}
-    //         subType={subType}
-    //         name={name}
-    //         artists={artists}
-    //       />
-    //       <AlbumPlay albumId={id} />
-    //       <AlbumPlayList albumSongs={albumInfo.songs} albumId={id} />
-    //       <Footer />
-    //     </main>
-    //   );
+  //   return (
+  //     <main
+  //       className="transition-transform duration-1000 shadow-inner shadow-gray-650"
+  //       style={{
+  //         background: `linear-gradient(to bottom, #1B1B1B, ${mixColor(
+  //           "#1B1B1B",
+  //           bgColor
+  //         )})`,
+  //       }}
+  //     >
+  //       <AlbumInfo
+  //         picUrl={picUrl}
+  //         type={type}
+  //         subType={subType}
+  //         name={name}
+  //         artists={artists}
+  //       />
+  //       <AlbumPlay albumId={id} />
+  //       <AlbumPlayList albumSongs={albumInfo.songs} albumId={id} />
+  //       <Footer />
+  //     </main>
+  //   );
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const { id } = context.query;
-    const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/playlist/detail?id=${id}`
-    );
-    const playlistInfo = await response.json();
-    return { props: playlistInfo };
+  const { id } = context.query;
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/playlist/detail?id=${id}`
+  );
+  const playlistInfo = await response.json();
+  return { props: playlistInfo };
 }
