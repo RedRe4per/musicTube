@@ -25,7 +25,6 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
   };
 
   const handlePlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    console.log(album?.id, albumId, "song:", id, currentMusic?.id);
     if (album?.id !== albumId || id !== currentMusic?.id) {
       handlePlay(e);
     } else {
