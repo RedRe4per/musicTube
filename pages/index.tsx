@@ -28,14 +28,20 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="overflow-auto scrollbar">
-        <PlaylistList title={"Top Playlists"} playlistList = {topPlaylistList}/>
+        <PlaylistList title={"Top Playlists"} playlistList={topPlaylistList} />
         <AlbumList
           title={"European & American Recommended Album"}
           albumList={albumAreaEA}
         />
-        <AlbumList title={"Japanese Recommended Album"} albumList={albumAreaJP} />
+        <AlbumList
+          title={"Japanese Recommended Album"}
+          albumList={albumAreaJP}
+        />
         <AlbumList title={"Korean Recommended Album"} albumList={albumAreaKR} />
-        <AlbumList title={"Chinese Recommended Album"} albumList={albumAreaZH} />
+        <AlbumList
+          title={"Chinese Recommended Album"}
+          albumList={albumAreaZH}
+        />
       </main>
     </section>
   );
@@ -64,7 +70,13 @@ export async function getStaticProps() {
   const topPlaylistList = await topPlaylistListResponse.json();
 
   return {
-    props: { albumAreaEA, albumAreaJP, albumAreaKR, albumAreaZH, topPlaylistList },
+    props: {
+      albumAreaEA,
+      albumAreaJP,
+      albumAreaKR,
+      albumAreaZH,
+      topPlaylistList,
+    },
     revalidate: 86400,
   };
 }

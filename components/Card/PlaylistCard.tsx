@@ -4,19 +4,22 @@ import { useState } from "react";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
 
 interface Props {
-    coverUrl: string;
-    playlistName: string;
-    playlistId: number;
-    tags: string[];
+  coverUrl: string;
+  playlistName: string;
+  playlistId: number;
+  tags: string[];
 }
 
-export const PlaylistCard = ({ coverUrl, playlistName, playlistId, tags }: Props) => {
+export const PlaylistCard = ({
+  coverUrl,
+  playlistName,
+  playlistId,
+  tags,
+}: Props) => {
   const [showPlay, setShowPlay] = useState(false);
   // const { handlePlay } = useHandlePlay(albumId);
 
-  const handlePlayPlaylist = () => {
-
-  }
+  const handlePlayPlaylist = () => {};
 
   return (
     <section className="max-w-[1/8] h-[250px] lg:h-[335px] relative overflow-hidden rounded-xl p-1 hover:bg-gray-600 hover:shadow-md hover:shadow-white-50 hover:-translate-y-2">
