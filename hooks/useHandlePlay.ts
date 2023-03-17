@@ -45,7 +45,6 @@ export const useHandlePlay = (albumId: number, songIndex: number = 0) => {
       ...songList.slice(songIndex),
       ...songList.slice(0, songIndex),
     ];
-    console.log(sortedSongIdList);
     const songsResponse = await fetch(
       `${
         process.env.NEXT_PUBLIC_SERVER_ADDRESS
