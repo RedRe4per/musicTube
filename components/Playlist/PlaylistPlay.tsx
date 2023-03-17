@@ -31,9 +31,7 @@ export const PlaylistPlay = ({ playlistId, trackCount }: Props) => {
       <button className="hover:animate-pulse">
         <Image
           onClick={(e) => handlePlayClick(e)}
-          className={
-            musicListId !== playlistId || isMusicPlay ? "" : "hidden"
-          }
+          className={musicListId !== playlistId || isMusicPlay ? "" : "hidden"}
           src="/icons/play-circle-fill.svg"
           alt="play"
           width={100}
@@ -41,9 +39,7 @@ export const PlaylistPlay = ({ playlistId, trackCount }: Props) => {
         />
         <Image
           onClick={handlePauseClick}
-          className={
-            musicListId === playlistId && !isMusicPlay ? "" : "hidden"
-          }
+          className={musicListId === playlistId && !isMusicPlay ? "" : "hidden"}
           src="/icons/pause-circle-fill.svg"
           alt="play"
           width={100}
