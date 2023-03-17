@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import { Track } from "@/interfaces/playlist";
 import { formatTime } from "@/utils/formatTime";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
@@ -123,6 +124,10 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
             </svg>
           </div>
         </section>
+        <section className="flex gap-4">
+            <div>
+              <Image className="rounded-sm" src={al.picUrl} alt="cover" width={50} height={50} />
+            </div>
         <div className="flex flex-col gap-2">
           <div
             className={
@@ -139,6 +144,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
             })}
           </div>
         </div>
+        </section>
       </div>
       <div className="flex-1 flex justify-between text-gray-200">
         <h6 className="text-h4-light">{al.name}</h6>
