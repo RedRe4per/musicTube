@@ -54,13 +54,13 @@ export const PlaylistCard = ({
           <h5 className="text-button-normal text-white-200 mt-[15px] ">
             {playlistName}
           </h5>
-          <h6 className="text-tag-normal text-gray-400 mt-[7px] ">
+          <div className="text-tag-normal text-green brightness-90 mt-[7px]">
             {tags.map((tag, index) => {
               return (
-                <span key={index}>{switchTopPlaylistTag(tag)}&nbsp;&nbsp;</span>
+                <span key={index} className="inline-block">{switchTopPlaylistTag(tag)}&nbsp;&nbsp;</span>
               );
             })}
-          </h6>
+          </div>
         </section>
       </Link>
     </section>
