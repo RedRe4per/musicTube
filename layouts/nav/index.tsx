@@ -1,6 +1,6 @@
-import { NavPages } from "@/components/Nav/NavPages";
-import { NavLibrary } from "@/components/Nav/NavLibrary";
-import { NavPlaylist } from "@/components/Nav/NavPlaylist";
+import { NavPages } from "@/components/NavigationBar/NavPages";
+import { NavLibrary } from "@/components/NavigationBar/NavLibrary";
+import { NavPlaylist } from "@/components/NavigationBar/NavPlaylist";
 
 export const Nav = () => {
   return (
