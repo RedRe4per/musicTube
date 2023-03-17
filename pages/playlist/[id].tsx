@@ -37,32 +37,32 @@ export default function Playlist(playlistInfo: Props) {
     handleBackgroundColor();
   }
 
-    return (
-      <main
-        className="transition-transform duration-1000 shadow-inner shadow-gray-650"
-        style={{
-          background: `linear-gradient(to bottom, #1B1B1B, ${mixColor(
-            "#1B1B1B",
-            bgColor
-          )})`,
-        }}
-      >
-        <PlaylistInfo
-          coverImgUrl={coverImgUrl}
-          name={name}
-          description={description}
-          creator={creator}
-          tags={tags}
-          trackCount={trackCount}
-          playCount={playCount}
-          shareCount={shareCount}
-          subscribedCount={subscribedCount}
-        />
-        {/* <AlbumPlay albumId={id} />
+  return (
+    <main
+      className="transition-transform duration-1000 shadow-inner shadow-gray-650"
+      style={{
+        background: `linear-gradient(to bottom, #1B1B1B, ${mixColor(
+          "#1B1B1B",
+          bgColor
+        )})`,
+      }}
+    >
+      <PlaylistInfo
+        coverImgUrl={coverImgUrl}
+        name={name}
+        description={description}
+        creator={creator}
+        tags={tags}
+        trackCount={trackCount}
+        playCount={playCount}
+        shareCount={shareCount}
+        subscribedCount={subscribedCount}
+      />
+      {/* <AlbumPlay albumId={id} />
         <AlbumPlayList albumSongs={albumInfo.songs} albumId={id} /> */}
-        <Footer />
-      </main>
-    );
+      <Footer />
+    </main>
+  );
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
