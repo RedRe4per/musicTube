@@ -57,8 +57,8 @@ export default function Playlist(playlistInfo: Props) {
         shareCount={shareCount}
         subscribedCount={subscribedCount}
       />
-      <PlaylistPlay albumId={id} trackCount={trackCount}/>
-        {/* <AlbumPlayList albumSongs={albumInfo.songs} albumId={id} /> */}
+      <PlaylistPlay albumId={id} trackCount={trackCount} />
+      {/* <AlbumPlayList albumSongs={albumInfo.songs} albumId={id} /> */}
       <Footer />
     </main>
   );
