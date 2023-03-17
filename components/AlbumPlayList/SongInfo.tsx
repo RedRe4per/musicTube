@@ -24,7 +24,7 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
     setIndexDisplay(mode);
   };
 
-  const handlePlayClick = (e: React.MouseEvent<HTMLImageElement>) => {
+  const handlePlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     console.log(album?.id, albumId, "song:", id, currentMusic?.id);
     if (album?.id !== albumId || id !== currentMusic?.id) {
       handlePlay(e);
@@ -33,7 +33,8 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
     }
   };
 
-  const handlePauseClick = () => {
+  const handlePauseClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
     setIsMusicPlay(!isMusicPlay);
   };
 
@@ -76,7 +77,7 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
             </svg>
           </div>
           <div
-            onClick={handlePauseClick}
+            onClick={(e) => handlePauseClick(e)}
             className={
               indexDisplay === "play" && !isMusicPlay && id === currentMusic?.id
                 ? ""
