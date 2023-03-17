@@ -84,6 +84,7 @@ export interface IPlaylist {
       rcmdReason: string;
     }
   ];
+  tracks: Track[];
 }
 
 export interface IPrivilege {
@@ -123,4 +124,26 @@ export interface IPrivilege {
   st: number;
   subp: string;
   toast: boolean;
+}
+
+export interface Track {
+  al: {
+    id: number;
+    name: string;
+    pic: number;
+    picUrl: string;
+    pic_str: string
+  };
+  ar: [{
+    id: number;
+    name: string;
+  }];
+  cd: string;
+  cf: string;
+  dt: number;
+  mark: number;
+  name: string;
+  id: number;
+  publishTime: number;
+  resourceState: true;
 }

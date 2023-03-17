@@ -5,7 +5,7 @@ import { BgColorContext } from "@/contexts/BgColorContext";
 import { useContext } from "react";
 import { PlaylistInfo } from "@/components/Playlist/PlaylistInfo";
 import { PlaylistPlay } from "@/components/Playlist/PlaylistPlay";
-import { AlbumPlayList } from "@/components/Album/AlbumPlayList";
+import { SongList } from "@/components/Playlist/SongList";
 import { mixColor } from "@/utils/mixColor";
 import { Footer } from "@/layouts/footer";
 
@@ -17,7 +17,6 @@ interface Props {
 }
 
 export default function Playlist(playlistInfo: Props) {
-  console.log(playlistInfo, "info");
   const {
     name,
     coverImgUrl,
@@ -29,7 +28,7 @@ export default function Playlist(playlistInfo: Props) {
     playCount,
     shareCount,
     subscribedCount,
-    trackIds,
+    tracks,
   } = playlistInfo.playlist;
   const { handleBackgroundColor } = useBackgroundColor(coverImgUrl);
   const { bgColor } = useContext(BgColorContext);
@@ -58,7 +57,7 @@ export default function Playlist(playlistInfo: Props) {
         subscribedCount={subscribedCount}
       />
       <PlaylistPlay playlistId={id} trackCount={trackCount} />
-      {/* <AlbumPlayList albumSongs={albumInfo.songs} albumId={id} /> */}
+      <SongList playlistSongs={tracks} playlistId={id} />
       <Footer />
     </main>
   );
