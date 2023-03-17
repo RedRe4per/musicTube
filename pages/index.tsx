@@ -10,6 +10,7 @@ interface Props {
   albumAreaKR: IAlbumList;
   albumAreaZH: IAlbumList;
   topPlaylistList: IPlaylistList;
+  hotPlaylistList: IPlaylistList
 }
 
 export default function Home({
@@ -18,7 +19,9 @@ export default function Home({
   albumAreaKR,
   albumAreaZH,
   topPlaylistList,
+  hotPlaylistList,
 }: Props) {
+  console.log(topPlaylistList,hotPlaylistList)
   return (
     <section>
       <Head>
@@ -29,6 +32,7 @@ export default function Home({
       </Head>
       <main className="overflow-auto scrollbar">
         <PlaylistList title={"Top Playlists"} playlistList={topPlaylistList} />
+        <PlaylistList title={"Hot Playlists"} playlistList={hotPlaylistList} />
         <AlbumList
           title={"European & American Recommended Album"}
           albumList={albumAreaEA}
@@ -68,6 +72,10 @@ export async function getStaticProps() {
     `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist/highquality?limit=10`
   );
   const topPlaylistList = await topPlaylistListResponse.json();
+  const hotPlaylistListResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist?limit=10`
+  );
+  const hotPlaylistList = await hotPlaylistListResponse.json();
 
   return {
     props: {
@@ -76,6 +84,7 @@ export async function getStaticProps() {
       albumAreaKR,
       albumAreaZH,
       topPlaylistList,
+      hotPlaylistList,
     },
     revalidate: 86400,
   };

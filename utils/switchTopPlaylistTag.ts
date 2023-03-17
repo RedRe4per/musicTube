@@ -116,6 +116,18 @@ export const switchTopPlaylistTag = (chineseTag: string) => {
     case "拉丁":
       englishTag = "Latin";
       break;
+      case "伤感":
+      englishTag = "Emotional";
+      break;
+      case "治愈":
+      englishTag = "Healing";
+      break;
+      case "钢琴":
+      englishTag = "Piano";
+      break;
+      case "安静":
+      englishTag = "Peaceful";
+      break;
     default:
       englishTag = chineseTag;
   }
