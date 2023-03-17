@@ -4,7 +4,7 @@ import { AlertContext } from "@/contexts/AlertContext";
 import { IAlbumSong } from "@/interfaces/albumSong";
 import { IMusicDetail } from "@/interfaces/music";
 
-export const useHandlePlay = (albumId: number) => {
+export const useHandlePlay = (albumId: number, songIndex: number = 0) => {
   const { setPlayerList, setAlbum } = useContext(PlayerContext);
   const { setAlertBox } = useContext(AlertContext);
   const controller = new AbortController();
@@ -20,12 +20,12 @@ export const useHandlePlay = (albumId: number) => {
     );
     const albumData = await response.json();
 
-    if (!albumData.songs[0].id) {
+    if (!albumData.songs[songIndex].id) {
       setAlertBox({ message: "No song in this Album!" });
       return;
     }
     const firstSongResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${albumData.songs[0].id}&level=higher`,
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${albumData.songs[songIndex].id}&level=higher`,
       { signal: signal }
     );
     const firstSongData = await firstSongResponse.json();
@@ -41,8 +41,10 @@ export const useHandlePlay = (albumId: number) => {
     albumData.songs.forEach((song: IAlbumSong) => {
       songList.push(song.id);
     });
+    const sortedSongIdList = [...songList.slice(songIndex), ...songList.slice(0, songIndex)];
+    console.log(sortedSongIdList)
     const songsResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${songList.join(
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${sortedSongIdList.join(
         ","
       )}&level=higher`,
       { signal: signal }
@@ -51,8 +53,8 @@ export const useHandlePlay = (albumId: number) => {
     const songsData = await songsResponse.json();
     const sortedList = songsData.data.sort(
       (a: IMusicDetail, b: IMusicDetail) => {
-        const aIndex = songList.findIndex((id) => id === a.id);
-        const bIndex = songList.findIndex((id) => id === b.id);
+        const aIndex = sortedSongIdList.findIndex((id) => id === a.id);
+        const bIndex = sortedSongIdList.findIndex((id) => id === b.id);
         if (aIndex === -1 || bIndex === -1) {
           return aIndex - bIndex;
         }

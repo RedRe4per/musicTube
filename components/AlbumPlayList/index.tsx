@@ -4,9 +4,10 @@ import { SongInfo } from "./SongInfo";
 
 interface Props {
   albumSongs: IAlbumSong[];
+  albumId: number;
 }
 
-export const AlbumPlayList = React.memo(({ albumSongs }: Props) => {
+export const AlbumPlayList = React.memo(({ albumSongs, albumId }: Props) => {
   return (
     <section className="mx-10 mt-10 mb-28 text-white-50 text-h4-normal ">
       <section className="border-gray-400 border-b">
@@ -25,7 +26,7 @@ export const AlbumPlayList = React.memo(({ albumSongs }: Props) => {
       </section>
       <section className="mt-6">
         {albumSongs.map((song, index) => {
-          return <SongInfo key={index} song={song} index={index} />;
+          return <SongInfo key={index} song={song} index={index} albumId={albumId} />;
         })}
       </section>
     </section>

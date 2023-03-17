@@ -1,34 +1,52 @@
 import React, { useState } from "react";
 import { IAlbumSong } from "@/interfaces/albumSong";
 import { formatTime } from "@/utils/formatTime";
+import { useHandlePlay } from "@/hooks/useHandlePlay";
+import { useContext } from "react";
+import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
+import { PlayerContext } from "@/contexts/PlayerContext";
 
 interface Props {
   song: IAlbumSong;
   index: number;
+  albumId: number;
 }
 
-export const SongInfo = React.memo(({ song, index }: Props) => {
-  const { name, al, dt, ar } = song;
+export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
+  const { name, al, dt, ar, id } = song;
   const [indexDisplay, setIndexDisplay] = useState<"index" | "play">("index");
+  const { handlePlay } = useHandlePlay(albumId, index);
+  const { isMusicPlay, setIsMusicPlay, currentMusic } = useContext(PlayAndPauseContext);
+  const { album } = useContext(PlayerContext);
 
   const handleHover = (mode: "index" | "play") => {
     setIndexDisplay(mode);
   };
 
-  const handlePlay = () => {
-    console.log(1);
+  const handlePlayClick = (e: React.MouseEvent<HTMLImageElement>) => {
+    console.log(album?.id, albumId, "song:", id, currentMusic?.id)
+    if (album?.id !== albumId || id !== currentMusic?.id) {
+      handlePlay(e);
+    } else {
+      setIsMusicPlay(!isMusicPlay);
+    }
   };
+
+  const handlePauseClick = () => {
+    setIsMusicPlay(!isMusicPlay);
+  };
+
 
   return (
     <section
       onMouseEnter={() => handleHover("play")}
       onMouseLeave={() => handleHover("index")}
-      onDoubleClick={handlePlay}
+      onDoubleClick={handlePlayClick}
       className="flex py-3 pl-3 pr-10 items-center hover:bg-gray-400 rounded-lg"
     >
       <div className="flex-1 flex items-center">
         <section
-          onClick={handlePlay}
+          onClick={handlePlayClick}
           className="w-16 flex justify-center items-center"
         >
           <h6

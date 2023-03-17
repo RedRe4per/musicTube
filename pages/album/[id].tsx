@@ -44,7 +44,7 @@ export default function Album(albumInfo: Props) {
         artists={artists}
       />
       <AlbumPlay albumId={id} />
-      <AlbumPlayList albumSongs={albumInfo.songs} />
+      <AlbumPlayList albumSongs={albumInfo.songs} albumId={id} />
       <Footer />
     </main>
   );
