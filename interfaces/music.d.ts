@@ -44,41 +44,43 @@ export interface ITrack {
   id: number;
   pst: number;
   t: number;
-  ar: [{
-    id: number;
-    name: string;
-  }];
+  ar: [
+    {
+      id: number;
+      name: string;
+    }
+  ];
   pop: number;
-  st: number
+  st: number;
   rt: string;
   fee: number;
   v: number;
   cf: string;
   al: {
     id: number;
-    name: string
+    name: string;
     picUrl: string;
     pic: number;
-  }
+  };
   dt: number;
   h: {
     br: number;
     fid: number;
-    size: number,
+    size: number;
     vd: number;
     sr: number;
   };
   m: {
     br: number;
     fid: number;
-    size: number,
+    size: number;
     vd: number;
     sr: number;
   };
   l: {
     br: number;
     fid: number;
-    size: number,
+    size: number;
     vd: number;
     sr: number;
   };
