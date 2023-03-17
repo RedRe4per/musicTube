@@ -46,7 +46,6 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
     >
       <div className="flex-1 flex items-center">
         <section
-          onClick={handlePlayClick}
           className="w-16 flex justify-center items-center"
         >
           <h6
@@ -56,8 +55,8 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
           >
             {index}
           </h6>
+          <div onClick={handlePlayClick} className={indexDisplay === "index" || (!isMusicPlay && id === currentMusic?.id) ? "hidden" : ""}>
           <svg
-            className={indexDisplay === "index" ? "hidden" : ""}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             width="32"
@@ -69,9 +68,14 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
               fill="#ffffff"
             />
           </svg>
+          </div>
+          <div onClick={handlePauseClick} className={indexDisplay === "play" && !isMusicPlay && id === currentMusic?.id ? "" : "hidden"}>
+          <svg 
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32"><path fill="none" d="M0 0h24v24H0z"/><path d="M15 7a1 1 0 0 1 2 0v10a1 1 0 1 1-2 0V7zM7 7a1 1 0 1 1 2 0v10a1 1 0 1 1-2 0V7z" fill="#ffffff"/></svg>
+          </div>
         </section>
         <div className="flex flex-col gap-2">
-          <div>{name}</div>
+          <div className={id === currentMusic?.id ? "text-green brightness-150": "text-white-200"}>{name}</div>
           <div className="text-gray-200 text-tag-light">
             {ar.map((artist, index) => {
               return <span key={index}>{artist.name}&nbsp;&nbsp;</span>;
