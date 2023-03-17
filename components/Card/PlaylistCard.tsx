@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { switchTopPlaylistTag } from "@/utils/switchTopPlaylistTag";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
 
 interface Props {
@@ -55,7 +56,7 @@ export const PlaylistCard = ({
           </h5>
           <h6 className="text-tag-normal text-gray-400 mt-[7px] ">
             {tags.map((tag, index) => {
-              return <span key={index}>{tag}&nbsp;&nbsp;</span>;
+              return <span key={index}>{switchTopPlaylistTag(tag)}&nbsp;&nbsp;</span>;
             })}
           </h6>
         </section>
