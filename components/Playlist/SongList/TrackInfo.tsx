@@ -125,25 +125,31 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
           </div>
         </section>
         <section className="flex gap-4">
-            <div>
-              <Image className="rounded-sm" src={al.picUrl} alt="cover" width={50} height={50} />
+          <div>
+            <Image
+              className="rounded-sm"
+              src={al.picUrl}
+              alt="cover"
+              width={50}
+              height={50}
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <div
+              className={
+                id === currentMusic?.id
+                  ? "text-green brightness-150"
+                  : "text-white-200"
+              }
+            >
+              {name}
             </div>
-        <div className="flex flex-col gap-2">
-          <div
-            className={
-              id === currentMusic?.id
-                ? "text-green brightness-150"
-                : "text-white-200"
-            }
-          >
-            {name}
+            <div className="text-gray-200 text-tag-light">
+              {ar.map((artist, index) => {
+                return <span key={index}>{artist.name}&nbsp;&nbsp;</span>;
+              })}
+            </div>
           </div>
-          <div className="text-gray-200 text-tag-light">
-            {ar.map((artist, index) => {
-              return <span key={index}>{artist.name}&nbsp;&nbsp;</span>;
-            })}
-          </div>
-        </div>
         </section>
       </div>
       <div className="flex-1 flex justify-between text-gray-200">
