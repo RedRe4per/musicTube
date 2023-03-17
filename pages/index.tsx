@@ -10,7 +10,7 @@ interface Props {
   albumAreaKR: IAlbumList;
   albumAreaZH: IAlbumList;
   topPlaylistList: IPlaylistList;
-  hotPlaylistList: IPlaylistList
+  hotPlaylistList: IPlaylistList;
 }
 
 export default function Home({
@@ -21,7 +21,7 @@ export default function Home({
   topPlaylistList,
   hotPlaylistList,
 }: Props) {
-  console.log(topPlaylistList,hotPlaylistList)
+  console.log(topPlaylistList, hotPlaylistList);
   return (
     <section>
       <Head>
