@@ -13,6 +13,7 @@ interface Props {
 }
 
 export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
+  console.log(song)
   const { name, al, dt, ar, id } = song;
   const [indexDisplay, setIndexDisplay] = useState<"index" | "play">("index");
   const { handlePlay } = useHandlePlay(albumId, index);
@@ -54,7 +55,7 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
                 : ""
             }`}
           >
-            {index}
+            {index + 1}
           </h6>
           <div
             className={

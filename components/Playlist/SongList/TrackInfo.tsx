@@ -55,7 +55,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
                 : ""
             }`}
           >
-            {index}
+            {index + 1}
           </h6>
           <div
             className={
