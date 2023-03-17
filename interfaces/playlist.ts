@@ -1,5 +1,9 @@
 export interface IPlaylistList {
+  code: number;
+  lasttime: number;
+  more: boolean;
   playlists: IPlaylist[];
+  total: number;
 }
 
 export interface IPlaylist {
