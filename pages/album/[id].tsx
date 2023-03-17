@@ -4,9 +4,9 @@ import { BgColorContext } from "@/contexts/BgColorContext";
 import { useContext } from "react";
 import { IAlbumDetails } from "@/interfaces/album";
 import { IAlbumSong } from "@/interfaces/albumSong";
-import { AlbumInfo } from "@/components/AlbumInfo";
-import { AlbumPlay } from "@/components/AlbumPlay";
-import { AlbumPlayList } from "@/components/AlbumPlayList";
+import { AlbumInfo } from "@/components/Album/AlbumInfo";
+import { AlbumPlay } from "@/components/Album/AlbumPlay";
+import { AlbumPlayList } from "@/components/Album/AlbumPlayList";
 import { mixColor } from "@/utils/mixColor";
 import { Footer } from "@/layouts/footer";
 

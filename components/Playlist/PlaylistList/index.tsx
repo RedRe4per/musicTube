@@ -1,4 +1,4 @@
-import { PlaylistCard } from "../Card/PlaylistCard";
+import { PlaylistCard } from "../../Card/PlaylistCard";
 import { IPlaylist, IPlaylistList } from "@/interfaces/playlist";
 
 interface Props {

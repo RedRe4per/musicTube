@@ -1,6 +1,6 @@
 import Head from "next/head";
-import { AlbumList } from "@/components/AlbumList";
-import { PlaylistList } from "@/components/PlaylistList";
+import { AlbumList } from "@/components/Album/AlbumList";
+import { PlaylistList } from "@/components/Playlist/PlaylistList";
 import { IAlbumList } from "@/interfaces/album";
 import { IPlaylistList } from "@/interfaces/playlist";
 

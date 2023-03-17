@@ -74,4 +74,49 @@ export interface IPlaylist {
   commentCount: number;
   copywriter: string;
   tag: string;
+  trackIds: [{
+    id: number;
+    v: number;
+    t: number;
+    at: number;
+    uid: number;
+    rcmdReason: string;
+  }];
+}
+
+export interface IPrivilege {
+  chargeInfoList: [{
+    chargeType: number
+    chargeMessage: string | null;
+    chargeUrl: string | null;
+    rate: number;
+  }];
+  cp: number;
+  cs: boolean;
+  dl: number;
+  dlLevel: string;
+  fee: number;
+  fl: number
+  flLevel: string;
+  flag: number;
+  freeTrialPrivilege: {
+    listenType: null;
+    resConsumable: boolean;
+    userConsumable: boolean;
+  };
+  id: number;
+  maxBrLevel: string;
+  maxbr: number;
+  paidBigBang: false;
+  payed: number;
+  pl: number;
+  plLevel: string;
+  playMaxBrLevel: string;
+  playMaxbr: number;
+  preSell: boolean;
+  realPayed: number;
+  sp: number;
+  st: number;
+  subp: string;
+  toast: boolean;
 }
