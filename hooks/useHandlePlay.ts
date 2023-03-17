@@ -11,7 +11,7 @@ export const useHandlePlay = (
   songIndex: number = 0,
   playType: PlayType = "album"
 ) => {
-  const { setPlayerList, setAlbum } = useContext(PlayerContext);
+  const { setPlayerList, setMusicList } = useContext(PlayerContext);
   const { setAlertBox } = useContext(AlertContext);
   const controller = new AbortController();
   const signal = controller.signal;
@@ -43,7 +43,7 @@ export const useHandlePlay = (
       setAlertBox({ message: "No song resource found in this Album!" });
       return;
     } else {
-      setAlbum(albumData.album);
+      setMusicList(albumData.album);
       setPlayerList(firstSongData.data);
     }
 

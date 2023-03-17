@@ -11,10 +11,10 @@ interface Props {
 export const AlbumPlay = ({ albumId }: Props) => {
   const { handlePlay } = useHandlePlay(albumId);
   const { isMusicPlay, setIsMusicPlay } = useContext(PlayAndPauseContext);
-  const { album } = useContext(PlayerContext);
+  const { musicList } = useContext(PlayerContext);
 
   const handlePlayClick = (e: React.MouseEvent<HTMLImageElement>) => {
-    if (album?.id !== albumId) {
+    if (musicList?.id !== albumId) {
       handlePlay(e);
     } else {
       setIsMusicPlay(!isMusicPlay);
@@ -30,7 +30,7 @@ export const AlbumPlay = ({ albumId }: Props) => {
       <button className="hover:animate-pulse">
         <Image
           onClick={(e) => handlePlayClick(e)}
-          className={album?.id !== albumId || isMusicPlay ? "" : "hidden"}
+          className={musicList?.id !== albumId || isMusicPlay ? "" : "hidden"}
           src="/icons/play-circle-fill.svg"
           alt="play"
           width={100}
@@ -38,7 +38,7 @@ export const AlbumPlay = ({ albumId }: Props) => {
         />
         <Image
           onClick={handlePauseClick}
-          className={album?.id === albumId && !isMusicPlay ? "" : "hidden"}
+          className={musicList?.id === albumId && !isMusicPlay ? "" : "hidden"}
           src="/icons/pause-circle-fill.svg"
           alt="play"
           width={100}
