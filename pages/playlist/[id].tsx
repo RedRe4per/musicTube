@@ -3,9 +3,7 @@ import { IPlaylist, IPrivilege } from "@/interfaces/playlist";
 import { useBackgroundColor } from "@/hooks/useBackgroundColor";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { useContext } from "react";
-import { IAlbumDetails } from "@/interfaces/album";
-import { IAlbumSong } from "@/interfaces/albumSong";
-import { AlbumInfo } from "@/components/Album/AlbumInfo";
+import { PlaylistInfo } from "@/components/Playlist/PlaylistInfo";
 import { AlbumPlay } from "@/components/Album/AlbumPlay";
 import { AlbumPlayList } from "@/components/Album/AlbumPlayList";
 import { mixColor } from "@/utils/mixColor";
@@ -18,7 +16,7 @@ interface Props {
   privileges: IPrivilege[];
 }
 
-export default function Album(playlistInfo: Props) {
+export default function Playlist(playlistInfo: Props) {
   console.log(playlistInfo, "info");
   const {
     name,
@@ -39,28 +37,32 @@ export default function Album(playlistInfo: Props) {
     handleBackgroundColor();
   }
 
-  //   return (
-  //     <main
-  //       className="transition-transform duration-1000 shadow-inner shadow-gray-650"
-  //       style={{
-  //         background: `linear-gradient(to bottom, #1B1B1B, ${mixColor(
-  //           "#1B1B1B",
-  //           bgColor
-  //         )})`,
-  //       }}
-  //     >
-  //       <AlbumInfo
-  //         picUrl={picUrl}
-  //         type={type}
-  //         subType={subType}
-  //         name={name}
-  //         artists={artists}
-  //       />
-  //       <AlbumPlay albumId={id} />
-  //       <AlbumPlayList albumSongs={albumInfo.songs} albumId={id} />
-  //       <Footer />
-  //     </main>
-  //   );
+    return (
+      <main
+        className="transition-transform duration-1000 shadow-inner shadow-gray-650"
+        style={{
+          background: `linear-gradient(to bottom, #1B1B1B, ${mixColor(
+            "#1B1B1B",
+            bgColor
+          )})`,
+        }}
+      >
+        <PlaylistInfo
+          coverImgUrl={coverImgUrl}
+          name={name}
+          description={description}
+          creator={creator}
+          tags={tags}
+          trackCount={trackCount}
+          playCount={playCount}
+          shareCount={shareCount}
+          subscribedCount={subscribedCount}
+        />
+        {/* <AlbumPlay albumId={id} />
+        <AlbumPlayList albumSongs={albumInfo.songs} albumId={id} /> */}
+        <Footer />
+      </main>
+    );
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {

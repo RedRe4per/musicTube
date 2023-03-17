@@ -30,7 +30,7 @@ export const AlbumInfo = ({ picUrl, type, subType, name, artists }: Props) => {
         <section>
           <h5 className="text-tag-normal text-gray-200">
             Artists:{" "}
-            {artists.map((artist: any) => {
+            {artists.map((artist: IArtist) => {
               return <span key={artist.id}>{artist.name}&nbsp;&nbsp;</span>;
             })}
           </h5>
