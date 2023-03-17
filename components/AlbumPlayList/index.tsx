@@ -26,7 +26,9 @@ export const AlbumPlayList = React.memo(({ albumSongs, albumId }: Props) => {
       </section>
       <section className="mt-6">
         {albumSongs.map((song, index) => {
-          return <SongInfo key={index} song={song} index={index} albumId={albumId} />;
+          return (
+            <SongInfo key={index} song={song} index={index} albumId={albumId} />
+          );
         })}
       </section>
     </section>

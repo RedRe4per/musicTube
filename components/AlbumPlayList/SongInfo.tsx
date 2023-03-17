@@ -16,7 +16,8 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
   const { name, al, dt, ar, id } = song;
   const [indexDisplay, setIndexDisplay] = useState<"index" | "play">("index");
   const { handlePlay } = useHandlePlay(albumId, index);
-  const { isMusicPlay, setIsMusicPlay, currentMusic } = useContext(PlayAndPauseContext);
+  const { isMusicPlay, setIsMusicPlay, currentMusic } =
+    useContext(PlayAndPauseContext);
   const { album } = useContext(PlayerContext);
 
   const handleHover = (mode: "index" | "play") => {
@@ -24,7 +25,7 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
   };
 
   const handlePlayClick = (e: React.MouseEvent<HTMLImageElement>) => {
-    console.log(album?.id, albumId, "song:", id, currentMusic?.id)
+    console.log(album?.id, albumId, "song:", id, currentMusic?.id);
     if (album?.id !== albumId || id !== currentMusic?.id) {
       handlePlay(e);
     } else {
@@ -35,7 +36,6 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
   const handlePauseClick = () => {
     setIsMusicPlay(!isMusicPlay);
   };
-
 
   return (
     <section

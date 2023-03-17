@@ -41,12 +41,15 @@ export const useHandlePlay = (albumId: number, songIndex: number = 0) => {
     albumData.songs.forEach((song: IAlbumSong) => {
       songList.push(song.id);
     });
-    const sortedSongIdList = [...songList.slice(songIndex), ...songList.slice(0, songIndex)];
-    console.log(sortedSongIdList)
+    const sortedSongIdList = [
+      ...songList.slice(songIndex),
+      ...songList.slice(0, songIndex),
+    ];
+    console.log(sortedSongIdList);
     const songsResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${sortedSongIdList.join(
-        ","
-      )}&level=higher`,
+      `${
+        process.env.NEXT_PUBLIC_SERVER_ADDRESS
+      }/song/url/v1?id=${sortedSongIdList.join(",")}&level=higher`,
       { signal: signal }
     );
 
