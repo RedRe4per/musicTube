@@ -3,8 +3,8 @@ import { Track } from "@/interfaces/playlist";
 import { TrackInfo } from "./TrackInfo";
 
 interface Props {
-    playlistSongs: Track[];
-    playlistId: number;
+  playlistSongs: Track[];
+  playlistId: number;
 }
 
 export const SongList = React.memo(({ playlistSongs, playlistId }: Props) => {
@@ -27,7 +27,12 @@ export const SongList = React.memo(({ playlistSongs, playlistId }: Props) => {
       <section className="mt-6">
         {playlistSongs.map((song, index) => {
           return (
-            <TrackInfo key={index} song={song} index={index} trackId={playlistId} />
+            <TrackInfo
+              key={index}
+              song={song}
+              index={index}
+              trackId={playlistId}
+            />
           );
         })}
       </section>

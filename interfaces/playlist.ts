@@ -132,12 +132,14 @@ export interface Track {
     name: string;
     pic: number;
     picUrl: string;
-    pic_str: string
+    pic_str: string;
   };
-  ar: [{
-    id: number;
-    name: string;
-  }];
+  ar: [
+    {
+      id: number;
+      name: string;
+    }
+  ];
   cd: string;
   cf: string;
   dt: number;
