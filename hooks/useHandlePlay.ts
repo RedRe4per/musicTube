@@ -4,18 +4,21 @@ import { AlertContext } from "@/contexts/AlertContext";
 import { IAlbumSong } from "@/interfaces/albumSong";
 import { IMusicDetail } from "@/interfaces/music";
 
-export const useHandlePlay = (albumId: number, songIndex: number = 0) => {
+type PlayType = "playlist" | "album";
+
+export const useHandlePlay = (albumOrPlaylistId: number, songIndex: number = 0, playType: PlayType = "album") => {
   const { setPlayerList, setAlbum } = useContext(PlayerContext);
   const { setAlertBox } = useContext(AlertContext);
   const controller = new AbortController();
   const signal = controller.signal;
+  const urlPathway = playType === "album" ? `album?id=${albumOrPlaylistId}` : `playlist/track/all?limit=20&id=${albumOrPlaylistId}`;
 
   const handlePlay = async (
     e: React.MouseEvent<HTMLDivElement> | React.MouseEvent<HTMLButtonElement>
   ) => {
     e.preventDefault();
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${albumId}`,
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/${urlPathway}`,
       { signal: signal }
     );
     const albumData = await response.json();

@@ -12,7 +12,6 @@ interface Props {
     signature: string;
   };
   tags: string[];
-  trackCount: number;
   playCount: number;
   shareCount: number;
   subscribedCount: number;
@@ -24,7 +23,6 @@ export const PlaylistInfo = ({
   description,
   creator,
   tags,
-  trackCount,
   playCount,
   shareCount,
   subscribedCount,
@@ -54,9 +52,9 @@ export const PlaylistInfo = ({
           </span>
         </section>
         <h3 className="text-h2-normal text-white-200">{name}</h3>
-        <section>
+        <section className="flex justify-between items-center gap-6 text-tag-normal text-gray-200">
           {tags && (
-            <h5 className="text-tag-normal text-gray-200">
+            <h5>
               Tags:{" "}
               {tags.map((tag: string, index) => {
                 return (
@@ -67,6 +65,7 @@ export const PlaylistInfo = ({
               })}
             </h5>
           )}
+          <span>Creator: {creator.nickname}</span>
         </section>
       </section>
     </section>

@@ -4,7 +4,7 @@ import { useBackgroundColor } from "@/hooks/useBackgroundColor";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { useContext } from "react";
 import { PlaylistInfo } from "@/components/Playlist/PlaylistInfo";
-import { AlbumPlay } from "@/components/Album/AlbumPlay";
+import { PlaylistPlay } from "@/components/Playlist/PlaylistPlay";
 import { AlbumPlayList } from "@/components/Album/AlbumPlayList";
 import { mixColor } from "@/utils/mixColor";
 import { Footer } from "@/layouts/footer";
@@ -53,13 +53,12 @@ export default function Playlist(playlistInfo: Props) {
         description={description}
         creator={creator}
         tags={tags}
-        trackCount={trackCount}
         playCount={playCount}
         shareCount={shareCount}
         subscribedCount={subscribedCount}
       />
-      {/* <AlbumPlay albumId={id} />
-        <AlbumPlayList albumSongs={albumInfo.songs} albumId={id} /> */}
+      <PlaylistPlay albumId={id} trackCount={trackCount}/>
+        {/* <AlbumPlayList albumSongs={albumInfo.songs} albumId={id} /> */}
       <Footer />
     </main>
   );
