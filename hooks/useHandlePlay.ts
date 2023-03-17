@@ -32,10 +32,10 @@ export const useHandlePlay = (albumId: number) => {
     if (!firstSongData.data[0].url) {
       setAlertBox({ message: "No song resource found in this Album!" });
       return;
-    }else {
+    } else {
       setAlbum(albumData.album);
       setPlayerList(firstSongData.data);
-    };
+    }
 
     const songList: number[] = [];
     albumData.songs.forEach((song: IAlbumSong) => {
