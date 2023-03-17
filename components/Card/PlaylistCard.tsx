@@ -57,7 +57,9 @@ export const PlaylistCard = ({
           <div className="text-tag-normal text-green brightness-90 mt-[7px]">
             {tags.map((tag, index) => {
               return (
-                <span key={index} className="inline-block">{switchTopPlaylistTag(tag)}&nbsp;&nbsp;</span>
+                <span key={index} className="inline-block">
+                  {switchTopPlaylistTag(tag)}&nbsp;&nbsp;
+                </span>
               );
             })}
           </div>
