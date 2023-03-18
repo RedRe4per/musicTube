@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { debounce } from "lodash";
 
 interface Props {
@@ -6,8 +6,8 @@ interface Props {
 }
 
 export const SearchBar = ({ page }: Props) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
 
   useEffect(() => {
     const debouncedSearch = debounce((term) => {
@@ -21,11 +21,13 @@ export const SearchBar = ({ page }: Props) => {
 
   useEffect(() => {
     if (debouncedSearchTerm) {
-      const searchRequest = async() => {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/cloudsearch?keywords=${debouncedSearchTerm}`);
+      const searchRequest = async () => {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/cloudsearch?keywords=${debouncedSearchTerm}`
+        );
         const data = await response.json();
-        console.log(data, "result")
-      }
+        console.log(data, "result");
+      };
       searchRequest();
     }
   }, [debouncedSearchTerm]);
