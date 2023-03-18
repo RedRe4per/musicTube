@@ -23,6 +23,7 @@ export const useHandlePlay = (
   const handlePlay = async (
     e: React.MouseEvent<HTMLDivElement> | React.MouseEvent<HTMLButtonElement>
   ) => {
+    e.stopPropagation();
     e.preventDefault();
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/${urlPathway}`,

@@ -2,7 +2,7 @@ import { GetServerSidePropsContext } from "next";
 import { IPlaylist, IPrivilege } from "@/interfaces/playlist";
 import { useBackgroundColor } from "@/hooks/useBackgroundColor";
 import { BgColorContext } from "@/contexts/BgColorContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PlaylistInfo } from "@/components/Playlist/PlaylistInfo";
 import { PlaylistPlay } from "@/components/Playlist/PlaylistPlay";
 import { SongList } from "@/components/Playlist/SongList";
@@ -31,10 +31,16 @@ export default function Playlist(playlistInfo: Props) {
     tracks,
   } = playlistInfo.playlist;
   const { handleBackgroundColor } = useBackgroundColor(coverImgUrl);
-  const { bgColor } = useContext(BgColorContext);
+  const { bgColor, setIsLoading } = useContext(BgColorContext);
+  
+  useEffect(()=>{
+    setIsLoading(false);
+  }, [])
+
   if (typeof window !== "undefined") {
     handleBackgroundColor();
   }
+
 
   return (
     <main

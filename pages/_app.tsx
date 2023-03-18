@@ -4,7 +4,6 @@ import { Rubik } from "next/font/google";
 import Layout from "@/components/layout";
 import { useState } from "react";
 import { IMusicDetail } from "@/interfaces/music";
-import { IAlbum } from "@/interfaces/album";
 import { IAlertBox } from "@/interfaces/alertBox";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { AlertContext } from "@/contexts/AlertContext";
@@ -20,6 +19,7 @@ const rubik = Rubik({
 export default function App({ Component, pageProps }: AppProps) {
   const [playerList, setPlayerList] = useState<IMusicDetail[]>([]);
   const [bgColor, setBgColor] = useState("gray-650");
+  const [isLoading, setIsLoading] = useState(false);
   const [musicListId, setMusicListId] = useState<number | null>(null);
   const [isMusicPlay, setIsMusicPlay] = useState(true);
   const [currentMusic, setCurrentMusic] = useState<IMusicDetail | null>(null);
@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <main className={`${rubik.variable} font-sans`}>
-      <BgColorContext.Provider value={{ bgColor, setBgColor }}>
+      <BgColorContext.Provider value={{ bgColor, setBgColor, isLoading, setIsLoading }}>
         <AlertContext.Provider value={{ alertBox, setAlertBox }}>
           <PlayAndPauseContext.Provider
             value={{
