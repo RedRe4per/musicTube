@@ -6,7 +6,6 @@ interface Props {
 }
 
 export const SearchResult = React.memo(({ searchResult }: Props) => {
-  console.log(searchResult);
   return (
     <section
       className={`${
