@@ -6,6 +6,7 @@ import { useHandlePlay } from "@/hooks/useHandlePlay";
 import { useContext } from "react";
 import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
 import { PlayerContext } from "@/contexts/PlayerContext";
+import Link from "next/link";
 
 interface Props {
   song: Track;
@@ -153,7 +154,9 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
         </section>
       </div>
       <div className="flex-1 flex justify-between text-gray-200">
-        <h6 className="text-h4-light">{al.name}</h6>
+        <Link href={`/album/${al.id}`}>
+          <h6 className="hover:text-gray-100 hover:-translate-y-1 hover:underline brightness-125 text-h4-light">{al.name}</h6>
+        </Link>
         <h6 className="w-20">{formatTime(dt / 1000)}</h6>
       </div>
     </section>
