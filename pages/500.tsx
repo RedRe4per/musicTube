@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Custom500() {
   return (
-    <section className="hero h-[90vh] bg-gray-650">
+    <section className="hero h-[82vh] bg-gray-650">
       <div className="hero-content flex-col lg:flex-row">
         <Image
           src="/images/error500.jpg"
