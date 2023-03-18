@@ -21,7 +21,6 @@ export default function Home({
   topPlaylistList,
   hotPlaylistList,
 }: Props) {
-  console.log(topPlaylistList, hotPlaylistList);
   return (
     <section>
       <Head>
