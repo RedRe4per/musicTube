@@ -45,7 +45,7 @@ export const SearchBar = ({ page }: Props) => {
         type="text"
         value={searchTerm}
         onChange={handleInputChange}
-        onBlur={()=>setSearchTerm("")}
+        onBlur={() => setSearchTerm("")}
         placeholder="Search"
         autoFocus
       />
