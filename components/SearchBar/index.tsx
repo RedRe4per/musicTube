@@ -39,8 +39,10 @@ export const SearchBar = ({ page }: Props) => {
   };
 
   const handleBlur = () => {
-    setSearchTerm("");
-    setSearchResult(null);
+    setTimeout(()=>{
+      setSearchTerm("");
+      setSearchResult(null);
+    }, 500)
   };
 
   return (
