@@ -13,11 +13,13 @@ export default function Custom500() {
           height={400}
         />
         <div>
-          <h1 className="text-5xl font-bold">500 - Server-side error occurred</h1>
+          <h1 className="text-5xl font-bold">
+            500 - Server-side error occurred
+          </h1>
           <p className="py-6">
-            No resource found! It seems that the resource you need is not available in the
-            server, maybe your resource Id is wrong, or other reasons. Please
-            check and request again.
+            No resource found! It seems that the resource you need is not
+            available in the server, maybe your resource Id is wrong, or other
+            reasons. Please check and request again.
           </p>
           <Link href={"/"}>
             <button className="btn btn-primary">Home Page</button>
