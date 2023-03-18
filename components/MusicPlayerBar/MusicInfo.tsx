@@ -34,7 +34,7 @@ export const MusicInfo = ({ music }: Props) => {
   }, [music]);
 
   return (
-    <aside className="w-[27%] gap-4 hidden lg:flex">
+    <aside className="w-[27%] gap-4 flex">
       <div className="mt-[2px] w-[95px] flex items-center justify-center rounded-sm overflow-hidden">
         <Image
           src={musicImgUrl ? musicImgUrl : "/icons/disc-line.svg"}
@@ -43,7 +43,7 @@ export const MusicInfo = ({ music }: Props) => {
           height={musicImgUrl ? 95 : 50}
         />
       </div>
-      <section className="flex flex-col justify-around">
+      <section className="hidden lg:flex flex-col justify-around">
         <h5 className="text-button-normal lg:text-h3-normal text-white-200">
           {musicName}
         </h5>
