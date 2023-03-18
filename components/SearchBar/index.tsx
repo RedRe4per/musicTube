@@ -63,7 +63,7 @@ export const SearchBar = ({ page }: Props) => {
           page === "/likedSongs" ? "invert" : ""
         }`}
       />
-      <SearchResult searchResult={searchResult}/>
+      <SearchResult searchResult={searchResult} />
     </section>
   );
 };
