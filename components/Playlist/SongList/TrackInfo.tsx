@@ -22,7 +22,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
   const { isMusicPlay, setIsMusicPlay, currentMusic } =
     useContext(PlayAndPauseContext);
   const { musicListId } = useContext(PlayerContext);
-  const {setIsLoading} = useContext(BgColorContext);
+  const { setIsLoading } = useContext(BgColorContext);
 
   const handleHover = (mode: "index" | "play") => {
     setIndexDisplay(mode);
@@ -156,7 +156,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
         </section>
       </div>
       <div className="flex-1 flex justify-between text-gray-200">
-        <Link onClick={()=>setIsLoading(true)} href={`/album/${al.id}`}>
+        <Link onClick={() => setIsLoading(true)} href={`/album/${al.id}`}>
           <h6 className="hover:text-gray-100 hover:-translate-y-1 hover:underline brightness-125 text-h4-light">
             {al.name}
           </h6>

@@ -30,7 +30,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <main className={`${rubik.variable} font-sans`}>
-      <BgColorContext.Provider value={{ bgColor, setBgColor, isLoading, setIsLoading }}>
+      <BgColorContext.Provider
+        value={{ bgColor, setBgColor, isLoading, setIsLoading }}
+      >
         <AlertContext.Provider value={{ alertBox, setAlertBox }}>
           <PlayAndPauseContext.Provider
             value={{

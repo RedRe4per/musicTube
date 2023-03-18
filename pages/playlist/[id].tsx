@@ -32,15 +32,14 @@ export default function Playlist(playlistInfo: Props) {
   } = playlistInfo.playlist;
   const { handleBackgroundColor } = useBackgroundColor(coverImgUrl);
   const { bgColor, setIsLoading } = useContext(BgColorContext);
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     setIsLoading(false);
-  }, [])
+  }, []);
 
   if (typeof window !== "undefined") {
     handleBackgroundColor();
   }
-
 
   return (
     <main

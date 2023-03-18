@@ -12,14 +12,18 @@ interface Props {
 }
 
 export default function Layout({ children }: Props) {
-  const {isLoading} = useContext(BgColorContext);
+  const { isLoading } = useContext(BgColorContext);
 
   return (
     <div className="flex">
       <Nav />
       <section className="w-full lg:w-screen-70 bg-gray-650 relative">
         <Header />
-        <main className={`overflow-auto max-h-[82.8vh] scrollbar ${isLoading ? "blur-xl brightness-50": ""}`}>
+        <main
+          className={`overflow-auto max-h-[82.8vh] scrollbar ${
+            isLoading ? "blur-xl brightness-50" : ""
+          }`}
+        >
           {children}
         </main>
         <div className={isLoading ? "" : "hidden"}>

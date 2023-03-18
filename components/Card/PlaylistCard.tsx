@@ -21,11 +21,11 @@ export const PlaylistCard = ({
 }: Props) => {
   const [showPlay, setShowPlay] = useState(false);
   const { handlePlay } = useHandlePlay(playlistId, 0, "playlist");
-  const {setIsLoading} = useContext(BgColorContext);
+  const { setIsLoading } = useContext(BgColorContext);
 
   return (
     <section className="max-w-[1/8] h-[250px] lg:h-[335px] relative overflow-hidden rounded-xl p-1 hover:bg-gray-600 hover:shadow-md hover:shadow-white-50 hover:-translate-y-2">
-      <Link onClick={()=>setIsLoading(true)} href={`/playlist/${playlistId}`}>
+      <Link onClick={() => setIsLoading(true)} href={`/playlist/${playlistId}`}>
         <div className="relative">
           <Image
             src={coverUrl}
