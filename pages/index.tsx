@@ -3,6 +3,7 @@ import { AlbumList } from "@/components/Album/AlbumList";
 import { PlaylistList } from "@/components/Playlist/PlaylistList";
 import { IAlbumList } from "@/interfaces/album";
 import { IPlaylistList } from "@/interfaces/playlist";
+import { Footer } from "@/layouts/footer";
 
 interface Props {
   albumAreaEA: IAlbumList;
@@ -29,7 +30,7 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="overflow-auto scrollbar">
+      <main className="overflow-hidden">
         <PlaylistList title={"Top Playlists"} playlistList={topPlaylistList} />
         <PlaylistList title={"Hot Playlists"} playlistList={hotPlaylistList} />
         <AlbumList
@@ -46,33 +47,34 @@ export default function Home({
           albumList={albumAreaZH}
         />
       </main>
+      <Footer />
     </section>
   );
 }
 
 export async function getStaticProps() {
   const EAResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=E_A`
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=E_A&limit=13`
   );
   const albumAreaEA = await EAResponse.json();
   const JPResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=JP`
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=JP&limit=13`
   );
   const albumAreaJP = await JPResponse.json();
   const KRResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=KR`
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=KR&limit=13`
   );
   const albumAreaKR = await KRResponse.json();
   const ZHResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=Z_H`
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=Z_H&limit=13`
   );
   const albumAreaZH = await ZHResponse.json();
   const topPlaylistListResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist/highquality?limit=10`
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist/highquality?limit=13`
   );
   const topPlaylistList = await topPlaylistListResponse.json();
   const hotPlaylistListResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist?limit=10`
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist?limit=13`
   );
   const hotPlaylistList = await hotPlaylistListResponse.json();
 
