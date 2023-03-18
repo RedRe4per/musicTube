@@ -19,11 +19,10 @@ export const SearchResult = React.memo(({ searchResult }: Props) => {
             No results found
           </h5>
         )}
-        {searchResult?.result && (
-          searchResult?.result.songs.map((song: any, index: number)=>{
-            return <ResultItem song={song} key={index} /> 
-          })
-        )}
+        {searchResult?.result &&
+          searchResult?.result.songs.map((song: any, index: number) => {
+            return <ResultItem song={song} key={index} />;
+          })}
       </section>
     </section>
   );
