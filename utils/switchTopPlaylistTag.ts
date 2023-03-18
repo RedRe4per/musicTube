@@ -128,6 +128,16 @@ export const switchTopPlaylistTag = (chineseTag: string) => {
     case "安静":
       englishTag = "Peaceful";
       break;
+      case "下午茶":
+      englishTag = "Afternoon Tea";
+      break;
+      case "网络歌曲":
+      englishTag = "Online Songs";
+      break;
+      case "旅行":
+      englishTag = "Traveling";
+      break;
+      
     default:
       englishTag = chineseTag;
   }
