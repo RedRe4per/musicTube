@@ -39,12 +39,13 @@ export const SearchBar = ({ page }: Props) => {
   return (
     <section>
       <input
-        className={`flex bg-secondary w-[300px] xl:w-[450px] 2xl:w-[600px] h-[50px] pl-[54px] pt-1.5 rounded-[10px] placeholder:text-h4-light placeholder:text-gray-200 ${
+        className={`flex bg-secondary text-white-50 text-h4-normal w-[300px] xl:w-[450px] 2xl:w-[600px] h-[50px] pl-[54px] pt-1.5 rounded-[10px] placeholder:text-h4-light placeholder:text-gray-200 ${
           page === "/likedSongs" ? "invert" : ""
         }`}
         type="text"
         value={searchTerm}
         onChange={handleInputChange}
+        onBlur={()=>setSearchTerm("")}
         placeholder="Search"
         autoFocus
       />
