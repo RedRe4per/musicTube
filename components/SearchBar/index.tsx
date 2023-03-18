@@ -12,7 +12,7 @@ export const SearchBar = ({ page }: Props) => {
   useEffect(() => {
     const debouncedSearch = debounce((term) => {
       setDebouncedSearchTerm(term);
-    }, 500);
+    }, 400);
     debouncedSearch(searchTerm);
     return () => {
       debouncedSearch.cancel();
