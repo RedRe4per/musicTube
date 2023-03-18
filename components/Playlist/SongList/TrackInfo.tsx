@@ -155,7 +155,9 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
       </div>
       <div className="flex-1 flex justify-between text-gray-200">
         <Link href={`/album/${al.id}`}>
-          <h6 className="hover:text-gray-100 hover:-translate-y-1 hover:underline brightness-125 text-h4-light">{al.name}</h6>
+          <h6 className="hover:text-gray-100 hover:-translate-y-1 hover:underline brightness-125 text-h4-light">
+            {al.name}
+          </h6>
         </Link>
         <h6 className="w-20">{formatTime(dt / 1000)}</h6>
       </div>
