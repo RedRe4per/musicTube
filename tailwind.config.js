@@ -135,7 +135,9 @@ module.exports = {
         "screen-70": "calc(100vw - 303px)",
       },
       screens: {
-        custom: "1950px",
+        custom3xl: "1950px",
+        custom4xl: "2400px",
+        custom5xl: "2850px",
       },
     },
   },

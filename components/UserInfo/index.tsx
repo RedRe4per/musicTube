@@ -15,7 +15,7 @@ export const UserInfo = () => {
           isDropdown ? "bg-gray-800 shadow-lg bg-white" : ""
         } rounded-[10px]`}
       >
-        <section className="flex w-full h-[80px] justify-around items-center gap-2">
+        <section onClick={handleDropdown} className="flex w-full h-[80px] justify-around items-center gap-2">
           <div className="flex items-center gap-3">
             <Image
               src="/person-avator.png"
@@ -23,13 +23,12 @@ export const UserInfo = () => {
               width={50}
               height={50}
             ></Image>
-            <span>Guest</span>
+            <span className="hidden lg:block">Guest</span>
           </div>
           <img
             src={isDropdown ? "/icons/arrow-up.svg" : "/icons/arrow-down.svg"}
             alt="arrow"
-            onClick={handleDropdown}
-            className="cursor-pointer"
+            className="cursor-pointer hidden lg:block"
           ></img>
         </section>
         <section className={`${isDropdown ? "" : "hidden"}`}>

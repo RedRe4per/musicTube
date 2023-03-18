@@ -17,10 +17,10 @@ export default function Layout({ children }: Props) {
   return (
     <div className="flex">
       <Nav />
-      <section className="w-full lg:w-screen-70 bg-gray-650 relative">
+      <section className="w-full xl:w-screen-70 bg-gray-650 relative">
         <Header />
         <main
-          className={`overflow-auto max-h-[82.8vh] scrollbar ${
+          className={`overflow-auto max-h-[82.8vh] lg:scrollbar ${
             isLoading ? "blur-xl brightness-50" : ""
           }`}
         >

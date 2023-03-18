@@ -50,7 +50,7 @@ export const VolumeBar = React.forwardRef(
     useGlobalListener(isDragging, handleMouseMove, handleMouseUp);
 
     return (
-      <aside className="w-[27%] flex justify-end">
+      <aside className="w-[27%] hidden lg:flex justify-end">
         <section className="flex items-center justify-around md:w-[180px] xl:w-[250px]">
           <div className="w-[20%]">
             <svg

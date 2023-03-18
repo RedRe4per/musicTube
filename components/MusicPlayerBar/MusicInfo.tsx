@@ -34,7 +34,7 @@ export const MusicInfo = ({ music }: Props) => {
   }, [music]);
 
   return (
-    <aside className="w-[27%] flex gap-4">
+    <aside className="w-[27%] flex gap-4 hidden lg:block">
       <div className="mt-[2px] w-[95px] flex items-center justify-center rounded-sm overflow-hidden">
         <Image
           src={musicImgUrl ? musicImgUrl : "/icons/disc-line.svg"}

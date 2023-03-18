@@ -18,7 +18,7 @@ export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
   const { setIsLoading } = useContext(BgColorContext);
 
   return (
-    <section className="max-w-[1/8] h-[250px] lg:h-[335px] relative overflow-hidden rounded-xl p-1 hover:bg-gray-600 hover:shadow-md hover:shadow-white-50 hover:-translate-y-2">
+    <section className="max-w-[1/8] h-[200px] lg:h-[335px] relative overflow-hidden rounded-xl p-1 hover:bg-gray-600 hover:shadow-md hover:shadow-white-50 hover:-translate-y-2">
       <Link onClick={() => setIsLoading(true)} href={`/album/${albumId}`}>
         <div className="relative">
           <Image
@@ -46,10 +46,10 @@ export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
           </div>
         </div>
         <section className="absolute max-w-[100%] overflow-hidden">
-          <h5 className="text-button-normal text-white-200 mt-[15px] ">
+          <h5 className="text-tag-normal lg:text-button-normal text-white-200 mt-[15px] ">
             {albumName}
           </h5>
-          <h6 className="text-tag-normal text-gray-400 mt-[7px] ">
+          <h6 className="text-tag-normal text-gray-400 mt-[7px] hidden lg:block">
             {artists.map((artist, index) => {
               return <span key={index}>{artist}&nbsp;&nbsp;</span>;
             })}

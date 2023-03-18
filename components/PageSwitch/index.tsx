@@ -5,7 +5,7 @@ interface Props {
 export const PageSwitch = ({ page }: Props) => {
   return (
     <section
-      className={`flex bg-secondary h-[50px] rounded-[10px] ${
+      className={`hidden lg:flex bg-secondary h-[50px] rounded-[10px] ${
         page === "/likedSongs" ? "invert" : ""
       }`}
     >

@@ -1,7 +1,7 @@
 export const Footer = () => {
   return (
     <footer className="footer footer-center text-white-50 p-10 text-h4-light rounded">
-      <div className="grid grid-flow-col gap-4">
+      <div className="grid grid-flow-col gap-4 hidden lg:block">
         <a className="link link-hover" href="https://redre4per.github.io/">
           About me
         </a>
@@ -45,7 +45,7 @@ export const Footer = () => {
           </a>
         </div>
       </div>
-      <div>
+      <div className="text-tag-light lg:text-h4-light">
         <p>Copyright © 2023 - All right reserved</p>
         <p>Made by Derek Zhu</p>
       </div>

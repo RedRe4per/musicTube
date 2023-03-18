@@ -70,7 +70,7 @@ export const MusicPlayerBar = () => {
   return (
     <main className="absolute bottom-0 w-full h-[100px] bg-gray-800 flex items-center justify-between shadow-inner shadow-gray-400">
       <MusicInfo music={currentMusic} />
-      <section className="w-[46%] flex flex-col items-center">
+      <section className="w-[70%] lg:w-[46%] flex flex-col items-center">
         <section className="flex gap-[40px] items-center fill-gray-200">
           <SequenceButton
             handleSequence={handleRandomPlay}
