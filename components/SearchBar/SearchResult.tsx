@@ -10,7 +10,7 @@ export const SearchResult = React.memo(({ searchResult }: Props) => {
     <section
       className={`${
         searchResult ? "" : "hidden"
-      } absolute w-[650px] max-h-[70vh] overflow-x-hidden overflow-y-scroll scrollbar bg-gray-800 border-2 border-solid border-gray-400 shadow-xl shadow-gray-400 rounded-lg brightness-150 top-16 left-1/2 transform -translate-x-1/2 z-10`}
+      } absolute w-[650px] max-h-[70vh] overflow-x-hidden overflow-y-scroll scrollbar bg-gray-800 border-2 border-solid border-gray-400 shadow-lg shadow-gray-400 rounded-lg brightness-150 top-16 left-1/2 transform -translate-x-1/2 z-10`}
     >
       <section className="px-5 py-3 flex flex-col">
         {!searchResult?.result && (

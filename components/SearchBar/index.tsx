@@ -42,7 +42,7 @@ export const SearchBar = ({ page }: Props) => {
     setTimeout(() => {
       setSearchTerm("");
       setSearchResult(null);
-    }, 500);
+    }, 200);
   };
 
   return (
