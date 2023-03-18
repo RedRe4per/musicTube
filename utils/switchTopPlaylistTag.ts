@@ -137,19 +137,19 @@ export const switchTopPlaylistTag = (chineseTag: string) => {
     case "旅行":
       englishTag = "Traveling";
       break;
-      case "散步":
+    case "散步":
       englishTag = "Strolling";
       break;
-      case "清新":
+    case "清新":
       englishTag = "Refreshing";
       break;
-      case "80后":
+    case "80后":
       englishTag = "80s Generation";
       break;
-      case "午休":
+    case "午休":
       englishTag = "Midday Break";
       break;
-      case "榜单":
+    case "榜单":
       englishTag = "Top Chart";
       break;
 
