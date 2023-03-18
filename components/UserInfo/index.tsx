@@ -15,7 +15,10 @@ export const UserInfo = () => {
           isDropdown ? "bg-gray-800 shadow-lg bg-white" : ""
         } rounded-[10px]`}
       >
-        <section onClick={handleDropdown} className="flex w-full h-[80px] justify-around items-center gap-2">
+        <section
+          onClick={handleDropdown}
+          className="flex w-full h-[80px] justify-around items-center gap-2"
+        >
           <div className="flex items-center gap-3">
             <Image
               src="/person-avator.png"

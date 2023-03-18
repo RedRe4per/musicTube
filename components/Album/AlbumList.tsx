@@ -11,7 +11,9 @@ export const AlbumList = ({ title, albumList }: Props) => {
   return (
     <section className="ml-3 lg:ml-5 mt-6 overflow-hidden">
       <section className="flex items-center justify-between gap-4">
-        <h2 className="ml-1 text-button-light lg:text-h3-normal text-white-200">{title}</h2>
+        <h2 className="ml-1 text-button-light lg:text-h3-normal text-white-200">
+          {title}
+        </h2>
         <Link className="lg:text-h4-normal mr-4" href={"/"}>
           More
         </Link>
