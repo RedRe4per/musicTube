@@ -13,9 +13,9 @@ export default function Custom500() {
           height={400}
         />
         <div>
-          <h1 className="text-5xl font-bold">No resource found!</h1>
+          <h1 className="text-5xl font-bold">500 - Server-side error occurred</h1>
           <p className="py-6">
-            Sorry, it seems that the resource you need is not available in the
+            No resource found! It seems that the resource you need is not available in the
             server, maybe your resource Id is wrong, or other reasons. Please
             check and request again.
           </p>
