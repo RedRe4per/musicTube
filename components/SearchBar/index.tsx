@@ -56,11 +56,11 @@ export const SearchBar = ({ page }: Props) => {
   const handleOptionClick = (type: SearchType, typeId: SearchTypeId) => {
     setSearchType(type);
     setSearchTypeId(typeId);
-  }
+  };
 
   const handleLeaveOption = () => {
     setMouseExited(true);
-  }
+  };
 
   const handleClickOutside = () => {
     if (mouseExited) {
@@ -71,28 +71,57 @@ export const SearchBar = ({ page }: Props) => {
   const handleClickSelector = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     setDisplayDropdown(true);
-  }
+  };
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, [mouseExited]);
 
   return (
     <section className="relative ">
       <section className="flex gap-1">
-        <div className={`h-[50px] pl-5 pt-3 dropdown-custom ${
+        <div
+          className={`h-[50px] pl-5 pt-3 dropdown-custom ${
             page === "/likedSongs" ? "invert" : ""
           }`}
-          onClick={(e)=>handleClickSelector(e)}>{searchType}</div>
-        <ul onClick={()=>setDisplayDropdown(false)} onMouseLeave={handleLeaveOption} className={`absolute h-[205px] flex flex-col rounded-br-[10px] rounded-tr-[4px] border-white-50 border-[3px] border-solid dropdown-custom top-[-1px] z-10 ${displayDropdown? "": "hidden"}`}
+          onClick={(e) => handleClickSelector(e)}
         >
-          <li onClick={()=>handleOptionClick("Song", "1")} className="dropdown-option">Song</li>
-          <li onClick={()=>handleOptionClick("Album", "10")} className="dropdown-option">Album</li>
-          <li onClick={()=>handleOptionClick("Playlist", "1000")} className="dropdown-option">Playlist</li>
-          <li onClick={()=>handleOptionClick("Artist", "100")} className="dropdown-option">Artist</li>
+          {searchType}
+        </div>
+        <ul
+          onClick={() => setDisplayDropdown(false)}
+          onMouseLeave={handleLeaveOption}
+          className={`absolute h-[205px] flex flex-col rounded-br-[10px] rounded-tr-[4px] border-white-50 border-[3px] border-solid dropdown-custom top-[-1px] z-10 ${
+            displayDropdown ? "" : "hidden"
+          }`}
+        >
+          <li
+            onClick={() => handleOptionClick("Song", "1")}
+            className="dropdown-option"
+          >
+            Song
+          </li>
+          <li
+            onClick={() => handleOptionClick("Album", "10")}
+            className="dropdown-option"
+          >
+            Album
+          </li>
+          <li
+            onClick={() => handleOptionClick("Playlist", "1000")}
+            className="dropdown-option"
+          >
+            Playlist
+          </li>
+          <li
+            onClick={() => handleOptionClick("Artist", "100")}
+            className="dropdown-option"
+          >
+            Artist
+          </li>
         </ul>
         <input
           className={`flex bg-secondary text-white-50 text-h4-normal w-[350px] xl:w-[450px] 2xl:w-[550px] h-[50px] pl-[54px] rounded-tr-[10px] rounded-br-[10px] placeholder:text-h4-normal placeholder:text-gray-200 ${
