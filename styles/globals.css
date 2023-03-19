@@ -16,11 +16,11 @@
   }
 
   .search-result-subtitle {
-    @apply text-tag-light text-gray-300 brightness-75
+    @apply text-tag-light text-gray-300 brightness-75;
   }
 
   .search-result-image {
-    @apply rounded-sm shadow-sm shadow-white-50 border-solid border-white-50
+    @apply rounded-sm shadow-sm shadow-white-50 border-solid border-white-50;
   }
 }
 
