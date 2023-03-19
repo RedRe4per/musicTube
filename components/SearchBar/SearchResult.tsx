@@ -25,7 +25,7 @@ interface Props {
 type keyType = "song" | "album" | "playlist" | "artist";
 
 export const SearchResult = React.memo(({ searchResult }: any) => {
-  console.log(searchResult)
+  console.log(searchResult);
   return (
     <section
       className={`${
