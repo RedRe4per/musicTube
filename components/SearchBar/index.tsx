@@ -55,10 +55,10 @@ export const SearchBar = ({ page }: Props) => {
             page === "/likedSongs" ? "invert" : ""
           }`}
         >
-          <option selected>Songs</option>
-          <option>Album</option>
-          <option>Playlist</option>
-          <option>Artist</option>
+          <option selected id="1">Songs</option>
+          <option id="10">Album</option>
+          <option id="1000">Playlist</option>
+          <option id="100">Artist</option>
         </select>
         <input
           className={`flex bg-secondary text-white-50 text-h4-normal w-[350px] xl:w-[450px] 2xl:w-[550px] h-[50px] pl-[54px] rounded-tr-[10px] rounded-br-[10px] placeholder:text-h4-normal placeholder:text-gray-200 ${
@@ -82,13 +82,11 @@ export const SearchBar = ({ page }: Props) => {
           <path fill="none" d="M0 0h24v24H0z" />
           <path d="M12 14l-4-4h8z" fill="#C4C4C4" />
         </svg>
-        <img
-          src="/icons/search.svg"
-          alt="search"
-          className={`absolute top-[14px] ml-[150px] ${
-            page === "/likedSongs" ? "invert" : ""
-          }`}
-        />
+        <svg 
+        className={`absolute top-[10px] ml-[146px] w-[30px] h-[30px] ${
+          page === "/likedSongs" ? "invert" : ""
+        }`}
+        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 2c4.968 0 9 4.032 9 9s-4.032 9-9 9-9-4.032-9-9 4.032-9 9-9zm0 16c3.867 0 7-3.133 7-7 0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7zm8.485.071l2.829 2.828-1.415 1.415-2.828-2.829 1.414-1.414z" fill="#C4C4C4"/></svg>
         <SearchResult searchResult={searchResult} />
       </section>
     </section>
