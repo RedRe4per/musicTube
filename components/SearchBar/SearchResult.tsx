@@ -18,7 +18,8 @@ export const SearchResult = React.memo(({ searchResult }: Props) => {
             No results found
           </h5>
         )}
-        {searchResult?.result && searchResult?.result.songs &&
+        {searchResult?.result &&
+          searchResult?.result.songs &&
           searchResult?.result.songs.map((song: any, index: number) => {
             return <SongItem song={song} key={index} />;
           })}
