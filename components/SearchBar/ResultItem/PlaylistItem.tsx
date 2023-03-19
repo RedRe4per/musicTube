@@ -1,7 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import { IPlaylist } from "@/interfaces/playlist";
 
-export const PlaylistItem = ({ playlist }: any) => {
+interface Props {
+  playlist: IPlaylist;
+}
+
+export const PlaylistItem = ({ playlist }: Props) => {
   return (
     <Link href={`/playlist/${playlist.id}`}>
       <section className="search-result-item">

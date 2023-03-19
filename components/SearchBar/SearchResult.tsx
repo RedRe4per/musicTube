@@ -5,7 +5,7 @@ import { PlaylistItem } from "./ResultItem/PlaylistItem";
 import { ArtistItem } from "./ResultItem/ArtistItem";
 
 interface ComponentMap {
-  [key: string]: React.FC;
+  [key: string]: any;
 }
 
 const COMPONENTS_MAP: ComponentMap = {

@@ -1,7 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import { IAlbumDetails } from "@/interfaces/album";
 
-export const AlbumItem = ({ album }: any) => {
+interface Props {
+  album: IAlbumDetails;
+}
+
+export const AlbumItem = ({ album }: Props) => {
   return (
     <Link href={`/album/${album.id}`}>
       <section className="search-result-item gap-4">
@@ -17,7 +22,7 @@ export const AlbumItem = ({ album }: any) => {
         <div>
           <h5>{album.name}</h5>
           <h6 className="search-result-subtitle">
-            {album.artists.map((artist: any, index: number) => {
+            {album.artists.map((artist, index: number) => {
               return <span key={index}>{artist.name}&nbsp;&nbsp;</span>;
             })}
           </h6>

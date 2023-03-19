@@ -1,7 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import { IArtist } from "@/interfaces/artist";
 
-export const ArtistItem = ({ artist }: any) => {
+interface Props {
+  artist: IArtist;
+}
+
+export const ArtistItem = ({ artist }: Props) => {
   return (
     <Link href={`/artist/${artist.id}`}>
       <section className="search-result-item gap-4">
