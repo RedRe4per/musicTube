@@ -94,31 +94,41 @@ export const SearchBar = ({ page }: Props) => {
         <ul
           onClick={() => setDisplayDropdown(false)}
           onMouseLeave={handleLeaveOption}
-          className={`absolute h-[205px] flex flex-col rounded-br-[10px] rounded-tr-[4px] border-white-50 border-[3px] border-solid dropdown-custom top-[-1px] z-10 ${
+          className={`absolute flex flex-col rounded-br-[10px] rounded-tr-[4px] border-white-50 border-[3px] border-solid dropdown-custom top-[-1px] z-10 ${
             displayDropdown ? "" : "hidden"
+          } ${
+            page === "/likedSongs" ? "invert" : ""
           }`}
         >
           <li
             onClick={() => handleOptionClick("Song", "1")}
-            className="dropdown-option"
+            className={`dropdown-option rounded-tr-[1px] ${
+              page === "/likedSongs" ? "dropdown-invert" : ""
+            }`}
           >
             Song
           </li>
           <li
             onClick={() => handleOptionClick("Album", "10")}
-            className="dropdown-option"
+            className={`dropdown-option ${
+              page === "/likedSongs" ? "dropdown-invert" : ""
+            }`}
           >
             Album
           </li>
           <li
             onClick={() => handleOptionClick("Playlist", "1000")}
-            className="dropdown-option"
+            className={`dropdown-option ${
+              page === "/likedSongs" ? "dropdown-invert" : ""
+            }`}
           >
             Playlist
           </li>
           <li
             onClick={() => handleOptionClick("Artist", "100")}
-            className="dropdown-option"
+            className={`dropdown-option ${
+              page === "/likedSongs" ? "dropdown-invert" : ""
+            }`}
           >
             Artist
           </li>

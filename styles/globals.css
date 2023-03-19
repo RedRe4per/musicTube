@@ -30,6 +30,10 @@
   .dropdown-option {
     @apply hover:bg-gray-400 hover:text-green hover:brightness-125 pl-5 py-[12px] rounded-md;
   }
+
+  .dropdown-invert {
+    @apply invert text-gray-650 text-h3-normal hover:bg-purple-700 hover:text-white-200;
+  }
 }
 
 @layer utilities {
