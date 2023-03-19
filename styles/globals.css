@@ -22,6 +22,14 @@
   .search-result-image {
     @apply rounded-sm shadow-sm shadow-white-50 border-solid border-white-50;
   }
+
+  .dropdown-custom {
+    @apply bg-secondary cursor-pointer text-gray-200 text-h4-normal w-[130px] rounded-tl-[10px] rounded-bl-[10px];
+  }
+
+  .dropdown-option {
+    @apply hover:bg-gray-400 hover:text-green hover:brightness-125 pl-5 py-[12px] rounded-md;
+  }
 }
 
 @layer utilities {
@@ -43,16 +51,6 @@
 
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #c4c4c4;
-  }
-
-  .custom-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  }
-
-  .custom-select option {
-    background-color: black;
   }
 
   .loading::after {

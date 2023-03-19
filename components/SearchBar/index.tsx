@@ -7,11 +7,17 @@ interface Props {
   page: string;
 }
 
+type SearchType = "Song" | "Album" | "Artist" | "Playlist";
+type SearchTypeId = "1" | "10" | "100" | "1000";
+
 export const SearchBar = ({ page }: Props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [searchResult, setSearchResult] = useState<ISearchResult | null>(null);
-  const selectorRef = useRef<HTMLSelectElement>(null);
+  const [searchType, setSearchType] = useState<SearchType>("Song");
+  const [searchTypeId, setSearchTypeId] = useState<SearchTypeId>("1");
+  const [displayDropdown, setDisplayDropdown] = useState(false);
+  const [mouseExited, setMouseExited] = useState(false);
 
   useEffect(() => {
     const debouncedSearch = debounce((term) => {
@@ -27,7 +33,7 @@ export const SearchBar = ({ page }: Props) => {
     if (debouncedSearchTerm) {
       const searchRequest = async () => {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/cloudsearch?type=${selectorRef.current?.value}&keywords=${debouncedSearchTerm}`
+          `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/cloudsearch?type=${searchTypeId}&keywords=${debouncedSearchTerm}`
         );
         const data = await response.json();
         setSearchResult(data);
@@ -47,21 +53,47 @@ export const SearchBar = ({ page }: Props) => {
     }, 200);
   };
 
+  const handleOptionClick = (type: SearchType, typeId: SearchTypeId) => {
+    setSearchType(type);
+    setSearchTypeId(typeId);
+  }
+
+  const handleLeaveOption = () => {
+    setMouseExited(true);
+  }
+
+  const handleClickOutside = () => {
+    if (mouseExited) {
+      setDisplayDropdown(false);
+    }
+  };
+
+  const handleClickSelector = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    setDisplayDropdown(true);
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [mouseExited]);
+
   return (
     <section className="relative ">
       <section className="flex gap-1">
-        <select
-          ref={selectorRef}
-          defaultValue="1"
-          className={`bg-secondary custom-select pl-5 cursor-pointer text-gray-200 text-h4-normal w-[130px] h-[50px] rounded-tl-[10px] rounded-bl-[10px] ${
+        <div className={`h-[50px] pl-5 pt-3 dropdown-custom ${
             page === "/likedSongs" ? "invert" : ""
           }`}
+          onClick={(e)=>handleClickSelector(e)}>{searchType}</div>
+        <ul onClick={()=>setDisplayDropdown(false)} onMouseLeave={handleLeaveOption} className={`absolute h-[205px] flex flex-col rounded-br-[10px] rounded-tr-[4px] border-white-50 border-[3px] border-solid dropdown-custom top-[-1px] z-10 ${displayDropdown? "": "hidden"}`}
         >
-          <option value="1">Songs</option>
-          <option value="10">Album</option>
-          <option value="1000">Playlist</option>
-          <option value="100">Artist</option>
-        </select>
+          <li onClick={()=>handleOptionClick("Song", "1")} className="dropdown-option">Song</li>
+          <li onClick={()=>handleOptionClick("Album", "10")} className="dropdown-option">Album</li>
+          <li onClick={()=>handleOptionClick("Playlist", "1000")} className="dropdown-option">Playlist</li>
+          <li onClick={()=>handleOptionClick("Artist", "100")} className="dropdown-option">Artist</li>
+        </ul>
         <input
           className={`flex bg-secondary text-white-50 text-h4-normal w-[350px] xl:w-[450px] 2xl:w-[550px] h-[50px] pl-[54px] rounded-tr-[10px] rounded-br-[10px] placeholder:text-h4-normal placeholder:text-gray-200 ${
             page === "/likedSongs" ? "invert" : ""
@@ -75,7 +107,7 @@ export const SearchBar = ({ page }: Props) => {
         />
 
         <svg
-          className={`absolute pointer-events-none top-[9px] ml-[92px] w-8 h-8 ${
+          className={`absolute pointer-events-none top-[9px] ml-[92px] w-8 h-8 z-20 ${
             page === "/likedSongs" ? "invert" : ""
           }`}
           xmlns="http://www.w3.org/2000/svg"
