@@ -130,7 +130,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
         <section className="flex gap-4">
           <div>
             <Image
-              className="rounded-sm"
+              className="rounded-sm min-w-[50px]"
               src={al.picUrl}
               alt="cover"
               width={50}

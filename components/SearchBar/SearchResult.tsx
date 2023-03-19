@@ -2,6 +2,7 @@ import React from "react";
 import { SongItem } from "./SongItem";
 import { AlbumItem } from "./AlbumItem";
 import { PlaylistItem } from "./PlaylistItem";
+import { ArtistItem } from "./ArtistItem";
 
 interface Props {
   searchResult: any;
@@ -39,6 +40,11 @@ export const SearchResult = React.memo(({ searchResult }: Props) => {
           searchResult?.result.playlists &&
           searchResult?.result.playlists.map((playlist: any, index: number) => {
             return <PlaylistItem playlist={playlist} key={index} />;
+          })}
+        {searchResult?.result &&
+          searchResult?.result.artists &&
+          searchResult?.result.artists.map((artist: any, index: number) => {
+            return <ArtistItem artist={artist} key={index} />;
           })}
       </section>
     </section>
