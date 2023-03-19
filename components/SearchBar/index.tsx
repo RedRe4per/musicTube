@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { debounce } from "lodash";
 import { SearchResult } from "./SearchResult";
 
@@ -10,6 +10,7 @@ export const SearchBar = ({ page }: Props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [searchResult, setSearchResult] = useState<any>(null);
+  const selectorRef = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {
     const debouncedSearch = debounce((term) => {
@@ -25,7 +26,7 @@ export const SearchBar = ({ page }: Props) => {
     if (debouncedSearchTerm) {
       const searchRequest = async () => {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/cloudsearch?keywords=${debouncedSearchTerm}`
+          `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/cloudsearch?type=${selectorRef.current?.value}&keywords=${debouncedSearchTerm}`
         );
         const data = await response.json();
         setSearchResult(data);
@@ -49,18 +50,17 @@ export const SearchBar = ({ page }: Props) => {
     <section className="relative ">
       <section className="flex gap-1">
         <select
-          name=""
-          id=""
+          ref={selectorRef}
           className={`bg-secondary custom-select pl-5 cursor-pointer text-gray-200 text-h4-normal w-[130px] h-[50px] rounded-tl-[10px] rounded-bl-[10px] ${
             page === "/likedSongs" ? "invert" : ""
           }`}
         >
-          <option selected id="1">
+          <option selected value="1">
             Songs
           </option>
-          <option id="10">Album</option>
-          <option id="1000">Playlist</option>
-          <option id="100">Artist</option>
+          <option value="10">Album</option>
+          <option value="1000">Playlist</option>
+          <option value="100">Artist</option>
         </select>
         <input
           className={`flex bg-secondary text-white-50 text-h4-normal w-[350px] xl:w-[450px] 2xl:w-[550px] h-[50px] pl-[54px] rounded-tr-[10px] rounded-br-[10px] placeholder:text-h4-normal placeholder:text-gray-200 ${
