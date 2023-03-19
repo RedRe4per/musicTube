@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { debounce } from "lodash";
 import { SearchResult } from "./SearchResult";
+import { ISearchResult } from "@/interfaces/searchResult";
 
 interface Props {
   page: string;
@@ -9,7 +10,7 @@ interface Props {
 export const SearchBar = ({ page }: Props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
-  const [searchResult, setSearchResult] = useState<any>(null);
+  const [searchResult, setSearchResult] = useState<ISearchResult | null>(null);
   const selectorRef = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {

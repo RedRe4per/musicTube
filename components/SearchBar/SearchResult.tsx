@@ -3,12 +3,13 @@ import { SongItem } from "./ResultItem/SongItem";
 import { AlbumItem } from "./ResultItem/AlbumItem";
 import { PlaylistItem } from "./ResultItem/PlaylistItem";
 import { ArtistItem } from "./ResultItem/ArtistItem";
+import { ISearchResult } from "@/interfaces/searchResult";
 
-interface ComponentMap {
-  [key: string]: any;
-}
+// interface ComponentMap {
+//   [key: string]: ({ song }: Props) => JSX.Element;
+// }
 
-const COMPONENTS_MAP: ComponentMap = {
+const COMPONENTS_MAP: any = {
   song: SongItem,
   album: AlbumItem,
   playlist: PlaylistItem,
@@ -18,15 +19,18 @@ const COMPONENTS_MAP: ComponentMap = {
 const keysToCheck = ["songs", "albums", "playlists", "artists"];
 
 interface Props {
-  searchResult: any;
+  searchResult: ISearchResult | null;
 }
 
-export const SearchResult = React.memo(({ searchResult }: Props) => {
+type keyType = "song" | "album" | "playlist" | "artist";
+
+export const SearchResult = React.memo(({ searchResult }: any) => {
+  console.log(searchResult)
   return (
     <section
       className={`${
         searchResult ? "" : "hidden"
-      } absolute min-w-[600px] max-w-[700px] max-h-[70vh] overflow-x-hidden overflow-y-scroll scrollbar bg-gray-800 border-2 border-solid border-gray-400 shadow-lg shadow-gray-400 rounded-lg brightness-150 top-16 left-1/2 transform -translate-x-1/2 z-10`}
+      } absolute w-[480px] xl:w-[580px] 2xl:w-[680px] max-h-[70vh] overflow-x-hidden overflow-y-scroll scrollbar bg-gray-800 border-2 border-solid border-gray-400 shadow-lg shadow-gray-400 rounded-lg brightness-150 top-16 left-1/2 transform -translate-x-1/2 z-10`}
     >
       <section className="px-5 py-3 flex flex-col">
         {!(
