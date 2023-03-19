@@ -56,9 +56,7 @@ export const SearchBar = ({ page }: Props) => {
             page === "/likedSongs" ? "invert" : ""
           }`}
         >
-          <option value="1">
-            Songs
-          </option>
+          <option value="1">Songs</option>
           <option value="10">Album</option>
           <option value="1000">Playlist</option>
           <option value="100">Artist</option>
