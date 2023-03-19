@@ -15,5 +15,6 @@ export interface ISearchResult {
     playlists: IPlaylist[];
     artistCount: number;
     artists: IArtist[];
+    [key: string]: any;
   }>;
 }

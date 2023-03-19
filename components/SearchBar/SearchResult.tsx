@@ -4,10 +4,16 @@ import { AlbumItem } from "./ResultItem/AlbumItem";
 import { PlaylistItem } from "./ResultItem/PlaylistItem";
 import { ArtistItem } from "./ResultItem/ArtistItem";
 import { ISearchResult } from "@/interfaces/searchResult";
+import { IAlbumDetails } from "@/interfaces/album";
+import { IArtist } from "@/interfaces/artist";
+import { IPlaylist } from "@/interfaces/playlist";
+import { IAlbumSong } from "@/interfaces/albumSong";
 
-// interface ComponentMap {
-//   [key: string]: ({ song }: Props) => JSX.Element;
-// }
+type Param = IAlbumDetails | IArtist | IPlaylist | IAlbumSong;
+
+interface ComponentMap {
+  [key: string]: React.FC;
+}
 
 const COMPONENTS_MAP: any = {
   song: SongItem,
@@ -22,9 +28,7 @@ interface Props {
   searchResult: ISearchResult | null;
 }
 
-type keyType = "song" | "album" | "playlist" | "artist";
-
-export const SearchResult = React.memo(({ searchResult }: any) => {
+export const SearchResult = React.memo(({ searchResult }: Props) => {
   console.log(searchResult);
   return (
     <section
@@ -38,26 +42,26 @@ export const SearchResult = React.memo(({ searchResult }: any) => {
           Object.keys(searchResult.result).some((key) =>
             keysToCheck.includes(key)
           )
-        ) && (
+        ) ? (
           <h5 className="italic text-h4-light text-gray-200">
             No results found
           </h5>
+        ) : (
+          Object.keys(COMPONENTS_MAP).map((type) => {
+            if (
+              searchResult?.result &&
+              searchResult?.result[type + "s"] &&
+              searchResult?.result[type + "s"].length > 0
+            ) {
+              const Component = COMPONENTS_MAP[type];
+              return searchResult.result[type + "s"].map(
+                (item: Param, index: number) => (
+                  <Component key={index} {...{ [type]: item }} />
+                )
+              );
+            }
+          })
         )}
-
-        {Object.keys(COMPONENTS_MAP).map((type) => {
-          if (
-            searchResult?.result &&
-            searchResult?.result[type + "s"] &&
-            searchResult?.result[type + "s"].length > 0
-          ) {
-            const Component = COMPONENTS_MAP[type];
-            return searchResult.result[type + "s"].map(
-              (item: any, index: number) => (
-                <Component key={index} {...{ [type]: item }} />
-              )
-            );
-          }
-        })}
       </section>
     </section>
   );
