@@ -1,5 +1,5 @@
 import React from "react";
-import { ResultItem } from "./ResultItem";
+import { SongItem } from "./SongItem";
 
 interface Props {
   searchResult: any;
@@ -10,7 +10,7 @@ export const SearchResult = React.memo(({ searchResult }: Props) => {
     <section
       className={`${
         searchResult ? "" : "hidden"
-      } absolute w-[650px] max-h-[70vh] overflow-x-hidden overflow-y-scroll scrollbar bg-gray-800 border-2 border-solid border-gray-400 shadow-lg shadow-gray-400 rounded-lg brightness-150 top-16 left-1/2 transform -translate-x-1/2 z-10`}
+      } absolute min-w-[600px] max-w-[700px] max-h-[70vh] overflow-x-hidden overflow-y-scroll scrollbar bg-gray-800 border-2 border-solid border-gray-400 shadow-lg shadow-gray-400 rounded-lg brightness-150 top-16 left-1/2 transform -translate-x-1/2 z-10`}
     >
       <section className="px-5 py-3 flex flex-col">
         {!searchResult?.result && (
@@ -18,9 +18,9 @@ export const SearchResult = React.memo(({ searchResult }: Props) => {
             No results found
           </h5>
         )}
-        {searchResult?.result &&
+        {searchResult?.result && searchResult?.result.songs &&
           searchResult?.result.songs.map((song: any, index: number) => {
-            return <ResultItem song={song} key={index} />;
+            return <SongItem song={song} key={index} />;
           })}
       </section>
     </section>

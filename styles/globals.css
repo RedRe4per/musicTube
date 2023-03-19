@@ -32,6 +32,23 @@
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #c4c4c4;
   }
+
+  .custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  .custom-select option {
+    background-color: black;
+  }
+
+  .loading::after {
+    content: "";
+    animation: loadingDots 2s linear infinite;
+    font-size: 1.5rem;
+    display: inline-block;
+  }
 }
 
 @keyframes loadingDots {
@@ -48,11 +65,4 @@
   75% {
     content: "...";
   }
-}
-
-.loading::after {
-  content: "";
-  animation: loadingDots 2s linear infinite;
-  font-size: 1.5rem;
-  display: inline-block;
 }

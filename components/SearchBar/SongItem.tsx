@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export const ResultItem = ({ song }: any) => {
+export const SongItem = ({ song }: any) => {
   console.log(song.al.picUrl);
   return (
     <Link href={`/song/${song.id}`}>
