@@ -15,11 +15,11 @@ interface ComponentMap {
   [key: string]: React.FC;
 }
 
-const COMPONENTS_MAP: any = {
-  song: SongItem,
-  album: AlbumItem,
-  playlist: PlaylistItem,
-  artist: ArtistItem,
+const COMPONENTS_MAP: ComponentMap = {
+  song: SongItem as React.FC,
+  album: AlbumItem as React.FC,
+  playlist: PlaylistItem as React.FC,
+  artist: ArtistItem as React.FC,
 };
 
 const keysToCheck = ["songs", "albums", "playlists", "artists"];
