@@ -96,9 +96,7 @@ export const SearchBar = ({ page }: Props) => {
           onMouseLeave={handleLeaveOption}
           className={`absolute flex flex-col rounded-br-[10px] rounded-tr-[4px] border-white-50 border-[3px] border-solid dropdown-custom top-[-1px] z-10 ${
             displayDropdown ? "" : "hidden"
-          } ${
-            page === "/likedSongs" ? "invert" : ""
-          }`}
+          } ${page === "/likedSongs" ? "invert" : ""}`}
         >
           <li
             onClick={() => handleOptionClick("Song", "1")}
