@@ -1,8 +1,8 @@
 import React from "react";
-import { SongItem } from "./SongItem";
-import { AlbumItem } from "./AlbumItem";
-import { PlaylistItem } from "./PlaylistItem";
-import { ArtistItem } from "./ArtistItem";
+import { SongItem } from "./ResultItem/SongItem";
+import { AlbumItem } from "./ResultItem/AlbumItem";
+import { PlaylistItem } from "./ResultItem/PlaylistItem";
+import { ArtistItem } from "./ResultItem/ArtistItem";
 
 interface ComponentMap {
   [key: string]: React.FC;
