@@ -51,7 +51,7 @@ export const SearchBar = ({ page }: Props) => {
         <select
           name=""
           id=""
-          className={`bg-secondary custom-select pl-5 text-gray-200 text-h4-normal w-[130px] h-[50px] rounded-tl-[10px] rounded-bl-[10px] ${
+          className={`bg-secondary custom-select pl-5 cursor-pointer text-gray-200 text-h4-normal w-[130px] h-[50px] rounded-tl-[10px] rounded-bl-[10px] ${
             page === "/likedSongs" ? "invert" : ""
           }`}
         >
