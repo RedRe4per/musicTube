@@ -6,11 +6,7 @@ export const ArtistItem = ({ artist }: any) => {
     <Link href={`/artist/${artist.id}`}>
       <section className="hover:bg-gray-600 hover:text-green p-2 rounded-lg text-h4-light flex items-center gap-4">
         <div className="w-[40px] h-[40px] relative rounded-sm shadow-sm shadow-white-50 border-solid border-white-50 border-1 overflow-hidden">
-          <Image
-            src={artist.picUrl}
-            alt="album"
-            fill
-          ></Image>
+          <Image src={artist.picUrl} alt="album" fill></Image>
         </div>
         <div>
           <h5>{artist.name}</h5>
