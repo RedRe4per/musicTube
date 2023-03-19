@@ -51,11 +51,12 @@ export const SearchBar = ({ page }: Props) => {
       <section className="flex gap-1">
         <select
           ref={selectorRef}
+          defaultValue="1"
           className={`bg-secondary custom-select pl-5 cursor-pointer text-gray-200 text-h4-normal w-[130px] h-[50px] rounded-tl-[10px] rounded-bl-[10px] ${
             page === "/likedSongs" ? "invert" : ""
           }`}
         >
-          <option selected value="1">
+          <option value="1">
             Songs
           </option>
           <option value="10">Album</option>
