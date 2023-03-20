@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { LyricsContext } from "@/contexts/LyricsContext";
+import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
 import { parseLyrics } from "@/utils/parseLyrics";
 
 interface Props {
@@ -14,6 +15,7 @@ interface FormattedLyrics {
 
 export const TrackLyrics = ({ trackId }: Props) => {
   const { lyricsTimestamp } = useContext(LyricsContext);
+  const { currentMusic } = useContext(PlayAndPauseContext);
   const [lyrics, setLyrics] = useState<FormattedLyrics[] | null>(null);
 
   useEffect(() => {
@@ -37,6 +39,7 @@ export const TrackLyrics = ({ trackId }: Props) => {
           return (
             <p
               className={`mt-[10px] ${
+                currentMusic?.id === trackId &&
                 lyricsTimestamp * 1000 > lyric.startTime &&
                 lyricsTimestamp * 1000 < lyric.endTime
                   ? "text-green brightness-150 text-h4-normal"
