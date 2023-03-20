@@ -17,17 +17,8 @@ interface Props {
 }
 
 export default function Track(trackInfo: Props) {
-    console.log(trackInfo.songs[0])
-  const {
-    name,
-    id,
-    al,
-    ar,
-    mv,
-    mark,
-    publishTime,
-    dt,
-  } = trackInfo.songs[0];
+  console.log(trackInfo.songs[0]);
+  const { name, id, al, ar, mv, mark, publishTime, dt } = trackInfo.songs[0];
   const { handleBackgroundColor } = useBackgroundColor(al.picUrl);
   const { bgColor, setIsLoading } = useContext(BgColorContext);
 

@@ -3,7 +3,13 @@ import Link from "next/link";
 import { ITrack } from "@/interfaces/music";
 import { formatDate } from "@/utils/formatTime";
 
-export const TrackInfo = ({al, name, ar, mark, publishTime}: Partial<ITrack>) => {
+export const TrackInfo = ({
+  al,
+  name,
+  ar,
+  mark,
+  publishTime,
+}: Partial<ITrack>) => {
   return (
     <section className="mt-6 pl-10 pb-5 flex">
       <div>
@@ -21,7 +27,7 @@ export const TrackInfo = ({al, name, ar, mark, publishTime}: Partial<ITrack>) =>
             <span className="text-green">{mark}</span>&nbsp;Marked
           </span>
           <span>
-          Published at&nbsp;
+            Published at&nbsp;
             <span className="text-green">{formatDate(publishTime!)}</span>
           </span>
         </section>
@@ -32,10 +38,10 @@ export const TrackInfo = ({al, name, ar, mark, publishTime}: Partial<ITrack>) =>
               Artist:{" "}
               {ar.map((artist, index) => {
                 return (
-                    <Link href={`/artist/${artist.id}`} key={index}>
-                  <span className="hover:text-green">
-                    {artist.name}&nbsp;&nbsp;
-                  </span>
+                  <Link href={`/artist/${artist.id}`} key={index}>
+                    <span className="hover:text-green">
+                      {artist.name}&nbsp;&nbsp;
+                    </span>
                   </Link>
                 );
               })}
@@ -43,7 +49,7 @@ export const TrackInfo = ({al, name, ar, mark, publishTime}: Partial<ITrack>) =>
           )}
           <Link href={`/album/${al!.id}`}>
             <span>Album:&nbsp;</span>
-          <span className="hover:text-green">{al!.name}</span>
+            <span className="hover:text-green">{al!.name}</span>
           </Link>
         </section>
       </section>

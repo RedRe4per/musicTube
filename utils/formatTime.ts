@@ -9,10 +9,10 @@ export const formatTime = (seconds: number | undefined) => {
 
 export const formatDate = (timestamp: number) => {
   const date = new Date(timestamp);
-    const formattedDate = new Intl.DateTimeFormat('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      }).format(date);
-      return formattedDate;
-}
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(date);
+  return formattedDate;
+};
