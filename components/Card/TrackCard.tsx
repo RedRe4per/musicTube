@@ -19,7 +19,7 @@ export const TrackCard = ({ track }: Props) => {
   console.log(track);
 
   return (
-    <section className="w-[110px] lg:w-auto h-[200px] lg:h-[335px] relative overflow-hidden rounded-xl p-2 lg:p-4 bg-gray-600 hover:bg-gray-650 transition-colors duration-500">
+    <section className="w-[110px] lg:w-auto h-[200px] lg:h-[335px] relative overflow-hidden rounded-xl p-2 lg:p-4 bg-gray-650 hover:bg-gray-600 transition-colors duration-500">
       <Link onClick={() => setIsLoading(true)} href={`/track/${id}`}>
         <div className="relative">
           <Image
