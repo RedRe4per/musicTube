@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
 import { formatTime } from "@/utils/formatTime";
 import { useTrackFinder } from "@/hooks/useTrackFinder";
@@ -13,7 +13,7 @@ interface Props {
   duration: number;
 }
 
-export const TrackPlay = ({ trackId, album, duration }: Props) => {
+export const TrackPlay = React.memo(({ trackId, album, duration }: Props) => {
   const [songIndex, setSongIndex] = useState(0);
   const [playDisabled, setPlayDisabled] = useState(true);
   const { handlePlay } = useHandlePlay(album.id, songIndex);
@@ -93,4 +93,4 @@ export const TrackPlay = ({ trackId, album, duration }: Props) => {
       </section>
     </section>
   );
-};
+});

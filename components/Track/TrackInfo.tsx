@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 import { ITrack } from "@/interfaces/music";
 import { formatDate } from "@/utils/formatTime";
 
-export const TrackInfo = ({
+export const TrackInfo =React.memo(({
   al,
   name,
   ar,
-  mark,
+  pop,
   publishTime,
 }: Partial<ITrack>) => {
   return (
@@ -22,8 +23,8 @@ export const TrackInfo = ({
       </div>
       <section className="ml-10 mt-10 flex flex-col justify-around">
         <section className="flex items-center gap-16 text-h3-normal text-gray-200">
-          <span>
-            <span className="text-green">{mark}</span>&nbsp;Marked
+          <span>Popularity:&nbsp;
+            <span className="text-green">{pop}</span>
           </span>
           <span className="text-h4-normal">
             Published at&nbsp;
@@ -54,4 +55,4 @@ export const TrackInfo = ({
       </section>
     </section>
   );
-};
+});

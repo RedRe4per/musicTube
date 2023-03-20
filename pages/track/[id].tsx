@@ -18,7 +18,7 @@ interface Props {
 }
 
 export default function Track(trackInfo: Props) {
-  const { name, id, al, ar, mv, mark, publishTime, dt } = trackInfo.songs[0];
+  const { name, id, al, ar, mv, pop, publishTime, dt } = trackInfo.songs[0];
   const { handleBackgroundColor } = useBackgroundColor(al.picUrl);
   const { bgColor, setIsLoading } = useContext(BgColorContext);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -26,11 +26,10 @@ export default function Track(trackInfo: Props) {
   useEffect(() => {
     containerRef.current?.scrollIntoView();
     setIsLoading(false);
+    if (typeof window !== "undefined") {
+      handleBackgroundColor();
+     }
   }, [id]);
-
-  if (typeof window !== "undefined") {
-    handleBackgroundColor();
-  }
 
   return (
     <main
@@ -47,7 +46,7 @@ export default function Track(trackInfo: Props) {
         al={al}
         name={name}
         ar={ar}
-        mark={mark}
+        pop={pop}
         publishTime={publishTime}
       />
       <TrackPlay trackId={id} album={al} duration={dt} />

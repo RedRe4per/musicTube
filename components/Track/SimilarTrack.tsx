@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { TrackCard } from "../Card/TrackCard";
 import { ISimilarTrack } from "@/interfaces/music";
 
@@ -6,7 +6,7 @@ interface Props {
   trackId: number;
 }
 
-export const SimilarTrack = ({ trackId }: Props) => {
+export const SimilarTrack = React.memo(({ trackId }: Props) => {
   const [similarSongs, setSimilarSongs] = useState<ISimilarTrack[] | null>(
     null
   );
@@ -35,4 +35,4 @@ export const SimilarTrack = ({ trackId }: Props) => {
       </section>
     </section>
   );
-};
+});
