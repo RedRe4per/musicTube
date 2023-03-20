@@ -122,7 +122,9 @@ export const ProgressBar = React.forwardRef(
             clearInterval(intervalId);
           }}
           onEnded={handleEnd}
-          onTimeUpdate={()=>{setLyricsTimestamp(musicPlayer.current!.currentTime)}}
+          onTimeUpdate={() => {
+            setLyricsTimestamp(musicPlayer.current!.currentTime);
+          }}
         />
         <section className="w-[65vw] lg:w-[400px] xl:w-[600px] 2xl:w-[800px] h-[10px] flex justify-around items-center my-2 gap-1">
           <div className="lg:w-[10%] text-center">

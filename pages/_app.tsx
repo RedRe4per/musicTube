@@ -36,23 +36,30 @@ export default function App({ Component, pageProps }: AppProps) {
         value={{ bgColor, setBgColor, isLoading, setIsLoading }}
       >
         <AlertContext.Provider value={{ alertBox, setAlertBox }}>
-          <LyricsContext.Provider value={{ lyricsTimestamp, setLyricsTimestamp }}>
-          <PlayAndPauseContext.Provider
-            value={{
-              isMusicPlay,
-              setIsMusicPlay,
-              currentMusic,
-              setCurrentMusic,
-            }}
+          <LyricsContext.Provider
+            value={{ lyricsTimestamp, setLyricsTimestamp }}
           >
-            <PlayerContext.Provider
-              value={{ playerList, setPlayerList, musicListId, setMusicListId }}
+            <PlayAndPauseContext.Provider
+              value={{
+                isMusicPlay,
+                setIsMusicPlay,
+                currentMusic,
+                setCurrentMusic,
+              }}
             >
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </PlayerContext.Provider>
-          </PlayAndPauseContext.Provider>
+              <PlayerContext.Provider
+                value={{
+                  playerList,
+                  setPlayerList,
+                  musicListId,
+                  setMusicListId,
+                }}
+              >
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
+              </PlayerContext.Provider>
+            </PlayAndPauseContext.Provider>
           </LyricsContext.Provider>
         </AlertContext.Provider>
       </BgColorContext.Provider>
