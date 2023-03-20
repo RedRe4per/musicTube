@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
 import { useContext } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
@@ -10,7 +10,7 @@ interface Props {
   track: ISimilarTrack;
 }
 
-export const TrackCard = ({ track }: Props) => {
+export const TrackCard =React.memo(({ track }: Props) => {
   const { name, id, album, artists } = track;
   const [showPlay, setShowPlay] = useState(false);
   const { handlePlay } = useHandlePlay(album.id);
@@ -49,9 +49,9 @@ export const TrackCard = ({ track }: Props) => {
             {name}
           </h5>
           <div className="text-tag-normal brightness-90 mt-[7px] hidden lg:block">
-            {artists.map((artist, index) => {
+            {artists.map((artist) => {
               return (
-                <span key={index} className="inline-block">
+                <span key={artist.id} className="inline-block">
                   {artist.name}&nbsp;&nbsp;
                 </span>
               );
@@ -61,4 +61,4 @@ export const TrackCard = ({ track }: Props) => {
       </Link>
     </section>
   );
-};
+});

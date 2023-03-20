@@ -29,9 +29,9 @@ export const TrackLyrics = ({ trackId }: Props) => {
   return (
     <section className="ml-10 mt-10 text-h4-light">
       {lyrics &&
-        lyrics.map((lyric) => {
+        lyrics.map((lyric, index) => {
           return (
-            <p className="mt-[10px]" key={lyric.time}>
+            <p className="mt-[10px]" key={index}>
               {lyric.text}
             </p>
           );
