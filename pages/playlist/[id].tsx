@@ -35,7 +35,7 @@ export default function Playlist(playlistInfo: Props) {
 
   useEffect(() => {
     setIsLoading(false);
-  }, []);
+  }, [id]);
 
   if (typeof window !== "undefined") {
     handleBackgroundColor();

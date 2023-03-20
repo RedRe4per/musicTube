@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { switchTopPlaylistTag } from "@/utils/switchTopPlaylistTag";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
 import { useContext } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
@@ -14,9 +13,8 @@ interface Props {
 export const TrackCard = ({ track }: Props) => {
   const { name, id, album, artists } = track;
   const [showPlay, setShowPlay] = useState(false);
-  //   const { handlePlay } = useHandlePlay(playlistId, 0, "playlist");
+  const { handlePlay } = useHandlePlay(album.id);
   const { setIsLoading } = useContext(BgColorContext);
-  console.log(track);
 
   return (
     <section className="w-[110px] lg:w-auto h-[200px] lg:h-[335px] relative overflow-hidden rounded-xl p-2 lg:p-4 bg-gray-650 hover:bg-gray-600 transition-colors duration-500">
@@ -42,7 +40,7 @@ export const TrackCard = ({ track }: Props) => {
               } hover:w-[75px] animate-ping cursor-pointer`}
               width={70}
               height={70}
-              // onClick={handlePlay}
+              onClick={handlePlay}
             />
           </div>
         </div>

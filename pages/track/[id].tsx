@@ -24,7 +24,7 @@ export default function Track(trackInfo: Props) {
 
   useEffect(() => {
     setIsLoading(false);
-  }, []);
+  }, [id]);
 
   if (typeof window !== "undefined") {
     handleBackgroundColor();
