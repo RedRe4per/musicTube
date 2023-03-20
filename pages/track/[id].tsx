@@ -28,7 +28,7 @@ export default function Track(trackInfo: Props) {
     setIsLoading(false);
     if (typeof window !== "undefined") {
       handleBackgroundColor();
-     }
+    }
   }, [id]);
 
   return (
