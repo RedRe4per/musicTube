@@ -15,23 +15,25 @@ interface FormattedLyrics {
 
 export const TrackLyrics = ({ trackId }: Props) => {
   const { musicPlayer } = useContext(LyricsContext);
-  const [ lyricsTimestamp, setLyricsTimestamp] = useState(0);
+  const [lyricsTimestamp, setLyricsTimestamp] = useState(0);
   const { isMusicPlay, currentMusic } = useContext(PlayAndPauseContext);
   const [intervalId, setIntervalId] = useState<number | NodeJS.Timeout>(0);
   const [lyrics, setLyrics] = useState<FormattedLyrics[] | null>(null);
 
-  useEffect(()=>{
-    if(!isMusicPlay && currentMusic?.id === trackId ){
-      setIntervalId(setInterval(()=>{
-        setLyricsTimestamp(musicPlayer?.current.currentTime);
-      }, 200))
+  useEffect(() => {
+    if (!isMusicPlay && currentMusic?.id === trackId) {
+      setIntervalId(
+        setInterval(() => {
+          setLyricsTimestamp(musicPlayer?.current.currentTime);
+        }, 200)
+      );
     } else {
-      clearInterval(intervalId)
+      clearInterval(intervalId);
     }
     return () => {
-      clearInterval(intervalId)
-    }
-  }, [isMusicPlay, trackId])
+      clearInterval(intervalId);
+    };
+  }, [isMusicPlay, trackId]);
 
   useEffect(() => {
     const getLyrics = async () => {
