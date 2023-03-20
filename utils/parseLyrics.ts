@@ -16,7 +16,8 @@ export const parseLyrics = (rawData: string) => {
     .filter((item) => item !== null);
 
   const withEndTime = parsedData.map((item, index) => {
-    const endTime = index < parsedData.length - 1 ? parsedData[index + 1]!.startTime : -1;
+    const endTime =
+      index < parsedData.length - 1 ? parsedData[index + 1]!.startTime : -1;
     return { ...item, endTime };
   });
 

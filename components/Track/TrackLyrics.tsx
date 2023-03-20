@@ -37,7 +37,10 @@ export const TrackLyrics = ({ trackId }: Props) => {
           return (
             <p
               className={`mt-[10px] ${
-                lyricsTimestamp * 1000 > lyric.startTime && lyricsTimestamp * 1000 < lyric.endTime ? "text-green brightness-150 text-h4-normal" : ""
+                lyricsTimestamp * 1000 > lyric.startTime &&
+                lyricsTimestamp * 1000 < lyric.endTime
+                  ? "text-green brightness-150 text-h4-normal"
+                  : ""
               }`}
               key={index}
             >
