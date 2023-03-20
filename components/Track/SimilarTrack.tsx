@@ -23,7 +23,7 @@ export const SimilarTrack = ({ trackId }: Props) => {
   }, [trackId]);
 
   return (
-    <section className="mt-12 mx-8">
+    <section className="mt-12 mx-8 mb-14">
       <p className="text-h3-bold text-gray-200 brightness-110 ml-2">
         Similar Tracks
       </p>
