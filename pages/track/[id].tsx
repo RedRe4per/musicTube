@@ -45,7 +45,7 @@ export default function Track(trackInfo: Props) {
         mark={mark}
         publishTime={publishTime}
       />
-      <TrackPlay trackId={id} album={al} duration={dt}/>
+      <TrackPlay trackId={id} album={al} duration={dt} />
       <div>lyric /lyric?id=33894312</div>
       <div>similar songs /simi/song?id=347230</div>
       <Footer />
