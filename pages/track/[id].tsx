@@ -5,8 +5,7 @@ import { useBackgroundColor } from "@/hooks/useBackgroundColor";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { useContext, useEffect } from "react";
 import { TrackInfo } from "@/components/Track/TrackInfo";
-import { PlaylistPlay } from "@/components/Playlist/PlaylistPlay";
-import { SongList } from "@/components/Playlist/SongList";
+import { TrackPlay } from "@/components/Track/TrackPlay";
 import { mixColor } from "@/utils/mixColor";
 import { Footer } from "@/layouts/footer";
 
@@ -17,7 +16,6 @@ interface Props {
 }
 
 export default function Track(trackInfo: Props) {
-  console.log(trackInfo.songs[0]);
   const { name, id, al, ar, mv, mark, publishTime, dt } = trackInfo.songs[0];
   const { handleBackgroundColor } = useBackgroundColor(al.picUrl);
   const { bgColor, setIsLoading } = useContext(BgColorContext);
@@ -47,13 +45,9 @@ export default function Track(trackInfo: Props) {
         mark={mark}
         publishTime={publishTime}
       />
-      {/*
-      <PlaylistPlay playlistId={id} trackCount={trackCount} />
-      <SongList playlistSongs={tracks} playlistId={id} />
-      <Footer /> */}
+      <TrackPlay trackId={id} album={al} duration={dt}/>
       <div>lyric /lyric?id=33894312</div>
       <div>similar songs /simi/song?id=347230</div>
-      <div>artists single songs /artists?id=6452</div>
       <Footer />
     </main>
   );
