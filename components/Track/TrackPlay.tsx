@@ -33,7 +33,7 @@ export const TrackPlay = ({ trackId, album, duration }: Props) => {
       setPlayDisabled(false);
     };
     getTrackIndex();
-  });
+  }, []);
 
   const handlePlayClick = (e: React.MouseEvent<HTMLImageElement>) => {
     if (playDisabled) return;
