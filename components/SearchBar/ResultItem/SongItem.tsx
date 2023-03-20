@@ -8,7 +8,7 @@ interface Props {
 
 export const SongItem = ({ song }: Props) => {
   return (
-    <Link href={`/song/${song.id}`}>
+    <Link href={`/track/${song.id}`}>
       <section className="search-result-item gap-4">
         <div>
           <Image

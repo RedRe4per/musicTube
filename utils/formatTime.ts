@@ -6,3 +6,13 @@ export const formatTime = (seconds: number | undefined) => {
   const formattedSeconds = String(remainingSeconds).padStart(2, "0");
   return `${formattedMinutes}:${formattedSeconds}`;
 };
+
+export const formatDate = (timestamp: number) => {
+  const date = new Date(timestamp);
+    const formattedDate = new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }).format(date);
+      return formattedDate;
+}
