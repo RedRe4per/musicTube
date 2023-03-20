@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from "react";
+import React, { useRef, useEffect } from "react";
 import { SongItem } from "./ResultItem/SongItem";
 import { AlbumItem } from "./ResultItem/AlbumItem";
 import { PlaylistItem } from "./ResultItem/PlaylistItem";
