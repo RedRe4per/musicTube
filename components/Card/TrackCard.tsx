@@ -10,7 +10,7 @@ interface Props {
   track: ISimilarTrack;
 }
 
-export const TrackCard =React.memo(({ track }: Props) => {
+export const TrackCard = React.memo(({ track }: Props) => {
   const { name, id, album, artists } = track;
   const [showPlay, setShowPlay] = useState(false);
   const { handlePlay } = useHandlePlay(album.id);
