@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef, useEffect} from "react";
 import { SongItem } from "./ResultItem/SongItem";
 import { AlbumItem } from "./ResultItem/AlbumItem";
 import { PlaylistItem } from "./ResultItem/PlaylistItem";
@@ -29,8 +29,17 @@ interface Props {
 }
 
 export const SearchResult = React.memo(({ searchResult }: Props) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (searchResult && containerRef.current) {
+      containerRef.current.scrollTop = 0;
+    }
+  }, [searchResult]);
+
   return (
     <section
+      ref={containerRef}
       className={`${
         searchResult ? "" : "hidden"
       } absolute w-[480px] xl:w-[580px] 2xl:w-[680px] max-h-[70vh] overflow-x-hidden overflow-y-scroll scrollbar bg-gray-800 border-2 border-solid border-gray-400 shadow-lg shadow-gray-400 rounded-lg brightness-150 top-16 left-1/2 transform -translate-x-1/2 z-10`}
