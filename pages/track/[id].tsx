@@ -6,6 +6,7 @@ import { BgColorContext } from "@/contexts/BgColorContext";
 import { useContext, useEffect } from "react";
 import { TrackInfo } from "@/components/Track/TrackInfo";
 import { TrackPlay } from "@/components/Track/TrackPlay";
+import { TrackLyrics } from "@/components/Track/TrackLyrics";
 import { mixColor } from "@/utils/mixColor";
 import { Footer } from "@/layouts/footer";
 
@@ -46,7 +47,7 @@ export default function Track(trackInfo: Props) {
         publishTime={publishTime}
       />
       <TrackPlay trackId={id} album={al} duration={dt} />
-      <div>lyric /lyric?id=33894312</div>
+      <TrackLyrics trackId={id} />
       <div>similar songs /simi/song?id=347230</div>
       <Footer />
     </main>
