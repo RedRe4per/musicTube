@@ -19,13 +19,12 @@ export const TrackCard = React.memo(({ track }: Props) => {
   return (
     <section className="w-[110px] lg:w-auto h-[200px] lg:h-[335px] relative overflow-hidden rounded-xl p-2 lg:p-4 bg-gray-650 hover:bg-gray-600 transition-colors duration-500">
       <Link onClick={() => setIsLoading(true)} href={`/track/${id}`}>
-        <div className="relative">
+        <div className="relative w-[94px] lg:w-[190px] h-[94px] lg:h-[190px]">
           <Image
             src={album.picUrl}
             alt="cover"
-            className="object-contain rounded-xl"
-            width={190}
-            height={190}
+            className="object-cover rounded-xl"
+            fill
           />
           <div
             onMouseEnter={() => setShowPlay(true)}
