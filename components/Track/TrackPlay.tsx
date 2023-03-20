@@ -49,7 +49,7 @@ export const TrackPlay = ({ trackId, album, duration }: Props) => {
   };
 
   return (
-    <section className="mt-6 ml-10 flex gap-10 items-center justify-between">
+    <section className="mt-6 ml-10 flex gap-20 items-center">
       <section className="flex gap-10">
         <button className="hover:animate-pulse">
           <Image
@@ -88,7 +88,7 @@ export const TrackPlay = ({ trackId, album, duration }: Props) => {
           </svg>
         </button>
       </section>
-      <section className="flex items-center gap-2 mr-10 mt-6">
+      <section className="flex items-center gap-2 mr-10">
         <svg
           className="w-[48px] h-[48px]"
           xmlns="http://www.w3.org/2000/svg"
