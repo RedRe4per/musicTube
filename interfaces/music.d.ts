@@ -116,9 +116,10 @@ export interface ITrackId {
 export interface ISimilarTrack {
   album: IAlbumDetails;
   alg: string;
-  artists: IArtist;
+  artists: IArtist[];
   duration: number;
   name: string;
+  id: number;
   mp3Url: string;
   recommendReason: string;
   popularity: number;
