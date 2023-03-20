@@ -7,12 +7,13 @@ import { PlayerSwitchButton } from "./PlayerSwitchButton";
 import { ProgressBar } from "./ProgressBar";
 import { MusicInfo } from "./MusicInfo";
 import { VolumeBar } from "./VolumeBar";
+import { LyricsContext } from "@/contexts/LyricsContext";
 
 export const MusicPlayerBar = () => {
   const { playerList } = useContext(PlayerContext);
   const { isMusicPlay, setIsMusicPlay, currentMusic, setCurrentMusic } =
     useContext(PlayAndPauseContext);
-  const musicPlayer = useRef<HTMLAudioElement>(null);
+  const { musicPlayer } = useContext(LyricsContext);
   const [isMusicLoop, setIsMusicLoop] = useState(false);
   const [isRandomPlay, setIsRandomPlay] = useState(false);
 

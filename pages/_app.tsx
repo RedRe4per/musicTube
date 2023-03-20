@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Rubik } from "next/font/google";
 import Layout from "@/components/layout";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { IMusicDetail } from "@/interfaces/music";
 import { IAlertBox } from "@/interfaces/alertBox";
 import { PlayerContext } from "@/contexts/PlayerContext";
@@ -18,6 +18,7 @@ const rubik = Rubik({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const musicPlayer = useRef<HTMLAudioElement>(null);
   const [playerList, setPlayerList] = useState<IMusicDetail[]>([]);
   const [bgColor, setBgColor] = useState("gray-650");
   const [isLoading, setIsLoading] = useState(false);
@@ -37,7 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
       >
         <AlertContext.Provider value={{ alertBox, setAlertBox }}>
           <LyricsContext.Provider
-            value={{ lyricsTimestamp, setLyricsTimestamp }}
+            value={{ lyricsTimestamp, setLyricsTimestamp, musicPlayer }}
           >
             <PlayAndPauseContext.Provider
               value={{

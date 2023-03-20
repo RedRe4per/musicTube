@@ -19,7 +19,7 @@ export const TrackPlay = React.memo(({ trackId, album, duration }: Props) => {
   const { handlePlay } = useHandlePlay(album.id, songIndex);
   const { isMusicPlay, setIsMusicPlay, currentMusic } =
     useContext(PlayAndPauseContext);
-
+    
   useTrackFinder(album.id, trackId, setSongIndex, setPlayDisabled);
 
   const handlePlayClick = (e: React.MouseEvent<HTMLImageElement>) => {
