@@ -9,6 +9,7 @@ import { PlayerContext } from "@/contexts/PlayerContext";
 import { AlertContext } from "@/contexts/AlertContext";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
+import { LyricsContext } from "@/contexts/LyricsContext";
 
 const rubik = Rubik({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [musicListId, setMusicListId] = useState<number | null>(null);
   const [isMusicPlay, setIsMusicPlay] = useState(true);
   const [currentMusic, setCurrentMusic] = useState<IMusicDetail | null>(null);
+  const [lyricsTimestamp, setLyricsTimestamp] = useState(0);
   const [alertBox, setAlertBox] = useState<IAlertBox>({
     message: "",
     messageType: "alert-warning",
@@ -34,6 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
         value={{ bgColor, setBgColor, isLoading, setIsLoading }}
       >
         <AlertContext.Provider value={{ alertBox, setAlertBox }}>
+          <LyricsContext.Provider value={{ lyricsTimestamp, setLyricsTimestamp }}>
           <PlayAndPauseContext.Provider
             value={{
               isMusicPlay,
@@ -50,6 +53,7 @@ export default function App({ Component, pageProps }: AppProps) {
               </Layout>
             </PlayerContext.Provider>
           </PlayAndPauseContext.Provider>
+          </LyricsContext.Provider>
         </AlertContext.Provider>
       </BgColorContext.Provider>
     </main>

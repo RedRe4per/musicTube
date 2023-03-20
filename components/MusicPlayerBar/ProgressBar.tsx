@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
+import { LyricsContext } from "@/contexts/LyricsContext";
 import { IMusicDetail } from "@/interfaces/music";
 import { formatTime } from "@/utils/formatTime";
 import { getRatio, getDraggingRatio } from "@/utils/radioCalc";
@@ -20,6 +21,7 @@ export const ProgressBar = React.forwardRef(
     musicPlayer: any
   ) => {
     const progressRef = useRef<HTMLDivElement>(null);
+    const { setLyricsTimestamp } = useContext(LyricsContext);
     const [currentPlayRadio, setCurrentPlayRadio] = useState(0);
     const [currentMusicTime, setCurrentMusicTime] = useState(0);
     const [currentDurationTime, setCurrentDurationTime] = useState(0);
@@ -120,6 +122,7 @@ export const ProgressBar = React.forwardRef(
             clearInterval(intervalId);
           }}
           onEnded={handleEnd}
+          onTimeUpdate={()=>{setLyricsTimestamp(musicPlayer.current!.currentTime)}}
         />
         <section className="w-[65vw] lg:w-[400px] xl:w-[600px] 2xl:w-[800px] h-[10px] flex justify-around items-center my-2 gap-1">
           <div className="lg:w-[10%] text-center">
