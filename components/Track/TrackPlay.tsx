@@ -32,7 +32,6 @@ export const TrackPlay = ({ trackId, album, duration }: Props) => {
         `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${album.id}`
       );
       const albumData = await response.json();
-      console.log(albumData);
       if (!albumData.songs) {
         setAlertBox({ message: "No song in this Album!" });
         return;
