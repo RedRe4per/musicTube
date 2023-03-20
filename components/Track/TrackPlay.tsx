@@ -24,19 +24,19 @@ export const TrackPlay = ({ trackId, album, duration }: Props) => {
 
   useEffect(() => {
     const getTrackIndex = async () => {
-      if(album.id === 0) {
+      if (album.id === 0) {
         setAlertBox({ message: "No song in this Album!" });
         return;
-      };
+      }
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${album.id}`
       );
       const albumData = await response.json();
-      console.log(albumData)
-      if(!albumData.songs){
+      console.log(albumData);
+      if (!albumData.songs) {
         setAlertBox({ message: "No song in this Album!" });
         return;
-      };
+      }
       const index = albumData.songs.findIndex(
         (song: IAlbumSong) => song.id === trackId
       );
