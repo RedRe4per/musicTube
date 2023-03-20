@@ -7,6 +7,7 @@ import { useContext, useEffect } from "react";
 import { TrackInfo } from "@/components/Track/TrackInfo";
 import { TrackPlay } from "@/components/Track/TrackPlay";
 import { TrackLyrics } from "@/components/Track/TrackLyrics";
+import { SimilarSongs } from "@/components/Track/SimilarSongs";
 import { mixColor } from "@/utils/mixColor";
 import { Footer } from "@/layouts/footer";
 
@@ -48,7 +49,7 @@ export default function Track(trackInfo: Props) {
       />
       <TrackPlay trackId={id} album={al} duration={dt} />
       <TrackLyrics trackId={id} />
-      <div>similar songs /simi/song?id=347230</div>
+      <SimilarSongs trackId={id}/>
       <Footer />
     </main>
   );

@@ -1,3 +1,6 @@
+import { IAlbumDetails } from "./album";
+import { IArtist } from "./artist";
+
 export interface IMusicDetail {
   id: number;
   url: string;
@@ -108,4 +111,15 @@ export interface ITrackId {
   at: number;
   uid: number;
   rcmdReason: string;
+}
+
+export interface ISimilarTrack {
+  album: IAlbumDetails;
+  alg: string
+  artists: IArtist;
+  duration: number;
+  name: string;
+  mp3Url: string;
+  recommendReason: string;
+  popularity: number;
 }
