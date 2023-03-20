@@ -3,7 +3,7 @@ import { IPrivilege } from "@/interfaces/playlist";
 import { ITrack } from "@/interfaces/music";
 import { useBackgroundColor } from "@/hooks/useBackgroundColor";
 import { BgColorContext } from "@/contexts/BgColorContext";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { TrackInfo } from "@/components/Track/TrackInfo";
 import { TrackPlay } from "@/components/Track/TrackPlay";
 import { TrackLyrics } from "@/components/Track/TrackLyrics";
@@ -21,8 +21,10 @@ export default function Track(trackInfo: Props) {
   const { name, id, al, ar, mv, mark, publishTime, dt } = trackInfo.songs[0];
   const { handleBackgroundColor } = useBackgroundColor(al.picUrl);
   const { bgColor, setIsLoading } = useContext(BgColorContext);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    containerRef.current?.scrollIntoView();
     setIsLoading(false);
   }, [id]);
 
@@ -40,6 +42,7 @@ export default function Track(trackInfo: Props) {
         )})`,
       }}
     >
+      <div ref={containerRef}></div>
       <TrackInfo
         al={al}
         name={name}
