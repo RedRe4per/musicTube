@@ -22,13 +22,13 @@ export const TrackInfo = ({
         />
       </div>
       <section className="ml-10 mt-10 flex flex-col justify-around">
-        <section className="flex gap-8 text-h3-normal text-gray-200">
+        <section className="flex items-center gap-16 text-h3-normal text-gray-200">
           <span>
             <span className="text-green">{mark}</span>&nbsp;Marked
           </span>
-          <span>
+          <span className="text-h4-normal">
             Published at&nbsp;
-            <span className="text-green">{formatDate(publishTime!)}</span>
+            <span>{formatDate(publishTime!)}</span>
           </span>
         </section>
         <h3 className="text-h2-normal text-white-200">{name}</h3>
