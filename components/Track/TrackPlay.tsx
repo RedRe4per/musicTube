@@ -1,10 +1,9 @@
 import Image from "next/image";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
-import { useContext, useEffect, useState } from "react";
-import { AlertContext } from "@/contexts/AlertContext";
+import { useContext, useState } from "react";
 import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
 import { formatTime } from "@/utils/formatTime";
-import { IAlbumSong } from "@/interfaces/albumSong";
+import { useTrackFinder } from "@/hooks/useTrackFinder";
 
 interface Props {
   trackId: number;
@@ -18,32 +17,10 @@ export const TrackPlay = ({ trackId, album, duration }: Props) => {
   const [songIndex, setSongIndex] = useState(0);
   const [playDisabled, setPlayDisabled] = useState(true);
   const { handlePlay } = useHandlePlay(album.id, songIndex);
-  const { setAlertBox } = useContext(AlertContext);
   const { isMusicPlay, setIsMusicPlay, currentMusic } =
     useContext(PlayAndPauseContext);
 
-  useEffect(() => {
-    const getTrackIndex = async () => {
-      if (album.id === 0) {
-        setAlertBox({ message: "No song in this Album!" });
-        return;
-      }
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${album.id}`
-      );
-      const albumData = await response.json();
-      if (!albumData.songs) {
-        setAlertBox({ message: "No song in this Album!" });
-        return;
-      }
-      const index = albumData.songs.findIndex(
-        (song: IAlbumSong) => song.id === trackId
-      );
-      setSongIndex(index);
-      setPlayDisabled(false);
-    };
-    getTrackIndex();
-  }, [trackId]);
+  useTrackFinder(album.id, trackId, setSongIndex, setPlayDisabled);
 
   const handlePlayClick = (e: React.MouseEvent<HTMLImageElement>) => {
     if (playDisabled) return;

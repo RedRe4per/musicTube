@@ -5,16 +5,26 @@ import { useHandlePlay } from "@/hooks/useHandlePlay";
 import { useContext } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { ISimilarTrack } from "@/interfaces/music";
+import { useTrackFinder } from "@/hooks/useTrackFinder";
 
 interface Props {
   track: ISimilarTrack;
 }
 
-export const TrackCard = React.memo(({ track }: Props) => {
+export const TrackCard = ({ track }: Props) => {
   const { name, id, album, artists } = track;
+  const [songIndex, setSongIndex] = useState(0);
+  const [playDisabled, setPlayDisabled] = useState(true);
   const [showPlay, setShowPlay] = useState(false);
-  const { handlePlay } = useHandlePlay(album.id);
+  const { handlePlay } = useHandlePlay(album.id, songIndex);
   const { setIsLoading } = useContext(BgColorContext);
+
+  useTrackFinder(album.id, track.id, setSongIndex, setPlayDisabled);
+
+  const handlePlayClick = (e: React.MouseEvent<HTMLImageElement>) => {
+    if (playDisabled) return;
+    handlePlay(e);
+  };
 
   return (
     <section className="w-[110px] lg:w-auto h-[200px] lg:h-[335px] relative overflow-hidden rounded-xl p-2 lg:p-4 bg-gray-650 hover:bg-gray-600 transition-colors duration-500">
@@ -39,7 +49,7 @@ export const TrackCard = React.memo(({ track }: Props) => {
               } hover:w-[75px] animate-ping cursor-pointer`}
               width={70}
               height={70}
-              onClick={handlePlay}
+              onClick={handlePlayClick}
             />
           </div>
         </div>
@@ -60,4 +70,4 @@ export const TrackCard = React.memo(({ track }: Props) => {
       </Link>
     </section>
   );
-});
+};
