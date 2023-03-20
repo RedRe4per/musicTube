@@ -31,7 +31,7 @@ export const useHandlePlay = (
     );
     const albumData = await response.json();
 
-    if (!albumData.songs[songIndex].id) {
+    if (!albumData.songs || !albumData.songs[songIndex].id) {
       setAlertBox({ message: "No song in this Album!" });
       return;
     }
