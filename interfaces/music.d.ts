@@ -115,7 +115,7 @@ export interface ITrackId {
 
 export interface ISimilarTrack {
   album: IAlbumDetails;
-  alg: string
+  alg: string;
   artists: IArtist;
   duration: number;
   name: string;

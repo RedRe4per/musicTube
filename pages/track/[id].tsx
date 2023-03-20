@@ -49,7 +49,7 @@ export default function Track(trackInfo: Props) {
       />
       <TrackPlay trackId={id} album={al} duration={dt} />
       <TrackLyrics trackId={id} />
-      <SimilarSongs trackId={id}/>
+      <SimilarSongs trackId={id} />
       <Footer />
     </main>
   );
