@@ -7,17 +7,14 @@ interface Props {
 }
 
 interface FormattedLyrics {
-  time: number;
+  startTime: number;
+  endTime: number;
   text: string;
 }
 
 export const TrackLyrics = ({ trackId }: Props) => {
   const { lyricsTimestamp } = useContext(LyricsContext);
   const [lyrics, setLyrics] = useState<FormattedLyrics[] | null>(null);
-
-  useEffect(() => {
-    console.log(lyricsTimestamp);
-  }, [lyricsTimestamp]);
 
   useEffect(() => {
     const getLyrics = async () => {
@@ -29,7 +26,6 @@ export const TrackLyrics = ({ trackId }: Props) => {
         lyricData.lrc.lyric
       ) as FormattedLyrics[];
       setLyrics(formattedLyrics);
-      console.log(formattedLyrics);
     };
     getLyrics();
   }, [trackId]);
@@ -41,7 +37,7 @@ export const TrackLyrics = ({ trackId }: Props) => {
           return (
             <p
               className={`mt-[10px] ${
-                lyricsTimestamp * 1000 > lyric.time ? "text-green" : ""
+                lyricsTimestamp * 1000 > lyric.startTime && lyricsTimestamp * 1000 < lyric.endTime ? "text-green brightness-150 text-h4-normal" : ""
               }`}
               key={index}
             >
