@@ -1,6 +1,7 @@
 import { IMusicDetail } from "@/interfaces/music";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   music: IMusicDetail | null;
@@ -13,6 +14,7 @@ interface Artist {
 
 export const MusicInfo = ({ music }: Props) => {
   const [musicName, setMusicName] = useState<string | null>(null);
+  const [musicId, setMusicId] = useState(0);
   const [musicImgUrl, setMusicImgUrl] = useState<string | null>(null);
   const [artists, setArtists] = useState<Artist[]>([]);
 
@@ -26,6 +28,7 @@ export const MusicInfo = ({ music }: Props) => {
       const musicInfo = data.songs[0];
       if (!data.songs[0]) return;
       setMusicName(musicInfo.name);
+      setMusicId(musicInfo.id);
       setMusicImgUrl(musicInfo.al.picUrl);
       setArtists(musicInfo.ar);
     };
@@ -44,9 +47,11 @@ export const MusicInfo = ({ music }: Props) => {
         />
       </div>
       <section className="hidden lg:flex flex-col justify-around">
+      <Link href={`/track/${musicId}`}>
         <h5 className="text-button-normal lg:text-h3-normal text-white-200">
           {musicName}
         </h5>
+        </Link>
         <div className="text-tag-normal text-gray-400">
           {artists.map((artist, index) => {
             return <span key={index}>{artist.name}&nbsp;&nbsp;</span>;
