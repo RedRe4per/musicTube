@@ -17,7 +17,7 @@ interface Props {
   more: boolean;
 }
 
-export default function Track(artistInfo: Props) {
+export default function Artist(artistInfo: Props) {
   const { id, name, picUrl, musicSize, albumSize } = artistInfo.artist;
   console.log(artistInfo, "artistInfo");
   const { handleBackgroundColor } = useBackgroundColor(picUrl);
