@@ -3,35 +3,37 @@ import { IAlbumSong } from "@/interfaces/albumSong";
 import { ISimilarTrack } from "@/interfaces/music";
 
 interface Props {
-    hotSongs: IAlbumSong[];
+  hotSongs: IAlbumSong[];
 }
 
 interface Track {
-    name: string;
+  name: string;
+  id: number;
+  album: {
     id: number;
-    album: {
-        id: number;
-        picUrl: string;
-    };
-    artists: [{
-        name: string;
-        id: number;
-    }]
+    picUrl: string;
+  };
+  artists: [
+    {
+      name: string;
+      id: number;
+    }
+  ];
 }
 
 export const ArtistTracks = ({ hotSongs }: Props) => {
-    console.log(hotSongs)
-    const artistTracks = hotSongs.map((hotSong: IAlbumSong)=>{
-        return {
-            name: hotSong.name,
-            id: hotSong.id,
-            album: {
-                id: hotSong.al.id,
-                picUrl: hotSong.al.picUrl,
-            },
-            artists: hotSong.ar,
-        }
-    })
+  console.log(hotSongs);
+  const artistTracks = hotSongs.map((hotSong: IAlbumSong) => {
+    return {
+      name: hotSong.name,
+      id: hotSong.id,
+      album: {
+        id: hotSong.al.id,
+        picUrl: hotSong.al.picUrl,
+      },
+      artists: hotSong.ar,
+    };
+  });
 
   return (
     <section className="mt-12 mx-8 mb-14">

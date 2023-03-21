@@ -45,7 +45,7 @@ export default function Artist(artistInfo: Props) {
         musicSize={musicSize}
         albumSize={albumSize}
       />
-      <ArtistTracks hotSongs={artistInfo.hotSongs}/>
+      <ArtistTracks hotSongs={artistInfo.hotSongs} />
       <Footer />
     </main>
   );
