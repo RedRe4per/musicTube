@@ -7,7 +7,6 @@ interface Props {
 }
 
 export const ArtistTracks = ({ hotSongs }: Props) => {
-  console.log(hotSongs);
   const artistTracks = hotSongs.map((hotSong: IAlbumSong) => {
     return {
       name: hotSong.name,
