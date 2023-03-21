@@ -5,21 +5,19 @@ import { useBackgroundColor } from "@/hooks/useBackgroundColor";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { useContext, useEffect } from "react";
 import { ArtistInfo } from "@/components/Artist/ArtistInfo";
-import { PlaylistPlay } from "@/components/Playlist/PlaylistPlay";
-import { SongList } from "@/components/Playlist/SongList";
+import { ArtistTracks } from "@/components/Artist/ArtistTracks";
 import { mixColor } from "@/utils/mixColor";
 import { Footer } from "@/layouts/footer";
 
 interface Props {
   code: number;
   artist: IArtist;
-  hotSongs: IAlbumSong;
+  hotSongs: IAlbumSong[];
   more: boolean;
 }
 
 export default function Artist(artistInfo: Props) {
   const { id, name, picUrl, musicSize, albumSize } = artistInfo.artist;
-  console.log(artistInfo, "artistInfo");
   const { handleBackgroundColor } = useBackgroundColor(picUrl);
   const { bgColor, setIsLoading } = useContext(BgColorContext);
 
@@ -47,10 +45,7 @@ export default function Artist(artistInfo: Props) {
         musicSize={musicSize}
         albumSize={albumSize}
       />
-      {/* <PlaylistPlay playlistId={id} trackCount={trackCount} />
-      <SongList playlistSongs={tracks} playlistId={id} />
-        */}
-      <div>歌手热门 50 首歌曲 /artist/top/song?id=6452</div>
+      <ArtistTracks hotSongs={artistInfo.hotSongs}/>
       <Footer />
     </main>
   );
