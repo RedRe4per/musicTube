@@ -26,8 +26,8 @@ export const TrackLyrics = ({ trackId }: Props) => {
   useEffect(() => {
     if (!isMusicPlay && currentMusic?.id === trackId) {
       intervalId = setInterval(() => {
-          setLyricsTimestamp(musicPlayer?.current.currentTime);
-        }, 200)
+        setLyricsTimestamp(musicPlayer?.current.currentTime);
+      }, 200);
     } else {
       clearInterval(intervalId);
     }
@@ -56,12 +56,13 @@ export const TrackLyrics = ({ trackId }: Props) => {
         lyrics.map((lyric, index) => {
           return (
             <p
-              className={`mt-[10px] ${currentMusic?.id === trackId &&
-                  lyricsTimestamp * 1000 > lyric.startTime &&
-                  lyricsTimestamp * 1000 < lyric.endTime
+              className={`mt-[10px] ${
+                currentMusic?.id === trackId &&
+                lyricsTimestamp * 1000 > lyric.startTime &&
+                lyricsTimestamp * 1000 < lyric.endTime
                   ? "text-green brightness-150 text-h4-normal"
                   : ""
-                }`}
+              }`}
               key={index}
             >
               {lyric.text}
