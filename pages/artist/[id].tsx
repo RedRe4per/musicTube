@@ -18,14 +18,8 @@ interface Props {
 }
 
 export default function Track(artistInfo: Props) {
-  const {
-    id,
-    name,
-    picUrl,
-    musicSize,
-    albumSize,
-  } = artistInfo.artist;
-  console.log(artistInfo, "artistInfo")
+  const { id, name, picUrl, musicSize, albumSize } = artistInfo.artist;
+  console.log(artistInfo, "artistInfo");
   const { handleBackgroundColor } = useBackgroundColor(picUrl);
   const { bgColor, setIsLoading } = useContext(BgColorContext);
 
