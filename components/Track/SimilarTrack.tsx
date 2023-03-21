@@ -7,9 +7,7 @@ interface Props {
 }
 
 export const SimilarTrack = React.memo(({ trackId }: Props) => {
-  const [similarSongs, setSimilarSongs] = useState<CardTrack[] | null>(
-    null
-  );
+  const [similarSongs, setSimilarSongs] = useState<CardTrack[] | null>(null);
 
   useEffect(() => {
     const getSimilarSongs = async () => {
