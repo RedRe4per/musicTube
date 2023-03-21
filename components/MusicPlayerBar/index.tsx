@@ -1,4 +1,4 @@
-import { useState, useRef, useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
 import { SkipButton } from "./SkipButton";
