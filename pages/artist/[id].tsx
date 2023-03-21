@@ -1,9 +1,10 @@
 import { GetServerSidePropsContext } from "next";
-import { IPlaylist, IPrivilege } from "@/interfaces/playlist";
+import { IArtist } from "@/interfaces/artist";
+import { IAlbumSong } from "@/interfaces/albumSong";
 import { useBackgroundColor } from "@/hooks/useBackgroundColor";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { useContext, useEffect } from "react";
-import { PlaylistInfo } from "@/components/Playlist/PlaylistInfo";
+import { ArtistInfo } from "@/components/Artist/ArtistInfo";
 import { PlaylistPlay } from "@/components/Playlist/PlaylistPlay";
 import { SongList } from "@/components/Playlist/SongList";
 import { mixColor } from "@/utils/mixColor";
@@ -11,26 +12,21 @@ import { Footer } from "@/layouts/footer";
 
 interface Props {
   code: number;
-  fromUserCount: number;
-  playlist: IPlaylist;
-  privileges: IPrivilege[];
+  artist: IArtist;
+  hotSongs: IAlbumSong;
+  more: boolean;
 }
 
-export default function Track(playlistInfo: Props) {
+export default function Track(artistInfo: Props) {
   const {
-    name,
-    coverImgUrl,
-    description,
-    creator,
     id,
-    tags,
-    trackCount,
-    playCount,
-    shareCount,
-    subscribedCount,
-    tracks,
-  } = playlistInfo.playlist;
-  const { handleBackgroundColor } = useBackgroundColor(coverImgUrl);
+    name,
+    picUrl,
+    musicSize,
+    albumSize,
+  } = artistInfo.artist;
+  console.log(artistInfo, "artistInfo")
+  const { handleBackgroundColor } = useBackgroundColor(picUrl);
   const { bgColor, setIsLoading } = useContext(BgColorContext);
 
   useEffect(() => {
@@ -51,21 +47,16 @@ export default function Track(playlistInfo: Props) {
         )})`,
       }}
     >
-      {/* <PlaylistInfo
-        coverImgUrl={coverImgUrl}
+      <ArtistInfo
         name={name}
-        description={description}
-        creator={creator}
-        tags={tags}
-        playCount={playCount}
-        shareCount={shareCount}
-        subscribedCount={subscribedCount}
+        picUrl={picUrl}
+        musicSize={musicSize}
+        albumSize={albumSize}
       />
-      <PlaylistPlay playlistId={id} trackCount={trackCount} />
+      {/* <PlaylistPlay playlistId={id} trackCount={trackCount} />
       <SongList playlistSongs={tracks} playlistId={id} />
         */}
       <div>歌手热门 50 首歌曲 /artist/top/song?id=6452</div>
-      <div>artists single songs /artists?id=6452</div>
       <Footer />
     </main>
   );
@@ -74,8 +65,8 @@ export default function Track(playlistInfo: Props) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/detail?ids=${id}`
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/artists?id=${id}`
   );
-  const playlistInfo = await response.json();
-  return { props: playlistInfo };
+  const artistInfo = await response.json();
+  return { props: artistInfo };
 }
