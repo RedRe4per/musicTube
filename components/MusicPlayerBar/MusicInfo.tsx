@@ -47,10 +47,10 @@ export const MusicInfo = ({ music }: Props) => {
         />
       </div>
       <section className="hidden lg:flex flex-col justify-around">
-      <Link href={`/track/${musicId}`}>
-        <h5 className="text-button-normal lg:text-h3-normal text-white-200">
-          {musicName}
-        </h5>
+        <Link href={`/track/${musicId}`}>
+          <h5 className="text-button-normal lg:text-h3-normal text-white-200">
+            {musicName}
+          </h5>
         </Link>
         <div className="text-tag-normal text-gray-400">
           {artists.map((artist, index) => {
