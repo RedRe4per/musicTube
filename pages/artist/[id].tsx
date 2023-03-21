@@ -6,6 +6,7 @@ import { BgColorContext } from "@/contexts/BgColorContext";
 import { useContext, useEffect } from "react";
 import { ArtistInfo } from "@/components/Artist/ArtistInfo";
 import { ArtistTracks } from "@/components/Artist/ArtistTracks";
+import { ArtistAlbums } from "@/components/Artist/ArtistAlbums";
 import { mixColor } from "@/utils/mixColor";
 import { Footer } from "@/layouts/footer";
 
@@ -46,6 +47,7 @@ export default function Artist(artistInfo: Props) {
         albumSize={albumSize}
       />
       <ArtistTracks hotSongs={artistInfo.hotSongs} />
+      <ArtistAlbums hotSongs={artistInfo.hotSongs}/>
       <Footer />
     </main>
   );

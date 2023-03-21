@@ -26,7 +26,7 @@ export const ArtistTracks = ({ hotSongs }: Props) => {
       </p>
       <section className="flex gap-2 lg:gap-4 flex-wrap mt-4">
         {hotSongs &&
-          artistTracks.slice(0, 20).map((track: CardTrack) => {
+          artistTracks.reverse().slice(0, 16).map((track: CardTrack) => {
             return <TrackCard key={track.id} track={track} />;
           })}
       </section>
