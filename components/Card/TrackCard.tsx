@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
 import { useContext } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
-import { ISimilarTrack } from "@/interfaces/music";
+import { CardTrack } from "@/interfaces/playlist";
 import { useTrackFinder } from "@/hooks/useTrackFinder";
 
 interface Props {
-  track: ISimilarTrack;
+  track: CardTrack;
 }
 
 export const TrackCard = ({ track }: Props) => {

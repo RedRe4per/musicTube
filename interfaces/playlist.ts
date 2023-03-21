@@ -149,3 +149,18 @@ export interface Track {
   publishTime: number;
   resourceState: true;
 }
+
+export interface CardTrack {
+  name: string;
+  id: number;
+  album: {
+    id: number;
+    picUrl: string;
+  };
+  artists: [
+    {
+      name: string;
+      id: number;
+    }
+  ];
+}

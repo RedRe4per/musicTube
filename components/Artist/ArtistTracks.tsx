@@ -1,24 +1,9 @@
 import { TrackCard } from "../Card/TrackCard";
 import { IAlbumSong } from "@/interfaces/albumSong";
-import { ISimilarTrack } from "@/interfaces/music";
+import { CardTrack } from "@/interfaces/playlist";
 
 interface Props {
   hotSongs: IAlbumSong[];
-}
-
-interface Track {
-  name: string;
-  id: number;
-  album: {
-    id: number;
-    picUrl: string;
-  };
-  artists: [
-    {
-      name: string;
-      id: number;
-    }
-  ];
 }
 
 export const ArtistTracks = ({ hotSongs }: Props) => {
@@ -42,7 +27,7 @@ export const ArtistTracks = ({ hotSongs }: Props) => {
       </p>
       <section className="flex gap-2 lg:gap-4 flex-wrap mt-4">
         {hotSongs &&
-          artistTracks.map((track: any) => {
+          artistTracks.map((track: CardTrack) => {
             return <TrackCard key={track.id} track={track} />;
           })}
       </section>
