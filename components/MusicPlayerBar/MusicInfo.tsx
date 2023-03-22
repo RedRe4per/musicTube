@@ -57,7 +57,11 @@ export const MusicInfo = ({ music }: Props) => {
         <div className="text-tag-normal text-gray-400">
           {artists.map((artist, index) => {
             return (
-              <Link onClick={() => setIsLoading(true)} key={index} href={`/artist/${artist.id}`}>
+              <Link
+                onClick={() => setIsLoading(true)}
+                key={index}
+                href={`/artist/${artist.id}`}
+              >
                 <span className="hover:underline hover:text-green">
                   {artist.name}
                 </span>
