@@ -54,7 +54,7 @@ export const MusicInfo = ({ music }: Props) => {
             {musicName}
           </h5>
         </Link>
-        <div className="text-tag-normal text-gray-400">
+        <div className="text-tag-normal text-gray-300">
           {artists.map((artist, index) => {
             return (
               <Link
