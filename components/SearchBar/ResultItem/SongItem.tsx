@@ -13,7 +13,7 @@ export const SongItem = ({ song }: Props) => {
         <div>
           <Image
             className="search-result-image border-1"
-            src={song.al.picUrl? song.al.picUrl:"/images/no-image.jpg"}
+            src={song.al.picUrl ? song.al.picUrl : "/images/no-image.jpg"}
             alt="album"
             width={40}
             height={40}

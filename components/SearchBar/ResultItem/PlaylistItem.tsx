@@ -13,7 +13,11 @@ export const PlaylistItem = ({ playlist }: Props) => {
         <div className="flex-1">
           <Image
             className="search-result-image border-1"
-            src={playlist.coverImgUrl? playlist.coverImgUrl: "/images/no-image.jpg"}
+            src={
+              playlist.coverImgUrl
+                ? playlist.coverImgUrl
+                : "/images/no-image.jpg"
+            }
             alt="album"
             width={40}
             height={40}

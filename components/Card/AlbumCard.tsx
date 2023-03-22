@@ -21,7 +21,7 @@ export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
       <Link onClick={() => setIsLoading(true)} href={`/album/${albumId}`}>
         <div className="relative">
           <Image
-            src={albumUrl? albumUrl : "/images/no-image.jpg"}
+            src={albumUrl ? albumUrl : "/images/no-image.jpg"}
             alt={albumName}
             className="object-contain rounded-xl"
             width={200}

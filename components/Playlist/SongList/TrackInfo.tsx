@@ -137,7 +137,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
           <div>
             <Image
               className="rounded-sm min-w-[50px]"
-              src={al.picUrl? al.picUrl : "/images/no-image.jpg"}
+              src={al.picUrl ? al.picUrl : "/images/no-image.jpg"}
               alt="cover"
               width={50}
               height={50}

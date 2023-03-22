@@ -15,7 +15,6 @@ interface ArtistAlbum {
 
 export const ArtistAlbums = React.memo(({ hotSongs }: Props) => {
   const artistAlbums: ArtistAlbum[] = [];
-  console.log(hotSongs)
   hotSongs.forEach((hotSong: IAlbumSong) => {
     if (
       artistAlbums.findIndex(

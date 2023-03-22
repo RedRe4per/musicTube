@@ -31,7 +31,7 @@ export const TrackCard = ({ track }: Props) => {
       <Link onClick={() => setIsLoading(true)} href={`/track/${id}`}>
         <div className="relative w-[94px] lg:w-[190px] h-[94px] lg:h-[190px]">
           <Image
-            src={album.picUrl? album.picUrl : "/images/no-image.jpg"}
+            src={album.picUrl ? album.picUrl : "/images/no-image.jpg"}
             alt="cover"
             className="object-cover rounded-xl"
             fill
