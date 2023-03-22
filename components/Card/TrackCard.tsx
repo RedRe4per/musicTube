@@ -57,7 +57,7 @@ export const TrackCard = ({ track }: Props) => {
           <h5 className="text-tag-normal lg:text-button-normal text-white-200 mt-[15px] ">
             {name}
           </h5>
-          <div className="text-tag-normal brightness-90 mt-[7px] hidden lg:block">
+          <div className="text-tag-normal brightness-90 mt-[7px] text-gray-200 hidden lg:block">
             {artists.map((artist) => {
               return (
                 <span key={artist.id} className="inline-block">
