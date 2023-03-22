@@ -39,11 +39,13 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
     setIsMusicPlay(!isMusicPlay);
   };
 
-  const handleClickLink = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const handleClickLink = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
     e.stopPropagation();
     setIsLoading(true);
-    console.log("loading")
-  }
+    console.log("loading");
+  };
 
   return (
     <section
@@ -132,27 +134,34 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
           </div>
         </section>
         <div className="flex flex-col gap-2">
-        <Link className="hover:underline" onClick={(e) => handleClickLink(e)} href={`/track/${id}`}>
-          <div
-            className={
-              id === currentMusic?.id
-                ? "text-green brightness-150"
-                : "text-white-200"
-            }
+          <Link
+            className="hover:underline"
+            onClick={(e) => handleClickLink(e)}
+            href={`/track/${id}`}
           >
-            {name}
-          </div>
+            <div
+              className={
+                id === currentMusic?.id
+                  ? "text-green brightness-150"
+                  : "text-white-200"
+              }
+            >
+              {name}
+            </div>
           </Link>
           <div className="text-gray-200 text-tag-light">
             {ar.map((artist, index) => {
               return (
                 <Link
-                    onClick={(e) => handleClickLink(e)}
-                    href={`/artist/${artist.id}`}
-                    key={index}
-                  >
-              <span className="hover:underline">{artist.name}&nbsp;&nbsp;</span>
-              </Link>)
+                  onClick={(e) => handleClickLink(e)}
+                  href={`/artist/${artist.id}`}
+                  key={index}
+                >
+                  <span className="hover:underline">
+                    {artist.name}&nbsp;&nbsp;
+                  </span>
+                </Link>
+              );
             })}
           </div>
         </div>

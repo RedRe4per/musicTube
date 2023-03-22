@@ -40,10 +40,12 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
     setIsMusicPlay(!isMusicPlay);
   };
 
-  const handleClickLink = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const handleClickLink = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
     e.stopPropagation();
     setIsLoading(true);
-  }
+  };
 
   return (
     <section
@@ -142,7 +144,11 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <Link className="hover:underline" onClick={(e) => handleClickLink(e)} href={`/track/${id}`}>
+            <Link
+              className="hover:underline"
+              onClick={(e) => handleClickLink(e)}
+              href={`/track/${id}`}
+            >
               <div
                 className={
                   id === currentMusic?.id
