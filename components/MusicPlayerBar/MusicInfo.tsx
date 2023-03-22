@@ -54,7 +54,7 @@ export const MusicInfo = ({ music }: Props) => {
         </Link>
         <div className="text-tag-normal text-gray-400">
           {artists.map((artist, index) => {
-            return <span key={index}>{artist.name}&nbsp;&nbsp;</span>;
+            return (<Link key={index} href={`/artist/${artist.id}`}><span className="hover:underline hover:text-green">{artist.name}</span>&nbsp;&nbsp;</Link>)
           })}
         </div>
       </section>
