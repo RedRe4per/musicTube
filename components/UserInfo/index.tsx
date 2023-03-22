@@ -21,12 +21,12 @@ export const UserInfo = () => {
         >
           <div className="flex items-center gap-3">
             <Image
-              src="/person-avator.png"
+              src="/icons/account-circle-fill.svg"
               alt="avatar"
               width={50}
               height={50}
             ></Image>
-            <span className="hidden lg:block">Guest</span>
+            <span className="hidden lg:block text-h4-normal">Guest</span>
           </div>
           <img
             src={isDropdown ? "/icons/arrow-up.svg" : "/icons/arrow-down.svg"}
