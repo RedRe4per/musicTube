@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
-import { useContext } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
 
 interface Props {

@@ -1,7 +1,8 @@
 import { IMusicDetail } from "@/interfaces/music";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { BgColorContext } from "@/contexts/BgColorContext";
 
 interface Props {
   music: IMusicDetail | null;
@@ -17,6 +18,7 @@ export const MusicInfo = ({ music }: Props) => {
   const [musicId, setMusicId] = useState(0);
   const [musicImgUrl, setMusicImgUrl] = useState<string | null>(null);
   const [artists, setArtists] = useState<Artist[]>([]);
+  const { setIsLoading } = useContext(BgColorContext);
 
   useEffect(() => {
     const getMusicInfo = async () => {
@@ -47,7 +49,7 @@ export const MusicInfo = ({ music }: Props) => {
         />
       </div>
       <section className="hidden lg:flex flex-col justify-around">
-        <Link href={`/track/${musicId}`}>
+        <Link onClick={() => setIsLoading(true)} href={`/track/${musicId}`}>
           <h5 className="text-button-normal lg:text-h3-normal text-white-200">
             {musicName}
           </h5>
@@ -55,7 +57,7 @@ export const MusicInfo = ({ music }: Props) => {
         <div className="text-tag-normal text-gray-400">
           {artists.map((artist, index) => {
             return (
-              <Link key={index} href={`/artist/${artist.id}`}>
+              <Link onClick={() => setIsLoading(true)} key={index} href={`/artist/${artist.id}`}>
                 <span className="hover:underline hover:text-green">
                   {artist.name}
                 </span>
