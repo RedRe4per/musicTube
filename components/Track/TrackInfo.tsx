@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { ITrack } from "@/interfaces/music";
 import { formatDate } from "@/utils/formatTime";
 import { BgColorContext } from "@/contexts/BgColorContext";
@@ -37,7 +37,11 @@ export const TrackInfo = React.memo(
                 Artist:{" "}
                 {ar.map((artist, index) => {
                   return (
-                    <Link onClick={() => setIsLoading(true)} href={`/artist/${artist.id}`} key={index}>
+                    <Link
+                      onClick={() => setIsLoading(true)}
+                      href={`/artist/${artist.id}`}
+                      key={index}
+                    >
                       <span className="hover:text-green">
                         {artist.name}&nbsp;&nbsp;
                       </span>

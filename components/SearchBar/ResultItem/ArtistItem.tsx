@@ -10,7 +10,7 @@ interface Props {
 
 export const ArtistItem = ({ artist }: Props) => {
   const { setIsLoading } = useContext(BgColorContext);
-  
+
   return (
     <Link onClick={() => setIsLoading(true)} href={`/artist/${artist.id}`}>
       <section className="search-result-item gap-4">
