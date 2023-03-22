@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // reactStrictMode: true,
+  reactStrictMode: true,
   images: {
-    unoptimized: true,
+    // unoptimized: true,
     domains: [
       "p1.music.126.net",
       "p2.music.126.net",
