@@ -137,24 +137,29 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
             />
           </div>
           <div className="flex flex-col gap-2">
-          <Link onClick={() => setIsLoading(true)} href={`/track/${id}`}>
-            <div
-              className={
-                id === currentMusic?.id
-                  ? "text-green brightness-150"
-                  : "text-white-200"
-              }
-            >
-              {name}
-            </div>
+            <Link onClick={() => setIsLoading(true)} href={`/track/${id}`}>
+              <div
+                className={
+                  id === currentMusic?.id
+                    ? "text-green brightness-150"
+                    : "text-white-200"
+                }
+              >
+                {name}
+              </div>
             </Link>
             <div className="text-gray-200 text-tag-light">
               {ar.map((artist, index) => {
                 return (
-                  <Link onClick={() => setIsLoading(true)} href={`/artist/${artist.id}`} key={index}>
-                <span className="hover:underline">{artist.name}</span>&nbsp;&nbsp;
-                </Link>
-                )
+                  <Link
+                    onClick={() => setIsLoading(true)}
+                    href={`/artist/${artist.id}`}
+                    key={index}
+                  >
+                    <span className="hover:underline">{artist.name}</span>
+                    &nbsp;&nbsp;
+                  </Link>
+                );
               })}
             </div>
           </div>
