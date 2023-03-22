@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Image from "next/image";
 import { Track } from "@/interfaces/playlist";
 import { formatTime } from "@/utils/formatTime";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
-import { useContext } from "react";
 import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { BgColorContext } from "@/contexts/BgColorContext";
@@ -138,6 +137,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
             />
           </div>
           <div className="flex flex-col gap-2">
+          <Link onClick={() => setIsLoading(true)} href={`/track/${id}`}>
             <div
               className={
                 id === currentMusic?.id
@@ -147,9 +147,14 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
             >
               {name}
             </div>
+            </Link>
             <div className="text-gray-200 text-tag-light">
               {ar.map((artist, index) => {
-                return <span key={index}>{artist.name}&nbsp;&nbsp;</span>;
+                return (
+                  <Link onClick={() => setIsLoading(true)} href={`/artist/${artist.id}`} key={index}>
+                <span className="hover:underline">{artist.name}</span>&nbsp;&nbsp;
+                </Link>
+                )
               })}
             </div>
           </div>
