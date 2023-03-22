@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { IAlbumSong } from "@/interfaces/albumSong";
 import { formatTime } from "@/utils/formatTime";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
-import { useContext } from "react";
 import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
 import { PlayerContext } from "@/contexts/PlayerContext";
+import { BgColorContext } from "@/contexts/BgColorContext";
+import Link from "next/link";
 
 interface Props {
   song: IAlbumSong;
@@ -19,6 +20,7 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
   const { isMusicPlay, setIsMusicPlay, currentMusic } =
     useContext(PlayAndPauseContext);
   const { musicListId } = useContext(PlayerContext);
+  const { setIsLoading } = useContext(BgColorContext);
 
   const handleHover = (mode: "index" | "play") => {
     setIndexDisplay(mode);
@@ -36,6 +38,12 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
     e.stopPropagation();
     setIsMusicPlay(!isMusicPlay);
   };
+
+  const handleClickLink = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.stopPropagation();
+    setIsLoading(true);
+    console.log("loading")
+  }
 
   return (
     <section
@@ -124,6 +132,7 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
           </div>
         </section>
         <div className="flex flex-col gap-2">
+        <Link className="hover:underline" onClick={(e) => handleClickLink(e)} href={`/track/${id}`}>
           <div
             className={
               id === currentMusic?.id
@@ -133,9 +142,17 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
           >
             {name}
           </div>
+          </Link>
           <div className="text-gray-200 text-tag-light">
             {ar.map((artist, index) => {
-              return <span key={index}>{artist.name}&nbsp;&nbsp;</span>;
+              return (
+                <Link
+                    onClick={(e) => handleClickLink(e)}
+                    href={`/artist/${artist.id}`}
+                    key={index}
+                  >
+              <span className="hover:underline">{artist.name}&nbsp;&nbsp;</span>
+              </Link>)
             })}
           </div>
         </div>

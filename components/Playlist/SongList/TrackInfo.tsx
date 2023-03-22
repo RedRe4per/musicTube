@@ -40,6 +40,11 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
     setIsMusicPlay(!isMusicPlay);
   };
 
+  const handleClickLink = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.stopPropagation();
+    setIsLoading(true);
+  }
+
   return (
     <section
       onMouseEnter={() => handleHover("play")}
@@ -137,7 +142,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <Link onClick={() => setIsLoading(true)} href={`/track/${id}`}>
+            <Link className="hover:underline" onClick={(e) => handleClickLink(e)} href={`/track/${id}`}>
               <div
                 className={
                   id === currentMusic?.id
@@ -152,7 +157,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
               {ar.map((artist, index) => {
                 return (
                   <Link
-                    onClick={() => setIsLoading(true)}
+                    onClick={(e) => handleClickLink(e)}
                     href={`/artist/${artist.id}`}
                     key={index}
                   >
@@ -166,7 +171,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
         </section>
       </div>
       <div className="flex-1 flex justify-between text-gray-200">
-        <Link onClick={() => setIsLoading(true)} href={`/album/${al.id}`}>
+        <Link onClick={(e) => handleClickLink(e)} href={`/album/${al.id}`}>
           <h6 className="hover:text-gray-100 hover:-translate-y-1 hover:underline brightness-125 text-h4-light">
             {al.name}
           </h6>
