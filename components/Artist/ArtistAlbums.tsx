@@ -14,9 +14,13 @@ interface ArtistAlbum {
 }
 
 export const ArtistAlbums = React.memo(({ hotSongs }: Props) => {
-  const artistAlbums:ArtistAlbum[] = [];
+  const artistAlbums: ArtistAlbum[] = [];
   hotSongs.forEach((hotSong: IAlbumSong) => {
-    if(artistAlbums.findIndex((artistAlbum: any)=>artistAlbum.albumId === hotSong.al.id) < 0){
+    if (
+      artistAlbums.findIndex(
+        (artistAlbum: ArtistAlbum) => artistAlbum.albumId === hotSong.al.id
+      ) < 0
+    ) {
       artistAlbums.push({
         albumName: hotSong.al.name,
         albumId: hotSong.al.id,
@@ -24,7 +28,7 @@ export const ArtistAlbums = React.memo(({ hotSongs }: Props) => {
         artists: hotSong.ar.map((artist) => {
           return artist.name;
         }),
-      })
+      });
     }
   });
 
