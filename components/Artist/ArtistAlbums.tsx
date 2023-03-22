@@ -7,7 +7,7 @@ interface Props {
 }
 
 interface ArtistAlbum {
-  albumUrl: string;
+  albumUrl: string | null;
   albumName: string;
   artists: string[];
   albumId: number;
@@ -15,6 +15,7 @@ interface ArtistAlbum {
 
 export const ArtistAlbums = React.memo(({ hotSongs }: Props) => {
   const artistAlbums: ArtistAlbum[] = [];
+  console.log(hotSongs)
   hotSongs.forEach((hotSong: IAlbumSong) => {
     if (
       artistAlbums.findIndex(

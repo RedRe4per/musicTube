@@ -28,7 +28,7 @@ export const PlaylistCard = ({
       <Link onClick={() => setIsLoading(true)} href={`/playlist/${playlistId}`}>
         <div className="relative">
           <Image
-            src={coverUrl}
+            src={coverUrl? coverUrl : "/images/no-image.jpg"}
             alt={playlistName}
             className="object-contain rounded-xl"
             width={200}
