@@ -51,7 +51,7 @@ export const TrackLyrics = ({ trackId }: Props) => {
   }, [trackId]);
 
   return (
-    <section className="ml-10 mt-10 text-h4-light">
+    <section className="ml-10 mt-10 text-h4-light text-gray-200">
       {lyrics &&
         lyrics.map((lyric, index) => {
           return (
