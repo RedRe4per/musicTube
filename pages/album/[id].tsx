@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from "next";
 import { useBackgroundColor } from "@/hooks/useBackgroundColor";
 import { BgColorContext } from "@/contexts/BgColorContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { IAlbumDetails } from "@/interfaces/album";
 import { IAlbumSong } from "@/interfaces/albumSong";
 import { AlbumInfo } from "@/components/Album/AlbumInfo";
@@ -23,8 +23,11 @@ export default function Album(albumInfo: Props) {
   const { handleBackgroundColor } = useBackgroundColor(picUrl);
   const { bgColor, setIsLoading } = useContext(BgColorContext);
 
-  if (typeof window !== "undefined") {
+  useEffect(() => {
     setIsLoading(false);
+  }, [id]);
+
+  if (typeof window !== "undefined") {
     handleBackgroundColor();
   }
 
