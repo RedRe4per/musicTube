@@ -44,7 +44,6 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
   ) => {
     e.stopPropagation();
     setIsLoading(true);
-    console.log("loading");
   };
 
   return (
