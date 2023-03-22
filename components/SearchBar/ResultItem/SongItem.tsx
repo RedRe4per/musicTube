@@ -1,14 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useContext } from "react";
 import { IAlbumSong } from "@/interfaces/albumSong";
+import { BgColorContext } from "@/contexts/BgColorContext";
 
 interface Props {
   song: IAlbumSong;
 }
 
 export const SongItem = ({ song }: Props) => {
+  const { setIsLoading } = useContext(BgColorContext);
+
   return (
-    <Link href={`/track/${song.id}`}>
+    <Link onClick={() => setIsLoading(true)} href={`/track/${song.id}`}>
       <section className="search-result-item gap-4">
         <div>
           <Image

@@ -1,14 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useContext } from "react";
 import { IPlaylist } from "@/interfaces/playlist";
+import { BgColorContext } from "@/contexts/BgColorContext";
 
 interface Props {
   playlist: IPlaylist;
 }
 
 export const PlaylistItem = ({ playlist }: Props) => {
+  const { setIsLoading } = useContext(BgColorContext);
+
   return (
-    <Link href={`/playlist/${playlist.id}`}>
+    <Link onClick={() => setIsLoading(true)} href={`/playlist/${playlist.id}`}>
       <section className="search-result-item">
         <div className="flex-1">
           <Image
