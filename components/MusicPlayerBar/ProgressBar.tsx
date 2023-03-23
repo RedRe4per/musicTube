@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { IMusicDetail } from "@/interfaces/music";
 import { formatTime } from "@/utils/formatTime";
 import { getRatio, getDraggingRatio } from "@/utils/radioCalc";
+import { httpFormatter } from "@/utils/httpFormatter";
 import {
   useGlobalListener,
   removeGlobalListener,
@@ -113,7 +114,7 @@ export const ProgressBar = React.forwardRef(
       <section>
         <audio
           ref={musicPlayer}
-          src={currentMusic?.url}
+          src={currentMusic ? httpFormatter(currentMusic!.url) : undefined}
           loop={isMusicLoop}
           onPlay={handlePlay}
           onPause={() => {

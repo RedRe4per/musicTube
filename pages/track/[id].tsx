@@ -10,7 +10,6 @@ import { TrackLyrics } from "@/components/Track/TrackLyrics";
 import { SimilarTrack } from "@/components/Track/SimilarTrack";
 import { mixColor } from "@/utils/mixColor";
 import { Footer } from "@/layouts/footer";
-// import { useRouter } from "next/router";
 
 interface Props {
   code: number;
@@ -18,16 +17,11 @@ interface Props {
   songs: ITrack[];
 }
 
-// const abortController = new AbortController();
-// const signal = abortController.signal;
-
 export default function Track(trackInfo: Props) {
   const { name, id, al, ar, mv, pop, publishTime, dt } = trackInfo.songs[0];
   const { handleBackgroundColor } = useBackgroundColor(al.picUrl);
   const { bgColor, setIsLoading } = useContext(BgColorContext);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  // const router = useRouter();
-  // const pathId = +router.asPath.split("/")[2];
 
   useEffect(() => {
     containerRef.current?.scrollIntoView();
@@ -36,13 +30,6 @@ export default function Track(trackInfo: Props) {
       handleBackgroundColor();
     }
   }, [id]);
-
-  // useEffect(()=>{
-  //   return ()=>{
-  //     console.log("123")
-  //     abortController.abort();
-  //   }
-  // }, []) //pathId
 
   return (
     <main
@@ -73,7 +60,7 @@ export default function Track(trackInfo: Props) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
   const trackResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/detail?ids=${id}` //, {signal}
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/detail?ids=${id}`
   );
   const trackInfo = await trackResponse.json();
   return { props: trackInfo };
