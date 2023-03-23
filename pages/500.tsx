@@ -1,7 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useContext, useEffect } from "react";
+import { BgColorContext } from "@/contexts/BgColorContext";
 
 export default function Custom500() {
+  const { setIsLoading } = useContext(BgColorContext);
+  
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
   return (
     <section className="hero h-[82vh] bg-gray-650">
       <div className="hero-content flex-col lg:flex-row">
