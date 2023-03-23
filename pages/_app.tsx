@@ -63,7 +63,6 @@ export default function App({ Component, pageProps }: AppProps) {
       router.events.off("routeChangeError", handleRouteError);
     };
   }, [router.events]);
-  
 
   return (
     <main className={`${rubik.variable} font-sans`}>
