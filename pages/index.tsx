@@ -6,6 +6,7 @@ import { IPlaylistList } from "@/interfaces/playlist";
 import { Footer } from "@/layouts/footer";
 import { useContext, useEffect } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
+import { useRouter } from "next/router";
 
 interface Props {
   albumAreaEA: IAlbumList;
@@ -26,10 +27,18 @@ export default function Home({
 }: Props) {
   const { setIsLoading } = useContext(BgColorContext);
 
+  const router = useRouter();
+  const pathId = +router.asPath;
+  console.log(pathId)
+
   useEffect(() => {
     setIsLoading(false);
   }, []);
 
+  useEffect(()=>{
+    console.log("first")
+  }, [pathId])
+  
   return (
     <section>
       <Head>
