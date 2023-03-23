@@ -28,7 +28,7 @@ export default function Home({
   const { setIsLoading } = useContext(BgColorContext);
 
   const router = useRouter();
-  const pathId = +router.asPath;
+  const pathId = router.asPath;
   console.log(pathId);
 
   useEffect(() => {
