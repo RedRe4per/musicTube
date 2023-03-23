@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { debounce } from "lodash";
 import { SearchResult } from "./SearchResult";
 import { ISearchResult } from "@/interfaces/searchResult";

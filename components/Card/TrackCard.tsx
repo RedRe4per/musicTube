@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
-import { useContext } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { CardTrack } from "@/interfaces/playlist";
 import { useTrackFinder } from "@/hooks/useTrackFinder";
