@@ -108,12 +108,12 @@ export const ProgressBar = React.forwardRef(
     };
 
     useGlobalListener(isDragging, handleMouseMove, handleMouseUp);
-
+    //currentMusic?.url
     return (
       <section>
         <audio
           ref={musicPlayer}
-          src={currentMusic?.url}
+          src={`/api/audioProxy?url=${encodeURIComponent(currentMusic!.url)}`}
           loop={isMusicLoop}
           onPlay={handlePlay}
           onPause={() => {

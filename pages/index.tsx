@@ -28,11 +28,6 @@ export default function Home({
 
   useEffect(() => {
     setIsLoading(false);
-
-    return () => {
-      console.log(123);
-      setIsLoading(false);
-    };
   }, []);
 
   return (
