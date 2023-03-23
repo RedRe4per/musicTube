@@ -29,16 +29,16 @@ export default function Home({
 
   const router = useRouter();
   const pathId = +router.asPath;
-  console.log(pathId)
+  console.log(pathId);
 
   useEffect(() => {
     setIsLoading(false);
   }, []);
 
-  useEffect(()=>{
-    console.log("first")
-  }, [pathId])
-  
+  useEffect(() => {
+    console.log("first");
+  }, [pathId]);
+
   return (
     <section>
       <Head>
