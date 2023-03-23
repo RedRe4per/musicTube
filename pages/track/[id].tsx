@@ -35,7 +35,6 @@ export default function Track(trackInfo: Props) {
     if (typeof window !== "undefined") {
       handleBackgroundColor();
     }
-
   }, [id]);
 
   // useEffect(()=>{
@@ -74,7 +73,7 @@ export default function Track(trackInfo: Props) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
   const trackResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/detail?ids=${id}`//, {signal}
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/detail?ids=${id}` //, {signal}
   );
   const trackInfo = await trackResponse.json();
   return { props: trackInfo };
