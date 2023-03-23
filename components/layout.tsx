@@ -15,9 +15,7 @@ export default function Layout({ children }: Props) {
   const { isLoading } = useContext(BgColorContext);
 
   return (
-    <div className={`flex ${
-      isLoading ? "pointer-events-none" : ""
-    }`}>
+    <div className={`flex ${isLoading ? "pointer-events-none" : ""}`}>
       <Nav />
       <section className="w-full xl:w-screen-70 bg-gray-650 relative">
         <Header />
