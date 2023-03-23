@@ -21,7 +21,7 @@ export default function Layout({ children }: Props) {
         <Header />
         <main
           className={`overflow-auto max-h-[82.8vh] lg:scrollbar ${
-            isLoading ? "blur-xl brightness-50" : ""
+            isLoading ? "blur-xl brightness-50 pointer-events-none" : ""
           }`}
         >
           {children}
