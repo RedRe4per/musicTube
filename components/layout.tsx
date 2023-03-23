@@ -15,13 +15,15 @@ export default function Layout({ children }: Props) {
   const { isLoading } = useContext(BgColorContext);
 
   return (
-    <div className="flex">
+    <div className={`flex ${
+      isLoading ? "pointer-events-none" : ""
+    }`}>
       <Nav />
       <section className="w-full xl:w-screen-70 bg-gray-650 relative">
         <Header />
         <main
           className={`overflow-auto max-h-[82.8vh] lg:scrollbar ${
-            isLoading ? "blur-xl brightness-50 pointer-events-none" : ""
+            isLoading ? "blur-xl brightness-50" : ""
           }`}
         >
           {children}
