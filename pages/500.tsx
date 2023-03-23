@@ -5,7 +5,7 @@ import { BgColorContext } from "@/contexts/BgColorContext";
 
 export default function Custom500() {
   const { setIsLoading } = useContext(BgColorContext);
-  
+
   useEffect(() => {
     setIsLoading(false);
   }, []);

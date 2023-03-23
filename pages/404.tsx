@@ -4,7 +4,7 @@ import { BgColorContext } from "@/contexts/BgColorContext";
 
 export default function Custom404() {
   const { setIsLoading } = useContext(BgColorContext);
-  
+
   useEffect(() => {
     setIsLoading(false);
   }, []);
