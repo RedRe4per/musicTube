@@ -9,6 +9,9 @@ export const useLoading = () => {
   ) => {
     e.stopPropagation();
     setIsLoading(true);
+    setTimeout(()=>{
+      setIsLoading(false);
+    }, 6000);
   };
 
   return { handleLoading };
