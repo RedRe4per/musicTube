@@ -4,7 +4,7 @@ import { PlaylistList } from "@/components/Playlist/PlaylistList";
 import { IAlbumList } from "@/interfaces/album";
 import { IPlaylistList } from "@/interfaces/playlist";
 import { Footer } from "@/layouts/footer";
-import { useContext, useLayoutEffect } from "react";
+import { useContext, useEffect } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
 
 interface Props {
@@ -26,7 +26,7 @@ export default function Home({
 }: Props) {
   const { setIsLoading } = useContext(BgColorContext);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setIsLoading(false);
   });
 
