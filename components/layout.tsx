@@ -10,7 +10,7 @@ import { BgColorContext } from "@/contexts/BgColorContext";
 interface Props {
   children: ReactElement;
 }
-//${isLoading ? "pointer-events-none" : ""}
+
 export default function Layout({ children }: Props) {
   const { isLoading } = useContext(BgColorContext);
   return (
