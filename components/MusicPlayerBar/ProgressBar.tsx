@@ -108,6 +108,18 @@ export const ProgressBar = React.forwardRef(
       });
     };
 
+    const handleError = async () => {
+      if(!currentMusic) return;
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${currentMusic.id}&level=higher`
+      );
+      const refreshedSong = await response.json();
+      const newUrl = refreshedSong.data[0].url;
+      currentMusic.url = newUrl;
+      setIsMusicPlay(false);
+      handlePlay();
+    }
+
     useGlobalListener(isDragging, handleMouseMove, handleMouseUp);
 
     return (
@@ -121,6 +133,7 @@ export const ProgressBar = React.forwardRef(
             clearInterval(intervalId);
           }}
           onEnded={handleEnd}
+          onError={handleError}
         />
         <section className="w-[65vw] lg:w-[400px] xl:w-[600px] 2xl:w-[800px] h-[10px] flex justify-around items-center my-2 gap-1">
           <div className="lg:w-[10%] text-center">
