@@ -11,7 +11,8 @@ export const ArtistInfo = React.memo(
             src={picUrl!}
             alt="picUrl"
             className="rounded-full shadow-2xl shadow-gray-650 object-cover"
-            fill
+            width={280}
+            height={280}
           />
         </div>
         <section className="ml-10 mt-10 flex flex-col justify-around">

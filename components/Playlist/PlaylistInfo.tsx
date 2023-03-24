@@ -34,7 +34,8 @@ export const PlaylistInfo = ({
           src={coverImgUrl}
           alt="bluePicUrl"
           className="rounded-2xl shadow-2xl shadow-gray-650 object-cover"
-          fill
+          width={280}
+          height={280}
         />
       </div>
       <section className="ml-10 mt-10 flex flex-col justify-around">

@@ -33,7 +33,8 @@ export const TrackCard = ({ track }: Props) => {
             src={album.picUrl ? album.picUrl : "/images/no-image.jpg"}
             alt="cover"
             className="object-cover rounded-xl"
-            fill
+            width={190}
+            height={190}
           />
           <div
             onMouseEnter={() => setShowPlay(true)}

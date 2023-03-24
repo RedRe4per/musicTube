@@ -17,8 +17,8 @@ export const ArtistItem = ({ artist }: Props) => {
           <Image
             src={artist.picUrl ? artist.picUrl : "/images/no-image.jpg"}
             alt="album"
-            fill
-            sizes="40px"
+            width={40}
+            height={40}
           ></Image>
         </div>
         <div>
