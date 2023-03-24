@@ -2,12 +2,14 @@ import { useContext } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
 
 export const useLoading = () => {
-    const { setIsLoading } = useContext(BgColorContext);
+  const { setIsLoading } = useContext(BgColorContext);
 
-    const handleLoading = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        e.stopPropagation();
-        setIsLoading(true);
-    }
+  const handleLoading = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+    setIsLoading(true);
+  };
 
-    return { handleLoading }
-}
+  return { handleLoading };
+};
