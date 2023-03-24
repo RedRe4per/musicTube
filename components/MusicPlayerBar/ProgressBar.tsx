@@ -109,7 +109,7 @@ export const ProgressBar = React.forwardRef(
     };
 
     const handleError = async () => {
-      if(!currentMusic) return;
+      if (!currentMusic) return;
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${currentMusic.id}&level=higher`
       );
@@ -118,7 +118,7 @@ export const ProgressBar = React.forwardRef(
       currentMusic.url = newUrl;
       setIsMusicPlay(false);
       handlePlay();
-    }
+    };
 
     useGlobalListener(isDragging, handleMouseMove, handleMouseUp);
 
