@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { switchTopPlaylistTag } from "@/utils/switchTopPlaylistTag";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
-import { BgColorContext } from "@/contexts/BgColorContext";
+import { useLoading } from "@/hooks/useLoading";
 
 interface Props {
   coverUrl: string;
@@ -20,11 +20,11 @@ export const PlaylistCard = ({
 }: Props) => {
   const [showPlay, setShowPlay] = useState(false);
   const { handlePlay } = useHandlePlay(playlistId, 0, "playlist");
-  const { setIsLoading } = useContext(BgColorContext);
+  const { handleLoading }=useLoading();
 
   return (
     <section className="max-w-[1/8] h-[200px] lg:h-[335px] relative overflow-hidden rounded-xl p-1 hover:bg-gray-600 hover:shadow-md hover:shadow-white-50 hover:-translate-y-2">
-      <Link onClick={() => setIsLoading(true)} href={`/playlist/${playlistId}`}>
+      <Link onClick={handleLoading} href={`/playlist/${playlistId}`}>
         <div className="relative">
           <Image
             src={coverUrl ? coverUrl : "/images/no-image.jpg"}

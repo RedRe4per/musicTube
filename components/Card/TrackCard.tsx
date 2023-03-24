@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
-import { BgColorContext } from "@/contexts/BgColorContext";
 import { CardTrack } from "@/interfaces/playlist";
 import { useTrackFinder } from "@/hooks/useTrackFinder";
+import { useLoading } from "@/hooks/useLoading";
 
 interface Props {
   track: CardTrack;
@@ -16,7 +16,7 @@ export const TrackCard = ({ track }: Props) => {
   const [playDisabled, setPlayDisabled] = useState(true);
   const [showPlay, setShowPlay] = useState(false);
   const { handlePlay } = useHandlePlay(album.id, songIndex);
-  const { setIsLoading } = useContext(BgColorContext);
+  const { handleLoading } = useLoading();
 
   useTrackFinder(album.id, track.id, setSongIndex, setPlayDisabled);
 
@@ -27,7 +27,7 @@ export const TrackCard = ({ track }: Props) => {
 
   return (
     <section className="w-[110px] lg:w-auto h-[200px] lg:h-[335px] relative overflow-hidden rounded-xl p-2 lg:p-4 bg-gray-650 hover:bg-gray-600 transition-colors duration-500">
-      <Link onClick={() => setIsLoading(true)} href={`/track/${id}`}>
+      <Link onClick={handleLoading} href={`/track/${id}`}>
         <div className="relative w-[94px] lg:w-[190px] h-[94px] lg:h-[190px]">
           <Image
             src={album.picUrl ? album.picUrl : "/images/no-image.jpg"}

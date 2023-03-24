@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React from "react";
 import { ITrack } from "@/interfaces/music";
 import { formatDate } from "@/utils/formatTime";
-import { BgColorContext } from "@/contexts/BgColorContext";
+import { useLoading } from "@/hooks/useLoading";
 
 export const TrackInfo = React.memo(
   ({ al, name, ar, pop, publishTime }: Partial<ITrack>) => {
-    const { setIsLoading } = useContext(BgColorContext);
+    const { handleLoading } = useLoading();
 
     return (
       <section className="mt-6 pl-10 pb-5 flex">
@@ -38,7 +38,7 @@ export const TrackInfo = React.memo(
                 {ar.map((artist, index) => {
                   return (
                     <Link
-                      onClick={() => setIsLoading(true)}
+                      onClick={handleLoading}
                       href={`/artist/${artist.id}`}
                       key={index}
                     >
@@ -50,7 +50,7 @@ export const TrackInfo = React.memo(
                 })}
               </h5>
             )}
-            <Link onClick={() => setIsLoading(true)} href={`/album/${al!.id}`}>
+            <Link onClick={handleLoading} href={`/album/${al!.id}`}>
               <span>Album:&nbsp;</span>
               <span className="hover:text-green">{al!.name}</span>
             </Link>

@@ -28,7 +28,7 @@ export default function Home({
 
   useEffect(() => {
     setIsLoading(false);
-  });
+  }, []);
 
   return (
     <section>

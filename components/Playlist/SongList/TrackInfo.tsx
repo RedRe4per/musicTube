@@ -5,7 +5,7 @@ import { formatTime } from "@/utils/formatTime";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
 import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
 import { PlayerContext } from "@/contexts/PlayerContext";
-import { BgColorContext } from "@/contexts/BgColorContext";
+import { useLoading } from "@/hooks/useLoading";
 import Link from "next/link";
 
 interface Props {
@@ -21,7 +21,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
   const { isMusicPlay, setIsMusicPlay, currentMusic } =
     useContext(PlayAndPauseContext);
   const { musicListId } = useContext(PlayerContext);
-  const { setIsLoading } = useContext(BgColorContext);
+  const { handleLoading } = useLoading();
 
   const handleHover = (mode: "index" | "play") => {
     setIndexDisplay(mode);
@@ -38,13 +38,6 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
   const handlePauseClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     setIsMusicPlay(!isMusicPlay);
-  };
-
-  const handleClickLink = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
-    e.stopPropagation();
-    setIsLoading(true);
   };
 
   return (
@@ -146,7 +139,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
           <div className="flex flex-col gap-2">
             <Link
               className="hover:underline"
-              onClick={(e) => handleClickLink(e)}
+              onClick={handleLoading}
               href={`/track/${id}`}
             >
               <div
@@ -163,7 +156,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
               {ar.map((artist, index) => {
                 return (
                   <Link
-                    onClick={(e) => handleClickLink(e)}
+                    onClick={handleLoading}
                     href={`/artist/${artist.id}`}
                     key={index}
                   >
@@ -177,7 +170,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
         </section>
       </div>
       <div className="flex-1 flex justify-between text-gray-200">
-        <Link onClick={(e) => handleClickLink(e)} href={`/album/${al.id}`}>
+        <Link onClick={handleLoading} href={`/album/${al.id}`}>
           <h6 className="hover:text-gray-100 hover:-translate-y-1 hover:underline brightness-125 text-h4-light">
             {al.name}
           </h6>

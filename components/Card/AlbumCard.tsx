@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useHandlePlay } from "@/hooks/useHandlePlay";
-import { BgColorContext } from "@/contexts/BgColorContext";
+import { useLoading } from "@/hooks/useLoading";
 
 interface Props {
   albumUrl: string | null;
@@ -14,11 +14,11 @@ interface Props {
 export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
   const [showPlay, setShowPlay] = useState(false);
   const { handlePlay } = useHandlePlay(albumId);
-  const { setIsLoading } = useContext(BgColorContext);
+  const { handleLoading } = useLoading();
 
   return (
     <section className="bg-gray-650 max-w-[1/8] h-[200px] lg:h-[335px] relative overflow-hidden rounded-xl p-1 hover:bg-gray-600 hover:shadow-md hover:shadow-white-50 hover:-translate-y-2">
-      <Link onClick={() => setIsLoading(true)} href={`/album/${albumId}`}>
+      <Link onClick={handleLoading} href={`/album/${albumId}`}>
         <div className="relative">
           <Image
             src={albumUrl ? albumUrl : "/images/no-image.jpg"}
