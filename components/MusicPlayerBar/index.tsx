@@ -47,9 +47,9 @@ export const MusicPlayerBar = () => {
   };
 
   const handleSkipMusic = (forward: "last" | "next") => {
-    if(!currentMusic) return;
+    if (!currentMusic) return;
     const skipIndex = getSkipIndex(currentMusic, forward, playerList);
-    
+
     setCurrentMusic(playerList[skipIndex]);
     setIsMusicPlay(false);
     setTimeout(() => {
