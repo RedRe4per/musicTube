@@ -29,7 +29,7 @@ It uses NetEase Cloud Music's open source API to fetch music.
 
 &emsp;
 
-## Performance
+## :zap: Performance
 :white_check_mark: MusicTube reaches as high as  all 100 of categories testing by Lighthouse.
 &emsp;
 &nbsp;
