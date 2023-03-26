@@ -48,12 +48,14 @@ export default function Playlist(playlistInfo: Props) {
 
   const switchPage = async (targetPage: number) => {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/playlist/track/all?id=${id}&limit=20&offset=${targetPage*20}`
+      `${
+        process.env.NEXT_PUBLIC_SERVER_ADDRESS
+      }/playlist/track/all?id=${id}&limit=20&offset=${targetPage * 20}`
     );
     const newPageTracks = await res.json();
     setCurrentTracks(newPageTracks.songs);
-    setCurrentPage(targetPage+1);
-  }
+    setCurrentPage(targetPage + 1);
+  };
 
   return (
     <main
@@ -76,8 +78,16 @@ export default function Playlist(playlistInfo: Props) {
         subscribedCount={subscribedCount}
       />
       <PlaylistPlay playlistId={id} trackCount={trackCount} />
-      <SongList playlistSongs={currentTracks} playlistId={id} currentPage={currentPage} />
-      <PlaylistPagination itemQty={trackCount} currentPage={currentPage} switchPage={switchPage} />
+      <SongList
+        playlistSongs={currentTracks}
+        playlistId={id}
+        currentPage={currentPage}
+      />
+      <PlaylistPagination
+        itemQty={trackCount}
+        currentPage={currentPage}
+        switchPage={switchPage}
+      />
       <Footer />
     </main>
   );
