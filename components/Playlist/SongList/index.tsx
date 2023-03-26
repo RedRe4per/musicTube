@@ -21,7 +21,7 @@ export const SongList = React.memo(
               <h6>Title</h6>
             </div>
             <div className="flex-1 flex justify-between">
-              <h6>Album</h6>
+              <h6 className="mx-6">Album</h6>
               <h6>Full time</h6>
             </div>
           </section>

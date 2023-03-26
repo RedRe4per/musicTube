@@ -55,7 +55,7 @@ export const TrackInfo = React.memo(
         className="flex py-3 pl-3 pr-10 items-center hover:bg-gray-400 rounded-lg"
       >
         <div className="flex-1 flex items-center">
-          <section className="w-16 flex justify-center items-center">
+          <section className="w-16 min-w-[64px] flex justify-center items-center">
             <h6
               className={`text-gray-200 ${
                 indexDisplay === "play" ||
@@ -136,7 +136,7 @@ export const TrackInfo = React.memo(
             </div>
           </section>
           <section className="flex gap-4">
-            <div className="min-w-[50px] min-h-[50px]">
+            <div className="min-w-[50px] min-h-[50px] flex items-center">
               <Image
                 className="rounded-sm w-[50px] h-[50px] object-cover"
                 src={al.picUrl ? al.picUrl : "/images/no-image.jpg"}
@@ -145,7 +145,7 @@ export const TrackInfo = React.memo(
                 height={50}
               />
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 overflow-hidden">
               <Link
                 className="hover:underline"
                 onClick={handleLoading}
@@ -180,7 +180,7 @@ export const TrackInfo = React.memo(
         </div>
         <div className="flex-1 flex justify-between text-gray-200">
           <Link onClick={handleLoading} href={`/album/${al.id}`}>
-            <h6 className="hover:text-gray-100 hover:-translate-y-1 hover:underline brightness-125 text-h4-light">
+            <h6 className="hover:text-gray-100 hover:underline brightness-125 text-h4-light mx-6">
               {al.name}
             </h6>
           </Link>
