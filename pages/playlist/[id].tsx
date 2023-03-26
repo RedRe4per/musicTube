@@ -32,11 +32,11 @@ export default function Playlist(playlistInfo: Props) {
     subscribedCount,
     tracks,
   } = playlistInfo.playlist;
-  console.log(tracks)
+  console.log(tracks);
   const { handleBackgroundColor } = useBackgroundColor(coverImgUrl);
   const { bgColor, setIsLoading } = useContext(BgColorContext);
-  const [ currentTracks, setCurrentTracks ] = useState<Track[]>([]);
-  const [ currentPage, setCurrentPage ] = useState(1);
+  const [currentTracks, setCurrentTracks] = useState<Track[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     setIsLoading(false);
@@ -69,7 +69,7 @@ export default function Playlist(playlistInfo: Props) {
       />
       <PlaylistPlay playlistId={id} trackCount={trackCount} />
       <SongList playlistSongs={currentTracks} playlistId={id} />
-      <PlaylistPagination itemQty={trackCount} currentPage={currentPage}/>
+      <PlaylistPagination itemQty={trackCount} currentPage={currentPage} />
       <Footer />
     </main>
   );
