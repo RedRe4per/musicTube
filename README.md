@@ -70,7 +70,7 @@ Most of the features of Next.js are used in the website, including but not limit
 
 &emsp;
 
-## License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## :balance_scale: License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
