@@ -53,11 +53,11 @@ export const MusicInfo = ({ music }: Props) => {
       </div>
       <section className="hidden lg:flex flex-col justify-around">
         <Link onClick={handleLoading} href={`/track/${musicId}`}>
-          <h5 className="text-button-normal lg:text-h3-normal text-white-200">
+          <h5 className="text-button-normal lg:text-h3-normal text-white-200 max-h-[56px] overflow-hidden">
             {musicName}
           </h5>
         </Link>
-        <div className="text-tag-normal text-gray-300">
+        <div className="text-tag-normal text-gray-300 max-h-[42.5px] overflow-hidden">
           {artists.map((artist, index) => {
             return (
               <Link
