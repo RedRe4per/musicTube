@@ -9,7 +9,11 @@ interface Props {
 export const SequenceButton = React.memo(
   ({ handleSequence, active, sequence }: Props) => {
     return (
-      <button onClick={handleSequence} className="w-[40px] h-[40px]" aria-label="random play button">
+      <button
+        onClick={handleSequence}
+        className="w-[40px] h-[40px]"
+        aria-label="random play button"
+      >
         {sequence === "random" && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
