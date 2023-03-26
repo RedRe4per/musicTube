@@ -12,7 +12,9 @@ export const PlaylistPagination = ({
   const pageQty = Math.ceil(itemQty / 20);
 
   return (
-    <section className={`flex justify-center mb-28 ${itemQty<21? "hidden": ""}`}>
+    <section
+      className={`flex justify-center mb-28 ${itemQty < 21 ? "hidden" : ""}`}
+    >
       <div className="btn-group">
         {Array.from({ length: pageQty }, (_, index) => (
           <button
