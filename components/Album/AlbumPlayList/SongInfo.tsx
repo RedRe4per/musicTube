@@ -130,6 +130,7 @@ export const SongInfo = React.memo(({ song, index, albumId }: Props) => {
             className="hover:underline"
             onClick={handleLoading}
             href={`/track/${id}`}
+            aria-label="Link to track in certain id"
           >
             <div
               className={

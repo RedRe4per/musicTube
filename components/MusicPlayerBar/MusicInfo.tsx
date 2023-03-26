@@ -52,7 +52,7 @@ export const MusicInfo = ({ music }: Props) => {
         />
       </div>
       <section className="hidden lg:flex flex-col justify-around">
-        <Link onClick={handleLoading} href={`/track/${musicId}`}>
+        <Link onClick={handleLoading} href={`/track/${musicId}`} aria-label="Link to playing track">
           <h5 className="text-button-normal lg:text-h3-normal text-white-200 max-h-[56px] overflow-hidden">
             {musicName}
           </h5>
