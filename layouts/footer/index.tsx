@@ -10,10 +10,14 @@ export const Footer = () => {
         >
           About me
         </a>
-        <a className="link link-hover"
-        href="https://www.linkedin.com/in/zhu-derek/"
-        target="_blank"
-        aria-label="Visit my linkedin">Contact</a>
+        <a
+          className="link link-hover"
+          href="https://www.linkedin.com/in/zhu-derek/"
+          target="_blank"
+          aria-label="Visit my linkedin"
+        >
+          Contact
+        </a>
       </div>
       <div>
         <div className="grid grid-flow-col gap-4">
