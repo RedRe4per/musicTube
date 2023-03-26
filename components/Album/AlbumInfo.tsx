@@ -12,11 +12,11 @@ interface Props {
 export const AlbumInfo = ({ picUrl, type, subType, name, artists }: Props) => {
   return (
     <section className="mt-6 pl-10 pb-5 flex">
-      <div className="relative w-[280px] h-[280px]">
+      <div>
         <Image
           src={picUrl}
           alt="bluePicUrl"
-          className="rounded-2xl shadow-2xl shadow-gray-650 object-cover"
+          className="w-[280px] h-[280px] rounded-2xl shadow-2xl shadow-gray-650 object-cover"
           width={280}
           height={280}
         />

@@ -6,11 +6,11 @@ export const ArtistInfo = React.memo(
   ({ name, picUrl, musicSize, albumSize }: Partial<IArtist>) => {
     return (
       <section className="mt-6 pl-10 pb-5 flex gap-8">
-        <div className="relative w-[280px] h-[280px]">
+        <div>
           <Image
             src={picUrl!}
             alt="picUrl"
-            className="rounded-full shadow-2xl shadow-gray-650 object-cover"
+            className="w-[280px] h-[280px] rounded-full shadow-2xl shadow-gray-650 object-cover"
             width={280}
             height={280}
           />
