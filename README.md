@@ -8,7 +8,7 @@
 
 -------------------
 
-## A music app built by Next.js
+## :musical_note: A music app built by Next.js
 
 Made by Derek Zhu
 
@@ -20,7 +20,7 @@ Made by Derek Zhu
 
 ------------------------------
 
-MusicTube is an app for playing music. Its music source is NetEase Cloud Music.
+:bulb:MusicTube is an app for playing music. Its music source is NetEase Cloud Music.
 
 It uses NetEase Cloud Music's open source API to fetch music.
 &emsp;
@@ -30,7 +30,7 @@ It uses NetEase Cloud Music's open source API to fetch music.
 &emsp;
 
 ## Performance
-MusicTube reaches as high as  all 100 of categories testing by Lighthouse.
+:white_check_mark: MusicTube reaches as high as  all 100 of categories testing by Lighthouse.
 &emsp;
 &nbsp;
 ![seo](https://user-images.githubusercontent.com/98071700/227798321-4004f994-85dc-4492-9cfc-48bd9d1da185.jpg)
@@ -46,7 +46,7 @@ MusicTube reaches as high as  all 100 of categories testing by Lighthouse.
 &emsp;
 
 ------------------------------
-## Getting Started
+## :hammer_and_wrench: Getting Started
 
 Dev:
 
@@ -62,7 +62,7 @@ npm run build
 
 &emsp;
 
-## The purpose of  builing this project
+## :thinking: The purpose of  builing this project
 
 First of all, this is a website where you can enjoy songs. The purpose of building this site is mainly to practice Next.js, as this is the first time I've done a project with Next.js independently.
 
@@ -70,13 +70,13 @@ Most of the features of Next.js are used in the website, including but not limit
 
 &emsp;
 
-## License
+## License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 &emsp;
 
-## Contact
+## :email: Contact
 
 Derek Zhu - [@LinkedIn](https://www.linkedin.com/in/zhu-derek/) - [s3582474@gmail.com](s3582474@gmail.com)
 
@@ -86,7 +86,7 @@ My Blog: https://redre4per.github.io/
 
 &emsp;
 
-## Acknowledgments
+## :sparkles: Acknowledgments
 
 I've included a few of my favorites to kick things off!
 
