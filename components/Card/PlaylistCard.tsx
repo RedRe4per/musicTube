@@ -51,9 +51,9 @@ export const PlaylistCard = ({
           </div>
         </div>
         <section className="absolute max-w-[100%] overflow-hidden">
-          <h5 className="text-tag-normal lg:text-button-normal text-white-200 mt-[15px] ">
+          <h4 className="text-tag-normal lg:text-button-normal text-white-200 mt-[15px] ">
             {playlistName}
-          </h5>
+          </h4>
           <div className="text-tag-normal text-green brightness-90 mt-[7px] hidden lg:block">
             {tags.map((tag, index) => {
               return (
