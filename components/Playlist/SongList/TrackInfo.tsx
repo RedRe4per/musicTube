@@ -136,7 +136,7 @@ export const TrackInfo = React.memo(
             </div>
           </section>
           <section className="flex gap-4">
-            <div>
+            <div className="min-w-[50px] min-h-[50px]">
               <Image
                 className="rounded-sm w-[50px] h-[50px] object-cover"
                 src={al.picUrl ? al.picUrl : "/images/no-image.jpg"}

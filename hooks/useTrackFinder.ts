@@ -19,7 +19,7 @@ export const useTrackFinder = (
         return;
       }
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${albumId}`
+        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${albumId}&timestamp=${Date.now()}`
       );
       const albumData = await response.json();
       if (!albumData.songs) {

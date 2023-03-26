@@ -11,7 +11,7 @@ export const TrackInfo = React.memo(
 
     return (
       <section className="mt-6 pl-10 pb-5 flex">
-        <div>
+        <div className="min-w-[280px] min-h-[280px]">
           <Image
             src={al!.picUrl}
             alt="picUrl"
