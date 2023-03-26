@@ -60,7 +60,7 @@ export default function Track(trackInfo: Props) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
   const trackResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/detail?ids=${id}`
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/detail?ids=${id}&timestamp=${Date.now()}`
   );
   const trackInfo = await trackResponse.json();
   return { props: trackInfo };

@@ -39,7 +39,7 @@ export const TrackLyrics = ({ trackId }: Props) => {
   useEffect(() => {
     const getLyrics = async () => {
       const lyricResponse = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/lyric?id=${trackId}`
+        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/lyric?id=${trackId}&timestamp=${Date.now()}`
       );
       const lyricData = await lyricResponse.json();
       const formattedLyrics = parseLyrics(

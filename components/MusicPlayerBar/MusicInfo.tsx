@@ -24,7 +24,7 @@ export const MusicInfo = ({ music }: Props) => {
     const getMusicInfo = async () => {
       if (!music) return;
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/detail?ids=${music.id}`
+        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/detail?ids=${music.id}&timestamp=${Date.now()}`
       );
       const data = await response.json();
       const musicInfo = data.songs[0];

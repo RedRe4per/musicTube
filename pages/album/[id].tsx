@@ -58,7 +58,7 @@ export default function Album(albumInfo: Props) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${id}`
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album?id=${id}&timestamp=${Date.now()}`
   );
   const albumInfo = await response.json();
   return { props: albumInfo };

@@ -33,7 +33,7 @@ export const SearchBar = ({ page }: Props) => {
     if (debouncedSearchTerm) {
       const searchRequest = async () => {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/cloudsearch?type=${searchTypeId}&keywords=${debouncedSearchTerm}`
+          `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/cloudsearch?type=${searchTypeId}&keywords=${debouncedSearchTerm}&timestamp=${Date.now()}`
         );
         const data = await response.json();
         setSearchResult(data);

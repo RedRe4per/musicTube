@@ -18,10 +18,10 @@ export const useHandlePlay = (
   const signal = controller.signal;
   const urlPathway =
     playType === "album"
-      ? `album?id=${albumOrPlaylistId}`
+      ? `album?id=${albumOrPlaylistId}&timestamp=${Date.now()}`
       : `playlist/track/all?limit=20&id=${albumOrPlaylistId}&offset=${
           (playlistPage - 1) * 20
-        }`;
+        }&timestamp=${Date.now()}`;
 
   const handlePlay = async (
     e: React.MouseEvent<HTMLDivElement> | React.MouseEvent<HTMLButtonElement>
@@ -39,7 +39,7 @@ export const useHandlePlay = (
       return;
     }
     const firstSongResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${albumData.songs[songIndex].id}&level=higher`,
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${albumData.songs[songIndex].id}&level=higher&timestamp=${Date.now()}`,
       { signal: signal }
     );
     const firstSongData = await firstSongResponse.json();
@@ -62,7 +62,7 @@ export const useHandlePlay = (
     const songsResponse = await fetch(
       `${
         process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/song/url/v1?id=${sortedSongIdList.join(",")}&level=higher`,
+      }/song/url/v1?id=${sortedSongIdList.join(",")}&level=higher&timestamp=${Date.now()}`,
       { signal: signal }
     );
 
