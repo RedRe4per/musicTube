@@ -51,15 +51,15 @@ export const PlaylistCard = ({
           </div>
         </div>
         <section className="absolute max-w-[100%] overflow-hidden">
-          <h4 className="text-tag-normal lg:text-button-normal text-white-200 mt-[15px] ">
+          <h3 className="text-tag-normal lg:text-button-normal text-white-200 mt-[15px] ">
             {playlistName}
-          </h4>
+          </h3>
           <div className="text-tag-normal text-green brightness-90 mt-[7px] hidden lg:block">
             {tags.map((tag, index) => {
               return (
-                <span key={index} className="inline-block">
+                <h4 key={index} className="inline-block">
                   {switchTopPlaylistTag(tag)}&nbsp;&nbsp;
-                </span>
+                </h4>
               );
             })}
           </div>
