@@ -20,7 +20,7 @@ Made by Derek Zhu
 
 ------------------------------
 
-:bulb:MusicTube is an app for playing music. Its music source is NetEase Cloud Music.
+:book: MusicTube is an app for playing music. Its music source is NetEase Cloud Music.
 
 It uses NetEase Cloud Music's open source API to fetch music.
 &emsp;
@@ -62,7 +62,7 @@ npm run build
 
 &emsp;
 
-## :thinking: The purpose of  builing this project
+## :bulb: The purpose of  builing this project
 
 First of all, this is a website where you can enjoy songs. The purpose of building this site is mainly to practice Next.js, as this is the first time I've done a project with Next.js independently.
 
