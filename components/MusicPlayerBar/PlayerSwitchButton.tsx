@@ -8,7 +8,7 @@ interface Props {
 export const PlayerSwitchButton = React.memo(
   ({ handlePlayAndPause, isMusicPlay }: Props) => {
     return (
-      <button onClick={handlePlayAndPause} className="w-[58px] h-[58px]">
+      <button onClick={handlePlayAndPause} className="w-[58px] h-[58px]" aria-label="play or pause switch button">
         <img
           src={
             isMusicPlay

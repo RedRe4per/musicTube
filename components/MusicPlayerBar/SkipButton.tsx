@@ -7,7 +7,7 @@ interface Props {
 
 export const SkipButton = React.memo(({ handleSkip, forward }: Props) => {
   return (
-    <button onClick={handleSkip} className="w-[40px] h-[40px]">
+    <button onClick={handleSkip} className="w-[40px] h-[40px]" aria-label="jump to next or last music button">
       {forward === "last" && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
