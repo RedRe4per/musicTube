@@ -2,7 +2,12 @@ export const Footer = () => {
   return (
     <footer className="footer footer-center text-white-50 p-10 text-h4-light rounded">
       <div className="lg:grid grid-flow-col gap-4 hidden">
-        <a className="link link-hover" href="https://redre4per.github.io/" aria-label="Visit my personal blog">
+        <a
+          className="link link-hover"
+          href="https://redre4per.github.io/"
+          target="_blank"
+          aria-label="Visit my personal blog"
+        >
           About me
         </a>
         <a className="link link-hover">Contact</a>
@@ -12,6 +17,7 @@ export const Footer = () => {
           <a
             className="hover:-translate-y-1"
             href="https://redre4per.github.io/"
+            target="_blank"
             aria-label="Visit my personal blog"
           >
             <svg
@@ -30,6 +36,7 @@ export const Footer = () => {
           <a
             className="hover:-translate-y-1"
             href="https://www.linkedin.com/in/zhu-derek/"
+            target="_blank"
             aria-label="Visit my linkedin"
           >
             <svg
