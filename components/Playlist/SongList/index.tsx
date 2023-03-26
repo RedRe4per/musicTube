@@ -5,9 +5,10 @@ import { TrackInfo } from "./TrackInfo";
 interface Props {
   playlistSongs: Track[];
   playlistId: number;
+  currentPage: number;
 }
 
-export const SongList = React.memo(({ playlistSongs, playlistId }: Props) => {
+export const SongList = React.memo(({ playlistSongs, playlistId, currentPage }: Props) => {
   return (
     <section className="mx-10 mt-10 mb-28 text-white-50 text-h4-normal ">
       <section className="border-gray-400 border-b">
@@ -32,6 +33,7 @@ export const SongList = React.memo(({ playlistSongs, playlistId }: Props) => {
               song={song}
               index={index}
               trackId={playlistId}
+              currentPage={currentPage}
             />
           );
         })}

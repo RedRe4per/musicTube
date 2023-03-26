@@ -12,12 +12,13 @@ interface Props {
   song: Track;
   index: number;
   trackId: number;
+  currentPage: number;
 }
 
-export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
+export const TrackInfo = React.memo(({ song, index, trackId, currentPage }: Props) => {
   const { name, al, dt, ar, id } = song;
   const [indexDisplay, setIndexDisplay] = useState<"index" | "play">("index");
-  const { handlePlay } = useHandlePlay(trackId, index, "playlist");
+  const { handlePlay } = useHandlePlay(trackId, index, "playlist", currentPage);
   const { isMusicPlay, setIsMusicPlay, currentMusic } =
     useContext(PlayAndPauseContext);
   const { musicListId } = useContext(PlayerContext);
@@ -57,7 +58,7 @@ export const TrackInfo = React.memo(({ song, index, trackId }: Props) => {
                 : ""
             }`}
           >
-            {index + 1}
+            {(currentPage-1)*20 + (index + 1)}
           </h6>
           <div
             className={

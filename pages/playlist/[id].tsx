@@ -32,7 +32,6 @@ export default function Playlist(playlistInfo: Props) {
     subscribedCount,
     tracks,
   } = playlistInfo.playlist;
-  console.log(tracks);
   const { handleBackgroundColor } = useBackgroundColor(coverImgUrl);
   const { bgColor, setIsLoading } = useContext(BgColorContext);
   const [currentTracks, setCurrentTracks] = useState<Track[]>([]);
@@ -45,6 +44,15 @@ export default function Playlist(playlistInfo: Props) {
 
   if (typeof window !== "undefined") {
     handleBackgroundColor();
+  }
+
+  const switchPage = async (targetPage: number) => {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/playlist/track/all?id=${id}&limit=20&offset=${targetPage*20}`
+    );
+    const newPageTracks = await res.json();
+    setCurrentTracks(newPageTracks.songs);
+    setCurrentPage(targetPage+1);
   }
 
   return (
@@ -68,8 +76,8 @@ export default function Playlist(playlistInfo: Props) {
         subscribedCount={subscribedCount}
       />
       <PlaylistPlay playlistId={id} trackCount={trackCount} />
-      <SongList playlistSongs={currentTracks} playlistId={id} />
-      <PlaylistPagination itemQty={trackCount} currentPage={currentPage} />
+      <SongList playlistSongs={currentTracks} playlistId={id} currentPage={currentPage} />
+      <PlaylistPagination itemQty={trackCount} currentPage={currentPage} switchPage={switchPage} />
       <Footer />
     </main>
   );

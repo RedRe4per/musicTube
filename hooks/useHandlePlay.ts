@@ -9,7 +9,8 @@ type PlayType = "playlist" | "album";
 export const useHandlePlay = (
   albumOrPlaylistId: number,
   songIndex: number = 0,
-  playType: PlayType = "album"
+  playType: PlayType = "album",
+  playlistPage: number = 1,
 ) => {
   const { setPlayerList, setMusicListId } = useContext(PlayerContext);
   const { setAlertBox } = useContext(AlertContext);
@@ -18,7 +19,7 @@ export const useHandlePlay = (
   const urlPathway =
     playType === "album"
       ? `album?id=${albumOrPlaylistId}`
-      : `playlist/track/all?limit=20&id=${albumOrPlaylistId}`;
+      : `playlist/track/all?limit=20&id=${albumOrPlaylistId}&offset=${(playlistPage-1)*20}`;
 
   const handlePlay = async (
     e: React.MouseEvent<HTMLDivElement> | React.MouseEvent<HTMLButtonElement>
