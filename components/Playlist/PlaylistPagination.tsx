@@ -9,7 +9,7 @@ export const PlaylistPagination = ({
   currentPage,
   switchPage,
 }: Props) => {
-  const pageQty = Math.ceil(itemQty / 20);
+  const pageQty: number = Math.ceil(itemQty / 20) > 10 ? 10 : Math.ceil(itemQty / 20);
 
   return (
     <section
