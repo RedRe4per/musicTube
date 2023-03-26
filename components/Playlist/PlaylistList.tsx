@@ -14,7 +14,7 @@ export const PlaylistList = ({ title, playlistList }: Props) => {
         <h2 className="ml-1 text-button-light lg:text-h3-normal text-white-200">
           {title}
         </h2>
-        <Link className="lg:text-h4-normal mr-4" href={"/"}>
+        <Link className="lg:text-h4-normal mr-4 text-gray-200" href={"/"}>
           More
         </Link>
       </section>
