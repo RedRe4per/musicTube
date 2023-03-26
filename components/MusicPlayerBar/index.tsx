@@ -8,6 +8,7 @@ import { ProgressBar } from "./ProgressBar";
 import { MusicInfo } from "./MusicInfo";
 import { VolumeBar } from "./VolumeBar";
 import { LyricsContext } from "@/contexts/LyricsContext";
+import { getSkipIndex } from "@/utils/getSkipIndex";
 
 export const MusicPlayerBar = () => {
   const { playerList } = useContext(PlayerContext);
@@ -46,18 +47,10 @@ export const MusicPlayerBar = () => {
   };
 
   const handleSkipMusic = (forward: "last" | "next") => {
-    const currentMusicIndex = playerList.findIndex(
-      (element) => element.id === currentMusic?.id
-    );
-    const playMusicIndex =
-      forward === "last"
-        ? currentMusicIndex > 0
-          ? currentMusicIndex - 1
-          : playerList.length - 1
-        : currentMusicIndex < playerList.length - 1
-        ? currentMusicIndex + 1
-        : 0;
-    setCurrentMusic(playerList[playMusicIndex]);
+    if(!currentMusic) return;
+    const skipIndex = getSkipIndex(currentMusic, forward, playerList);
+    
+    setCurrentMusic(playerList[skipIndex]);
     setIsMusicPlay(false);
     setTimeout(() => {
       musicPlayer.current?.play();
