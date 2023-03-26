@@ -8,7 +8,7 @@
 
 -------------------
 
-#### A music app built by Next.js
+## A music app built by Next.js
 
 Made by Derek Zhu
 
@@ -20,7 +20,7 @@ Made by Derek Zhu
 
 ------------------------------
 
-##### MusicTube is an app for playing music. Its music source is NetEase Cloud Music.
+MusicTube is an app for playing music. Its music source is NetEase Cloud Music.
 
 It uses NetEase Cloud Music's open source API to fetch music.
 ![musicHomePage](https://user-images.githubusercontent.com/98071700/227798309-4359571e-e1c4-4ac5-a48e-bf3dada8912e.jpg)
@@ -30,7 +30,7 @@ It uses NetEase Cloud Music's open source API to fetch music.
 **Performance**: MusicTube reaches as high as  all 100 of categories testing by Lighthouse.
 ![seo](https://user-images.githubusercontent.com/98071700/227798321-4004f994-85dc-4492-9cfc-48bd9d1da185.jpg)
 
-### Built With
+## Built With
 
 - [![Next](https://camo.githubusercontent.com/a2ef46f4aec1799b4366d5dd9e4cc60c250b9a4a1e0a4cea21bae63660b63a25/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6e6578742e6a732d3030303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d6e657874646f746a73266c6f676f436f6c6f723d7768697465)](https://nextjs.org/)
 - [![React](https://camo.githubusercontent.com/268ac512e333b69600eb9773a8f80b7a251f4d6149642a50a551d4798183d621/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656163742d3230323332413f7374796c653d666f722d7468652d6261646765266c6f676f3d7265616374266c6f676f436f6c6f723d363144414642)](https://reactjs.org/)
