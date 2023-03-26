@@ -39,7 +39,9 @@ export const useHandlePlay = (
       return;
     }
     const firstSongResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${albumData.songs[songIndex].id}&level=higher&timestamp=${Date.now()}`,
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${
+        albumData.songs[songIndex].id
+      }&level=higher&timestamp=${Date.now()}`,
       { signal: signal }
     );
     const firstSongData = await firstSongResponse.json();
@@ -62,7 +64,9 @@ export const useHandlePlay = (
     const songsResponse = await fetch(
       `${
         process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/song/url/v1?id=${sortedSongIdList.join(",")}&level=higher&timestamp=${Date.now()}`,
+      }/song/url/v1?id=${sortedSongIdList.join(
+        ","
+      )}&level=higher&timestamp=${Date.now()}`,
       { signal: signal }
     );
 

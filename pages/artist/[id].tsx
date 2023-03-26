@@ -56,7 +56,9 @@ export default function Artist(artistInfo: Props) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/artists?id=${id}&timestamp=${Date.now()}`
+    `${
+      process.env.NEXT_PUBLIC_SERVER_ADDRESS
+    }/artists?id=${id}&timestamp=${Date.now()}`
   );
   const artistInfo = await response.json();
   return { props: artistInfo };

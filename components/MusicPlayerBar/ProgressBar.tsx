@@ -111,7 +111,9 @@ export const ProgressBar = React.forwardRef(
     const handleError = async () => {
       if (!currentMusic) return;
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${currentMusic.id}&level=higher&timestamp=${Date.now()}`
+        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${
+          currentMusic.id
+        }&level=higher&timestamp=${Date.now()}`
       );
       const refreshedSong = await response.json();
       const newUrl = refreshedSong.data[0].url;

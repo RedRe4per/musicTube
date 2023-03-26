@@ -50,7 +50,9 @@ export default function Playlist(playlistInfo: Props) {
     const res = await fetch(
       `${
         process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/playlist/track/all?id=${id}&limit=20&offset=${targetPage * 20}&timestamp=${Date.now()}`
+      }/playlist/track/all?id=${id}&limit=20&offset=${
+        targetPage * 20
+      }&timestamp=${Date.now()}`
     );
     const newPageTracks = await res.json();
     setCurrentTracks(newPageTracks.songs);
@@ -96,7 +98,9 @@ export default function Playlist(playlistInfo: Props) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/playlist/detail?id=${id}&timestamp=${Date.now()}`
+    `${
+      process.env.NEXT_PUBLIC_SERVER_ADDRESS
+    }/playlist/detail?id=${id}&timestamp=${Date.now()}`
   );
   const playlistInfo = await response.json();
   return { props: playlistInfo };

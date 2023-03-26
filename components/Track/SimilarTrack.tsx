@@ -12,7 +12,9 @@ export const SimilarTrack = React.memo(({ trackId }: Props) => {
   useEffect(() => {
     const getSimilarSongs = async () => {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/simi/song?id=${trackId}&timestamp=${Date.now()}`
+        `${
+          process.env.NEXT_PUBLIC_SERVER_ADDRESS
+        }/simi/song?id=${trackId}&timestamp=${Date.now()}`
       );
       const similarSongsData = await res.json();
       setSimilarSongs(similarSongsData.songs);
