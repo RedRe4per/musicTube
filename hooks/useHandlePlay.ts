@@ -12,7 +12,7 @@ export const useHandlePlay = (
   playType: PlayType = "album",
   playlistPage: number = 1
 ) => {
-  const { setPlayerList, setMusicListId } = useContext(PlayerContext);
+  const { setPlayerList, setMusicListId, setQueueInfo } = useContext(PlayerContext);
   const { setAlertBox } = useContext(AlertContext);
   const controller = new AbortController();
   const signal = controller.signal;
@@ -38,6 +38,7 @@ export const useHandlePlay = (
       setAlertBox({ message: "No song in this Album!" });
       return;
     }
+    setQueueInfo(albumData.songs);
     const firstSongResponse = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/song/url/v1?id=${
         albumData.songs[songIndex].id

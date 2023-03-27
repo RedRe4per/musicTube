@@ -5,6 +5,7 @@ import Layout from "@/components/layout";
 import React, { useRef, useState } from "react";
 import { IMusicDetail } from "@/interfaces/music";
 import { IAlertBox } from "@/interfaces/alertBox";
+import { IAlbumSong } from "@/interfaces/albumSong";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { AlertContext } from "@/contexts/AlertContext";
 import { BgColorContext } from "@/contexts/BgColorContext";
@@ -20,6 +21,7 @@ const rubik = Rubik({
 export default function App({ Component, pageProps }: AppProps) {
   const musicPlayer = useRef<HTMLAudioElement>(null);
   const [playerList, setPlayerList] = useState<IMusicDetail[]>([]);
+  const [queueInfo, setQueueInfo] = useState<IAlbumSong[]>([]);
   const [bgColor, setBgColor] = useState("gray-650");
   const [isLoading, setIsLoading] = useState(false);
   const [musicListId, setMusicListId] = useState<number | null>(null);
@@ -54,6 +56,8 @@ export default function App({ Component, pageProps }: AppProps) {
                   setPlayerList,
                   musicListId,
                   setMusicListId,
+                  queueInfo, 
+                  setQueueInfo,
                 }}
               >
                 <Layout>

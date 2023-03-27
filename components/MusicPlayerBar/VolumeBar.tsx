@@ -5,6 +5,7 @@ import {
   useGlobalListener,
   removeGlobalListener,
 } from "@/hooks/useGlobalListener";
+import Link from "next/link";
 
 interface Props {
   playList: IMusicDetail[];
@@ -52,6 +53,7 @@ export const VolumeBar = React.forwardRef(
     return (
       <aside className="w-[27%] hidden lg:flex justify-end">
         <section className="flex items-center justify-around md:w-[180px] xl:w-[250px]">
+          <Link href="/queue">
           <div className="w-[20%]">
             <svg
               className={`play-bar-btn fill-green`}
@@ -64,6 +66,7 @@ export const VolumeBar = React.forwardRef(
               <path d="M2 18h10v2H2v-2zm0-7h14v2H2v-2zm0-7h20v2H2V4zm17 11.17V9h5v2h-3v7a3 3 0 1 1-2-2.83zM18 19a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
             </svg>
           </div>
+          </Link>
           <section className="flex items-center justify-between gap-2 w-[60%]">
             <div onClick={() => setIsMuted(!isMuted)}>
               <img

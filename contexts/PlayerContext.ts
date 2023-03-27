@@ -1,5 +1,5 @@
 import { IMusicDetail } from "@/interfaces/music";
-import { IAlbum } from "@/interfaces/album";
+import { IAlbumSong } from "@/interfaces/albumSong";
 import { createContext } from "react";
 
 interface PlayerContextType {
@@ -7,6 +7,8 @@ interface PlayerContextType {
   setPlayerList: (playerList: IMusicDetail[]) => void;
   musicListId: number | null;
   setMusicListId: (musicListId: number | null) => void;
+  queueInfo: IAlbumSong[];
+  setQueueInfo: (param: IAlbumSong[]) => void;
 }
 
 export const PlayerContext = createContext<PlayerContextType>({
@@ -14,4 +16,6 @@ export const PlayerContext = createContext<PlayerContextType>({
   setPlayerList: () => {},
   musicListId: null,
   setMusicListId: () => {},
+  queueInfo: [],
+  setQueueInfo: () => {},
 });
