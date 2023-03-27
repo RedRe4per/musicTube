@@ -12,7 +12,8 @@ export const useHandlePlay = (
   playType: PlayType = "album",
   playlistPage: number = 1
 ) => {
-  const { setPlayerList, setMusicListId, setQueueInfo } = useContext(PlayerContext);
+  const { setPlayerList, setMusicListId, setQueueInfo } =
+    useContext(PlayerContext);
   const { setAlertBox } = useContext(AlertContext);
   const controller = new AbortController();
   const signal = controller.signal;

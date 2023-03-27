@@ -56,7 +56,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   setPlayerList,
                   musicListId,
                   setMusicListId,
-                  queueInfo, 
+                  queueInfo,
                   setQueueInfo,
                 }}
               >
