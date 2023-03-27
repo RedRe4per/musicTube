@@ -56,7 +56,11 @@ export const VolumeBar = React.forwardRef((_, musicPlayer: any) => {
   return (
     <aside className="w-[27%] hidden lg:flex justify-end">
       <section className="flex items-center justify-around md:w-[180px] xl:w-[250px]">
-        <Link href="/queue" onClick={handleQueuePageSwitch} aria-label="queue page switch">
+        <Link
+          href="/queue"
+          onClick={handleQueuePageSwitch}
+          aria-label="queue page switch"
+        >
           <div className="w-[42px]">
             <svg
               className={`play-bar-btn ${
