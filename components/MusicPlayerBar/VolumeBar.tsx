@@ -1,23 +1,20 @@
 import React, { useState, useRef, useEffect } from "react";
-import { IMusicDetail } from "@/interfaces/music";
 import { getDraggingRatio } from "@/utils/radioCalc";
 import {
   useGlobalListener,
   removeGlobalListener,
 } from "@/hooks/useGlobalListener";
 import Link from "next/link";
-
-interface Props {
-  playList: IMusicDetail[];
-}
+import { useRouter } from "next/router";
 
 export const VolumeBar = React.forwardRef(
-  ({ playList }: Props, musicPlayer: any) => {
+  (_, musicPlayer: any) => {
     const volumeRef = useRef<HTMLDivElement>(null);
     const [showThumb, setShowThumb] = useState(false);
     const [isDragging, setIsDragging] = useState(false);
     const [volumeBarRatio, setVolumeBarRatio] = useState(100);
     const [isMuted, setIsMuted] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
       musicPlayer.current.muted = isMuted;
@@ -50,13 +47,20 @@ export const VolumeBar = React.forwardRef(
 
     useGlobalListener(isDragging, handleMouseMove, handleMouseUp);
 
+    const handleQueuePageSwitch = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if(router.asPath === "/queue"){
+        e.preventDefault();
+        router.back();
+      }
+    }
+
     return (
       <aside className="w-[27%] hidden lg:flex justify-end">
         <section className="flex items-center justify-around md:w-[180px] xl:w-[250px]">
-          <Link href="/queue">
-            <div className="w-[20%]">
+          <Link href="/queue" onClick={handleQueuePageSwitch}>
+            <div className="w-[42px]">
               <svg
-                className={`play-bar-btn fill-green`}
+                className={`play-bar-btn ${router.asPath === "/queue" ? "fill-green" : "fill-gray-200"}`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 width="36"

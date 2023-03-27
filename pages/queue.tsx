@@ -17,7 +17,7 @@ export default function Queue() {
         />
       ) : (
         <section className="text-h3-normal text-gray-200 italic ml-20 mb-20">
-          No music in play queue.
+          <p>No music in play queue.</p>
         </section>
       )}
       <Footer />

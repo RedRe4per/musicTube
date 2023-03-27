@@ -97,7 +97,7 @@ export const MusicPlayerBar = () => {
           ref={musicPlayer}
         />
       </section>
-      <VolumeBar playList={playerList} ref={musicPlayer} />
+      <VolumeBar ref={musicPlayer} />
     </main>
   );
 };
