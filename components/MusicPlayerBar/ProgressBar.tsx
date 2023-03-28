@@ -3,6 +3,7 @@ import { IMusicDetail } from "@/interfaces/music";
 import { formatTime } from "@/utils/formatTime";
 import { getRatio, getDraggingRatio } from "@/utils/radioCalc";
 import { convertToHttps } from "@/utils/covertToHttps";
+import { getSortedMusicList } from "@/utils/getSortedMusicList";
 import {
   useGlobalListener,
   removeGlobalListener,
@@ -11,13 +12,15 @@ import {
 interface Props {
   currentMusic: IMusicDetail | null;
   isMusicLoop: boolean;
+  playerList: any;
+  setPlayerList: any;
   setIsMusicPlay: (param: boolean) => void;
   handleSkipMusic: (param: "next" | "last") => void;
 }
 
 export const ProgressBar = React.forwardRef(
   (
-    { currentMusic, isMusicLoop, setIsMusicPlay, handleSkipMusic }: Props,
+    { currentMusic, isMusicLoop, playerList, setPlayerList, setIsMusicPlay, handleSkipMusic }: Props,
     musicPlayer: any
   ) => {
     const progressRef = useRef<HTMLDivElement>(null);
@@ -120,6 +123,10 @@ export const ProgressBar = React.forwardRef(
       currentMusic.url = newUrl;
       setIsMusicPlay(false);
       handlePlay();
+
+      const songIndex = playerList.findIndex((song: IMusicDetail)=>song.id === currentMusic.id)
+      const sortedList = await getSortedMusicList(playerList, songIndex);
+      setPlayerList(sortedList);
     };
 
     useGlobalListener(isDragging, handleMouseMove, handleMouseUp);

@@ -1,8 +1,7 @@
 import { useContext } from "react";
+import { getSortedMusicList } from "@/utils/getSortedMusicList";
 import { PlayerContext } from "@/contexts/PlayerContext";
 import { AlertContext } from "@/contexts/AlertContext";
-import { IAlbumSong } from "@/interfaces/albumSong";
-import { IMusicDetail } from "@/interfaces/music";
 
 type PlayType = "playlist" | "album";
 
@@ -55,35 +54,7 @@ export const useHandlePlay = (
       setPlayerList(firstSongData.data);
     }
 
-    const songList: number[] = [];
-    albumData.songs.forEach((song: IAlbumSong) => {
-      songList.push(song.id);
-    });
-    const sortedSongIdList = [
-      ...songList.slice(songIndex),
-      ...songList.slice(0, songIndex),
-    ];
-    const songsResponse = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/song/url/v1?id=${sortedSongIdList.join(
-        ","
-      )}&level=higher&timestamp=${Date.now()}`,
-      { signal: signal }
-    );
-
-    const songsData = await songsResponse.json();
-    const sortedList = songsData.data.sort(
-      (a: IMusicDetail, b: IMusicDetail) => {
-        const aIndex = sortedSongIdList.findIndex((id) => id === a.id);
-        const bIndex = sortedSongIdList.findIndex((id) => id === b.id);
-        if (aIndex === -1 || bIndex === -1) {
-          return aIndex - bIndex;
-        }
-        return aIndex - bIndex;
-      }
-    );
-
+    const sortedList = await getSortedMusicList(albumData.songs, songIndex);
     setPlayerList(sortedList);
   };
 

@@ -11,7 +11,7 @@ import { LyricsContext } from "@/contexts/LyricsContext";
 import { getSkipIndex } from "@/utils/getSkipIndex";
 
 export const MusicPlayerBar = () => {
-  const { playerList } = useContext(PlayerContext);
+  const { playerList, setPlayerList } = useContext(PlayerContext);
   const { isMusicPlay, setIsMusicPlay, currentMusic, setCurrentMusic } =
     useContext(PlayAndPauseContext);
   const { musicPlayer } = useContext(LyricsContext);
@@ -92,6 +92,8 @@ export const MusicPlayerBar = () => {
         <ProgressBar
           currentMusic={currentMusic}
           isMusicLoop={isMusicLoop}
+          playerList={playerList}
+          setPlayerList={setPlayerList}
           setIsMusicPlay={setIsMusicPlay}
           handleSkipMusic={handleSkipMusic}
           ref={musicPlayer}
