@@ -20,7 +20,14 @@ interface Props {
 
 export const ProgressBar = React.forwardRef(
   (
-    { currentMusic, isMusicLoop, playerList, setPlayerList, setIsMusicPlay, handleSkipMusic }: Props,
+    {
+      currentMusic,
+      isMusicLoop,
+      playerList,
+      setPlayerList,
+      setIsMusicPlay,
+      handleSkipMusic,
+    }: Props,
     musicPlayer: any
   ) => {
     const progressRef = useRef<HTMLDivElement>(null);
@@ -124,7 +131,9 @@ export const ProgressBar = React.forwardRef(
       setIsMusicPlay(false);
       handlePlay();
 
-      const songIndex = playerList.findIndex((song: IMusicDetail)=>song.id === currentMusic.id)
+      const songIndex = playerList.findIndex(
+        (song: IMusicDetail) => song.id === currentMusic.id
+      );
       const sortedList = await getSortedMusicList(playerList, songIndex);
       setPlayerList(sortedList);
     };
