@@ -13,6 +13,7 @@ export const getSortedMusicList = async (
     ...songIdList.slice(songIndex),
     ...songIdList.slice(0, songIndex),
   ];
+  
   const songsResponse = await fetch(
     `${
       process.env.NEXT_PUBLIC_SERVER_ADDRESS
@@ -21,6 +22,7 @@ export const getSortedMusicList = async (
     )}&level=higher&timestamp=${Date.now()}`
   );
   const songsData = await songsResponse.json();
+
   const sortedList = songsData.data.sort((a: IMusicDetail, b: IMusicDetail) => {
     const aIndex = sortedSongIdList.findIndex((id) => id === a.id);
     const bIndex = sortedSongIdList.findIndex((id) => id === b.id);

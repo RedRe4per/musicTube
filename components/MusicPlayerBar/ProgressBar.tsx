@@ -12,8 +12,8 @@ import {
 interface Props {
   currentMusic: IMusicDetail | null;
   isMusicLoop: boolean;
-  playerList: any;
-  setPlayerList: any;
+  playerList: IMusicDetail[];
+  setPlayerList: (param: IMusicDetail[]) => void;
   setIsMusicPlay: (param: boolean) => void;
   handleSkipMusic: (param: "next" | "last") => void;
 }
