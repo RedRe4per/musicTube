@@ -5,6 +5,8 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![DaisyUI](https://img.shields.io/badge/DaisyUI-1A202C?style=for-the-badge&logo=daisyui&logoColor=ED8936)](https://daisyui.com/)
+[![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
+
 
 ---
 
@@ -45,6 +47,14 @@ It uses NetEase Cloud Music's open source API to fetch music.
 
 &emsp;
 
+## :building_construction: Deployed With
+
+- :cloud: Cloud: &nbsp; [![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
+&nbsp; [![Serverless](https://img.shields.io/badge/serverless-%23FD5750.svg?style=for-the-badge&logo=serverless&logoColor=white)](https://www.serverless.com/)
+- :gear: CI/CD: &nbsp; [![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
+- :ship: Deployment: &nbsp; [![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
+
+&emsp;
 ---
 
 ## :rocket: Getting Started
@@ -73,7 +83,7 @@ Most of the features of Next.js are used in the website, including but not limit
 
 ## :balance_scale: License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License.
 
 &emsp;
 
