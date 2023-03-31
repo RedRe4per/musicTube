@@ -13,7 +13,7 @@ export const getSortedMusicList = async (
     ...songIdList.slice(songIndex),
     ...songIdList.slice(0, songIndex),
   ];
-  
+
   const songsResponse = await fetch(
     `${
       process.env.NEXT_PUBLIC_SERVER_ADDRESS
