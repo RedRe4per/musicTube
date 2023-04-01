@@ -26,7 +26,7 @@ export default function Browse(allPlaylistTag: any) {
     setIsLoading(false);
   }, []);
 
-  console.log("client address test", allPlaylistTag.clientAddress);
+  console.log("client address test1", allPlaylistTag.clientAddress);
 
   return (
     <>
