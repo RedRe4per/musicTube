@@ -23,7 +23,7 @@ export default function Browse(allPlaylistTag: any) {
   return (
     <>
       <main>
-        <section>browse page</section>
+        <section>browse page1</section>
       </main>
     </>
   );
