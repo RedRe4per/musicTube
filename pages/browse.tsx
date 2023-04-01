@@ -86,7 +86,7 @@ export async function getStaticProps() {
       console.error("Error in fetchAllData:", error);
     });
 
-    console.log(allPlaylistTag)
+  console.log(allPlaylistTag);
   return {
     props: { allPlaylistTag },
   };
