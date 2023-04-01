@@ -3,6 +3,7 @@ import { BgColorContext } from "@/contexts/BgColorContext";
 import { switchTopPlaylistTag } from "@/utils/switchTopPlaylistTag";
 import { mixColor } from "@/utils/mixColor";
 import { TagCard } from "@/components/Card/TagCard";
+import { Footer } from "@/layouts/footer";
 
 interface CatListItem {
   category: number;
@@ -31,13 +32,14 @@ export default function Browse(allPlaylistTag: any) {
     <>
       <main className="mx-10 mt-6">
         <h2 className="text-gray-200 text-h2-normal">Browse All</h2>
-        <section className="flex flex-wrap gap-5 mt-10 gap">
+        <section className="flex flex-wrap gap-5 mt-10 mb-16 gap">
           {allPlaylistTag.allPlaylistTag.map(
             (tag: playlistTag, index: number) => {
               return <TagCard key={index} playlistTag={tag} />;
             }
           )}
         </section>
+        <Footer />
       </main>
     </>
   );
