@@ -36,7 +36,7 @@ export async function getStaticProps() {
   const catListData = await catListRes.json();
   const catList = catListData.sub;
 
-  async function fetchData(keyword: CatListItem) {
+  async function fetchPlaylist(keyword: CatListItem) {
     const response = await fetch(
       `${
         process.env.NEXT_PUBLIC_SERVER_ADDRESS
@@ -57,10 +57,10 @@ export async function getStaticProps() {
     };
   }
 
-  async function fetchAllData(catList: CatListItem[]) {
+  async function fetchAllPlaylist(catList: CatListItem[]) {
     try {
       const promises = catList.map((keyword: CatListItem) =>
-        fetchData(keyword)
+        fetchPlaylist(keyword)
       );
       const results = await Promise.all(promises);
       return results;
@@ -70,7 +70,7 @@ export async function getStaticProps() {
     }
   }
 
-  const allPlaylistTag = await fetchAllData(catList)
+  const allPlaylistTag = await fetchAllPlaylist(catList)
     .then((data) => {
       return data;
     })
