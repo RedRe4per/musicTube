@@ -20,8 +20,6 @@ export default function Browse(allPlaylistTag: any) {
     setIsLoading(false);
   }, []);
 
-  console.log("client address test1", allPlaylistTag.clientAddress);
-
   return (
     <>
       <main className="mx-10 mt-6">
@@ -91,7 +89,6 @@ export async function getStaticProps() {
   return {
     props: {
       allPlaylistTag,
-      clientAddress: `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=abctest`,
     },
   };
 }

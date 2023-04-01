@@ -9,11 +9,15 @@ interface Props {
 
 export const TagCard = ({ playlistTag }: Props) => {
   const { playlist, color, imageUrl } = playlistTag;
-  console.log(color)
+  
   return (
     <Link href={`/genre/${playlist}`}>
-      <section className="w-[200px] h-[200px] relative overflow-hidden rounded-xl p-1" style={{
-        background: mixColor("#1B1B1B", color.dominantColor )}}>
+      <section
+        className="w-[200px] h-[200px] relative overflow-hidden rounded-xl p-1"
+        style={{
+          background: mixColor("#1B1B1B", color.dominantColor),
+        }}
+      >
         <h3 className="mt-4 ml-3 text-h3-normal text-white-200 ">{playlist}</h3>
         <div className="absolute -bottom-2 -right-2">
           <Image
