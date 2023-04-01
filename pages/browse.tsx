@@ -58,6 +58,8 @@ export async function getStaticProps() {
     );
     const color = await colorRes.json();
 
+    console.log("fetch Playlist:", switchTopPlaylistTag(keyword.name), color, playlistImage)
+
     return {
       playlist: switchTopPlaylistTag(keyword.name),
       color: color,
@@ -86,7 +88,7 @@ export async function getStaticProps() {
       console.error("Error in fetchAllData:", error);
     });
 
-  console.log(allPlaylistTag);
+  console.log("allPlaylistTag:", allPlaylistTag);
   return {
     props: { allPlaylistTag },
   };
