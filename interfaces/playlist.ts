@@ -164,3 +164,11 @@ export interface CardTrack {
     }
   ];
 }
+
+export interface IPlaylistTag {
+  playlist: string;
+  color: {
+    dominantColor: string;
+  };
+  imageUrl: string;
+}

@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { switchTopPlaylistTag } from "@/utils/switchTopPlaylistTag";
-import { mixColor } from "@/utils/mixColor";
 import { TagCard } from "@/components/Card/TagCard";
 import { Footer } from "@/layouts/footer";
+import { IPlaylistTag } from "@/interfaces/playlist";
 
 interface CatListItem {
   category: number;
@@ -11,12 +11,6 @@ interface CatListItem {
   name: string;
   resourceCount: number;
   type: number;
-}
-
-interface playlistTag {
-  playlist: string;
-  color: string;
-  imageUrl: string;
 }
 
 export default function Browse(allPlaylistTag: any) {
@@ -34,7 +28,7 @@ export default function Browse(allPlaylistTag: any) {
         <h2 className="text-gray-200 text-h2-normal">Browse All</h2>
         <section className="flex flex-wrap gap-5 mt-10 mb-16 gap">
           {allPlaylistTag.allPlaylistTag.map(
-            (tag: playlistTag, index: number) => {
+            (tag: IPlaylistTag, index: number) => {
               return <TagCard key={index} playlistTag={tag} />;
             }
           )}
@@ -68,7 +62,7 @@ export async function getStaticProps() {
 
     return {
       playlist: switchTopPlaylistTag(keyword.name),
-      color: color, //mixColor("#1B1B1B", color.dominantColor),
+      color: color,
       imageUrl: playlistImage,
     };
   }
