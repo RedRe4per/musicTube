@@ -54,7 +54,9 @@ export async function getStaticProps() {
     const response = await fetch(
       `${
         process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/cloudsearch?type=1000&keywords=${keyword.name}&timestamp=${Date.now() - randomInteger}`
+      }/cloudsearch?type=1000&keywords=${keyword.name}&timestamp=${
+        Date.now() - randomInteger
+      }`
     );
     const playlistData = await response.json();
     const playlistImage = playlistData.result.playlists[0].coverImgUrl;
