@@ -97,7 +97,7 @@ export async function getStaticProps() {
   return {
     props: {
       allPlaylistTag,
-      clientAddress: process.env.NEXT_PUBLIC_CLIENT_ADDRESS,
+      clientAddress: `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=abctest`,
     },
   };
 }
