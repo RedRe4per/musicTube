@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { switchTopPlaylistTag } from "@/utils/switchTopPlaylistTag";
 import { mixColor } from "@/utils/mixColor";
+import { TagCard } from "@/components/Card/TagCard";
 
 interface CatListItem {
   category: number;
@@ -9,6 +10,12 @@ interface CatListItem {
   name: string;
   resourceCount: number;
   type: number;
+}
+
+interface playlistTag {
+  playlist: string;
+color: string;
+imageUrl: string;
 }
 
 export default function Browse(allPlaylistTag: any) {
@@ -22,8 +29,15 @@ export default function Browse(allPlaylistTag: any) {
 
   return (
     <>
-      <main>
-        <section>browse page1</section>
+      <main className="mx-10 mt-6">
+        <h2 className="text-gray-200 text-h2-normal">Browse All</h2>
+        <section className="flex flex-wrap gap-5 mt-10 gap">
+          {
+            allPlaylistTag.allPlaylistTag.map((tag: playlistTag, index: number)=> { return (
+              <TagCard key={index} playlistTag={tag}/>
+            )})
+          }
+        </section>
       </main>
     </>
   );
@@ -45,14 +59,14 @@ export async function getStaticProps() {
     const playlistData = await response.json();
     const playlistImage = playlistData.result.playlists[0].coverImgUrl;
 
-    const colorRes = await fetch(
-      `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=${playlistImage}`
-    );
-    const color = await colorRes.json();
+    // const colorRes = await fetch(
+    //   `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=${playlistImage}`
+    // );
+    // const color = await colorRes.json();
 
     return {
       playlist: switchTopPlaylistTag(keyword.name),
-      color: mixColor("#1B1B1B", color.dominantColor),
+      // color: mixColor("#1B1B1B", color.dominantColor),
       imageUrl: playlistImage,
     };
   }
