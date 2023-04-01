@@ -26,7 +26,7 @@ export default function Browse(allPlaylistTag: any) {
     setIsLoading(false);
   }, []);
 
-  console.log(allPlaylistTag);
+  console.log("client address test" ,allPlaylistTag.clientAddress);
 
   return (
     <>
@@ -94,5 +94,5 @@ export async function getStaticProps() {
       console.error("Error in fetchAllData:", error);
     });
 
-  return { props: { allPlaylistTag } };
+  return { props: { allPlaylistTag, clientAddress: process.env.NEXT_PUBLIC_CLIENT_ADDRESS } };
 }
