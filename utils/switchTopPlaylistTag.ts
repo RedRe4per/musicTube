@@ -182,7 +182,6 @@ export const switchTopPlaylistTag = (chineseTag: string) => {
     case "兴奋":
       englishTag = "Energetic";
       break;
-
     case "酒吧":
       englishTag = "Pub";
       break;
