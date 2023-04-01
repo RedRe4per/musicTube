@@ -14,8 +14,8 @@ interface CatListItem {
 
 interface playlistTag {
   playlist: string;
-color: string;
-imageUrl: string;
+  color: string;
+  imageUrl: string;
 }
 
 export default function Browse(allPlaylistTag: any) {
@@ -32,11 +32,11 @@ export default function Browse(allPlaylistTag: any) {
       <main className="mx-10 mt-6">
         <h2 className="text-gray-200 text-h2-normal">Browse All</h2>
         <section className="flex flex-wrap gap-5 mt-10 gap">
-          {
-            allPlaylistTag.allPlaylistTag.map((tag: playlistTag, index: number)=> { return (
-              <TagCard key={index} playlistTag={tag}/>
-            )})
-          }
+          {allPlaylistTag.allPlaylistTag.map(
+            (tag: playlistTag, index: number) => {
+              return <TagCard key={index} playlistTag={tag} />;
+            }
+          )}
         </section>
       </main>
     </>
