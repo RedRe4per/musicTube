@@ -87,7 +87,7 @@ export async function getStaticProps() {
 
   const allPlaylistTag = await fetchAllPlaylist(catList)
     .then((data) => {
-      console.log("All tag data:", data)
+      console.log("All tag data:", data);
       return data;
     })
     .catch((error) => {
