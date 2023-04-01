@@ -13,7 +13,7 @@ export const TagCard = ({ playlistTag }: Props) => {
   return (
     <Link href={`/genre/${playlist}`}>
       <section
-        className="w-[200px] h-[200px] relative overflow-hidden rounded-xl p-1"
+        className="w-[200px] h-[200px] relative overflow-hidden rounded-xl p-1 hover:brightness-125"
         style={{
           background: mixColor("#1B1B1B", color.dominantColor),
         }}
