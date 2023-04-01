@@ -49,10 +49,12 @@ export async function getStaticProps() {
   const catList = catListData.sub;
 
   async function fetchPlaylist(keyword: CatListItem) {
+    const randomInteger = Math.floor(Math.random() * 100000) + 1;
+
     const response = await fetch(
       `${
         process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/cloudsearch?type=1000&keywords=${keyword.name}&timestamp=${Date.now()}`
+      }/cloudsearch?type=1000&keywords=${keyword.name}&timestamp=${Date.now() - randomInteger}`
     );
     const playlistData = await response.json();
     const playlistImage = playlistData.result.playlists[0].coverImgUrl;
