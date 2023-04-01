@@ -13,7 +13,7 @@ export const TagCard = ({ playlistTag }: Props) => {
   const { playlist, color, imageUrl } = playlistTag;
   return (
     <Link href={`/genre/${playlist}`}>
-    <section className="w-[200px] h-[200px] relative bg-gray-400 overflow-hidden rounded-xl p-1">
+      <section className="w-[200px] h-[200px] relative bg-gray-400 overflow-hidden rounded-xl p-1">
         <h3 className="mt-4 ml-3 text-h3-normal text-white-200 ">{playlist}</h3>
         <div className="absolute -bottom-2 -right-2">
           <Image
@@ -24,7 +24,7 @@ export const TagCard = ({ playlistTag }: Props) => {
             height={120}
           />
         </div>
-    </section>
+      </section>
     </Link>
   );
 };
