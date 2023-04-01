@@ -7,7 +7,6 @@
 [![DaisyUI](https://img.shields.io/badge/DaisyUI-1A202C?style=for-the-badge&logo=daisyui&logoColor=ED8936)](https://daisyui.com/)
 [![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
 
-
 ---
 
 ## :musical_note: A music app built by Next.js
@@ -50,12 +49,11 @@ It uses NetEase Cloud Music's open source API to fetch music.
 ## :building_construction: Deployed With
 
 - :cloud: Cloud: &nbsp; [![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
-&nbsp; [![Serverless](https://img.shields.io/badge/serverless-%23FD5750.svg?style=for-the-badge&logo=serverless&logoColor=white)](https://www.serverless.com/)
+  &nbsp; [![Serverless](https://img.shields.io/badge/serverless-%23FD5750.svg?style=for-the-badge&logo=serverless&logoColor=white)](https://www.serverless.com/)
 - :gear: CI/CD: &nbsp; [![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
 - :ship: Deployment: &nbsp; [![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
 
-&emsp;
----
+## &emsp;
 
 ## :rocket: Getting Started
 

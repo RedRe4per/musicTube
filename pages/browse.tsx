@@ -18,9 +18,9 @@ export default function Browse(allPlaylistTag: any) {
     setIsLoading(false);
   }, []);
 
-  console.log(allPlaylistTag)
+  console.log(allPlaylistTag);
 
-return (
+  return (
     <>
       <main>
         <section>browse page</section>
@@ -29,47 +29,54 @@ return (
   );
 }
 
-  
-  export async function getStaticProps() {
-    const catListRes = await fetch(
+export async function getStaticProps() {
+  const catListRes = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/playlist/catlist`
+  );
+  const catListData = await catListRes.json();
+  const catList = catListData.sub;
+
+  async function fetchData(keyword: CatListItem) {
+    const response = await fetch(
       `${
         process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/playlist/catlist`
+      }/cloudsearch?type=1000&keywords=${keyword.name}&timestamp=${Date.now()}`
     );
-    const catListData = await catListRes.json();
-    const catList = catListData.sub;
+    const playlistData = await response.json();
+    const playlistImage = playlistData.result.playlists[0].coverImgUrl;
 
-    async function fetchData(keyword: CatListItem) {
-      const response = await fetch(
-        `${
-          process.env.NEXT_PUBLIC_SERVER_ADDRESS
-        }/cloudsearch?type=1000&keywords=${keyword.name}&timestamp=${Date.now()}`
+    const colorRes = await fetch(
+      `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=${playlistImage}`
+    );
+    const color = await colorRes.json();
+
+    return {
+      playlist: switchTopPlaylistTag(keyword.name),
+      color: mixColor("#1B1B1B", color.dominantColor),
+      imageUrl: playlistImage,
+    };
+  }
+
+  async function fetchAllData(catList: CatListItem[]) {
+    try {
+      const promises = catList.map((keyword: CatListItem) =>
+        fetchData(keyword)
       );
-      const playlistData = await response.json();
-      const playlistImage = playlistData.result.playlists[0].coverImgUrl;
-
-      const colorRes = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=${playlistImage}`);
-      const color = await colorRes.json();
-
-      return {playlist: switchTopPlaylistTag(keyword.name), color: mixColor("#1B1B1B", color.dominantColor), imageUrl: playlistImage }
+      const results = await Promise.all(promises);
+      return results;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error;
     }
+  }
 
-    async function fetchAllData(catList: CatListItem[]) {
-      try {
-        const promises = catList.map((keyword: CatListItem) => fetchData(keyword));
-        const results = await Promise.all(promises);
-        return results;
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        throw error;
-      }
-    }
-
-    const allPlaylistTag = await fetchAllData(catList).then(data => {
+  const allPlaylistTag = await fetchAllData(catList)
+    .then((data) => {
       return data;
-    }).catch(error => {
+    })
+    .catch((error) => {
       console.error("Error in fetchAllData:", error);
     });
 
-    return { props: {allPlaylistTag} };
-  }
+  return { props: { allPlaylistTag } };
+}
