@@ -13,7 +13,11 @@ interface CatListItem {
   type: number;
 }
 
-export default function Browse(allPlaylistTag: any) {
+interface Props {
+  allPlaylistTag: IPlaylistTag[];
+}
+
+export default function Browse(allPlaylistTag: Props) {
   const { setIsLoading } = useContext(BgColorContext);
 
   useEffect(() => {
