@@ -87,8 +87,6 @@ export async function getStaticProps() {
     });
 
   return {
-    props: {
-      allPlaylistTag,
-    },
+    props: {allPlaylistTag,},
   };
 }

@@ -9,7 +9,7 @@ interface Props {
 
 export const TagCard = ({ playlistTag }: Props) => {
   const { playlist, color, imageUrl } = playlistTag;
-  
+
   return (
     <Link href={`/genre/${playlist}`}>
       <section
