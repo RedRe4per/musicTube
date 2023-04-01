@@ -22,7 +22,6 @@ export default function Genre(props: Props) {
     setIsLoading(false);
   }, [id]);
 
-
   return (
     <main className="mx-10 my-6">
       <h2 className="text-h3-normal text-gray-200">{id}</h2>

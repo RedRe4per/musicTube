@@ -27,13 +27,13 @@ export const PlaylistCard = ({
       <Link onClick={handleLoading} href={`/playlist/${playlistId}`}>
         <div className="relative">
           <div className="relative w-[200px] h-[200px]">
-          <Image
-            src={coverUrl ? coverUrl : "/images/no-image.jpg"}
-            alt={playlistName}
-            className="object-cover rounded-xl w-[200px] h-[200px]"
-            width={200}
-            height={200}
-          />
+            <Image
+              src={coverUrl ? coverUrl : "/images/no-image.jpg"}
+              alt={playlistName}
+              className="object-cover rounded-xl w-[200px] h-[200px]"
+              width={200}
+              height={200}
+            />
           </div>
           <div
             onMouseEnter={() => setShowPlay(true)}
