@@ -18,7 +18,9 @@ export const TagCard = ({ playlistTag }: Props) => {
           background: mixColor("#1B1B1B", color.dominantColor),
         }}
       >
-        <h3 className="mt-4 ml-3 text-h3-normal text-white-200 ">{switchTopPlaylistTag(playlist)}</h3>
+        <h3 className="mt-4 ml-3 text-h3-normal text-white-200 ">
+          {switchTopPlaylistTag(playlist)}
+        </h3>
         <div className="absolute -bottom-2 -right-2">
           <Image
             src={imageUrl ? imageUrl : "/images/no-image.jpg"}
