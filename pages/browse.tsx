@@ -61,14 +61,14 @@ export async function getStaticProps() {
     const playlistData = await response.json();
     const playlistImage = playlistData.result.playlists[0].coverImgUrl;
 
-    // const colorRes = await fetch(
-    //   `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=${playlistImage}`
-    // );
-    // const color = await colorRes.json();
+    const colorRes = await fetch(
+      `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=${playlistImage}`
+    );
+    const color = await colorRes.json();
 
     return {
       playlist: switchTopPlaylistTag(keyword.name),
-      // color: mixColor("#1B1B1B", color.dominantColor),
+      color: color, //mixColor("#1B1B1B", color.dominantColor),
       imageUrl: playlistImage,
     };
   }
