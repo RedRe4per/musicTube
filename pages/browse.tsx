@@ -1,6 +1,5 @@
 import { useContext, useEffect } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
-import { switchTopPlaylistTag } from "@/utils/switchTopPlaylistTag";
 import { TagCard } from "@/components/Card/TagCard";
 import { Footer } from "@/layouts/footer";
 import { IPlaylistTag } from "@/interfaces/playlist";
@@ -68,13 +67,13 @@ export async function getStaticProps() {
 
     console.log(
       "fetch Playlist:",
-      switchTopPlaylistTag(keyword.name),
+      keyword.name,
       color,
       playlistImage
     );
 
     return {
-      playlist: switchTopPlaylistTag(keyword.name),
+      playlist: keyword.name,
       color: color,
       imageUrl: playlistImage,
     };
