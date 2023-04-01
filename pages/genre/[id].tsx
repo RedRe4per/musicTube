@@ -1,4 +1,6 @@
 import { GetServerSidePropsContext } from "next";
+import { useContext, useEffect } from "react";
+import { BgColorContext } from "@/contexts/BgColorContext";
 import { PlaylistCard } from "@/components/Card/PlaylistCard";
 import { IPlaylist } from "@/interfaces/playlist";
 import { Footer } from "@/layouts/footer";
@@ -14,6 +16,12 @@ interface Props {
 export default function Genre(props: Props) {
   const { data, id } = props;
   const playlists = data.result.playlists;
+  const { setIsLoading } = useContext(BgColorContext);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, [id]);
+
 
   return (
     <main className="mx-10 my-6">

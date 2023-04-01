@@ -23,7 +23,7 @@ export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
           <Image
             src={albumUrl ? albumUrl : "/images/no-image.jpg"}
             alt={albumName}
-            className="object-contain rounded-xl"
+            className="object-contain rounded-xl w-[200px] h-[200px]"
             width={200}
             height={200}
           />

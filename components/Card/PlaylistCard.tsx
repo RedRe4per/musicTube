@@ -26,13 +26,15 @@ export const PlaylistCard = ({
     <section className="max-w-[1/8] h-[200px] lg:h-[335px] relative overflow-hidden rounded-xl p-1 hover:bg-gray-600 hover:shadow-md hover:shadow-white-50 hover:-translate-y-2">
       <Link onClick={handleLoading} href={`/playlist/${playlistId}`}>
         <div className="relative">
+          <div className="relative w-[200px] h-[200px]">
           <Image
             src={coverUrl ? coverUrl : "/images/no-image.jpg"}
             alt={playlistName}
-            className="object-contain rounded-xl"
+            className="object-cover rounded-xl w-[200px] h-[200px]"
             width={200}
             height={200}
           />
+          </div>
           <div
             onMouseEnter={() => setShowPlay(true)}
             onMouseLeave={() => setShowPlay(false)}
