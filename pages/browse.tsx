@@ -58,7 +58,12 @@ export async function getStaticProps() {
     );
     const color = await colorRes.json();
 
-    console.log("fetch Playlist:", switchTopPlaylistTag(keyword.name), color, playlistImage)
+    console.log(
+      "fetch Playlist:",
+      switchTopPlaylistTag(keyword.name),
+      color,
+      playlistImage
+    );
 
     return {
       playlist: switchTopPlaylistTag(keyword.name),
