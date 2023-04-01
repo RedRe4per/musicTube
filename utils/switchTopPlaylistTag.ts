@@ -152,7 +152,72 @@ export const switchTopPlaylistTag = (chineseTag: string) => {
     case "榜单":
       englishTag = "Top Chart";
       break;
+      case "综艺":
+      englishTag = "Variety Show";
+      break;
+      case "清晨":
+      englishTag = "Morning";
+      break;
+      case "儿童":
+      englishTag = "Kids";
+      break;
+      case "校园":
+      englishTag = "Campus";
+      break;
+      case "工作":
+      englishTag = "Workplace";
+      break;
+      case "70后":
+      englishTag = "70s Generation";
+      break;
+      case "90后":
+      englishTag = "90s Generation";
+      break;
+      case "地铁":
+      englishTag = "Metro";
+      break;
+      case "驾车":
+      englishTag = "Road Trip";
+      break;
+      case "兴奋":
+      englishTag = "Energetic";
+      break;
 
+
+      case "酒吧":
+      englishTag = "Pub";
+      break;
+      case "翻唱":
+      englishTag = "Covers";
+      break;
+      case "民族":
+      englishTag = "Ethnic";
+      break;
+      case "思念":
+      englishTag = "Missing";
+      break;
+      case "金属":
+      englishTag = "Metal";
+      break;
+      case "朋克":
+      englishTag = "Punk";
+      break;
+      case "雷鬼":
+      englishTag = "Reggae";
+      break;
+      case "Post_Rock":
+      englishTag = "Post Rock";
+      break;
+
+      case "舞曲":
+      englishTag = "Dance";
+      break;
+      case "游戏":
+      englishTag = "Game";
+      break;
+      case "00后":
+      englishTag = "Gen Z Music";
+      break;
     default:
       englishTag = chineseTag;
   }
