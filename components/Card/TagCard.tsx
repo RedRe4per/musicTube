@@ -16,7 +16,7 @@ export const TagCard = ({ playlistTag }: Props) => {
   return (
     <Link
       onClick={handleLoading}
-      href={`/genre/${switchTopPlaylistTag(playlist)}`}
+      href={`/genre/${encodeURIComponent(switchTopPlaylistTag(playlist))}`}
     >
       <section
         className="w-[240px] h-[240px] relative overflow-hidden rounded-xl p-1 hover:brightness-125"

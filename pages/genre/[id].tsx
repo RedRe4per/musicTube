@@ -43,8 +43,8 @@ export default function Genre(props: Props) {
 
       <section className="flex flex-wrap gap-6 mt-8 mb-16">
         {data.map((dataItem: DataItem, index: number) => {
-          return (
-            <section key={index}>
+           return (
+            dataItem && dataItem.playlist && dataItem.playlist.result && dataItem.playlist.result.playlists && <section key={index}>
               <h4 className="text-h3-normal text-white-200">{dataItem.tag}</h4>
               <section
                 className={`flex gap-6 mt-8 ${
@@ -78,7 +78,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
   if (!id || Array.isArray(id))
     return { props: { error: "No playlist id found" } };
-  const subTags = getSubTags(id);
+
+  const decodedId = decodeURIComponent(id);
+  const subTags = getSubTags(decodedId);
 
   async function fetchTagPlaylist(tag: string) {
     const randomInteger = Math.floor(Math.random() * 100000) + 1;
@@ -91,18 +93,18 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       }`
     );
     const playlistData = await response.json();
-
+    console.log("genre child promise", tag, playlistData)
     return {
       tag: tag,
       playlist: playlistData,
     };
   }
 
-  async function getGenrePlaylist(id: string) {
+  async function getGenrePlaylist(decodedId: string) {
     const response = await fetch(
       `${
         process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/cloudsearch?limit=30&type=1000&keywords=${id}&timestamp=${Date.now()}` //${id}%20
+      }/cloudsearch?limit=30&type=1000&keywords=${decodedId}&timestamp=${Date.now()}` //${decodedId}%20
     );
     const data = await response.json();
     return {
@@ -116,7 +118,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       const promises = subTags.map((tag: string) => fetchTagPlaylist(tag));
       const results = await Promise.all([
         ...promises,
-        getGenrePlaylist(id as string),
+        getGenrePlaylist(decodedId as string),
       ]);
       return results;
     } catch (error) {
@@ -133,5 +135,5 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       console.error("Error in fetchAllData:", error);
     });
 
-  return { props: { data: allPlaylistTag, id: id } };
+  return { props: { data: allPlaylistTag, id: decodedId } };
 }

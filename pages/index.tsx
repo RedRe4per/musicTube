@@ -95,6 +95,6 @@ export async function getStaticProps() {
       topPlaylistList,
       hotPlaylistList,
     },
-    revalidate: 86400,
+    revalidate: 8640,
   };
 }
