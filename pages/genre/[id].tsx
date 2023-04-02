@@ -44,10 +44,7 @@ export default function Genre(props: Props) {
       <section className="flex flex-wrap gap-6 mt-8 mb-16">
         {data.map((dataItem: DataItem, index: number) => {
           return (
-            dataItem &&
-            dataItem.playlist &&
-            dataItem.playlist.result &&
-            dataItem.playlist.result.playlists && (
+            dataItem?.playlist?.result?.playlists && (
               <section key={index}>
                 <h4 className="text-h3-normal text-white-200">
                   {dataItem.tag}
