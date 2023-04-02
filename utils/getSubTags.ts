@@ -224,7 +224,13 @@ export const getSubTags = (englishTag: string) => {
       ];
       break;
     case "Piano":
-      subTags = ["Classical Piano", "Jazz Piano", "New Age Piano", "Pop Piano", "Solo Piano"];
+      subTags = [
+        "Classical Piano",
+        "Jazz Piano",
+        "New Age Piano",
+        "Pop Piano",
+        "Solo Piano",
+      ];
       break;
     case "Peaceful":
       subTags = ["Serenity", "Tranquil", "Meditative", "Calm", "Relaxing"];
