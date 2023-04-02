@@ -47,13 +47,13 @@ export async function getStaticProps() {
   const catListData = await catListRes.json();
   const catList = catListData.sub;
 
-  async function fetchPlaylist(keyword: CatListItem) {
+  async function fetchPlaylist(category: CatListItem) {
     const randomInteger = Math.floor(Math.random() * 100000) + 1;
 
     const response = await fetch(
       `${
         process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/cloudsearch?type=1000&keywords=${keyword.name}&timestamp=${
+      }/cloudsearch?type=1000&keywords=${category.name}&timestamp=${
         Date.now() - randomInteger
       }`
     );
@@ -65,10 +65,10 @@ export async function getStaticProps() {
     );
     const color = await colorRes.json();
 
-    console.log("fetch Playlist:", keyword.name, color, playlistImage);
+    console.log("fetch Playlist:", category.name, color, playlistImage);
 
     return {
-      playlist: keyword.name,
+      playlist: category.name,
       color: color,
       imageUrl: playlistImage,
     };
@@ -76,8 +76,8 @@ export async function getStaticProps() {
 
   async function fetchAllPlaylist(catList: CatListItem[]) {
     try {
-      const promises = catList.map((keyword: CatListItem) =>
-        fetchPlaylist(keyword)
+      const promises = catList.map((category: CatListItem) =>
+        fetchPlaylist(category)
       );
       const results = await Promise.all(promises);
       return results;
