@@ -28,11 +28,11 @@ export default function Browse(allPlaylistTag: Props) {
       <main className="mx-10 mt-6">
         <h2 className="text-gray-200 text-h2-normal">Browse All</h2>
         <section className="flex flex-wrap gap-6 mt-10 mb-16 gap">
-          {allPlaylistTag.allPlaylistTag.filter((tag: IPlaylistTag)=> tag.status === "success").map(
-            (tag: IPlaylistTag, index: number) => {
+          {allPlaylistTag.allPlaylistTag
+            .filter((tag: IPlaylistTag) => tag.status === "success")
+            .map((tag: IPlaylistTag, index: number) => {
               return <TagCard key={index} playlistTag={tag} />;
-            }
-          )}
+            })}
         </section>
         <Footer />
       </main>
