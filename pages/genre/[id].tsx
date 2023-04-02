@@ -15,7 +15,7 @@ interface DataItem {
   playlist: {
     code: number;
     result: { playlistCount: number; playlists: IPlaylist[] };
-  },
+  };
   tag: string;
 }
 
@@ -23,9 +23,11 @@ export default function Genre(props: Props) {
   const { data, id } = props;
   const { setIsLoading } = useContext(BgColorContext);
 
-  const othersIndex = data.findIndex((dataItem: DataItem)=> dataItem.tag === "Others");
+  const othersIndex = data.findIndex(
+    (dataItem: DataItem) => dataItem.tag === "Others"
+  );
   const othersTag = data.splice(othersIndex, 1)[0];
-  data.push(othersTag); 
+  data.push(othersTag);
 
   useEffect(() => {
     setIsLoading(false);
@@ -36,13 +38,17 @@ export default function Genre(props: Props) {
       <h2 className="text-h2-normal text-gray-200 mb-16">{id}</h2>
 
       <section className="flex flex-wrap gap-6 mt-8 mb-16">
-        {
-          data.map((dataItem: DataItem, index: number)=>{
-            return (
-              <section key={index}>
-                <h4 className="text-h3-normal text-white-200">{dataItem.tag}</h4>
-                <section className={`flex gap-6 mt-8 ${dataItem.tag==="Others" ? "flex-wrap": ""}`}>
-                  {dataItem.playlist.result.playlists.map((playlist: IPlaylist, index: number) => {
+        {data.map((dataItem: DataItem, index: number) => {
+          return (
+            <section key={index}>
+              <h4 className="text-h3-normal text-white-200">{dataItem.tag}</h4>
+              <section
+                className={`flex gap-6 mt-8 ${
+                  dataItem.tag === "Others" ? "flex-wrap" : ""
+                }`}
+              >
+                {dataItem.playlist.result.playlists.map(
+                  (playlist: IPlaylist, index: number) => {
                     return (
                       <PlaylistCard
                         coverUrl={playlist.coverImgUrl}
@@ -52,12 +58,12 @@ export default function Genre(props: Props) {
                         key={index}
                       />
                     );
-                  })}
-                </section>
+                  }
+                )}
               </section>
-            )
-          })
-        }
+            </section>
+          );
+        })}
       </section>
       <Footer />
     </main>
@@ -66,7 +72,8 @@ export default function Genre(props: Props) {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
-  if(!id || Array.isArray(id)) return { props: { error: "No playlist id found" } };
+  if (!id || Array.isArray(id))
+    return { props: { error: "No playlist id found" } };
   const subTags = getSubTags(id);
 
   async function fetchTagPlaylist(tag: string) {
@@ -97,15 +104,16 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return {
       tag: "Others",
       playlist: data,
-    };;
+    };
   }
 
   async function fetchAllPlaylist(subTags: string[]) {
     try {
-      const promises = subTags.map((tag: string) =>
-        fetchTagPlaylist(tag)
-      );
-      const results = await Promise.all([...promises, getGenrePlaylist(id as string)]);
+      const promises = subTags.map((tag: string) => fetchTagPlaylist(tag));
+      const results = await Promise.all([
+        ...promises,
+        getGenrePlaylist(id as string),
+      ]);
       return results;
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -120,7 +128,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     .catch((error) => {
       console.error("Error in fetchAllData:", error);
     });
-  
-  
+
   return { props: { data: allPlaylistTag, id: id } };
 }
