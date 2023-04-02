@@ -32,7 +32,7 @@ export const TrackCard = ({ track }: Props) => {
           <Image
             src={album.picUrl ? album.picUrl : "/images/no-image.jpg"}
             alt="cover"
-            className="object-cover rounded-xl w-[190px] h-[190px]"
+            className="object-cover rounded-xl aspect-square"
             width={190}
             height={190}
           />

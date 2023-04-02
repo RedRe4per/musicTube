@@ -50,7 +50,7 @@ export default function Genre(props: Props) {
                   {dataItem.tag}
                 </h4>
                 <section
-                  className={`flex gap-6 mt-8 ${
+                  className={`flex gap-6 mt-8 w-[421vw] sm:w-[310vw] md:w-[270vw] lg:w-[197vw] xl:w-[170vw] 2xl:w-[148vw] custom3xl:w-[135vw] ${
                     dataItem.tag === "Others" ? "flex-wrap" : ""
                   }`}
                 >
