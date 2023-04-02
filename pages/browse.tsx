@@ -48,34 +48,34 @@ export async function getStaticProps() {
   const catList = catListData.sub;
 
   async function fetchPlaylist(category: CatListItem) {
-    try{
-    const randomInteger = Math.floor(Math.random() * 100000) + 1;
+    try {
+      const randomInteger = Math.floor(Math.random() * 100000) + 1;
 
-    const response = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/cloudsearch?type=1000&keywords=${category.name}&timestamp=${
-        Date.now() - randomInteger
-      }`
-    );
-    const playlistData = await response.json();
-    const playlistImage = playlistData.result.playlists[0].coverImgUrl;
+      const response = await fetch(
+        `${
+          process.env.NEXT_PUBLIC_SERVER_ADDRESS
+        }/cloudsearch?type=1000&keywords=${category.name}&timestamp=${
+          Date.now() - randomInteger
+        }`
+      );
+      const playlistData = await response.json();
+      const playlistImage = playlistData.result.playlists[0].coverImgUrl;
 
-    const colorRes = await fetch(
-      `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=${playlistImage}`
-    );
-    const color = await colorRes.json();
+      const colorRes = await fetch(
+        `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=${playlistImage}`
+      );
+      const color = await colorRes.json();
 
-    console.log("fetch Playlist:", category.name, color, playlistImage);
+      console.log("fetch Playlist:", category.name, color, playlistImage);
 
-    return {
-      playlist: category.name,
-      color: color,
-      imageUrl: playlistImage,
-    };
-  }catch (error) {
-    console.error("Child promise error:", error);
-  }
+      return {
+        playlist: category.name,
+        color: color,
+        imageUrl: playlistImage,
+      };
+    } catch (error) {
+      console.error("Child promise error:", error);
+    }
   }
 
   async function fetchAllPlaylist(catList: CatListItem[]) {
