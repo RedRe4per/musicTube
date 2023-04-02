@@ -10,7 +10,7 @@ export default function List(props: any) {
   const { setIsLoading } = useContext(BgColorContext);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  console.log(props, "props")
+  console.log(props, "props");
 
   useEffect(() => {
     containerRef.current?.scrollIntoView();
@@ -63,25 +63,29 @@ export default function List(props: any) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id, type } = context.query;
   let result;
-  if(type === "playlist"){
+  if (type === "playlist") {
     const playlistListResponse = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist/${id === "top" ? "highquality": ""}?limit=50&timestamp=${Date.now()}`
-      );
-      const playlistList = await playlistListResponse.json();
-      result = {
-        type: `${id} playlist`,
-        list: playlistList.playlists,
-      };
-  }else if(type === "album"){
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist/${
+        id === "top" ? "highquality" : ""
+      }?limit=50&timestamp=${Date.now()}`
+    );
+    const playlistList = await playlistListResponse.json();
+    result = {
+      type: `${id} playlist`,
+      list: playlistList.playlists,
+    };
+  } else if (type === "album") {
     const albumResponse = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=${id}&limit=50&timestamp=${Date.now()}`
-      );
-      const album = await albumResponse.json();
-      result = {
-        type: `${id} album`,
-        list: album.albumProducts,
-      };
+      `${
+        process.env.NEXT_PUBLIC_SERVER_ADDRESS
+      }/album/list/style?area=${id}&limit=50&timestamp=${Date.now()}`
+    );
+    const album = await albumResponse.json();
+    result = {
+      type: `${id} album`,
+      list: album.albumProducts,
+    };
   }
 
-  return { props: {result} };
+  return { props: { result } };
 }

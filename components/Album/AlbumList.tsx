@@ -14,7 +14,10 @@ export const AlbumList = ({ title, albumList }: Props) => {
         <h2 className="ml-1 text-button-light lg:text-h3-normal text-white-200">
           {title}
         </h2>
-        <Link className="lg:text-h4-normal mr-4 text-gray-200" href={"/list/KR?type=album"}>
+        <Link
+          className="lg:text-h4-normal mr-4 text-gray-200"
+          href={"/list/KR?type=album"}
+        >
           More
         </Link>
       </section>
