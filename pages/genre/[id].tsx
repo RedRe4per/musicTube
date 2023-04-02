@@ -43,29 +43,36 @@ export default function Genre(props: Props) {
 
       <section className="flex flex-wrap gap-6 mt-8 mb-16">
         {data.map((dataItem: DataItem, index: number) => {
-           return (
-            dataItem && dataItem.playlist && dataItem.playlist.result && dataItem.playlist.result.playlists && <section key={index}>
-              <h4 className="text-h3-normal text-white-200">{dataItem.tag}</h4>
-              <section
-                className={`flex gap-6 mt-8 ${
-                  dataItem.tag === "Others" ? "flex-wrap" : ""
-                }`}
-              >
-                {dataItem.playlist.result.playlists.map(
-                  (playlist: IPlaylist, index: number) => {
-                    return (
-                      <PlaylistCard
-                        coverUrl={playlist.coverImgUrl}
-                        playlistName={playlist.name}
-                        playlistId={playlist.id}
-                        tags={[id]}
-                        key={index}
-                      />
-                    );
-                  }
-                )}
+          return (
+            dataItem &&
+            dataItem.playlist &&
+            dataItem.playlist.result &&
+            dataItem.playlist.result.playlists && (
+              <section key={index}>
+                <h4 className="text-h3-normal text-white-200">
+                  {dataItem.tag}
+                </h4>
+                <section
+                  className={`flex gap-6 mt-8 ${
+                    dataItem.tag === "Others" ? "flex-wrap" : ""
+                  }`}
+                >
+                  {dataItem.playlist.result.playlists.map(
+                    (playlist: IPlaylist, index: number) => {
+                      return (
+                        <PlaylistCard
+                          coverUrl={playlist.coverImgUrl}
+                          playlistName={playlist.name}
+                          playlistId={playlist.id}
+                          tags={[id]}
+                          key={index}
+                        />
+                      );
+                    }
+                  )}
+                </section>
               </section>
-            </section>
+            )
           );
         })}
       </section>
@@ -93,7 +100,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       }`
     );
     const playlistData = await response.json();
-    console.log("genre child promise", tag, playlistData)
+    console.log("genre child promise", tag, playlistData);
     return {
       tag: tag,
       playlist: playlistData,
