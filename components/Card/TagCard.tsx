@@ -19,7 +19,7 @@ export const TagCard = ({ playlistTag }: Props) => {
       href={`/genre/${switchTopPlaylistTag(playlist)}`}
     >
       <section
-        className="w-[200px] h-[200px] relative overflow-hidden rounded-xl p-1 hover:brightness-125"
+        className="w-[240px] h-[240px] relative overflow-hidden rounded-xl p-1 hover:brightness-125"
         style={{
           background: mixColor("#1B1B1B", color.dominantColor),
         }}
@@ -27,13 +27,13 @@ export const TagCard = ({ playlistTag }: Props) => {
         <h3 className="mt-4 ml-3 text-h3-normal text-white-200 ">
           {switchTopPlaylistTag(playlist)}
         </h3>
-        <div className="absolute -bottom-2 -right-2 w-[120px] h-[120px]">
+        <div className="absolute -bottom-2 -right-2 w-[140px] h-[140px]">
           <Image
             src={imageUrl ? imageUrl : "/images/no-image.jpg"}
             alt={playlist}
-            className="object-cover transform rounded-sm shadow-md rotate-12 shadow-gray-600 w-[120px] h-[120px]"
-            width={120}
-            height={120}
+            className="object-cover transform rounded-sm shadow-md rotate-12 shadow-gray-600 w-[140px] h-[140px]"
+            width={140}
+            height={140}
           />
         </div>
       </section>
