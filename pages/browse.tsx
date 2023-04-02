@@ -28,7 +28,7 @@ export default function Browse(allPlaylistTag: Props) {
       <main className="mx-10 mt-6">
         <h2 className="text-gray-200 text-h2-normal">Browse All</h2>
         <section className="flex flex-wrap gap-6 mt-10 mb-16 gap">
-          {allPlaylistTag.allPlaylistTag.map(
+          {allPlaylistTag.allPlaylistTag.filter((tag: IPlaylistTag)=> tag.status === "success").map(
             (tag: IPlaylistTag, index: number) => {
               return <TagCard key={index} playlistTag={tag} />;
             }
@@ -66,15 +66,20 @@ export async function getStaticProps() {
       );
       const color = await colorRes.json();
 
-      console.log("fetch Playlist:", category.name, color, playlistImage);
-
       return {
         playlist: category.name,
         color: color,
         imageUrl: playlistImage,
+        status: "success",
       };
     } catch (error) {
-      console.error("Child promise error:", error);
+      console.error(`Child promise (${category.name}) error:`, error);
+      return {
+        playlist: category.name,
+        color: "",
+        imageUrl: "",
+        status: "failure",
+      };
     }
   }
 
@@ -93,14 +98,12 @@ export async function getStaticProps() {
 
   const allPlaylistTag = await fetchAllPlaylist(catList)
     .then((data) => {
-      console.log("All tag data:", data);
       return data;
     })
     .catch((error) => {
       console.error("Error in fetchAllData:", error);
     });
 
-  console.log("allPlaylistTag:", allPlaylistTag);
   return {
     props: { allPlaylistTag },
   };

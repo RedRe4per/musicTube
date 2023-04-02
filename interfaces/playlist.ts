@@ -171,4 +171,5 @@ export interface IPlaylistTag {
     dominantColor: string;
   };
   imageUrl: string;
+  status: "success" | "failure";
 }
