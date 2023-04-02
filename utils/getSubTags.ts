@@ -385,6 +385,15 @@ export const getSubTags = (englishTag: string) => {
         "Progressive",
       ];
       break;
+      case "Post_Rock":
+        subTags = [
+          "Instrumental",
+          "Experimental",
+          "Ambient",
+          "Atmospheric",
+          "Progressive",
+        ];
+        break;
     case "Dance":
       subTags = ["EDM", "House", "Techno", "Trance", "Electro"];
       break;
