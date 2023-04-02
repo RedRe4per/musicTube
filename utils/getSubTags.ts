@@ -409,6 +409,15 @@ export const getSubTags = (englishTag: string) => {
     case "Gen Z Music":
       subTags = ["TikTok Hits", "Viral", "Trending", "Meme", "Internet"];
       break;
+      case "New Age":
+        subTags = ["Meditation", "Ambient", "Celtic", "World Fusion", "Nature Sounds", "Space Music", "Healing"];
+        break;
+        case "KTV":
+      subTags = ["Pop Hits", "Classic KTV", "Love Songs", "Karaoke Duets", "Movie Soundtracks", "Show Tunes", "Disney Songs"];
+      break;
+      case "Bossa Nova":
+      subTags = ["Brazilian Jazz", "Samba", "Bossa Nova Classics", "Chill Bossa", "Instrumental Bossa", "Latin Jazz", "Bossa Nova Covers"];
+      break;
     default:
       subTags = [];
   }
