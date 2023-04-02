@@ -37,7 +37,9 @@ export default function Genre(props: Props) {
 
   return (
     <main className="mx-10 my-6 bg-gray-650">
-      <h2 className="text-h2-normal text-gray-200 mb-16" ref={containerRef}>{id}</h2>
+      <h2 className="text-h2-normal text-gray-200 mb-16" ref={containerRef}>
+        {id}
+      </h2>
 
       <section className="flex flex-wrap gap-6 mt-8 mb-16">
         {data.map((dataItem: DataItem, index: number) => {
