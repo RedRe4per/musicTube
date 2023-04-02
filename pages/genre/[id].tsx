@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext } from "next";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { getSubTags } from "@/utils/getSubTags";
 import { PlaylistCard } from "@/components/Card/PlaylistCard";
@@ -22,6 +22,7 @@ interface DataItem {
 export default function Genre(props: Props) {
   const { data, id } = props;
   const { setIsLoading } = useContext(BgColorContext);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const othersIndex = data.findIndex(
     (dataItem: DataItem) => dataItem.tag === "Others"
@@ -30,12 +31,13 @@ export default function Genre(props: Props) {
   data.push(othersTag);
 
   useEffect(() => {
+    containerRef.current?.scrollIntoView();
     setIsLoading(false);
   }, [id]);
 
   return (
     <main className="mx-10 my-6 bg-gray-650">
-      <h2 className="text-h2-normal text-gray-200 mb-16">{id}</h2>
+      <h2 className="text-h2-normal text-gray-200 mb-16" ref={containerRef}>{id}</h2>
 
       <section className="flex flex-wrap gap-6 mt-8 mb-16">
         {data.map((dataItem: DataItem, index: number) => {
