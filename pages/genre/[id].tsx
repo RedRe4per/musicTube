@@ -97,7 +97,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       }`
     );
     const playlistData = await response.json();
-    console.log("genre child promise", tag, playlistData);
+
     return {
       tag: tag,
       playlist: playlistData,
