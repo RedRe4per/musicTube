@@ -48,6 +48,7 @@ export async function getStaticProps() {
   const catList = catListData.sub;
 
   async function fetchPlaylist(category: CatListItem) {
+    try{
     const randomInteger = Math.floor(Math.random() * 100000) + 1;
 
     const response = await fetch(
@@ -72,6 +73,9 @@ export async function getStaticProps() {
       color: color,
       imageUrl: playlistImage,
     };
+  }catch (error) {
+    console.error("Child promise error:", error);
+  }
   }
 
   async function fetchAllPlaylist(catList: CatListItem[]) {
