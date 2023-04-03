@@ -33,8 +33,8 @@ export default function Home({
   return (
     <section>
       <Head>
-        <title>MusicTube</title>
-        <meta name="description" content="Built by Derek" />
+        <title>TuneSpire</title>
+        <meta name="description" content="Built by Async Working" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
