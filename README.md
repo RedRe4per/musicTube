@@ -30,7 +30,7 @@ Made by Derek Zhu
 
 ## :zap: Performance
 
-:white_check_mark: MusicTube reaches as high as all 100 of categories testing by Lighthouse.
+:white_check_mark: TuneSpire reaches as high as all 100 of categories testing by Lighthouse.
 &emsp;
 &nbsp;
 ![seo](https://user-images.githubusercontent.com/98071700/227798321-4004f994-85dc-4492-9cfc-48bd9d1da185.jpg)
