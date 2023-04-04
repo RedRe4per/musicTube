@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { Nav } from "@/layouts/nav";
 import { Header } from "@/layouts/header";
 import { MusicPlayerBar } from "./MusicPlayerBar";
@@ -18,6 +19,12 @@ export default function Layout({ children }: Props) {
       <Nav />
       <section className="w-full xl:w-screen-70 bg-gray-650 relative">
         <Header />
+        <Head>
+        <title>TuneSpire</title>
+        <meta name="description" content="Built by Async Working" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
         <main
           className={`overflow-auto max-h-[82.8vh] lg:scrollbar ${
             isLoading ? "blur-xl brightness-50" : ""
