@@ -12,7 +12,7 @@
   }
 
   .search-result-item {
-    @apply hover:bg-gray-600 hover:text-green p-2 rounded-lg text-h4-light flex items-center;
+    @apply hover:bg-gray-600 hover:text-green p-2 rounded-lg text-h4-light text-gray-200 flex items-center;
   }
 
   .search-result-subtitle {
