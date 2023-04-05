@@ -13,7 +13,7 @@ export const PlaylistItem = ({ playlist }: Props) => {
   return (
     <Link onClick={handleLoading} href={`/playlist/${playlist.id}`}>
       <section className="search-result-item">
-        <div className="flex-1">
+        <div className="flex-1 min-w-[50px] min-h-[50px]">
           <Image
             className="search-result-image border-1"
             src={

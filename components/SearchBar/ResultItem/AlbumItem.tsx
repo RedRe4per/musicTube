@@ -13,7 +13,7 @@ export const AlbumItem = ({ album }: Props) => {
   return (
     <Link onClick={handleLoading} href={`/album/${album.id}`}>
       <section className="search-result-item gap-4">
-        <div>
+        <div className="min-w-[50px] min-h-[50px]">
           <Image
             className="search-result-image border-1"
             src={album.picUrl ? album.picUrl : "/images/no-image.jpg"}
