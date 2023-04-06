@@ -133,7 +133,7 @@ export async function getStaticProps() {
       const promises = areas.map((area: AreaCode) => getArtist(area));
       const results = await Promise.allSettled(promises);
       const filteredResults = results.filter(
-        result => result.status === "fulfilled"
+        (result) => result.status === "fulfilled"
       ) as ArtistResults[];
       const resultAlbums = filteredResults.map((results: ArtistResults) => {
         return results.value;
