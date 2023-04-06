@@ -11,9 +11,9 @@ type AreaCode = "-1" | "0" | "7" | "8" | "16" | "96";
 
 interface Banner {
   artistCover: string;
-    artistId: number;
-    artistName: string;
-    artistSongs: IAlbumSong[];
+  artistId: number;
+  artistName: string;
+  artistSongs: IAlbumSong[];
 }
 
 interface ArtistResults {
@@ -46,7 +46,7 @@ export default function Home({
     setIsLoading(false);
   }, []);
 
-  console.log(banners, "banner")
+  console.log(banners, "banner");
 
   return (
     <section>
@@ -99,7 +99,7 @@ export async function getStaticProps() {
   const hotPlaylistList = await hotPlaylistListResponse.json();
 
   const areas: AreaCode[] = ["96", "8", "16", "7", "0", "-1"];
-  async function getArtist (areaCode: AreaCode) {  
+  async function getArtist(areaCode: AreaCode) {
     const randomInteger = Math.floor(Math.random() * 100000) + 1;
     const artistRes = await fetch(
       `${
@@ -109,35 +109,35 @@ export async function getStaticProps() {
       }`
     );
     const artistArray = await artistRes.json();
-    const artist = artistArray.artists[0]
+    const artist = artistArray.artists[0];
 
     const artistSongRes = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/artists?id=${artist.id}&limit=6&order=time&timestamp=${
-        Date.now() - randomInteger
-      }`
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/artists?id=${
+        artist.id
+      }&limit=6&order=time&timestamp=${Date.now() - randomInteger}`
     );
     const artistDetails = await artistSongRes.json();
     const artistSongs = artistDetails.hotSongs.slice(0, 6) as IAlbumSong[];
 
     const banner: Banner = {
-       artistId: artist.id,
-       artistName: artist.name,
-       artistCover: artist.picUrl,
-       artistSongs: artistSongs,
-    }
-    return banner
+      artistId: artist.id,
+      artistName: artist.name,
+      artistCover: artist.picUrl,
+      artistSongs: artistSongs,
+    };
+    return banner;
   }
 
   async function fetchArtistsInfo(areas: AreaCode[]) {
     try {
-      const promises = areas.map((area: AreaCode) =>
-        getArtist(area)
-      );
+      const promises = areas.map((area: AreaCode) => getArtist(area));
       const results = await Promise.allSettled(promises);
-      const filteredResults = results.filter(result => result.status === "fulfilled") as ArtistResults[];
-      const resultAlbums = filteredResults.map((results: ArtistResults)=>{return results.value})
+      const filteredResults = results.filter(
+        result => result.status === "fulfilled"
+      ) as ArtistResults[];
+      const resultAlbums = filteredResults.map((results: ArtistResults) => {
+        return results.value;
+      });
       return resultAlbums;
     } catch (error) {
       console.error("Error fetching data:", error);
