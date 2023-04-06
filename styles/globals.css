@@ -64,6 +64,10 @@
     display: inline-block;
   }
 
+  .flex-2 {
+    flex: 2;
+  }
+
   .flex-8 {
     flex: 8;
   }
