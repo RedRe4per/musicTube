@@ -101,14 +101,17 @@ export async function getStaticProps() {
       }&limit=6&order=time&timestamp=${Date.now() - randomInteger}`
     );
     const artistDetails = await artistSongRes.json();
-    const artistSongsDetails = artistDetails.hotSongs.slice(0, 6) as IAlbumSong[];
-    const artistSongs = artistSongsDetails.map((song)=>{
+    const artistSongsDetails = artistDetails.hotSongs.slice(
+      0,
+      6
+    ) as IAlbumSong[];
+    const artistSongs = artistSongsDetails.map((song) => {
       return {
         name: song.name,
         id: song.id,
         image: song.al.picUrl,
-      }
-    })
+      };
+    });
 
     const banner: IBanner = {
       artistId: artist.id,
