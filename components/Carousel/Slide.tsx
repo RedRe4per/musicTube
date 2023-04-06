@@ -36,8 +36,21 @@ export const CarouselSlide = ({ banner, index }: Props) => {
               {banner.artistName}
             </h3>
             <div className="flex mt-2 h-[160px]">
-              {banner.artistSongs.map((song, index)=>{
-                return <Image className={`${index%2 === 0 ? "mask-parallelogram-3" : "mt-10 mask-parallelogram-4"} mask w-[104px] h-[156px] border-x-2 object-cover`} src={song.image} alt="song image" width={200} height={300} key={index}/>
+              {banner.artistSongs.map((song, index) => {
+                return (
+                  <Image
+                    className={`${
+                      index % 2 === 0
+                        ? "mask-parallelogram-3"
+                        : "mt-10 mask-parallelogram-4"
+                    } mask w-[104px] h-[156px] border-x-2 object-cover`}
+                    src={song.image}
+                    alt="song image"
+                    width={200}
+                    height={300}
+                    key={index}
+                  />
+                );
               })}
             </div>
           </section>
