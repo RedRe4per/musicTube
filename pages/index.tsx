@@ -103,7 +103,7 @@ export async function getStaticProps() {
     const artistDetails = await artistSongRes.json();
     const artistSongsDetails = artistDetails.hotSongs.slice(
       0,
-      6
+      4
     ) as IAlbumSong[];
     const artistSongs = artistSongsDetails.map((song) => {
       return {
