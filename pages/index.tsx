@@ -89,7 +89,7 @@ export async function getStaticProps() {
     const artistRes = await fetch(
       `${
         process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/artist/list?area=${areaCode}&limit=1&timestamp=${
+      }/artis1t/list?area=${areaCode}&limit=1&timestamp=${
         Date.now() - randomInteger
       }`
     );

@@ -4,16 +4,19 @@ import Image from "next/image";
 
 interface Props {
   banner: IBanner;
-  index: number;
+  bannerIndex: number;
+  quantity: number;
+  activeBanner: number;
+  setActiveBanner: any;
 }
 
-export const CarouselSlide = ({ banner, index }: Props) => {
-  const bgColor = mixColor(mixColor("#1B1B1B", banner.bgColor), "#1B1B1B");
-  console.log(banner, index);
+export const CarouselSlide = ({ banner, bannerIndex, quantity, activeBanner, setActiveBanner }: Props) => {
+  const bgColor = mixColor(mixColor("#1B1B1B",banner.bgColor), "#1B1B1B");
+  
   return (
     <section
       className={`w-full relative ${
-        index === 1 ? "flex justify-center items-center" : "hidden"
+        bannerIndex === activeBanner ? "flex justify-center items-center" : "hidden"
       }`}
       style={{
         background: `linear-gradient(to right, #1B1B1B 0%, ${bgColor} 50%, #1B1B1B 100%)`,
@@ -24,7 +27,7 @@ export const CarouselSlide = ({ banner, index }: Props) => {
           className="w-full h-full relative blur-3xl"
           style={{ backgroundImage: `url(${banner.artistCover})` }}
         >
-          <div className="absolute inset-0 bg-opacity-50 bg-gray-700 blur-3xl"></div>
+          <div className="absolute inset-0 bg-opacity-50 bg-[#1B1B1B] blur-3xl"></div>
         </div>
       </div>
       <section className="absolute p-8 w-[800px] h-[320px]">
@@ -62,7 +65,18 @@ export const CarouselSlide = ({ banner, index }: Props) => {
             </div>
           </section>
         </section>
-        <section>slider</section>
+        <section className="flex items-center justify-center mt-8">
+        <section className="flex gap-8">
+        {Array.from({ length: quantity }, (_, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveBanner(index)}
+          >
+            <div className={`${index === bannerIndex? "bg-green": "bg-gray-100"} w-4 h-1 rounded-md`}></div>
+          </button>
+        ))}
+        </section>
+        </section>
       </section>
     </section>
   );
