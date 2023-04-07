@@ -115,7 +115,9 @@ export async function getStaticProps() {
     });
 
     const colorRes = await fetch(
-      `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=${convertToHttps(artist.picUrl)}`
+      `${
+        process.env.NEXT_PUBLIC_CLIENT_ADDRESS
+      }/api/colorExtract?imageUrl=${convertToHttps(artist.picUrl)}`
     );
     const color = await colorRes.json();
 

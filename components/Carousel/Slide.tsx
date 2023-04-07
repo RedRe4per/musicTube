@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const CarouselSlide = ({ banner, index }: Props) => {
-  const bgColor = mixColor(mixColor("#1B1B1B",banner.bgColor), "#1B1B1B");
+  const bgColor = mixColor(mixColor("#1B1B1B", banner.bgColor), "#1B1B1B");
   console.log(banner, index);
   return (
     <section
