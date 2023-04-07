@@ -8,6 +8,7 @@ import { IPlaylistList } from "@/interfaces/playlist";
 import { Footer } from "@/layouts/footer";
 import { useContext, useEffect } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
+import { convertToHttps } from "@/utils/covertToHttps";
 
 type AreaCode = "-1" | "0" | "7" | "8" | "16" | "96";
 
@@ -113,10 +114,16 @@ export async function getStaticProps() {
       };
     });
 
+    const colorRes = await fetch(
+      `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=${convertToHttps(artist.picUrl)}`
+    );
+    const color = await colorRes.json();
+
     const banner: IBanner = {
       artistId: artist.id,
       artistName: artist.name,
       artistCover: artist.picUrl,
+      bgColor: color.dominantColor,
       artistSongs: artistSongs,
     };
     return banner;

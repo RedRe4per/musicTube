@@ -1,4 +1,5 @@
 import { IBanner } from "@/interfaces/carousel";
+import { mixColor } from "@/utils/mixColor";
 import Image from "next/image";
 
 interface Props {
@@ -7,18 +8,24 @@ interface Props {
 }
 
 export const CarouselSlide = ({ banner, index }: Props) => {
+  const bgColor = mixColor(mixColor("#1B1B1B",banner.bgColor), "#1B1B1B");
   console.log(banner, index);
   return (
     <section
       className={`w-full relative ${
-        index === 0 ? "flex justify-center items-center" : "hidden"
+        index === 1 ? "flex justify-center items-center" : "hidden"
       }`}
+      style={{
+        background: `linear-gradient(to right, #1B1B1B 0%, ${bgColor} 50%, #1B1B1B 100%)`,
+      }}
     >
-      <div className="w-[800px] h-[320px] overflow-hidden">
+      <div className="w-[800px] h-[320px] border-l-2 border-r-2 border-gray-650 overflow-hidden">
         <div
-          className="w-full h-full blur-3xl"
+          className="w-full h-full relative blur-3xl"
           style={{ backgroundImage: `url(${banner.artistCover})` }}
-        ></div>
+        >
+          <div className="absolute inset-0 bg-opacity-50 bg-gray-700 blur-3xl"></div>
+        </div>
       </div>
       <section className="absolute p-8 w-[800px] h-[320px]">
         <section className="flex">

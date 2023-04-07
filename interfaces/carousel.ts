@@ -8,5 +8,6 @@ export interface IBanner {
   artistCover: string;
   artistId: number;
   artistName: string;
+  bgColor: string;
   artistSongs: IBannerSong[];
 }
