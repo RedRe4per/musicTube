@@ -10,13 +10,21 @@ interface Props {
   setActiveBanner: any;
 }
 
-export const CarouselSlide = ({ banner, bannerIndex, quantity, activeBanner, setActiveBanner }: Props) => {
-  const bgColor = mixColor(mixColor("#1B1B1B",banner.bgColor), "#1B1B1B");
-  
+export const CarouselSlide = ({
+  banner,
+  bannerIndex,
+  quantity,
+  activeBanner,
+  setActiveBanner,
+}: Props) => {
+  const bgColor = mixColor(mixColor("#1B1B1B", banner.bgColor), "#1B1B1B");
+
   return (
     <section
       className={`w-full relative ${
-        bannerIndex === activeBanner ? "flex justify-center items-center" : "hidden"
+        bannerIndex === activeBanner
+          ? "flex justify-center items-center"
+          : "hidden"
       }`}
       style={{
         background: `linear-gradient(to right, #1B1B1B 0%, ${bgColor} 50%, #1B1B1B 100%)`,
@@ -66,16 +74,17 @@ export const CarouselSlide = ({ banner, bannerIndex, quantity, activeBanner, set
           </section>
         </section>
         <section className="flex items-center justify-center mt-8">
-        <section className="flex gap-8">
-        {Array.from({ length: quantity }, (_, index) => (
-          <button
-            key={index}
-            onClick={() => setActiveBanner(index)}
-          >
-            <div className={`${index === bannerIndex? "bg-green": "bg-gray-100"} w-4 h-1 rounded-md`}></div>
-          </button>
-        ))}
-        </section>
+          <section className="flex gap-8">
+            {Array.from({ length: quantity }, (_, index) => (
+              <button key={index} onClick={() => setActiveBanner(index)}>
+                <div
+                  className={`${
+                    index === bannerIndex ? "bg-green" : "bg-gray-100"
+                  } w-4 h-1 rounded-md`}
+                ></div>
+              </button>
+            ))}
+          </section>
         </section>
       </section>
     </section>
