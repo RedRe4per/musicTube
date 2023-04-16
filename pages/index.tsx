@@ -124,7 +124,7 @@ export async function getStaticProps() {
     const banner: IBanner = {
       artistId: artist.id,
       artistName: artist.name,
-      artistCover: artist.picUrl,
+      artistCover: convertToHttps(artist.picUrl) as string,
       artistAreaCode: areaCode,
       artistAlias: artist.alias,
       bgColor: color.dominantColor,
