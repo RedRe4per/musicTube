@@ -1,6 +1,7 @@
 import { IBanner } from "@/interfaces/carousel";
 import { mixColor } from "@/utils/mixColor";
 import { getAreaName } from "@/utils/getAreaName";
+import { convertToHttps } from "@/utils/convertToHttps";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -56,7 +57,7 @@ export const CarouselSlide = ({
         <section className="absolute py-8 px-8 2xl:px-16 w-full h-[320px] flex items-center justify-around">
           <Image
             className="w-[256px] h-[256px] object-cover aspect-square rounded-md shadow-2xl shadow-gray-650"
-            src={banner.artistCover}
+            src={convertToHttps(banner.artistCover) as string}
             alt="Artist cover"
             width={320}
             height={320}
@@ -86,7 +87,7 @@ export const CarouselSlide = ({
                   } ${
                     index > 3 ? "hidden 2xl:block" : ""
                   } mask mx-[2px] w-[120px] h-[180px] border-x-2 border-gray-650 object-cover`}
-                  src={song.image}
+                  src={convertToHttps(song.image) as string}
                   alt="song image"
                   width={240}
                   height={380}
