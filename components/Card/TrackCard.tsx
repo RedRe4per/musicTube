@@ -50,6 +50,7 @@ export const TrackCard = ({ track }: Props) => {
               width={70}
               height={70}
               onClick={handlePlayClick}
+              unoptimized
             />
           </div>
         </div>

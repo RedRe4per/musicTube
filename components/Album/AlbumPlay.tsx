@@ -35,6 +35,7 @@ export const AlbumPlay = ({ albumId }: Props) => {
           alt="play"
           width={100}
           height={100}
+          unoptimized
         />
         <Image
           onClick={handlePauseClick}
@@ -43,6 +44,7 @@ export const AlbumPlay = ({ albumId }: Props) => {
           alt="play"
           width={100}
           height={100}
+          unoptimized
         />
       </button>
       <button>

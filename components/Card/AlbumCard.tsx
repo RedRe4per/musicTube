@@ -41,6 +41,7 @@ export const AlbumCard = ({ albumUrl, albumName, artists, albumId }: Props) => {
               width={70}
               height={70}
               onClick={handlePlay}
+              unoptimized
             />
           </div>
         </div>

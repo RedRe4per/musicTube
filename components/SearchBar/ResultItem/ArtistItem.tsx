@@ -19,7 +19,8 @@ export const ArtistItem = ({ artist }: Props) => {
             alt="album"
             width={40}
             height={40}
-          ></Image>
+            unoptimized
+          />
         </div>
         <div>
           <h5>{artist.name}</h5>

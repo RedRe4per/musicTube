@@ -49,6 +49,7 @@ export const PlaylistCard = ({
               width={70}
               height={70}
               onClick={handlePlay}
+              unoptimized
             />
           </div>
         </div>

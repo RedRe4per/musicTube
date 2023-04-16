@@ -19,6 +19,7 @@ export default function Custom500() {
           className="max-w-sm rounded-lg shadow-2xl"
           width={200}
           height={400}
+          unoptimized
         />
         <div>
           <h1 className="text-5xl font-bold">

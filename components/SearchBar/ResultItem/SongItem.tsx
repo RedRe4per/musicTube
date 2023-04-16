@@ -20,7 +20,8 @@ export const SongItem = ({ song }: Props) => {
             alt="album"
             width={40}
             height={40}
-          ></Image>
+            unoptimized
+          />
         </div>
         <div>
           <h5>{song.name}</h5>

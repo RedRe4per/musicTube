@@ -13,6 +13,7 @@ export const ArtistInfo = React.memo(
             className="w-[280px] h-[280px] rounded-full shadow-2xl shadow-gray-650 object-cover"
             width={280}
             height={280}
+            unoptimized
           />
         </div>
         <section className="ml-10 mt-10 flex flex-col justify-around">

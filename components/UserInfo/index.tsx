@@ -25,7 +25,8 @@ export const UserInfo = () => {
               alt="avatar"
               width={50}
               height={50}
-            ></Image>
+              unoptimized
+            />
             <span className="hidden lg:block text-h4-normal">Guest</span>
           </div>
           <img

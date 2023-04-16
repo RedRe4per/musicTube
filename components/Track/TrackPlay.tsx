@@ -48,6 +48,7 @@ export const TrackPlay = React.memo(({ trackId, album, duration }: Props) => {
             alt="play"
             width={100}
             height={100}
+            unoptimized
           />
           <Image
             onClick={handlePauseClick}
@@ -58,6 +59,7 @@ export const TrackPlay = React.memo(({ trackId, album, duration }: Props) => {
             alt="play"
             width={100}
             height={100}
+            unoptimized
           />
         </button>
         <button>

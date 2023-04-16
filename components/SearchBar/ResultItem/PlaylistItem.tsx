@@ -24,7 +24,8 @@ export const PlaylistItem = ({ playlist }: Props) => {
             alt="album"
             width={40}
             height={40}
-          ></Image>
+            unoptimized
+          />
         </div>
         <div className="flex-8">
           <h5>{playlist.name}</h5>

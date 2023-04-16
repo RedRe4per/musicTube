@@ -143,6 +143,7 @@ export const TrackInfo = React.memo(
                 alt="cover"
                 width={50}
                 height={50}
+                unoptimized
               />
             </div>
             <div className="flex flex-col gap-2 overflow-hidden">
