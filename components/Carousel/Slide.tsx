@@ -69,9 +69,7 @@ export const CarouselSlide = ({
                     ? "mb-10 mask-parallelogram-3"
                     : "mt-10 mask-parallelogram-4"
                 } ${
-                  index > 3
-                    ? "hidden 2xl:block"
-                    : ""
+                  index > 3 ? "hidden 2xl:block" : ""
                 } mask mx-[2px] w-[120px] h-[180px] border-x-2 border-gray-650 object-cover`}
                 src={song.image}
                 alt="song image"
