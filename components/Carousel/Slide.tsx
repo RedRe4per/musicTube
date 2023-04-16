@@ -37,10 +37,10 @@ export const CarouselSlide = ({
       aria-label="Link to banner artist"
     >
       <section
-        className={`w-full relative ease- ${
+        className={`w-full relative ${
           bannerIndex === activeBanner
-            ? "flex justify-center items-center"
-            : "hidden"
+            ? "flex justify-center items-center transition-opacity duration-1000 ease-in-out opacity-100"
+            : "opacity-0 h-0"
         }`}
         style={{
           background: `linear-gradient(to right, #1B1B1B 0%, ${bgColor} 50%, #1B1B1B 100%)`,
