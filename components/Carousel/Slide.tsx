@@ -98,7 +98,11 @@ export const CarouselSlide = ({
           <section className="absolute bottom-5 flex items-center justify-center mt-8">
             <section className="flex gap-12">
               {Array.from({ length: quantity }, (_, index) => (
-                <button key={index} onClick={(e) => switchBanner(e, index)} aria-label="switch to selected banner">
+                <button
+                  key={index}
+                  onClick={(e) => switchBanner(e, index)}
+                  aria-label="switch to selected banner"
+                >
                   <div
                     className={`${
                       index === bannerIndex ? "bg-green" : "bg-gray-300"
