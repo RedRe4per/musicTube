@@ -98,7 +98,7 @@ export const CarouselSlide = ({
           <section className="absolute bottom-5 flex items-center justify-center mt-8">
             <section className="flex gap-12">
               {Array.from({ length: quantity }, (_, index) => (
-                <button key={index} onClick={(e) => switchBanner(e, index)}>
+                <button key={index} onClick={(e) => switchBanner(e, index)} aria-label="switch to selected banner">
                   <div
                     className={`${
                       index === bannerIndex ? "bg-green" : "bg-gray-300"
@@ -114,6 +114,7 @@ export const CarouselSlide = ({
             switchBanner(e, bannerIndex === 0 ? quantity - 1 : bannerIndex - 1)
           }
           className="absolute left-6"
+          aria-label="last banner"
         >
           <img src="/icons/arrow-left.svg" alt="last-page" />
         </button>
@@ -122,6 +123,7 @@ export const CarouselSlide = ({
             switchBanner(e, bannerIndex === quantity - 1 ? 0 : bannerIndex + 1)
           }
           className="absolute right-6"
+          aria-label="next banner"
         >
           <img src="/icons/arrow-right.svg" alt="last-page" />
         </button>

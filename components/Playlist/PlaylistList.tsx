@@ -17,6 +17,7 @@ export const PlaylistList = ({ title, playlistList }: Props) => {
         <Link
           className="lg:text-h4-normal mr-4 text-gray-200"
           href={"/list/top?type=playlist"}
+          aria-label="Link to more playlists"
         >
           More
         </Link>

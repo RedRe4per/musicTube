@@ -17,6 +17,7 @@ export const AlbumList = ({ title, albumList }: Props) => {
         <Link
           className="lg:text-h4-normal mr-4 text-gray-200"
           href={"/list/KR?type=album"}
+          aria-label="Link to more album lists"
         >
           More
         </Link>
