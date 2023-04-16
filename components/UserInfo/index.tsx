@@ -11,7 +11,7 @@ export const UserInfo = () => {
   return (
     <section className="min-w-[322px] text-h3-light text-white-200 z-10">
       <section
-        className={`absolute top-0 min-w-[322px] ${
+        className={`absolute top-2 min-w-[322px] ${
           isDropdown ? "bg-gray-800 shadow-lg bg-white" : ""
         } rounded-[10px]`}
       >
