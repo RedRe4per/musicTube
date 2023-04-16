@@ -23,7 +23,7 @@ export const CarouselSlide = ({
   return (
     <section
       className={`w-full relative ${
-        bannerIndex === 0 ? "flex justify-center items-center" : "hidden"
+        bannerIndex === activeBanner ? "flex justify-center items-center" : "hidden"
       }`}
       style={{
         background: `linear-gradient(to right, #1B1B1B 0%, ${bgColor} 50%, #1B1B1B 100%)`,
@@ -81,20 +81,26 @@ export const CarouselSlide = ({
           })}
         </section>
 
-        {/* <section className="flex items-center justify-center mt-8">
-          <section className="flex gap-8">
+        <section className="absolute bottom-5 flex items-center justify-center mt-8">
+          <section className="flex gap-12">
             {Array.from({ length: quantity }, (_, index) => (
               <button key={index} onClick={() => setActiveBanner(index)}>
                 <div
                   className={`${
-                    index === bannerIndex ? "bg-green" : "bg-gray-100"
-                  } w-4 h-1 rounded-md`}
+                    index === bannerIndex ? "bg-green" : "bg-gray-300"
+                  } w-2 h-2 rounded-full`}
                 ></div>
               </button>
             ))}
           </section>
-        </section> */}
+        </section>
       </section>
+      <button onClick={()=> setActiveBanner(bannerIndex === 0 ? quantity-1 : bannerIndex - 1)} className="absolute left-6">
+        <img src="/icons/arrow-left.svg" alt="last-page" />
+      </button>
+      <button onClick={()=> setActiveBanner(bannerIndex === quantity-1 ? 0 : bannerIndex+1)} className="absolute right-6">
+        <img src="/icons/arrow-right.svg" alt="last-page" />
+      </button>
     </section>
   );
 };
