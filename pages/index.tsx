@@ -83,7 +83,7 @@ export async function getStaticProps() {
   );
   const hotPlaylistList = await hotPlaylistListResponse.json();
 
-  const areas: AreaCode[] = ["96", "8", "16", "7", "0"];
+  const areas: AreaCode[] = ["8", "96", "16", "7", "0"];
   async function getArtist(areaCode: AreaCode) {
     const randomInteger = Math.floor(Math.random() * 100000) + 1;
     const artistRes = await fetch(

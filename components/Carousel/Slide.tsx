@@ -23,7 +23,7 @@ export const CarouselSlide = ({
   return (
     <section
       className={`w-full relative ${
-        bannerIndex === 1 ? "flex justify-center items-center" : "hidden"
+        bannerIndex === 0 ? "flex justify-center items-center" : "hidden"
       }`}
       style={{
         background: `linear-gradient(to right, #1B1B1B 0%, ${bgColor} 50%, #1B1B1B 100%)`,
@@ -37,7 +37,7 @@ export const CarouselSlide = ({
           <div className="absolute inset-0 bg-opacity-50 bg-[#1B1B1B] blur-3xl"></div>
         </div>
       </div>
-      <section className="absolute py-8 px-16 w-full h-[320px] flex items-center justify-around">
+      <section className="absolute py-8 px-8 2xl:px-16 w-full h-[320px] flex items-center justify-around">
         <Image
           className="w-[256px] h-[256px] object-cover aspect-square rounded-md shadow-2xl shadow-gray-650"
           src={banner.artistCover}
@@ -46,7 +46,7 @@ export const CarouselSlide = ({
           height={320}
         />
         <section className="h-full flex flex-col items-center justify-around max-w-[280px] flex-wrap">
-          <h3 className="text-h3-normal text-gray-100 text-center">
+          <h3 className="text-h3-normal text-green text-center">
             {getAreaName(banner.artistAreaCode)} Singer
           </h3>
           {banner.artistAlias && banner.artistAlias.length > 0 && (
@@ -68,6 +68,10 @@ export const CarouselSlide = ({
                   index % 2 === 0
                     ? "mb-10 mask-parallelogram-3"
                     : "mt-10 mask-parallelogram-4"
+                } ${
+                  index > 3
+                    ? "hidden 2xl:block"
+                    : ""
                 } mask mx-[2px] w-[120px] h-[180px] border-x-2 border-gray-650 object-cover`}
                 src={song.image}
                 alt="song image"

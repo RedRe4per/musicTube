@@ -15,7 +15,7 @@ interface Props {
 export default function Layout({ children }: Props) {
   const { isLoading } = useContext(BgColorContext);
   return (
-    <div className={`flex`}>
+    <div className="flex">
       <Nav />
       <section className="w-full xl:w-screen-70 bg-gray-650 relative">
         <Header />
