@@ -23,9 +23,7 @@ export const CarouselSlide = ({
   return (
     <section
       className={`w-full relative ${
-        bannerIndex === 1
-          ? "flex justify-center items-center"
-          : "hidden"
+        bannerIndex === 1 ? "flex justify-center items-center" : "hidden"
       }`}
       style={{
         background: `linear-gradient(to right, #1B1B1B 0%, ${bgColor} 50%, #1B1B1B 100%)`,
@@ -40,39 +38,47 @@ export const CarouselSlide = ({
         </div>
       </div>
       <section className="absolute py-8 px-16 w-full h-[320px] flex items-center justify-around">
-            <Image
-              className="w-[256px] h-[256px] object-cover aspect-square rounded-md shadow-2xl shadow-gray-650"
-              src={banner.artistCover}
-              alt="Artist cover"
-              width={320}
-              height={320}
-            />
-            <section className="h-full flex flex-col items-center justify-around max-w-[280px] flex-wrap">
-              <h3 className="text-h3-normal text-gray-100 text-center">{getAreaName(banner.artistAreaCode)} Singer</h3>
-              {banner.artistAlias && banner.artistAlias.length>0 && <h2 className="text-h2-normal text-white-50 italic text-center uppercase">{banner.artistAlias[0]}</h2>}
-              <h2 className="text-h2-normal text-white-50 text-center uppercase">{banner.artistName}</h2>
-              {/* <button className="bg-green w-36 h-12 rounded-lg text-white-200 text-h4-light brightness-105 shadow-2xl shadow-gray-650">Learn More</button> */}
-            </section>
-          
-          <section className="flex items-center justify-center">    
-              {banner.artistSongs.map((song, index) => {
-                return (
-                  <Image
-                    className={`${
-                      index % 2 === 0
-                        ? "mb-10 mask-parallelogram-3"
-                        : "mt-10 mask-parallelogram-4"
-                    } mask mx-[2px] w-[120px] h-[180px] border-x-2 border-gray-650 object-cover`}
-                    src={song.image}
-                    alt="song image"
-                    width={240}
-                    height={380}
-                    key={index}
-                  />
-                );
-              })}
-          </section>
-        
+        <Image
+          className="w-[256px] h-[256px] object-cover aspect-square rounded-md shadow-2xl shadow-gray-650"
+          src={banner.artistCover}
+          alt="Artist cover"
+          width={320}
+          height={320}
+        />
+        <section className="h-full flex flex-col items-center justify-around max-w-[280px] flex-wrap">
+          <h3 className="text-h3-normal text-gray-100 text-center">
+            {getAreaName(banner.artistAreaCode)} Singer
+          </h3>
+          {banner.artistAlias && banner.artistAlias.length > 0 && (
+            <h2 className="text-h2-normal text-white-50 italic text-center uppercase">
+              {banner.artistAlias[0]}
+            </h2>
+          )}
+          <h2 className="text-h2-normal text-white-50 text-center uppercase">
+            {banner.artistName}
+          </h2>
+          {/* <button className="bg-green w-36 h-12 rounded-lg text-white-200 text-h4-light brightness-105 shadow-2xl shadow-gray-650">Learn More</button> */}
+        </section>
+
+        <section className="flex items-center justify-center">
+          {banner.artistSongs.map((song, index) => {
+            return (
+              <Image
+                className={`${
+                  index % 2 === 0
+                    ? "mb-10 mask-parallelogram-3"
+                    : "mt-10 mask-parallelogram-4"
+                } mask mx-[2px] w-[120px] h-[180px] border-x-2 border-gray-650 object-cover`}
+                src={song.image}
+                alt="song image"
+                width={240}
+                height={380}
+                key={index}
+              />
+            );
+          })}
+        </section>
+
         {/* <section className="flex items-center justify-center mt-8">
           <section className="flex gap-8">
             {Array.from({ length: quantity }, (_, index) => (

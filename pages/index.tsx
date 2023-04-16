@@ -87,15 +87,18 @@ export async function getStaticProps() {
   async function getArtist(areaCode: AreaCode) {
     const randomInteger = Math.floor(Math.random() * 100000) + 1;
     const artistRes = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/artist/list?area=${areaCode}&limit=1&timestamp=${Date.now() - randomInteger
+      `${
+        process.env.NEXT_PUBLIC_SERVER_ADDRESS
+      }/artist/list?area=${areaCode}&limit=1&timestamp=${
+        Date.now() - randomInteger
       }`
     );
     const artistArray = await artistRes.json();
     const artist = artistArray.artists[0];
 
     const artistSongRes = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/artists?id=${artist.id
+      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/artists?id=${
+        artist.id
       }&limit=6&order=time&timestamp=${Date.now() - randomInteger}`
     );
     const artistDetails = await artistSongRes.json();
@@ -112,7 +115,8 @@ export async function getStaticProps() {
     });
 
     const colorRes = await fetch(
-      `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS
+      `${
+        process.env.NEXT_PUBLIC_CLIENT_ADDRESS
       }/api/colorExtract?imageUrl=${convertToHttps(artist.picUrl)}`
     );
     const color = await colorRes.json();
