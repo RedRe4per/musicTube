@@ -24,7 +24,7 @@ Made by Derek Zhu
 
 &emsp;
 &nbsp;
-![musicHomePage](https://user-images.githubusercontent.com/98071700/227798309-4359571e-e1c4-4ac5-a48e-bf3dada8912e.jpg)
+![musicHomePage](https://user-images.githubusercontent.com/98071700/232326434-bb6fb184-4221-4243-b47f-793334aeafbe.jpg)
 
 &emsp;
 
