@@ -23,7 +23,9 @@ export const CarouselSlide = ({
   return (
     <section
       className={`w-full relative ${
-        bannerIndex === activeBanner ? "flex justify-center items-center" : "hidden"
+        bannerIndex === activeBanner
+          ? "flex justify-center items-center"
+          : "hidden"
       }`}
       style={{
         background: `linear-gradient(to right, #1B1B1B 0%, ${bgColor} 50%, #1B1B1B 100%)`,
@@ -95,10 +97,20 @@ export const CarouselSlide = ({
           </section>
         </section>
       </section>
-      <button onClick={()=> setActiveBanner(bannerIndex === 0 ? quantity-1 : bannerIndex - 1)} className="absolute left-6">
+      <button
+        onClick={() =>
+          setActiveBanner(bannerIndex === 0 ? quantity - 1 : bannerIndex - 1)
+        }
+        className="absolute left-6"
+      >
         <img src="/icons/arrow-left.svg" alt="last-page" />
       </button>
-      <button onClick={()=> setActiveBanner(bannerIndex === quantity-1 ? 0 : bannerIndex+1)} className="absolute right-6">
+      <button
+        onClick={() =>
+          setActiveBanner(bannerIndex === quantity - 1 ? 0 : bannerIndex + 1)
+        }
+        className="absolute right-6"
+      >
         <img src="/icons/arrow-right.svg" alt="last-page" />
       </button>
     </section>
