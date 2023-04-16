@@ -19,7 +19,7 @@ export const AlbumList = ({ title, albumList }: Props) => {
           href={"/list/KR?type=album"}
           aria-label="Link to more album lists"
         >
-          More
+          More Album
         </Link>
       </section>
       <section className="mt-2 flex gap-4 w-[421vw] sm:w-[310vw] md:w-[270vw] lg:w-[197vw] xl:w-[170vw] 2xl:w-[148vw] custom3xl:w-[135vw]">
