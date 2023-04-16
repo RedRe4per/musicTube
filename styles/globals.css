@@ -71,10 +71,6 @@
   .flex-8 {
     flex: 8;
   }
-
-  .scale-80 {
-    zoom: 0.8;
-  }
 }
 
 @keyframes loadingDots {

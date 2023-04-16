@@ -2,6 +2,7 @@ import { IBanner } from "@/interfaces/carousel";
 import { mixColor } from "@/utils/mixColor";
 import { getAreaName } from "@/utils/getAreaName";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   banner: IBanner;
@@ -20,9 +21,16 @@ export const CarouselSlide = ({
 }: Props) => {
   const bgColor = mixColor(mixColor("#1B1B1B", banner.bgColor), "#1B1B1B");
 
+  const switchBanner = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, bannerIndex: number) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setActiveBanner(bannerIndex);
+  }
+
   return (
+    <Link href={`/artist/${banner.artistId}`} aria-label="Link to banner artist">
     <section
-      className={`w-full relative ${
+      className={`w-full relative ease- ${
         bannerIndex === activeBanner
           ? "flex justify-center items-center"
           : "hidden"
@@ -40,6 +48,7 @@ export const CarouselSlide = ({
         </div>
       </div>
       <section className="absolute py-8 px-8 2xl:px-16 w-full h-[320px] flex items-center justify-around">
+      
         <Image
           className="w-[256px] h-[256px] object-cover aspect-square rounded-md shadow-2xl shadow-gray-650"
           src={banner.artistCover}
@@ -47,6 +56,7 @@ export const CarouselSlide = ({
           width={320}
           height={320}
         />
+        
         <section className="h-full flex flex-col items-center justify-around max-w-[280px] flex-wrap">
           <h3 className="text-h3-normal text-green text-center">
             {getAreaName(banner.artistAreaCode)} Singer
@@ -59,9 +69,7 @@ export const CarouselSlide = ({
           <h2 className="text-h2-normal text-white-50 text-center uppercase">
             {banner.artistName}
           </h2>
-          {/* <button className="bg-green w-36 h-12 rounded-lg text-white-200 text-h4-light brightness-105 shadow-2xl shadow-gray-650">Learn More</button> */}
         </section>
-
         <section className="flex items-center justify-center">
           {banner.artistSongs.map((song, index) => {
             return (
@@ -82,15 +90,14 @@ export const CarouselSlide = ({
             );
           })}
         </section>
-
         <section className="absolute bottom-5 flex items-center justify-center mt-8">
           <section className="flex gap-12">
             {Array.from({ length: quantity }, (_, index) => (
-              <button key={index} onClick={() => setActiveBanner(index)}>
+              <button key={index} onClick={(e) => switchBanner(e, index)}>
                 <div
                   className={`${
                     index === bannerIndex ? "bg-green" : "bg-gray-300"
-                  } w-2 h-2 rounded-full`}
+                  } w-2 h-2 rounded-full hover:bg-green`}
                 ></div>
               </button>
             ))}
@@ -98,21 +105,18 @@ export const CarouselSlide = ({
         </section>
       </section>
       <button
-        onClick={() =>
-          setActiveBanner(bannerIndex === 0 ? quantity - 1 : bannerIndex - 1)
-        }
+        onClick={(e) => switchBanner(e, bannerIndex === 0 ? quantity - 1 : bannerIndex - 1)}
         className="absolute left-6"
       >
         <img src="/icons/arrow-left.svg" alt="last-page" />
       </button>
       <button
-        onClick={() =>
-          setActiveBanner(bannerIndex === quantity - 1 ? 0 : bannerIndex + 1)
-        }
+        onClick={(e) => switchBanner(e, bannerIndex === quantity - 1 ? 0 : bannerIndex + 1)}
         className="absolute right-6"
       >
         <img src="/icons/arrow-right.svg" alt="last-page" />
       </button>
     </section>
+    </Link>
   );
 };

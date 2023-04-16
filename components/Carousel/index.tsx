@@ -17,7 +17,7 @@ export const Carousel = ({ banners }: Props) => {
     } else {
       threadId = setInterval(() => {
         setActiveBanner((prev) => (prev === banners.length - 1 ? 0 : prev + 1));
-      }, 3000);
+      }, 3500);
     }
     return () => {
       clearInterval(threadId);
