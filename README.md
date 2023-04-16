@@ -24,7 +24,7 @@ Made by Derek Zhu
 
 &emsp;
 &nbsp;
-![musicHomePage](https://user-images.githubusercontent.com/98071700/227798309-4359571e-e1c4-4ac5-a48e-bf3dada8912e.jpg)
+![musicHomePage](https://user-images.githubusercontent.com/98071700/232326434-bb6fb184-4221-4243-b47f-793334aeafbe.jpg)
 
 &emsp;
 
@@ -33,7 +33,7 @@ Made by Derek Zhu
 :white_check_mark: TuneSpire reaches as high as all 100 of categories testing by Lighthouse.
 &emsp;
 &nbsp;
-![seo](https://user-images.githubusercontent.com/98071700/227798321-4004f994-85dc-4492-9cfc-48bd9d1da185.jpg)
+![seo](https://user-images.githubusercontent.com/98071700/232326266-4e4e31a1-3057-43eb-b83e-117db02bf042.jpg)
 
 ## :hammer_and_wrench: Built With
 
