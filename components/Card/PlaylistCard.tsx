@@ -54,7 +54,7 @@ export const PlaylistCard = ({
           </div>
         </div>
         <section className="absolute max-w-[100%] overflow-hidden">
-          <h3 className="text-tag-normal lg:text-button-normal text-white-200 mt-[15px] ">
+          <h3 className="text-tag-normal lg:text-tag-normal text-white-200 mt-[15px] ">
             {playlistName}
           </h3>
           <div className="text-tag-normal text-green brightness-90 mt-[7px] hidden lg:block">

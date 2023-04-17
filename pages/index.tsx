@@ -9,6 +9,7 @@ import { Footer } from "@/layouts/footer";
 import { useContext, useEffect } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { convertToHttps } from "@/utils/convertToHttps";
+import { playlistsGroupTranslator } from "@/utils/playlistsGroupTrans";
 
 type AreaCode = "-1" | "0" | "7" | "8" | "16" | "96";
 
@@ -33,7 +34,7 @@ export default function Home({
   topPlaylistList,
   hotPlaylistList,
   banners,
-}: Props) {
+}: any) {
   const { setIsLoading } = useContext(BgColorContext);
 
   useEffect(() => {
@@ -77,11 +78,14 @@ export async function getStaticProps() {
   const topPlaylistListResponse = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist/highquality?limit=13`
   );
-  const topPlaylistList = await topPlaylistListResponse.json();
+  const rawTopLists = await topPlaylistListResponse.json();
+  const topPlaylistList = await playlistsGroupTranslator(rawTopLists);
+  
   const hotPlaylistListResponse = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist?limit=13`
   );
-  const hotPlaylistList = await hotPlaylistListResponse.json();
+  const rawHotLists = await hotPlaylistListResponse.json();
+  const hotPlaylistList = await playlistsGroupTranslator(rawHotLists);
 
   const areas: AreaCode[] = ["8", "96", "16", "7", "0"];
   async function getArtist(areaCode: AreaCode) {
