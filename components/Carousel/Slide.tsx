@@ -67,7 +67,6 @@ export const CarouselSlide = ({
                 height={320}
               />
             )}
-
             {bannerIndex === activeBanner && (
               <section className="h-full flex flex-col items-center justify-around max-w-[280px] flex-wrap">
                 <h3 className="text-h3-normal text-green text-center">
