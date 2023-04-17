@@ -1,4 +1,4 @@
-type AreaCode = "-1" | "0" | "7" | "8" | "16" | "96";
+import { AreaCode } from "@/interfaces/artist";
 
 export const getAreaName = (areaCode: AreaCode) => {
   let areaName: string;
@@ -8,7 +8,7 @@ export const getAreaName = (areaCode: AreaCode) => {
       areaName = "World";
       break;
     case "0":
-      areaName = "Other Areas";
+      areaName = "Other Regions";
       break;
     case "7":
       areaName = "Chinese";

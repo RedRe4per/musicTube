@@ -15,3 +15,5 @@ export interface IArtist {
   topicPerson: number;
   trans: string;
 }
+
+export type AreaCode = "-1" | "0" | "7" | "8" | "16" | "96";

@@ -1,22 +1,15 @@
 import { AlbumList } from "@/components/Album/AlbumList";
 import { PlaylistList } from "@/components/Playlist/PlaylistList";
 import { Carousel } from "@/components/Carousel";
-import { IAlbumSong } from "@/interfaces/albumSong";
 import { IBanner } from "@/interfaces/carousel";
 import { IAlbumList } from "@/interfaces/album";
 import { IPlaylistList } from "@/interfaces/playlist";
 import { Footer } from "@/layouts/footer";
 import { useContext, useEffect } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
-import { convertToHttps } from "@/utils/convertToHttps";
 import { playlistsGroupTranslator } from "@/utils/playlistsGroupTrans";
-
-type AreaCode = "-1" | "0" | "7" | "8" | "16" | "96";
-
-interface ArtistResults {
-  status: "fulfilled" | "rejected";
-  value: IBanner;
-}
+import { fetchArtistsInfo } from "@/utils/getHomePageData";
+import { AreaCode } from "@/interfaces/artist";
 
 interface Props {
   albumAreaEA: IAlbumList;
@@ -88,71 +81,6 @@ export async function getStaticProps() {
   const hotPlaylistList = await playlistsGroupTranslator(rawHotLists);
 
   const areas: AreaCode[] = ["8", "96", "16", "7", "0"];
-  async function getArtist(areaCode: AreaCode) {
-    const randomInteger = Math.floor(Math.random() * 100000) + 1;
-    const artistRes = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_SERVER_ADDRESS
-      }/artist/list?area=${areaCode}&limit=1&timestamp=${
-        Date.now() - randomInteger
-      }`
-    );
-    const artistArray = await artistRes.json();
-    const artist = artistArray.artists[0];
-
-    const artistSongRes = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/artists?id=${
-        artist.id
-      }&limit=6&order=time&timestamp=${Date.now() - randomInteger}`
-    );
-    const artistDetails = await artistSongRes.json();
-    const artistSongsDetails = artistDetails.hotSongs.slice(
-      0,
-      6
-    ) as IAlbumSong[];
-    const artistSongs = artistSongsDetails.map((song) => {
-      return {
-        name: song.name,
-        id: song.id,
-        image: song.al.picUrl,
-      };
-    });
-
-    const colorRes = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_CLIENT_ADDRESS
-      }/api/colorExtract?imageUrl=${convertToHttps(artist.picUrl)}`
-    );
-    const color = await colorRes.json();
-
-    const banner: IBanner = {
-      artistId: artist.id,
-      artistName: artist.name,
-      artistCover: convertToHttps(artist.picUrl) as string,
-      artistAreaCode: areaCode,
-      artistAlias: artist.alias,
-      bgColor: color.dominantColor,
-      artistSongs: artistSongs,
-    };
-    return banner;
-  }
-
-  async function fetchArtistsInfo(areas: AreaCode[]) {
-    try {
-      const promises = areas.map((area: AreaCode) => getArtist(area));
-      const results = await Promise.allSettled(promises);
-      const filteredResults = results.filter(
-        (result) => result.status === "fulfilled"
-      ) as ArtistResults[];
-      const resultAlbums = filteredResults.map((results: ArtistResults) => {
-        return results.value;
-      });
-      return resultAlbums;
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      throw error;
-    }
-  }
 
   const banners = await fetchArtistsInfo(areas)
     .then((data) => {
