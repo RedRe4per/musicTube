@@ -36,6 +36,7 @@ export const CarouselSlide = ({
       href={`/artist/${banner.artistId}`}
       aria-label="Link to banner artist"
     >
+      <section className="relative w-full">
       <section
         className={`w-full relative ${
           bannerIndex === activeBanner
@@ -103,7 +104,27 @@ export const CarouselSlide = ({
                 );
               })}
           </section>
-          <section className="absolute bottom-5 flex items-center justify-center mt-8">
+        </section>
+      </section>
+      <button
+          onClick={(e) =>
+            switchBanner(e, bannerIndex === 0 ? quantity - 1 : bannerIndex - 1)
+          }
+          className="absolute left-6 top-36 z-10"
+          aria-label="last banner"
+        >
+          <img src="/icons/arrow-left.svg" alt="last-page" />
+        </button>
+        <button
+          onClick={(e) =>
+            switchBanner(e, bannerIndex === quantity - 1 ? 0 : bannerIndex + 1)
+          }
+          className="absolute right-6 top-36 z-10"
+          aria-label="next banner"
+        >
+          <img src="/icons/arrow-right.svg" alt="last-page" />
+        </button>
+        <section className="absolute top-[264px] left-0 right-0 mx-auto flex items-center justify-center mt-8">
             <section className="flex gap-12">
               {Array.from({ length: quantity }, (_, index) => (
                 <button
@@ -120,25 +141,6 @@ export const CarouselSlide = ({
               ))}
             </section>
           </section>
-        </section>
-        <button
-          onClick={(e) =>
-            switchBanner(e, bannerIndex === 0 ? quantity - 1 : bannerIndex - 1)
-          }
-          className="absolute left-6"
-          aria-label="last banner"
-        >
-          <img src="/icons/arrow-left.svg" alt="last-page" />
-        </button>
-        <button
-          onClick={(e) =>
-            switchBanner(e, bannerIndex === quantity - 1 ? 0 : bannerIndex + 1)
-          }
-          className="absolute right-6"
-          aria-label="next banner"
-        >
-          <img src="/icons/arrow-right.svg" alt="last-page" />
-        </button>
       </section>
     </Link>
   );
