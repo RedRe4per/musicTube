@@ -2,6 +2,7 @@ import { IBanner } from "@/interfaces/carousel";
 import { mixColor } from "@/utils/mixColor";
 import { getAreaName } from "@/utils/getAreaName";
 import { convertToHttps } from "@/utils/convertToHttps";
+import { useLoading } from "@/hooks/useLoading";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,6 +21,7 @@ export const CarouselSlide = ({
   activeBanner,
   setActiveBanner,
 }: Props) => {
+  const { handleLoading } = useLoading();
   const bgColor = mixColor(mixColor("#1B1B1B", banner.bgColor), "#1B1B1B");
 
   const switchBanner = (
@@ -34,6 +36,7 @@ export const CarouselSlide = ({
   return (
     <Link
       href={`/artist/${banner.artistId}`}
+      onClick={handleLoading}
       aria-label="Link to banner artist"
     >
       <section className="relative w-full">
