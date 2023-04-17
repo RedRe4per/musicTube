@@ -1,6 +1,6 @@
 import { PlaylistItem } from "./PlaylistItem";
 
-const listItemArray = ["*", "Chill", "Lofi"];
+const listItemArray: string[] = [];
 
 export const NavPlaylist = () => {
   return (

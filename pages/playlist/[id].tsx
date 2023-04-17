@@ -9,6 +9,7 @@ import { PlaylistPlay } from "@/components/Playlist/PlaylistPlay";
 import { SongList } from "@/components/Playlist/SongList";
 import { PlaylistPagination } from "@/components/Playlist/PlaylistPagination";
 import { mixColor } from "@/utils/mixColor";
+import { translateToEng } from "@/utils/playlistsGroupTrans";
 import { Footer } from "@/layouts/footer";
 
 interface Props {
@@ -103,5 +104,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }/playlist/detail?id=${id}&timestamp=${Date.now()}`
   );
   const playlistInfo = await response.json();
+  playlistInfo.playlist.name = await translateToEng(playlistInfo.playlist.name);
+
   return { props: playlistInfo };
 }

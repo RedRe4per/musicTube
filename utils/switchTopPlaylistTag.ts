@@ -18,7 +18,7 @@ export const switchTopPlaylistTag = (chineseTag: string) => {
       englishTag = "Cantonese";
       break;
     case "另类/独立":
-      englishTag = "Alternative/Independent";
+      englishTag = "Independent";
       break;
     case "R&B/Soul":
       englishTag = "R&B/Soul";
