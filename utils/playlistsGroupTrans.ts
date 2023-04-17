@@ -3,6 +3,7 @@ import { IPlaylistList, IPlaylist } from "@/interfaces/playlist";
 export const playlistsGroupTranslator = async (
   playlistsGroup: IPlaylistList
 ) => {
+  try{
   const playlistsNameArray: string[] = [];
   playlistsGroup.playlists.forEach((playlist: IPlaylist) => {
     playlistsNameArray.push(playlist.name);
@@ -20,4 +21,7 @@ export const playlistsGroupTranslator = async (
   });
 
   return playlistsGroup;
+}catch{
+  return playlistsGroup;
+}
 };
