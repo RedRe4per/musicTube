@@ -6,7 +6,7 @@ export const playlistsGroupTranslator = async (
   try {
     const playlistsNameArray: string[] = [];
     playlistsGroup.playlists.map(async (playlist: IPlaylist) => {
-      playlist.name= await translateToEng(playlist.name)
+      playlist.name = await translateToEng(playlist.name);
       //playlistsNameArray.push(playlist.name);
     });
     // const combinedNameString = playlistsNameArray.join("|###|");
