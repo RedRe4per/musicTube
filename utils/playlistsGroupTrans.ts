@@ -5,20 +5,21 @@ export const playlistsGroupTranslator = async (
 ) => {
   try {
     const playlistsNameArray: string[] = [];
-    playlistsGroup.playlists.forEach((playlist: IPlaylist) => {
-      playlistsNameArray.push(playlist.name);
+    playlistsGroup.playlists.map(async (playlist: IPlaylist) => {
+      playlist.name= await translateToEng(playlist.name)
+      //playlistsNameArray.push(playlist.name);
     });
-    const combinedNameString = playlistsNameArray.join("|###|");
+    // const combinedNameString = playlistsNameArray.join("|###|");
 
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/textTranslator?originalText=${combinedNameString}`
-    );
-    const combinedTranslatedName = await res.json();
+    // const res = await fetch(
+    //   `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/textTranslator?originalText=${combinedNameString}`
+    // );
+    // const combinedTranslatedName = await res.json();
 
-    const translatedNames = combinedTranslatedName.text.split("|###|");
-    playlistsGroup.playlists.forEach((playlist: IPlaylist, index: number) => {
-      playlist.name = translatedNames[index];
-    });
+    // const translatedNames = combinedTranslatedName.text.split("|###|");
+    // playlistsGroup.playlists.forEach((playlist: IPlaylist, index: number) => {
+    //   playlist.name = translatedNames[index];
+    // });
     return playlistsGroup;
   } catch {
     return playlistsGroup;
