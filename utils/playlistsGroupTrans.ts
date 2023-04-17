@@ -15,7 +15,7 @@ export const playlistsGroupTranslator = async (
     );
     const combinedTranslatedName = await res.json();
     console.log(combinedTranslatedName, "combinedTranslatedName");
-    const translatedNames = combinedTranslatedName.text.split(" |$| ");
+    const translatedNames = combinedTranslatedName.text.split("|$|");
     playlistsGroup.playlists.forEach((playlist: IPlaylist, index: number) => {
       playlist.name = translatedNames[index];
     });
