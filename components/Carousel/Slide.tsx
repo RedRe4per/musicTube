@@ -47,12 +47,12 @@ export const CarouselSlide = ({
         }}
       >
         <div className="w-full h-[320px] border-l-2 border-r-2 border-gray-650 overflow-hidden flex items-center justify-center">
-          <div
+          {bannerIndex === activeBanner && <div
             className="w-full h-full relative blur-3xl"
             style={{ backgroundImage: `url(${banner.artistCover})` }}
           >
             <div className="absolute inset-0 bg-opacity-50 bg-[#1B1B1B] blur-3xl"></div>
-          </div>
+          </div>}
         </div>
         <section className="absolute py-8 px-8 2xl:px-16 w-full h-[320px] flex items-center justify-around">
           {bannerIndex === activeBanner && (
