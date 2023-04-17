@@ -34,7 +34,7 @@ export default function Home({
   topPlaylistList,
   hotPlaylistList,
   banners,
-}: any) {
+}: Props) {
   const { setIsLoading } = useContext(BgColorContext);
 
   useEffect(() => {

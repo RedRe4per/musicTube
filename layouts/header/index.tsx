@@ -14,7 +14,7 @@ export const Header = () => {
 
   return (
     <main className={`${page === "/likedSongs" ? "bg-header" : ""}`}>
-      <section className="h-[90px] flex items-center justify-around mt-2 -mb-4">
+      <section className="h-[90px] flex items-center justify-around my-1">
         <PageSwitch page={page} />
         <section className="hidden lg:block">
           <SearchBar page={page} />

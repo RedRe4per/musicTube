@@ -26,7 +26,7 @@ export const Carousel = ({ banners }: Props) => {
 
   return (
     <section
-      className="mt-6 overflow-hidden"
+      className="overflow-hidden"
       onMouseEnter={() => setIsSwitchBanner(false)}
       onMouseLeave={() => setIsSwitchBanner(true)}
     >
