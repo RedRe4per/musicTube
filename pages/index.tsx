@@ -80,7 +80,7 @@ export async function getStaticProps() {
   );
   const rawTopLists = await topPlaylistListResponse.json();
   const topPlaylistList = await playlistsGroupTranslator(rawTopLists);
-  
+
   const hotPlaylistListResponse = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist?limit=13`
   );

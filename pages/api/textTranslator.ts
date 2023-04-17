@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-const { translate } = require('bing-translate-api');
+const { translate } = require("bing-translate-api");
 
 export const config = {
   runtime: "nodejs",
@@ -14,7 +14,7 @@ interface ResType {
     to: string;
     from: string;
     score: number;
-  }
+  };
 }
 
 export default async function handler(
@@ -22,11 +22,13 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { originalText } = req.query;
-  const result = await translate(originalText as string, null, 'en').then((res: ResType) => {
-    return res.translation;
-}).catch((err: string) => {
-    console.error(err);
-    return originalText;
-});
-  res.status(200).json({text: result});
+  const result = await translate(originalText as string, null, "en")
+    .then((res: ResType) => {
+      return res.translation;
+    })
+    .catch((err: string) => {
+      console.error(err);
+      return originalText;
+    });
+  res.status(200).json({ text: result });
 }
