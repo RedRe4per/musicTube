@@ -40,7 +40,7 @@ export const CarouselSlide = ({
         className={`w-full relative ${
           bannerIndex === activeBanner
             ? "flex justify-center items-center transition-opacity duration-1000 ease-in-out opacity-100"
-            : "hidden"
+            : "h-0 opacity-0"
         }`}
         style={{
           background: `linear-gradient(to right, #1B1B1B 0%, ${bgColor} 50%, #1B1B1B 100%)`,
@@ -55,15 +55,18 @@ export const CarouselSlide = ({
           </div>
         </div>
         <section className="absolute py-8 px-8 2xl:px-16 w-full h-[320px] flex items-center justify-around">
-          <Image
+          { bannerIndex === activeBanner &&
+            <Image
             className="w-[256px] h-[256px] object-cover aspect-square rounded-md shadow-2xl shadow-gray-650"
             src={convertToHttps(banner.artistCover) as string}
             alt="Artist cover"
             width={320}
             height={320}
           />
+          }
 
-          <section className="h-full flex flex-col items-center justify-around max-w-[280px] flex-wrap">
+          { bannerIndex === activeBanner &&
+            <section className="h-full flex flex-col items-center justify-around max-w-[280px] flex-wrap">
             <h3 className="text-h3-normal text-green text-center">
               {getAreaName(banner.artistAreaCode)} Singer
             </h3>
@@ -76,8 +79,9 @@ export const CarouselSlide = ({
               {banner.artistName}
             </h2>
           </section>
+          }
           <section className="flex items-center justify-center">
-            {banner.artistSongs.map((song, index) => {
+            {bannerIndex === activeBanner && banner.artistSongs.map((song, index) => {
               return (
                 <Image
                   className={`${

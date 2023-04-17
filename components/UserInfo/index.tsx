@@ -40,7 +40,7 @@ export const UserInfo = () => {
             <li>Private session</li>
             <li>Account</li>
             <li>Settings</li>
-            <li>Log out</li>
+            <li>Log in</li>
           </ul>
         </section>
       </section>
