@@ -26,13 +26,13 @@ export const playlistsGroupTranslator = async (
 };
 
 export const translateToEng = async (originalText: string) => {
-  try{
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/textTranslator?originalText=${originalText}`
-  );
-  const engText = await res.json();
-  return engText.text
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/textTranslator?originalText=${originalText}`
+    );
+    const engText = await res.json();
+    return engText.text;
   } catch {
-    return originalText
+    return originalText;
   }
-}
+};
