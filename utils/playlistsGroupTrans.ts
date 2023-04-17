@@ -37,7 +37,7 @@ export const playlistsGroupTranslator2 = async (
     playlistsGroup.playlists.map(async (playlist: IPlaylist) => {
       playlistsNameArray.push(playlist.name);
     });
-    
+
     const combinedNameString = playlistsNameArray.join("|###|");
 
     const res = await fetch(
