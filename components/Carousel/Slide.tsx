@@ -55,50 +55,51 @@ export const CarouselSlide = ({
           </div>
         </div>
         <section className="absolute py-8 px-8 2xl:px-16 w-full h-[320px] flex items-center justify-around">
-          { bannerIndex === activeBanner &&
+          {bannerIndex === activeBanner && (
             <Image
-            className="w-[256px] h-[256px] object-cover aspect-square rounded-md shadow-2xl shadow-gray-650"
-            src={convertToHttps(banner.artistCover) as string}
-            alt="Artist cover"
-            width={320}
-            height={320}
-          />
-          }
+              className="w-[256px] h-[256px] object-cover aspect-square rounded-md shadow-2xl shadow-gray-650"
+              src={convertToHttps(banner.artistCover) as string}
+              alt="Artist cover"
+              width={320}
+              height={320}
+            />
+          )}
 
-          { bannerIndex === activeBanner &&
+          {bannerIndex === activeBanner && (
             <section className="h-full flex flex-col items-center justify-around max-w-[280px] flex-wrap">
-            <h3 className="text-h3-normal text-green text-center">
-              {getAreaName(banner.artistAreaCode)} Singer
-            </h3>
-            {banner.artistAlias && banner.artistAlias.length > 0 && (
-              <h2 className="text-h2-normal text-white-50 italic text-center uppercase">
-                {banner.artistAlias[0]}
+              <h3 className="text-h3-normal text-green text-center">
+                {getAreaName(banner.artistAreaCode)} Singer
+              </h3>
+              {banner.artistAlias && banner.artistAlias.length > 0 && (
+                <h2 className="text-h2-normal text-white-50 italic text-center uppercase">
+                  {banner.artistAlias[0]}
+                </h2>
+              )}
+              <h2 className="text-h2-normal text-white-50 text-center uppercase">
+                {banner.artistName}
               </h2>
-            )}
-            <h2 className="text-h2-normal text-white-50 text-center uppercase">
-              {banner.artistName}
-            </h2>
-          </section>
-          }
+            </section>
+          )}
           <section className="flex items-center justify-center">
-            {bannerIndex === activeBanner && banner.artistSongs.map((song, index) => {
-              return (
-                <Image
-                  className={`${
-                    index % 2 === 0
-                      ? "mb-10 mask-parallelogram-3"
-                      : "mt-10 mask-parallelogram-4"
-                  } ${
-                    index > 3 ? "hidden 2xl:block" : ""
-                  } mask mx-[2px] w-[120px] h-[180px] border-x-2 border-gray-650 object-cover`}
-                  src={convertToHttps(song.image) as string}
-                  alt="song image"
-                  width={240}
-                  height={380}
-                  key={index}
-                />
-              );
-            })}
+            {bannerIndex === activeBanner &&
+              banner.artistSongs.map((song, index) => {
+                return (
+                  <Image
+                    className={`${
+                      index % 2 === 0
+                        ? "mb-10 mask-parallelogram-3"
+                        : "mt-10 mask-parallelogram-4"
+                    } ${
+                      index > 3 ? "hidden 2xl:block" : ""
+                    } mask mx-[2px] w-[120px] h-[180px] border-x-2 border-gray-650 object-cover`}
+                    src={convertToHttps(song.image) as string}
+                    alt="song image"
+                    width={240}
+                    height={380}
+                    key={index}
+                  />
+                );
+              })}
           </section>
           <section className="absolute bottom-5 flex items-center justify-center mt-8">
             <section className="flex gap-12">
