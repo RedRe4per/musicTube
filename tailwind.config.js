@@ -33,7 +33,6 @@ module.exports = {
         },
       },
       textColor: {
-        // default: 'mix-blend-screen text-gray-700 text-white-200',
         default: "#1DB954",
       },
       opacity: {
