@@ -22,7 +22,6 @@ export default function List(props: any) {
       <h2 className="text-h2-normal text-gray-200 mb-16" ref={containerRef}>
         {}
       </h2>
-
       <section className="flex flex-wrap gap-6 mt-8 mb-16">
         {/* {data.map((dataItem: DataItem, index: number) => {
           return (
