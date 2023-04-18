@@ -36,12 +36,14 @@ export default function Home({
         <Carousel banners={banners} />
         <PlaylistList title={"Top Playlists"} playlistList={topPlaylistList} />
         <PlaylistList title={"Hot Playlists"} playlistList={hotPlaylistList} />
-        {allAreaAlbumLists.map((AlbumLists: IAlbumList, index: number)=>{
-          return (<AlbumList
-          title={AlbumLists.title}
-          albumList={AlbumLists}
-          key={index}
-        />)
+        {allAreaAlbumLists.map((AlbumLists: IAlbumList, index: number) => {
+          return (
+            <AlbumList
+              title={AlbumLists.title}
+              albumList={AlbumLists}
+              key={index}
+            />
+          );
         })}
       </main>
       <Footer />

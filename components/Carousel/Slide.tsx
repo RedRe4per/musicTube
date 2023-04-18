@@ -11,7 +11,7 @@ interface Props {
   bannerIndex: number;
   quantity: number;
   activeBanner: number;
-  setActiveBanner: (bannerIndex: number)=>void;
+  setActiveBanner: (bannerIndex: number) => void;
 }
 
 export const CarouselSlide = ({

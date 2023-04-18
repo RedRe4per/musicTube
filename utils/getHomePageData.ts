@@ -83,20 +83,24 @@ async function getAlbumLists(area: AlbumArea) {
     `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=${area}&limit=13`
   );
   const rawAlbumLists = await albumRes.json();
-  const albumLists = {...rawAlbumLists, title: albumAreaMapper(area)};
+  const albumLists = { ...rawAlbumLists, title: albumAreaMapper(area) };
   return albumLists;
 }
 
 export async function fetchAlbumListInfo(albumAreas: AlbumArea[]) {
   try {
-    const promises = albumAreas.map((albumArea: AlbumArea) => getAlbumLists(albumArea));
+    const promises = albumAreas.map((albumArea: AlbumArea) =>
+      getAlbumLists(albumArea)
+    );
     const results = await Promise.allSettled(promises);
     const filteredResults = results.filter(
       (result) => result.status === "fulfilled"
     ) as AlbumListResults[];
-    const resultAlbumLists = filteredResults.map((results: AlbumListResults) => {
-      return results.value;
-    });
+    const resultAlbumLists = filteredResults.map(
+      (results: AlbumListResults) => {
+        return results.value;
+      }
+    );
     return resultAlbumLists;
   } catch (error) {
     console.error("Error in fetching area album lists data:", error);
