@@ -7,7 +7,11 @@ import { IPlaylistList } from "@/interfaces/playlist";
 import { Footer } from "@/layouts/footer";
 import { useContext, useEffect } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
-import { fetchArtistsInfo, fetchAlbumListInfo, getPlaylistList } from "@/utils/getHomePageData";
+import {
+  fetchArtistsInfo,
+  fetchAlbumListInfo,
+  getPlaylistList,
+} from "@/utils/getHomePageData";
 import { AreaCode } from "@/interfaces/artist";
 
 interface Props {

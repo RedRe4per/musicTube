@@ -41,7 +41,7 @@ export async function getStaticProps() {
   const catList = catListData.sub;
 
   const allPlaylistTags = await fetchAllPlaylist(catList);
-  
+
   return {
     props: { allPlaylistTags },
   };
