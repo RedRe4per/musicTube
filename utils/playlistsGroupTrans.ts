@@ -19,17 +19,24 @@ export const playlistsGroupTranslator = async (
   playlistsGroup: IPlaylistList
 ) => {
   try {
-    const translationPromises = playlistsGroup.playlists.map((playlist: IPlaylist) => {
-      return translateToEng(playlist.name);
-    });
+    const translationPromises = playlistsGroup.playlists.map(
+      (playlist: IPlaylist) => {
+        return translateToEng(playlist.name);
+      }
+    );
 
-    const settledResults = await Promise.allSettled(translationPromises) as any;
+    const settledResults = (await Promise.allSettled(
+      translationPromises
+    )) as any;
 
     playlistsGroup.playlists.forEach((playlist: IPlaylist, index: number) => {
       if (settledResults[index].status === "fulfilled") {
         playlist.name = settledResults[index].value;
       } else {
-        console.error("Translation API request failed:", settledResults[index].reason);
+        console.error(
+          "Translation API request failed:",
+          settledResults[index].reason
+        );
       }
     });
 
@@ -38,7 +45,6 @@ export const playlistsGroupTranslator = async (
     return playlistsGroup;
   }
 };
-
 
 export const translateToEng = async (originalText: string) => {
   try {
