@@ -4,6 +4,7 @@ import { IAlbumList, AlbumArea } from "@/interfaces/album";
 import { AreaCode } from "@/interfaces/artist";
 import { convertToHttps } from "@/utils/convertToHttps";
 import { albumAreaMapper } from "./albumAreaMapper";
+import { playlistsGroupTranslator } from "./playlistsGroupTrans";
 
 interface ArtistResults {
   status: "fulfilled" | "rejected";
@@ -107,4 +108,13 @@ export async function fetchAlbumListInfo(albumAreas: AlbumArea[]) {
     console.error("Error in fetching area album lists data:", error);
     throw error;
   }
+}
+
+export async function getPlaylistList(playListType: "/highquality" | "") {
+  const topPlaylistListResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist${playListType}?limit=13`
+  );
+  const rawTopLists = await topPlaylistListResponse.json();
+  const topPlaylistList = await playlistsGroupTranslator(rawTopLists);
+  return topPlaylistList;
 }

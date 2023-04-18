@@ -7,21 +7,20 @@ import { IPlaylistList } from "@/interfaces/playlist";
 import { Footer } from "@/layouts/footer";
 import { useContext, useEffect } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
-import { playlistsGroupTranslator } from "@/utils/playlistsGroupTrans";
-import { fetchArtistsInfo, fetchAlbumListInfo } from "@/utils/getHomePageData";
+import { fetchArtistsInfo, fetchAlbumListInfo, getPlaylistList } from "@/utils/getHomePageData";
 import { AreaCode } from "@/interfaces/artist";
 
 interface Props {
   allAreaAlbumLists: IAlbumList[];
-  topPlaylistList: IPlaylistList;
   hotPlaylistList: IPlaylistList;
+  topPlaylistList: IPlaylistList;
   banners: IBanner[];
 }
 
 export default function Home({
   allAreaAlbumLists,
-  topPlaylistList,
   hotPlaylistList,
+  topPlaylistList,
   banners,
 }: Props) {
   const { setIsLoading } = useContext(BgColorContext);
@@ -34,8 +33,8 @@ export default function Home({
     <section>
       <main className="overflow-hidden">
         <Carousel banners={banners} />
-        <PlaylistList title={"Top Playlists"} playlistList={topPlaylistList} />
         <PlaylistList title={"Hot Playlists"} playlistList={hotPlaylistList} />
+        <PlaylistList title={"Top Playlists"} playlistList={topPlaylistList} />
         {allAreaAlbumLists.map((AlbumLists: IAlbumList, index: number) => {
           return (
             <AlbumList
@@ -58,23 +57,14 @@ export async function getStaticProps() {
   const albumAreas: AlbumArea[] = ["E_A", "JP", "KR"];
   const allAreaAlbumLists = await fetchAlbumListInfo(albumAreas);
 
-  const topPlaylistListResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist/highquality?limit=13`
-  );
-  const rawTopLists = await topPlaylistListResponse.json();
-  const topPlaylistList = await playlistsGroupTranslator(rawTopLists);
-
-  const hotPlaylistListResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist?limit=13`
-  );
-  const rawHotLists = await hotPlaylistListResponse.json();
-  const hotPlaylistList = await playlistsGroupTranslator(rawHotLists);
+  const hotPlaylistList = await getPlaylistList("");
+  const topPlaylistList = await getPlaylistList("/highquality");
 
   return {
     props: {
       allAreaAlbumLists,
-      topPlaylistList,
       hotPlaylistList,
+      topPlaylistList,
       banners,
     },
     revalidate: 21600,

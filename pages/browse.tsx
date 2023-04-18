@@ -40,14 +40,8 @@ export async function getStaticProps() {
   const catListData = await catListRes.json();
   const catList = catListData.sub;
 
-  const allPlaylistTags = await fetchAllPlaylist(catList)
-    .then((data) => {
-      return data;
-    })
-    .catch((error) => {
-      console.error("Error in fetchAllData:", error);
-    });
-
+  const allPlaylistTags = await fetchAllPlaylist(catList);
+  
   return {
     props: { allPlaylistTags },
   };
