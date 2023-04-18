@@ -1,5 +1,5 @@
 import { IPlaylistList, IPlaylist } from "@/interfaces/playlist";
-import { EventEmitter } from 'events';
+import { EventEmitter } from "events";
 EventEmitter.defaultMaxListeners = 50;
 
 export const playlistsGroupTranslator = async (

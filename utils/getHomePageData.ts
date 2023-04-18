@@ -96,7 +96,7 @@ export async function fetchAlbumListInfo(albumAreas: AlbumArea[]) {
     const filteredResults = results.filter(
       (result) => result.status === "fulfilled"
     ) as AlbumListResults[];
-    
+
     const resultAlbumLists = filteredResults.map(
       (results: AlbumListResults) => {
         return results.value;

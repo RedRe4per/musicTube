@@ -57,7 +57,6 @@ export async function getStaticProps() {
 
   const albumAreas: AlbumArea[] = ["E_A", "JP", "KR"];
   const allAreaAlbumLists = await fetchAlbumListInfo(albumAreas);
-    
 
   const topPlaylistListResponse = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist/highquality?limit=13`
