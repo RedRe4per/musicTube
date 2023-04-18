@@ -52,15 +52,12 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-  const albumAreas: AlbumArea[] = ["E_A", "JP", "KR"];
+  const areas: AreaCode[] = ["8", "96", "16", "7", "0"];
+  const banners = await fetchArtistsInfo(areas);
 
-  const allAreaAlbumLists = await fetchAlbumListInfo(albumAreas)
-    .then((data) => {
-      return data;
-    })
-    .catch((error) => {
-      console.error("Error in fetching album lists:", error);
-    });
+  const albumAreas: AlbumArea[] = ["E_A", "JP", "KR"];
+  const allAreaAlbumLists = await fetchAlbumListInfo(albumAreas);
+    
 
   const topPlaylistListResponse = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/top/playlist/highquality?limit=13`
@@ -73,16 +70,6 @@ export async function getStaticProps() {
   );
   const rawHotLists = await hotPlaylistListResponse.json();
   const hotPlaylistList = await playlistsGroupTranslator(rawHotLists);
-
-  const areas: AreaCode[] = ["8", "96", "16", "7", "0"];
-
-  const banners = await fetchArtistsInfo(areas)
-    .then((data) => {
-      return data;
-    })
-    .catch((error) => {
-      console.error("Error in fetching banners:", error);
-    });
 
   return {
     props: {

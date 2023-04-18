@@ -1,9 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 const { translate } = require("bing-translate-api");
-const EventEmitter = require("events");
-
-const emitter = new EventEmitter();
-emitter.setMaxListeners(40);
 
 export const config = {
   runtime: "nodejs",
