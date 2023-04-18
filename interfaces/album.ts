@@ -15,6 +15,7 @@ export interface IAlbumList {
   albumProducts: IAlbum[];
   code: number;
   hasNextPage: boolean;
+  title: string;
 }
 
 export interface IAlbumDetails {
@@ -53,3 +54,5 @@ export interface IAlbumDetails {
   tags: string;
   type: string;
 }
+
+export type AlbumArea = "Z_H" | "E_A" | "JP" | "KR";
