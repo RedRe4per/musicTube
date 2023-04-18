@@ -16,12 +16,16 @@ interface AlbumListResults {
   value: IAlbumList;
 }
 
+function getRandomInt() {
+  return Math.floor(Math.random() * 10);
+}
+
 async function getArtist(areaCode: AreaCode) {
   const randomInteger = Math.floor(Math.random() * 100000) + 1;
   const artistRes = await fetch(
     `${
       process.env.NEXT_PUBLIC_SERVER_ADDRESS
-    }/artist/list?area=${areaCode}&limit=1&timestamp=${
+    }/artist/list?area=${areaCode}&limit=1&offset=${getRandomInt()}&timestamp=${
       Date.now() - randomInteger
     }`
   );

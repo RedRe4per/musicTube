@@ -37,8 +37,8 @@ export default function Home({
     <section>
       <main className="overflow-hidden">
         <Carousel banners={banners} />
-        <PlaylistList title={"Hot Playlists"} playlistList={hotPlaylistList} />
         <PlaylistList title={"Top Playlists"} playlistList={topPlaylistList} />
+        <PlaylistList title={"Hot Playlists"} playlistList={hotPlaylistList} />
         {allAreaAlbumLists.map((AlbumLists: IAlbumList, index: number) => {
           return (
             <AlbumList

@@ -2,6 +2,15 @@ import { IPlaylistList, IPlaylist } from "@/interfaces/playlist";
 import { EventEmitter } from "events";
 EventEmitter.defaultMaxListeners = 50;
 
+/*
+This method is temporarily deprecated. Its disadvantage is that it is slow, 
+and more than 10 calls to the backend pages/api/translator will cause memory leaks. 
+And, if you want to translate more than one group of strings, after deployment, 
+the first group can be translated normally (some of them may fail to translate), 
+and the second group does not have any translation when the page is opened for 
+the first time. Click the page NAV again The translated text will appear. 
+This bug is very weird and the reason is unknown.
+*/
 export const playlistsGroupTranslator0 = async (
   playlistsGroup: IPlaylistList
 ) => {
