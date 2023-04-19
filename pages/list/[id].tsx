@@ -29,7 +29,7 @@ export default function List({ lists }: Props) {
 
   return (
     <main className="mx-10 my-6 bg-gray-650">
-      <h2 className="text-h2-normal text-gray-200">{listTitle}</h2>
+      <h2 className="text-h2-normal text-gray-200" ref={containerRef}>{listTitle}</h2>
       {"playlists" in lists && (
         <section className="flex flex-wrap gap-6 mt-8 mb-16">
           {lists.playlists.map((playlist: IPlaylist, index: number) => {

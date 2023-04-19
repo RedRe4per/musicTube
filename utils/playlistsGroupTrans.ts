@@ -2,6 +2,12 @@ import { IPlaylistList, IPlaylist } from "@/interfaces/playlist";
 import { EventEmitter } from "events";
 EventEmitter.defaultMaxListeners = 50;
 
+interface SettledResult {
+  status: "fulfilled" | "rejected";
+  value: string;
+  reason: string;
+}
+
 export const playlistsGroupTranslator = async (
   playlistsGroup: IPlaylistList
 ) => {
@@ -14,7 +20,7 @@ export const playlistsGroupTranslator = async (
 
     const settledResults = (await Promise.allSettled(
       translationPromises
-    )) as any;
+    )) as SettledResult[];
 
     playlistsGroup.playlists.forEach((playlist: IPlaylist, index: number) => {
       if (settledResults[index].status === "fulfilled") {
