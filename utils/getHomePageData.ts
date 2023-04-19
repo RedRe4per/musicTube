@@ -91,7 +91,7 @@ async function getAlbumLists(area: AlbumArea) {
   const albumLists = {
     ...rawAlbumLists,
     title: albumAreaMapper(area),
-    path: `album/list/style?area=${area}`,
+    path: `album/list/style?area=${area}&`,
   };
   return albumLists;
 }
@@ -124,5 +124,5 @@ export async function getPlaylistList(playListType: "/highquality" | "") {
   );
   const rawTopLists = await topPlaylistListResponse.json();
   const topPlaylistList = await playlistsGroupTranslator(rawTopLists);
-  return { ...topPlaylistList, path: `top/playlist${playListType}` };
+  return { ...topPlaylistList, path: `top/playlist${playListType}?` };
 }

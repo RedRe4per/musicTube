@@ -3,6 +3,7 @@ import { useContext, useEffect, useRef } from "react";
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { PlaylistCard } from "@/components/Card/PlaylistCard";
 import { AlbumCard } from "@/components/Card/AlbumCard";
+import { decodeSlash } from "@/utils/encodeSlash";
 import { IPlaylist, IPlaylistList } from "@/interfaces/playlist";
 import { Footer } from "@/layouts/footer";
 import { IAlbum, IAlbumList } from "@/interfaces/album";
@@ -67,7 +68,7 @@ export default function List({ lists }: Props) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
   const listRes = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/${id}?limit=50`
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/${decodeSlash(id as string)}limit=50`
   );
   const lists = await listRes.json();
 

@@ -1,6 +1,7 @@
 import { PlaylistCard } from "../Card/PlaylistCard";
 import { encodeSlash } from "@/utils/encodeSlash";
 import { IPlaylist, IPlaylistList } from "@/interfaces/playlist";
+import { useLoading } from "@/hooks/useLoading";
 import Link from "next/link";
 
 interface Props {
@@ -9,6 +10,8 @@ interface Props {
 }
 
 export const PlaylistList = ({ title, playlistList }: Props) => {
+  const { handleLoading } = useLoading();
+
   return (
     <section className="ml-3 lg:ml-5 mt-6 overflow-hidden">
       <section className="flex items-center justify-between gap-4">
@@ -18,6 +21,7 @@ export const PlaylistList = ({ title, playlistList }: Props) => {
         <Link
           className="lg:text-h4-normal mr-4 text-gray-200"
           href={`/list/${encodeSlash(playlistList.path)}`}
+          onClick={handleLoading}
           aria-label="Link to more playlists"
         >
           More Playlists

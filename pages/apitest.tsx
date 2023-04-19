@@ -6,7 +6,6 @@ export default function apiTest() {
       }/api/textTranslator?originalText=${"华语流行乐队"}`
     );
     const engText = await engTextRes.json();
-    console.log(engText);
   };
 
   return (

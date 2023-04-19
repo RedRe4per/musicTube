@@ -1,6 +1,7 @@
 import { AlbumCard } from "@/components/Card/AlbumCard";
 import { encodeSlash } from "@/utils/encodeSlash";
 import { IAlbum, IAlbumList } from "@/interfaces/album";
+import { useLoading } from "@/hooks/useLoading";
 import Link from "next/link";
 
 interface Props {
@@ -9,6 +10,8 @@ interface Props {
 }
 
 export const AlbumList = ({ title, albumList }: Props) => {
+  const { handleLoading } = useLoading();
+
   return (
     <section className="ml-3 lg:ml-5 mt-6 overflow-hidden">
       <section className="flex items-center justify-between gap-4">
@@ -18,6 +21,7 @@ export const AlbumList = ({ title, albumList }: Props) => {
         <Link
           className="lg:text-h4-normal mr-4 text-gray-200"
           href={`/list/${encodeSlash(albumList.path)}`}
+          onClick={handleLoading}
           aria-label="Link to more album lists"
         >
           More Album
