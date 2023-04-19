@@ -4,6 +4,7 @@ export interface IPlaylistList {
   more: boolean;
   playlists: IPlaylist[];
   total: number;
+  path: string;
 }
 
 export interface IPlaylist {

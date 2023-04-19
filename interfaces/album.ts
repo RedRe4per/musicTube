@@ -16,6 +16,7 @@ export interface IAlbumList {
   code: number;
   hasNextPage: boolean;
   title: string;
+  path: string;
 }
 
 export interface IAlbumDetails {

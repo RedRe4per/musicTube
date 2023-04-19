@@ -1,4 +1,5 @@
 import { PlaylistCard } from "../Card/PlaylistCard";
+import { encodeSlash } from "@/utils/encodeSlash";
 import { IPlaylist, IPlaylistList } from "@/interfaces/playlist";
 import Link from "next/link";
 
@@ -16,7 +17,7 @@ export const PlaylistList = ({ title, playlistList }: Props) => {
         </h2>
         <Link
           className="lg:text-h4-normal mr-4 text-gray-200"
-          href={"/list/top?type=playlist"}
+          href={`/list/${encodeSlash(playlistList.path)}`}
           aria-label="Link to more playlists"
         >
           More Playlists

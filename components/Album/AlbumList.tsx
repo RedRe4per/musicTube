@@ -1,4 +1,5 @@
 import { AlbumCard } from "@/components/Card/AlbumCard";
+import { encodeSlash } from "@/utils/encodeSlash";
 import { IAlbum, IAlbumList } from "@/interfaces/album";
 import Link from "next/link";
 
@@ -16,7 +17,7 @@ export const AlbumList = ({ title, albumList }: Props) => {
         </h2>
         <Link
           className="lg:text-h4-normal mr-4 text-gray-200"
-          href={"/list/KR?type=album"}
+          href={`/list/${encodeSlash(albumList.path)}`}
           aria-label="Link to more album lists"
         >
           More Album

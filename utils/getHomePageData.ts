@@ -88,7 +88,7 @@ async function getAlbumLists(area: AlbumArea) {
     `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/album/list/style?area=${area}&limit=13`
   );
   const rawAlbumLists = await albumRes.json();
-  const albumLists = { ...rawAlbumLists, title: albumAreaMapper(area) };
+  const albumLists = { ...rawAlbumLists, title: albumAreaMapper(area), path: `album/list/style?area=${area}` };
   return albumLists;
 }
 
@@ -120,5 +120,5 @@ export async function getPlaylistList(playListType: "/highquality" | "") {
   );
   const rawTopLists = await topPlaylistListResponse.json();
   const topPlaylistList = await playlistsGroupTranslator(rawTopLists);
-  return topPlaylistList;
+  return {...topPlaylistList, path: `top/playlist${playListType}`};
 }
