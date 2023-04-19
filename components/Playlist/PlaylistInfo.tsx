@@ -28,7 +28,7 @@ export const PlaylistInfo = ({
   subscribedCount,
 }: Props) => {
   return (
-    <section className="mt-6 pl-10 pb-5 flex">
+    <section className="mt-6 px-10 pb-5 flex">
       <div className="min-w-[280px] min-h-[280px]">
         <Image
           src={coverImgUrl}

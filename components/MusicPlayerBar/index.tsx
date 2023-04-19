@@ -9,12 +9,14 @@ import { MusicInfo } from "./MusicInfo";
 import { VolumeBar } from "./VolumeBar";
 import { LyricsContext } from "@/contexts/LyricsContext";
 import { getSkipIndex } from "@/utils/getSkipIndex";
+import { useListRandomizer } from "@/hooks/useListRandomizer";
 
 export const MusicPlayerBar = () => {
   const { playerList, setPlayerList } = useContext(PlayerContext);
   const { isMusicPlay, setIsMusicPlay, currentMusic, setCurrentMusic } =
     useContext(PlayAndPauseContext);
   const { musicPlayer } = useContext(LyricsContext);
+  const { handleListRandomizer } = useListRandomizer();
   const [isMusicLoop, setIsMusicLoop] = useState(false);
   const [isRandomPlay, setIsRandomPlay] = useState(false);
 
@@ -59,6 +61,7 @@ export const MusicPlayerBar = () => {
 
   const handleRandomPlay = () => {
     setIsRandomPlay(!isRandomPlay);
+    handleListRandomizer();
   };
 
   return (
