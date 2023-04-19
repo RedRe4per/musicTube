@@ -68,7 +68,9 @@ export default function List({ lists }: Props) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
   const listRes = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/${decodeSlash(id as string)}limit=50`
+    `${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/${decodeSlash(
+      id as string
+    )}limit=50`
   );
   const lists = await listRes.json();
 
