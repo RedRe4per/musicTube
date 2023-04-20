@@ -50,7 +50,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 setIsMusicPlay,
                 currentMusic,
                 setCurrentMusic,
-                isRandomPlay, 
+                isRandomPlay,
                 setIsRandomPlay,
               }}
             >
@@ -58,7 +58,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 value={{
                   playerList,
                   setPlayerList,
-                  cachedPlayerList, 
+                  cachedPlayerList,
                   setCachedPlayerList,
                   musicListId,
                   setMusicListId,

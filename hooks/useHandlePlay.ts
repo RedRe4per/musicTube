@@ -59,9 +59,9 @@ export const useHandlePlay = (
 
     const sortedList = await getSortedMusicList(albumData.songs, songIndex);
     setCachedPlayerList(sortedList);
-    if(!isRandomPlay){
+    if (!isRandomPlay) {
       setPlayerList(sortedList);
-    }else{
+    } else {
       setPlayerList(randomSort(sortedList));
     }
   };

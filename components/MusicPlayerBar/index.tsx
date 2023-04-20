@@ -13,8 +13,14 @@ import { useListRandomizer } from "@/hooks/useListRandomizer";
 
 export const MusicPlayerBar = () => {
   const { playerList, setPlayerList } = useContext(PlayerContext);
-  const { isMusicPlay, setIsMusicPlay, currentMusic, setCurrentMusic, isRandomPlay, setIsRandomPlay } =
-    useContext(PlayAndPauseContext);
+  const {
+    isMusicPlay,
+    setIsMusicPlay,
+    currentMusic,
+    setCurrentMusic,
+    isRandomPlay,
+    setIsRandomPlay,
+  } = useContext(PlayAndPauseContext);
   const { musicPlayer } = useContext(LyricsContext);
   const { handleListRandomizer, handleListSequence } = useListRandomizer();
   const [isMusicLoop, setIsMusicLoop] = useState(false);
@@ -59,9 +65,9 @@ export const MusicPlayerBar = () => {
   };
 
   const handleRandomPlay = () => {
-    if(!isRandomPlay){
+    if (!isRandomPlay) {
       handleListRandomizer();
-    }else{
+    } else {
       handleListSequence();
     }
     setIsRandomPlay(!isRandomPlay);

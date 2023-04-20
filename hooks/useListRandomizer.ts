@@ -6,7 +6,8 @@ import { IMusicDetail } from "@/interfaces/music";
 
 export const useListRandomizer = () => {
   const { currentMusic } = useContext(PlayAndPauseContext);
-  const { playerList, setPlayerList, cachedPlayerList, setCachedPlayerList } = useContext(PlayerContext);
+  const { playerList, setPlayerList, cachedPlayerList, setCachedPlayerList } =
+    useContext(PlayerContext);
 
   const handleListRandomizer = () => {
     if (playerList.length < 2) return;
