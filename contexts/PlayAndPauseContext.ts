@@ -6,6 +6,8 @@ interface PlayAndPauseContextType {
   setIsMusicPlay: (isMusicPlay: boolean) => void;
   currentMusic: IMusicDetail | null;
   setCurrentMusic: (currentMusic: IMusicDetail) => void;
+  isRandomPlay: boolean;
+  setIsRandomPlay: (isRandomPlay: boolean) => void;
 }
 
 export const PlayAndPauseContext = createContext<PlayAndPauseContextType>({
@@ -13,4 +15,6 @@ export const PlayAndPauseContext = createContext<PlayAndPauseContextType>({
   setIsMusicPlay: () => {},
   currentMusic: null,
   setCurrentMusic: () => {},
+  isRandomPlay: false,
+  setIsRandomPlay: () => {},
 });

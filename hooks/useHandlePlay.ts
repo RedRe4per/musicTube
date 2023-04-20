@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { getSortedMusicList } from "@/utils/getSortedMusicList";
 import { PlayerContext } from "@/contexts/PlayerContext";
+import { PlayAndPauseContext } from "@/contexts/PlayAndPauseContext";
 import { AlertContext } from "@/contexts/AlertContext";
+import { randomSort } from "@/utils/randomSort";
 
 type PlayType = "playlist" | "album";
 
@@ -11,8 +13,9 @@ export const useHandlePlay = (
   playType: PlayType = "album",
   playlistPage: number = 1
 ) => {
-  const { setPlayerList, setMusicListId, setQueueInfo } =
+  const { setPlayerList, setMusicListId, setCachedPlayerList, setQueueInfo } =
     useContext(PlayerContext);
+  const { isRandomPlay } = useContext(PlayAndPauseContext);
   const { setAlertBox } = useContext(AlertContext);
   const controller = new AbortController();
   const signal = controller.signal;
@@ -55,7 +58,12 @@ export const useHandlePlay = (
     }
 
     const sortedList = await getSortedMusicList(albumData.songs, songIndex);
-    setPlayerList(sortedList);
+    setCachedPlayerList(sortedList);
+    if(!isRandomPlay){
+      setPlayerList(sortedList);
+    }else{
+      setPlayerList(randomSort(sortedList));
+    }
   };
 
   return { handlePlay };

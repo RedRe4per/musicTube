@@ -6,7 +6,7 @@ import { IMusicDetail } from "@/interfaces/music";
 
 export const useListRandomizer = () => {
   const { currentMusic } = useContext(PlayAndPauseContext);
-  const { playerList, setPlayerList } = useContext(PlayerContext);
+  const { playerList, setPlayerList, cachedPlayerList, setCachedPlayerList } = useContext(PlayerContext);
 
   const handleListRandomizer = () => {
     if (playerList.length < 2) return;
@@ -20,5 +20,17 @@ export const useListRandomizer = () => {
     setPlayerList(randomizedList);
   };
 
-  return { handleListRandomizer };
+  const handleListSequence = () => {
+    if (cachedPlayerList.length < 2) return;
+    const musicIndex = cachedPlayerList.findIndex(
+      (song: IMusicDetail) => song.id === currentMusic?.id
+    );
+    const sequenceList = [
+      ...cachedPlayerList.slice(musicIndex),
+      ...cachedPlayerList.slice(0, musicIndex),
+    ];
+    setPlayerList(sequenceList);
+  };
+
+  return { handleListRandomizer, handleListSequence };
 };

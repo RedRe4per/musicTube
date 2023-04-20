@@ -21,6 +21,8 @@ const rubik = Rubik({
 export default function App({ Component, pageProps }: AppProps) {
   const musicPlayer = useRef<HTMLAudioElement>(null);
   const [playerList, setPlayerList] = useState<IMusicDetail[]>([]);
+  const [cachedPlayerList, setCachedPlayerList] = useState<IMusicDetail[]>([]);
+  const [isRandomPlay, setIsRandomPlay] = useState(false);
   const [queueInfo, setQueueInfo] = useState<Track[]>([]);
   const [bgColor, setBgColor] = useState("gray-650");
   const [isLoading, setIsLoading] = useState(false);
@@ -48,12 +50,16 @@ export default function App({ Component, pageProps }: AppProps) {
                 setIsMusicPlay,
                 currentMusic,
                 setCurrentMusic,
+                isRandomPlay, 
+                setIsRandomPlay,
               }}
             >
               <PlayerContext.Provider
                 value={{
                   playerList,
                   setPlayerList,
+                  cachedPlayerList, 
+                  setCachedPlayerList,
                   musicListId,
                   setMusicListId,
                   queueInfo,
