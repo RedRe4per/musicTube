@@ -20,7 +20,7 @@ export default function Layout({ children }: Props) {
       <section className="w-full xl:w-screen-70 bg-gray-650 relative">
         <Header />
         <Head>
-          <title>TuneSpire</title>
+          <title>TunesSpire</title>
           <meta name="description" content="Built by Async Working" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />

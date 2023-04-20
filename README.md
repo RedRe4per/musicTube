@@ -1,4 +1,4 @@
-# Welcome to TuneSpire repository :smile:
+# Welcome to TunesSpire repository :smile:
 
 [![Next](https://camo.githubusercontent.com/a2ef46f4aec1799b4366d5dd9e4cc60c250b9a4a1e0a4cea21bae63660b63a25/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6e6578742e6a732d3030303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d6e657874646f746a73266c6f676f436f6c6f723d7768697465)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
@@ -16,11 +16,11 @@ Made by Derek Zhu
 &emsp;
 &emsp;
 
-[TuneSpire](https://music-app-tan-xi.vercel.app/)
+[TunesSpire](https://www.tunesspire.com/)
 
 ---
 
-:book: TuneSpire is an app for playing music.
+:book: TunesSpire is an app for playing music.
 
 &emsp;
 &nbsp;
@@ -30,7 +30,7 @@ Made by Derek Zhu
 
 ## :zap: Performance
 
-:white_check_mark: TuneSpire reaches as high as all 100 of categories testing by Lighthouse.
+:white_check_mark: TunesSpire reaches as high as all 100 of categories testing by Lighthouse.
 &emsp;
 &nbsp;
 ![seo](https://user-images.githubusercontent.com/98071700/232326266-4e4e31a1-3057-43eb-b83e-117db02bf042.jpg)
@@ -88,7 +88,7 @@ Distributed under the MIT License.
 
 Derek Zhu - [@LinkedIn](https://www.linkedin.com/in/zhu-derek/) - [s3582474@gmail.com](s3582474@gmail.com)
 
-Project Link: https://github.com/RedRe4per/TuneSpire
+Project Link: https://github.com/RedRe4per/TunesSpire
 
 My Blog: https://redre4per.github.io/
 
