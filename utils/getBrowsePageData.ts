@@ -20,7 +20,9 @@ async function fetchPlaylist(category: CatListItem) {
       }`
     );
     const playlistData = await response.json();
-    const playlistImage = convertToHttps(playlistData.result.playlists[0].coverImgUrl);
+    const playlistImage = convertToHttps(
+      playlistData.result.playlists[0].coverImgUrl
+    );
 
     const colorRes = await fetch(
       `${process.env.NEXT_PUBLIC_CLIENT_ADDRESS}/api/colorExtract?imageUrl=${playlistImage}`
