@@ -10,9 +10,9 @@ export default function Home() {
 
   return (
     <>
-      <main>
+      <section>
         <section className="">liked songs page</section>
-      </main>
+      </section>
     </>
   );
 }

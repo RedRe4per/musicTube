@@ -18,7 +18,7 @@ export default function Browse(allPlaylistTags: Props) {
 
   return (
     <>
-      <main className="ml-10 mt-6">
+      <section className="ml-10 mt-6">
         <h2 className="text-gray-200 text-h2-normal">Browse All</h2>
         <section className="flex flex-wrap gap-8 mt-10 mb-16 gap">
           {allPlaylistTags.allPlaylistTags
@@ -28,7 +28,7 @@ export default function Browse(allPlaylistTags: Props) {
             })}
         </section>
         <Footer />
-      </main>
+      </section>
     </>
   );
 }

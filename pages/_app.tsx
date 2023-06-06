@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
   });
 
   return (
-    <main className={`${rubik.variable} font-sans`}>
+    <section className={`${rubik.variable} font-sans`}>
       <BgColorContext.Provider
         value={{ bgColor, setBgColor, isLoading, setIsLoading }}
       >
@@ -74,6 +74,6 @@ export default function App({ Component, pageProps }: AppProps) {
           </LyricsContext.Provider>
         </AlertContext.Provider>
       </BgColorContext.Provider>
-    </main>
+    </section>
   );
 }

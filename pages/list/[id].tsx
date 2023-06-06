@@ -28,7 +28,7 @@ export default function List({ lists }: Props) {
   }, []);
 
   return (
-    <main className="mx-10 my-6 bg-gray-650">
+    <section className="mx-10 my-6 bg-gray-650">
       <h2 className="text-h2-normal text-gray-200" ref={containerRef}>
         {listTitle}
       </h2>
@@ -63,7 +63,7 @@ export default function List({ lists }: Props) {
         </section>
       )}
       <Footer />
-    </main>
+    </section>
   );
 }
 

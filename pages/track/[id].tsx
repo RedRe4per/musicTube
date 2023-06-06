@@ -32,7 +32,7 @@ export default function Track(trackInfo: Props) {
   }, [id]);
 
   return (
-    <main
+    <section
       className="transition-transform duration-1000 shadow-inner shadow-gray-650"
       style={{
         background: `linear-gradient(to bottom, #1B1B1B, ${mixColor(
@@ -53,7 +53,7 @@ export default function Track(trackInfo: Props) {
       <TrackLyrics trackId={id} />
       <SimilarTrack trackId={id} />
       <Footer />
-    </main>
+    </section>
   );
 }
 

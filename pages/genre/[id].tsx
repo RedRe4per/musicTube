@@ -36,7 +36,7 @@ export default function Genre(props: Props) {
   }, [id]);
 
   return (
-    <main className="mx-10 my-6 bg-gray-650">
+    <section className="mx-10 my-6 bg-gray-650">
       <h2 className="text-h2-normal text-gray-200 mb-16" ref={containerRef}>
         {id}
       </h2>
@@ -74,7 +74,7 @@ export default function Genre(props: Props) {
         })}
       </section>
       <Footer />
-    </main>
+    </section>
   );
 }
 

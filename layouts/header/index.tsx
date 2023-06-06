@@ -13,7 +13,7 @@ export const Header = () => {
   }, [router.pathname]);
 
   return (
-    <main className={`${page === "/likedSongs" ? "bg-header" : ""}`}>
+    <header className={`${page === "/likedSongs" ? "bg-header" : ""}`}>
       <section className="h-[90px] flex items-center justify-around my-1">
         <PageSwitch page={page} />
         <section className="hidden lg:block">
@@ -35,6 +35,6 @@ export const Header = () => {
           <h5>1158 songs</h5>
         </div>
       </section>
-    </main>
+    </header>
   );
 };

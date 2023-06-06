@@ -4,10 +4,10 @@ import { NavPlaylist } from "@/components/NavigationBar/NavPlaylist";
 
 export const Nav = () => {
   return (
-    <main className="w-[303px] bg-gray-800 h-[100vh] hidden xl:block overflow-scroll navScrollbar">
+    <aside className="w-[303px] bg-gray-800 h-[100vh] hidden xl:block overflow-scroll navScrollbar">
       <NavPages />
       <NavLibrary />
       <NavPlaylist />
-    </main>
+    </aside>
   );
 };
