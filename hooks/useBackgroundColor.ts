@@ -1,5 +1,6 @@
 import { BgColorContext } from "@/contexts/BgColorContext";
 import { useContext, useState } from "react";
+import { convertToHttps } from "@/utils/convertToHttps";
 
 export const useBackgroundColor = (imageUrl?: string) => {
   const { setBgColor } = useContext(BgColorContext);
@@ -13,7 +14,7 @@ export const useBackgroundColor = (imageUrl?: string) => {
     }
     setPrevUrl(imageUrl);
 
-    const response = await fetch(`/api/colorExtract?imageUrl=${imageUrl}`);
+    const response = await fetch(`/api/colorExtract?imageUrl=${convertToHttps(imageUrl)}`);
     const data = await response.json();
     setBgColor(data.dominantColor);
   };
