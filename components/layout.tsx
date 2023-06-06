@@ -21,7 +21,7 @@ export default function Layout({ children }: Props) {
         <Header />
         <Head>
           <title>TunesSpire</title>
-          <meta name="description" content="Built by Async Working" />
+          <meta name="description" content="An online music streaming player. Built by Async Working" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
