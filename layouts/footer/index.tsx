@@ -4,17 +4,17 @@ export const Footer = () => {
       <div className="lg:grid grid-flow-col gap-4 hidden">
         <a
           className="link link-hover"
-          href="https://redre4per.github.io/"
+          href="https://www.asyncworking.com/"
           target="_blank"
-          aria-label="Visit my personal blog"
+          aria-label="Visit our website"
         >
-          About me
+          About us
         </a>
         <a
           className="link link-hover"
           href="https://www.linkedin.com/in/zhu-derek/"
           target="_blank"
-          aria-label="Visit my linkedin"
+          aria-label="Team members"
         >
           Contact
         </a>
@@ -63,7 +63,7 @@ export const Footer = () => {
       </div>
       <div className="text-tag-light lg:text-h4-light">
         <p>Copyright © 2023 - All right reserved</p>
-        <p>Made by Derek Zhu</p>
+        <p>Made by Async Working</p>
       </div>
     </footer>
   );
