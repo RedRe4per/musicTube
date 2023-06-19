@@ -11,7 +11,7 @@ export default function Custom500() {
   }, []);
 
   return (
-    <section className="hero h-[82vh] bg-gray-650">
+    <main className="hero h-[82vh] bg-gray-650">
       <div className="hero-content flex-col lg:flex-row">
         <Image
           src="/images/error500.jpg"
@@ -35,6 +35,6 @@ export default function Custom500() {
           </Link>
         </div>
       </div>
-    </section>
+    </main>
   );
 }

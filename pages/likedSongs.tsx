@@ -9,10 +9,8 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <section>
+      <main>
         <section className="">liked songs page</section>
-      </section>
-    </>
+      </main>
   );
 }

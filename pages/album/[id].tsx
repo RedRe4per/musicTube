@@ -32,7 +32,7 @@ export default function Album(albumInfo: Props) {
   }
 
   return (
-    <section
+    <main
       className="transition-transform duration-1000 shadow-inner shadow-gray-650"
       style={{
         background: `linear-gradient(to bottom, #1B1B1B, ${mixColor(
@@ -51,7 +51,7 @@ export default function Album(albumInfo: Props) {
       <AlbumPlay albumId={id} />
       <AlbumPlayList albumSongs={albumInfo.songs} albumId={id} />
       <Footer />
-    </section>
+    </main>
   );
 }
 

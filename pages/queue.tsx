@@ -7,7 +7,7 @@ export default function Queue() {
   const { musicListId, queueInfo } = useContext(PlayerContext);
 
   return (
-    <section className="mt-8">
+    <main className="mt-8">
       <h3 className="text-h2-normal text-white-50 ml-20 mb-12">Queue</h3>
       {queueInfo.length > 0 ? (
         <SongList
@@ -21,6 +21,6 @@ export default function Queue() {
         </section>
       )}
       <Footer />
-    </section>
+    </main>
   );
 }

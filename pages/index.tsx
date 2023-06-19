@@ -34,7 +34,7 @@ export default function Home({
   }, []);
 
   return (
-    <section>
+    <main>
       <section className="overflow-hidden">
         <Carousel banners={banners} />
         <PlaylistList title={"Top Playlists"} playlistList={topPlaylistList} />
@@ -50,7 +50,7 @@ export default function Home({
         })}
       </section>
       <Footer />
-    </section>
+    </main>
   );
 }
 

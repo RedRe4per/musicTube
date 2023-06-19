@@ -10,7 +10,7 @@ export default function Custom404() {
   }, []);
 
   return (
-    <section className="hero h-[82vh] bg-gray-650">
+    <main className="hero h-[82vh] bg-gray-650">
       <div className="hero-content text-center">
         <div className="max-w-md">
           <h1 className="text-5xl font-bold">404 Not Found!</h1>
@@ -23,6 +23,6 @@ export default function Custom404() {
           </Link>
         </div>
       </div>
-    </section>
+    </main>
   );
 }

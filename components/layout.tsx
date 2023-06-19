@@ -28,13 +28,13 @@ export default function Layout({ children }: Props) {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main
+        <section
           className={`overflow-auto max-h-[82.8vh] lg:scrollbar ${
             isLoading ? "blur-xl brightness-50" : ""
           }`}
         >
           {children}
-        </main>
+        </section>
         <div className={isLoading ? "" : "hidden"}>
           <Loading />
         </div>

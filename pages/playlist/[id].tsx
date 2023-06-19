@@ -61,7 +61,7 @@ export default function Playlist(playlistInfo: Props) {
   };
 
   return (
-    <section
+    <main
       className="transition-transform duration-1000 shadow-inner shadow-gray-650"
       style={{
         background: `linear-gradient(to bottom, #1B1B1B, ${mixColor(
@@ -92,7 +92,7 @@ export default function Playlist(playlistInfo: Props) {
         switchPage={switchPage}
       />
       <Footer />
-    </section>
+    </main>
   );
 }
 
